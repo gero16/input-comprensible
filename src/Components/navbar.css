@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+
+
+.flex-center-column {
+  display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 10px 15px 10px 0px;
+    height: 75px;
+    align-items: center;
+    background-color: #242424be;
+    backdrop-filter: blur(5px);
+}
+
+.icon-navbar {
+  width: 26px;
+}
+.logo {
+  margin: 0px 20px;  
+  cursor: pointer;
+}
+.lista-navbar {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 25px;
+    font-size: smaller;
+    margin-right: 15px;
+    list-style: none;
+}
+
+.lista-navbar li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+
+.li-nav {
+  transition: ease-out 0.6s;
+  
+}
+
+
+.li-nav:hover {
+  transition: ease-out 0.3s;
+  transform: scale(1.12);
+  filter: hue-rotate(30deg) brightness(500%);
+}
+
+
+.simbolo {
+    font-size: medium;
+    color: rgb(106, 252, 101) !important;
+    font-weight: 600;
+}
+
+.redes-personal {
+    margin: 0px 0px 10px 0px;
+}
+
+.img-idioma {
+  width: 32px;
+  cursor: pointer;
+}
+
+
+
+
+@media (min-width: 800px) {
+  .lista-navbar {
+    font-size: medium;
+  }
+  .simbolo {
+    font-size: x-large;
+  }
+ 
+ }
+

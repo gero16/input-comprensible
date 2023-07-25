@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AudioSerie = ({titulo, subtitulo, listaAudios}) => {
+const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
     
     const [evaluarAudio, setEvaluarAudio] = useState([false])
 
@@ -28,8 +28,10 @@ const AudioSerie = ({titulo, subtitulo, listaAudios}) => {
 
     return (
         <>
-            <article className="article-audio">
-                <h2 className={`subtitulo-${subtitulo}`}> {titulo} </h2>
+            <article className={`article-audio ${subtitulo}`} name={subtitulo}>
+
+                {img ?  <img src={img} alt="" className={`imagen-titulo imagen-${subtitulo}`} /> : <h2 className={`subtitulo-${subtitulo}`}> {titulo} </h2>}
+               
                 <section className='flex-center'>
                     {
                         listaAudios.map((element, key) => {

@@ -153,3 +153,21 @@ button {
 .subtitulo-simpsons {
   color: rgb(221, 201, 16);
 }
+
+.imagen-titulo {
+  margin-top: 25px;
+  width: 20vw;
+}
+
+.imagen-harry {
+  width: 25vw;
+}
+
+.imagen-got {
+  width: 40vw;
+}
+
+.imagen-friends {
+  width: 25vw;
+
+}

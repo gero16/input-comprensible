@@ -1,10 +1,13 @@
+
+
 export const listaScream = [
     ["Do you remember the beginning?", "../src/audios/scream/Grabacion.m4a", "easy"], 
     ["How well do you remember the original?", "../src/audios/scream/Grabacion2.m4a", "easy"],
     ["She answers the wrong number and starts talking", "../src/audios/scream/Grabacion3.m4a", "medium"],
     ["Amber's looking particularly fetching tonight", "../src/audios/scream/Grabacion4.m4a", "medium"],
     ["I told you, i want to play a game", "../src/audios/scream/Grabacion5.m4a", "easy"],
-    [" Hey, what's going on?", "../src/audios/scream/Grabacion6.m4a", "easy"]
+    [" Hey, what's going on?", "../src/audios/scream/Grabacion6.m4a", "easy"],
+    [" What do you think? You're the expert", "../src/audios/scream/Grabacion7.m4a", "easy"]
 ]
 
 export const listaBojack = [
@@ -21,3 +24,6 @@ export const listaSimpsons = [
     ["What's matter", "../src/audios/simpsons/Grabacion2.m4a"]
 ]
 
+export const secretInvasion = [
+    []
+]
