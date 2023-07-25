@@ -62,11 +62,12 @@ const NavBar = () => {
                     </Link>
                 </li>
 
-                  <li className="p-2 li-nav main">
+                <li className="p-2 li-nav main">
                     <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
                             <span> Gumball</span>
                     </Link>
                 </li>
+                
                 
             </ul>
         </nav>

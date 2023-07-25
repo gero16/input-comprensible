@@ -68,6 +68,9 @@ button:focus-visible {
   }
 }
 
+h1  {
+  margin-top: 80px;
+}
 .container {
   width: 90%;
   margin: 0 auto;

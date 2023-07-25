@@ -22,8 +22,6 @@ function App() {
 
         <main className='container'>
 
-          
-          
           <AudioSerie 
             titulo={"Scream"}
             img={Scream}
