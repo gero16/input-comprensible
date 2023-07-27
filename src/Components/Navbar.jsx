@@ -67,6 +67,24 @@ const NavBar = () => {
                             <span> Gumball</span>
                     </Link>
                 </li>
+
+                <li className="p-2 li-nav main">
+                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
+                            <span> Shrek 2 </span>
+                    </Link>
+                </li>
+
+                <li className="p-2 li-nav main">
+                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
+                            <span> Peaky Blinders</span>
+                    </Link>
+                </li>
+
+                <li className="p-2 li-nav main">
+                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
+                            <span> The Room </span>
+                    </Link>
+                </li>
                 
                 
             </ul>

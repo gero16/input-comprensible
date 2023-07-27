@@ -27,3 +27,26 @@ export const listaSimpsons = [
 export const secretInvasion = [
     []
 ]
+
+export const listaShrek2 = [
+    ["...", "/audios/Shrek2/Grabacion1.ogg", "easy"], 
+    ["...", "./audios/Shrek2/Grabacion2.ogg", "medium"],
+    ["...", "./audios/Shrek2/Grabacion3.ogg", "medium"],
+    ["...", "./audios/Shrek2/Grabacion4.ogg", "easy"],
+    ["...?", "./audios/Shrek2/Grabacion5.ogg", "hard"],
+    ["...", "./audios/Shrek2/Grabacion6.ogg", "medium"],
+    ["...", "./audios/Shrek2/Grabacion7.ogg", "hard"],
+    ["...", "./audios/Shrek2/Grabacion8.ogg", "easy"],
+    ["...", "./audios/Shrek2/Grabacion9.ogg", "easy"],
+    ["...", "./audios/Shrek2/Grabacion10.ogg", "very-hard"],
+
+]
+
+export const listaPeaky = [
+    ["...", "/audios/peaky/Grabacion1.ogg", "easy"], 
+    ["...", "./audios/peaky/Grabacion2.ogg", "medium"],
+    ["...", "./audios/peaky/Grabacion3.ogg", "medium"],
+    ["...", "./audios/peaky/Grabacion4.ogg", "easy"],
+    ["...?", "./audios/peaky/Grabacion5.ogg", "hard"],
+
+]

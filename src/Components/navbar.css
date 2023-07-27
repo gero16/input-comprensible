@@ -12,31 +12,22 @@ nav {
     position: fixed;
     top: 0;
     z-index: 10;
-    width: 100%;
-    padding: 10px 15px 10px 0px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
+    padding: 10px 15px 10px 0px; 
     background-color: #242424be;
     backdrop-filter: blur(5px);
-    flex-wrap: wrap;
 }
 
-.icon-navbar {
-  width: 26px;
-}
-.logo {
-  margin: 0px 20px;  
-  cursor: pointer;
-}
+
 .lista-navbar {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: 25px;
-    font-size: smaller;
-    margin-right: 15px;
-    list-style: none;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 25px;
+  font-size: smaller;
+  margin-right: 15px;
+  list-style: none;
+  width: 90vw;
+  flex-wrap: wrap;
 }
 
 .lista-navbar li {
@@ -56,24 +47,6 @@ nav {
   transform: scale(1.12);
   filter: hue-rotate(30deg) brightness(500%);
 }
-
-
-.simbolo {
-    font-size: medium;
-    color: rgb(106, 252, 101) !important;
-    font-weight: 600;
-}
-
-.redes-personal {
-    margin: 0px 0px 10px 0px;
-}
-
-.img-idioma {
-  width: 32px;
-  cursor: pointer;
-}
-
-
 
 
 @media (min-width: 800px) {
