@@ -24,6 +24,8 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                 })
                 
             });
+
+           
            localStorage.setItem(`${subtitulo}`, JSON.stringify( arrayAudios))
         }
       }, [])
@@ -83,8 +85,8 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
             const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
             console.log(aud)
             aud.src = reader.result
-
-           localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
+            audiosLocalStorage[id].audio = reader.result
+            localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
         }
       }
      };
