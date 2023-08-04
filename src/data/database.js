@@ -17,6 +17,13 @@ export const listaBojack = [
     ["...", "./audios/bojack/Grabacion4.m4a", "medium"],
     ["...?", "./audios/bojack/Grabacion5.m4a", "hard"],
     ["...", "./audios/bojack/Grabacion6.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion8.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion9.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion10.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion11.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion12.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion13.m4a", "easy"],
+    ["...", "./audios/bojack/Grabacion14.m4a", "easy"],
 ]
 
 export const listaSimpsons = [
@@ -43,10 +50,21 @@ export const listaShrek2 = [
 ]
 
 export const listaPeaky = [
-    ["...", "/audios/peaky/Grabacion1.ogg", "easy"], 
-    ["...", "./audios/peaky/Grabacion2.ogg", "medium"],
-    ["...", "./audios/peaky/Grabacion3.ogg", "medium"],
-    ["...", "./audios/peaky/Grabacion4.ogg", "easy"],
-    ["...?", "./audios/peaky/Grabacion5.ogg", "hard"],
+    ["I said we'd have a family meeting and take a vote", "/audios/peaky/Grabacion1.ogg", "medium"], 
+    ["What's wrong with you?", "./audios/peaky/Grabacion2.ogg", "hard"],
+    ["Because if you're not, you're in the wrong place", "./audios/peaky/Grabacion3.mp3", "hard"],
+    ["What do you know about the robbery?", "./audios/peaky/Grabacion4.mp3", "hard"],
+    ["I see nothing of interest behind the blood in your eyes", "./audios/peaky/Grabacion5.ogg", "medium"],
+    ["I see nothing of interest behind the blood in your eyes", "./audios/peaky/Grabacion6.ogg", "medium"],
+    ["I see nothing of interest behind the blood in your eyes", "./audios/peaky/Grabacion7.ogg", "medium"],
+    ["Those of you who have taken their bribes these years since the war.", "./audios/peaky/Grabacion8.mp3", "medium"],
+    ["Those of you who have looked the other way,.", "./audios/peaky/Grabacion9.mp3", "medium"],
+    ["You are worse than them.", "./audios/peaky/Grabacion10.ogg", "medium"],
+]
 
+export const listaRoom = [
+    ["...", "./audios/the-room/Grabacion2.m4a", "easy"],
+    ["...", "./audios/the-room/Grabacion3.m4a", "easy"],
+    ["...", "./audios/the-room/Grabacion4.m4a", "easy"],
+    ["...?", "./audios/the-room/Grabacion5.m4a", "easy"],
 ]

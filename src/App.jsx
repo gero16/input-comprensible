@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+
 import AudioSerie from './Components/Audio'
 import './App.css'
 import Navbar from './Components/Navbar'
-import { listaScream, listaBojack, listaSimpsons, listaShrek2, listaPeaky  } from './data/database'
+import { listaScream, listaBojack, listaSimpsons, listaShrek2, listaPeaky, listaRoom  } from './data/database'
 import HarryPotter from "../src/assets/harry-potter-logo.png"
 import Simpsons from "../src/assets/simpsons.png"
 import Bojack from "../src/assets/bojack.png"
@@ -14,7 +16,12 @@ import Shrek2 from "../src/assets/shrek-2.png"
 import Peaky from "../src/assets/peaky.png"
 import TheRoom from "../src/assets/the-room.jpg"
 
+
+
+
+
 function App() {
+
 
   return (
     <>
@@ -29,6 +36,7 @@ function App() {
             img={Scream}
             subtitulo={"scream"} 
             listaAudios={listaScream}
+        
           />
 
           <AudioSerie 
@@ -92,7 +100,7 @@ function App() {
             titulo={"The Room"}
             img={TheRoom}
             subtitulo={"the-room"} 
-            listaAudios={listaSimpsons}
+            listaAudios={listaRoom}
           />
            
         </main>

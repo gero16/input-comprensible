@@ -1,8 +1,36 @@
-import { useState } from "react"
+import { useEffect,useLayoutEffect,useState } from "react";
+import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
 const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
+    const { recordingBlob } = useAudioRecorder();
     
     const [evaluarAudio, setEvaluarAudio] = useState([false])
+    
+    const recorderControls = useAudioRecorder()
+
+    const [grabaciones, setGrabaciones] = useState()
+    useEffect(() => {
+      
+        setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
+        return grabaciones;
+      }, [])
+
+    const [idGrabar, setIdGrabar] = useState()
+
+    let arrayAudios = []
+    const clickGrabar = (e) => {
+        console.log(e)
+        setIdGrabar(e.classList[1])
+    
+    }
+
+    useEffect(() => {
+        if (!recordingBlob) return;
+
+        console.log(recordingBlob)
+      }, [recordingBlob])
+
+    
 
     const evaluar = (subtitulo, id) => {
         const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
@@ -26,6 +54,34 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
         valorAudio.classList.toggle("ocultar")
     }
 
+    const addAudioElement = (blob, subtitulo, id) => {
+   
+      let reader = new FileReader();
+      reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
+  
+      reader.onload = function() {
+        
+        const audiosLocalStorage = JSON.parse(localStorage.getItem(subtitulo))
+ 
+        console.log(idGrabar)
+        const found = audiosLocalStorage.find((objetoAudio) => `audio-recorder-${Number(objetoAudio.id)}` === idGrabar);
+        console.log(found)
+        if(found && `audio-recorder-${id}` === idGrabar ){
+            found.audio = reader.result
+            console.log(found)
+            const audio = document.createElement("audio");
+            audio.src = reader.result;
+            audio.controls = true;
+            audio.setAttribute(`id`, `audio-${subtitulo}-${id}`)
+            document.querySelector(`.div-grabaciones-${subtitulo}`).appendChild(audio)
+
+            console.log(audiosLocalStorage)
+
+           localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
+        }
+      }
+     };
+
     return (
         <>
             <article className={`article-audio ${subtitulo}`} name={subtitulo}>
@@ -35,6 +91,15 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                 <section className='flex-center'>
                     {
                         listaAudios.map((element, key) => {
+                            arrayAudios.push({
+                                id : `${key}`,
+                                audio: ""
+                            })
+
+                            localStorage.setItem(`${subtitulo}`, JSON.stringify( arrayAudios))
+                            ;
+
+                           // console.log(arrayAudios)
                             return(
                                 <article className={`subtitulo-${ titulo }`} key={ key+1 }>
                                     <section className='section-audio'>
@@ -53,11 +118,40 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                                         <button onClick={(e) => mostrarRespuesta(subtitulo, key+1)}> Mostrar Respuesta </button>
 
                                     </section>
+
+                                    <section className="flex-center no-select" id={`grabar-${ subtitulo }-${ key }`} onClick={(e) => clickGrabar(e.target)}>
+                                        <h4> Grabar Audio </h4>
+                                        <AudioRecorder 
+                                            onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, key)}
+                                            recorderControls={recorderControls}
+                                            audioTrackConstraints={{
+                                                noiseSuppression: true,
+                                                echoCancellation: true,
+                                                channelCount:true,
+                                              }} 
+                                              downloadFileExtension="mp3"
+                                              showVisualizer={true}
+                                              classes={{
+                                                //AudioRecorderClass: `audio-recorder-${key}`,
+                                                AudioRecorderStartSaveClass : `audio-recorder-${key}`,
+                                              }} 
+                                       
+                                        />
+                                       
+                                    <div className={`div-grabaciones-${subtitulo}`}>
+                                              
+                                        <embed src={grabaciones} />
+                                    
+                                    </div>
+                                    </section>
+
                                 </article>
                             )
                         })
                     }
                 </section>
+
+            
             </article>
         </>
     )
