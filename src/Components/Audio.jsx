@@ -3,14 +3,13 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
 const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
     const { recordingBlob } = useAudioRecorder();
-    
     const [evaluarAudio, setEvaluarAudio] = useState([false])
-    
     const recorderControls = useAudioRecorder()
-
     const [grabaciones, setGrabaciones] = useState()
+    const [idGrabar, setIdGrabar] = useState()
+    let arrayAudios = []
+
     useEffect(() => {
-      
         setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
         console.log(grabaciones)
       }, [])
@@ -26,25 +25,29 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                 
             });
            localStorage.setItem(`${subtitulo}`, JSON.stringify( arrayAudios))
-
         }
       }, [])
-    const [idGrabar, setIdGrabar] = useState()
 
-    let arrayAudios = []
     const clickGrabar = (e) => {
         console.log(e)
-        setIdGrabar(e.classList[1])
-    
+        const idGrabar = e.classList[1]
+        const claseNombrePelicula = e.classList[2]
+        // Tengo un error si toco el btn pausar 
+        if(claseNombrePelicula) {
+            const separar = claseNombrePelicula.split("-")
+            const nombrePelicula = separar[2]
+            const arrayRecorders = document.querySelectorAll(`.audio-recorder-${nombrePelicula}`)
+            const separar2 = idGrabar.split("-")
+            const idSolo = separar2[2]
+
+            const nodelistToArray = Array.apply(null, arrayRecorders);
+            nodelistToArray.forEach(element => {
+                if(!element.classList.contains(`audio-recorder-${idSolo}`))  element.style.display = "none"
+                if(element.children[0].title === "Save recording") element.style.display = "flex"
+            });
+            setIdGrabar(e.classList[1])
+        }
     }
-
-    useEffect(() => {
-        if (!recordingBlob) return;
-
-        console.log(recordingBlob)
-      }, [recordingBlob])
-
-    
 
     const evaluar = (subtitulo, id) => {
         const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
@@ -69,28 +72,17 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
     }
 
     const addAudioElement = (blob, subtitulo, id) => {
-   
       let reader = new FileReader();
       reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
   
       reader.onload = function() {
-        
         const audiosLocalStorage = JSON.parse(localStorage.getItem(subtitulo))
- 
-        console.log(idGrabar)
-        const found = audiosLocalStorage.find((objetoAudio) => `audio-recorder-${Number(objetoAudio.id)}` === idGrabar);
-        console.log(found)
-        console.log(id)
-        if(found && `audio-recorder-${id}` === idGrabar ){
-            found.audio = reader.result
-            console.log(found)
-            const audio = document.createElement("audio");
-            audio.src = reader.result;
-            audio.controls = true;
-            audio.setAttribute(`id`, `audio-${subtitulo}-${id}`)
-            document.querySelector(`.div-grabaciones-${subtitulo}`).appendChild(audio)
+        const found = audiosLocalStorage.find((objetoAudio) => `audio-mic-${Number(objetoAudio.id)}` === idGrabar);
 
-            console.log(audiosLocalStorage)
+        if(found && `audio-mic-${id}` === idGrabar ){  
+            const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
+            console.log(aud)
+            aud.src = reader.result
 
            localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
         }
@@ -108,25 +100,25 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                         listaAudios.map((element, key) => {
                             
                             return(
-                                <article className={`subtitulo-${ titulo }`} key={ key+1 }>
+                                <article className={`subtitulo-${ titulo }`} key={ key }>
                                     <section className='section-audio'>
 
-                                        <h3 className={`ocultar ${ subtitulo }-${ key+1 }`}> { element[0] } </h3>
-                                        <h4 className={`ocultar ${subtitulo}-mostrar-${key+1}` }> Incorrecto! </h4>
+                                        <h3 className={`ocultar ${ subtitulo }-${ key }`}> { element[0] } </h3>
+                                        <h4 className={`ocultar ${subtitulo}-mostrar-${key}` }> Incorrecto! </h4>
 
                                         <span className={`bold ${element[2]} `}> {element[2]}</span>
                                         <audio controls className="audio">
                                             <source src={element[1]}/>
                                         </audio>
 
-                                        <input type="text" className={`input-${ subtitulo }-${ key + 1 }`} onChange={(e) => setState(e.target.value)}/>
-                                        <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ key+1 } `} defaultValue={ element[0] } />
-                                        <button onClick={(e) => evaluar(subtitulo, key+1)}>Evaluar</button>
-                                        <button onClick={(e) => mostrarRespuesta(subtitulo, key+1)}> Mostrar Respuesta </button>
+                                        <input type="text" className={`input-${ subtitulo }-${ key }`} />
+                                        <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ key } `} defaultValue={ element[0] } />
+                                        <button onClick={(e) => evaluar(subtitulo, key)}>Evaluar</button>
+                                        <button onClick={(e) => mostrarRespuesta(subtitulo, key)}> Mostrar Respuesta </button>
 
                                     </section>
 
-                                    <section className="flex-center no-select" id={`grabar-${ subtitulo }-${ key }`} onClick={(e) => clickGrabar(e.target)}>
+                                    <section className="" id={`grabar-${ subtitulo }-${ key }`} onClick={(e) => clickGrabar(e.target)}>
                                         <h4> Grabar Audio </h4>
                                         <AudioRecorder 
                                             onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, key)}
@@ -139,19 +131,16 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                                               downloadFileExtension="mp3"
                                               showVisualizer={true}
                                               classes={{
-                                                //AudioRecorderClass: `audio-recorder-${key}`,
-                                                AudioRecorderStartSaveClass : `audio-recorder-${key}`,
+                                                AudioRecorderClass: `audio-recorder-${key} audio-recorder-${subtitulo}`,
+                                                AudioRecorderStartSaveClass : `audio-mic-${key} audio-mic-${subtitulo}`,
                                               }} 
                                        
                                         />
                                        
                                     <div className={`div-grabaciones-${subtitulo}`}>
 
-                                              {
-                                                grabaciones ?<embed src={grabaciones[key].audio} /> : ""
-                                              }
+                                        { grabaciones ?<embed src={grabaciones[key].audio} className={`grabacion-${subtitulo}-${key}`} /> : "" }
                                         
-                                    
                                     </div>
                                     </section>
 

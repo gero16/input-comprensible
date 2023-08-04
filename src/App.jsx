@@ -31,6 +31,13 @@ function App() {
 
         <main className='container'>
 
+        <AudioSerie 
+            titulo={"Game of Thrones"}
+            img={Got}
+            subtitulo={"got"} 
+            listaAudios={listaSimpsons}
+          />
+          
           <AudioSerie 
             titulo={"Scream"}
             img={Scream}
