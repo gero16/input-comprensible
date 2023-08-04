@@ -12,9 +12,23 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
     useEffect(() => {
       
         setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
-        return grabaciones;
+        console.log(grabaciones)
       }, [])
 
+      // LA IDEA ES QUE ESTO SE EJECUTE SOLO UNA PRIMERA VEZ PARA LLENAR LOCALSTORAGE
+      useEffect(() => {
+        if(!JSON.parse(localStorage.getItem(subtitulo))) {
+            listaAudios.forEach((element, index) => {
+                arrayAudios.push({
+                    id : `${index}`,
+                    audio: ""
+                })
+                
+            });
+           localStorage.setItem(`${subtitulo}`, JSON.stringify( arrayAudios))
+
+        }
+      }, [])
     const [idGrabar, setIdGrabar] = useState()
 
     let arrayAudios = []
@@ -66,6 +80,7 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
         console.log(idGrabar)
         const found = audiosLocalStorage.find((objetoAudio) => `audio-recorder-${Number(objetoAudio.id)}` === idGrabar);
         console.log(found)
+        console.log(id)
         if(found && `audio-recorder-${id}` === idGrabar ){
             found.audio = reader.result
             console.log(found)
@@ -91,15 +106,7 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                 <section className='flex-center'>
                     {
                         listaAudios.map((element, key) => {
-                            arrayAudios.push({
-                                id : `${key}`,
-                                audio: ""
-                            })
-
-                            localStorage.setItem(`${subtitulo}`, JSON.stringify( arrayAudios))
-                            ;
-
-                           // console.log(arrayAudios)
+                            
                             return(
                                 <article className={`subtitulo-${ titulo }`} key={ key+1 }>
                                     <section className='section-audio'>
@@ -139,8 +146,11 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                                         />
                                        
                                     <div className={`div-grabaciones-${subtitulo}`}>
-                                              
-                                        <embed src={grabaciones} />
+
+                                              {
+                                                grabaciones ?<embed src={grabaciones[key].audio} /> : ""
+                                              }
+                                        
                                     
                                     </div>
                                     </section>
