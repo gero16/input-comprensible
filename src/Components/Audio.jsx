@@ -1,8 +1,7 @@
 import { useEffect,useLayoutEffect,useState } from "react";
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
-    const { recordingBlob } = useAudioRecorder();
+const AudioSerie = ({video, titulo, subtitulo, listaAudios, img}) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState()
@@ -11,7 +10,8 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
 
     useEffect(() => {
         setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
-        console.log(grabaciones)
+        if(grabaciones)  console.log(grabaciones)
+      
       }, [])
 
       // LA IDEA ES QUE ESTO SE EJECUTE SOLO UNA PRIMERA VEZ PARA LLENAR LOCALSTORAGE
@@ -103,7 +103,23 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                             
                             return(
                                 <article className={`subtitulo-${ titulo }`} key={ key }>
-                                    <section className='section-audio'>
+                                    {
+
+                                        video 
+                                        ? <section className="section-video">
+
+                                            <iframe 
+                                                width="400" 
+                                                height="250" 
+                                                src={element[1]}
+                                                title="YouTube video player" 
+                                             
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                         
+                                            />
+                                        </section>
+                
+                                        : <section className='section-audio'>
 
                                         <h3 className={`ocultar ${ subtitulo }-${ key }`}> { element[0] } </h3>
                                         <h4 className={`ocultar ${subtitulo}-mostrar-${key}` }> Incorrecto! </h4>
@@ -119,6 +135,8 @@ const AudioSerie = ({titulo, subtitulo, listaAudios, img}) => {
                                         <button onClick={(e) => mostrarRespuesta(subtitulo, key)}> Mostrar Respuesta </button>
 
                                     </section>
+                                    }
+                                 
 
                                     <section className="" id={`grabar-${ subtitulo }-${ key }`} onClick={(e) => clickGrabar(e.target)}>
                                         <h4> Grabar Audio </h4>

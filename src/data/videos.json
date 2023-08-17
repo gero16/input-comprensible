@@ -1,0 +1,88 @@
+{
+    "peliculas": [
+      {
+        "titulo": "Shrek 2",
+        "subtitulo": "shrek-2",
+        "videos": [
+            {
+             "frase":  "...",
+             "url": "https://www.youtube.com/embed/L-t8MJsfJ_U",
+             "dificultad": "easy"
+            },
+            {
+            "frase":  "...",
+            "url": "https://www.youtube.com/embed/4VP_BLS9ZE4",
+            "dificultad": "easy"
+            }
+         ]
+      },
+      {
+        "titulo": "Scary Movie 5",
+        "subtitulo": "scary-5",
+        "videos": [
+            {
+             "frase":  "Do you remember the beginning?",
+             "url": "./audios/scream/Grabacion.m4a",
+             "dificultad": "easy"
+            }
+         ]
+      }
+    ],
+    "series": [
+        {
+          "titulo": "Bojack Horseman",
+          "subtitulo": "bojack",
+          "temporada_1": [
+           
+                    {
+                    "capitulo": 1,
+                     "frase":  "...",
+                     "url": "https://www.youtube.com/embed/mPRc-uTIvHg",
+                     "dificultad": "easy"
+                    },
+                    {
+                    "capitulo": 1,
+                     "frase":  "...",
+                     "url": "https://www.youtube.com/embed/cdYuw9XJwRM",
+                     "dificultad": "easy"
+                    },
+                    {
+                      "capitulo": 1,
+                       "frase":  "...",
+                       "url": "https://www.youtube.com/embed/bC5gQ8-ASew",
+                       "dificultad": "easy"
+                    },
+                    {
+                      "capitulo": 1,
+                       "frase":  "...",
+                       "url": "https://www.youtube.com/embed/37TkRvVUG7I",
+                       "dificultad": "easy"
+                    },
+                    {
+                      "capitulo": 1,
+                       "frase":  "...",
+                       "url": "https://www.youtube.com/embed/A_MROwh-lNM",
+                       "dificultad": "easy"
+                    },
+                    {
+                      "capitulo": 1,
+                       "frase":  "...",
+                       "url": "https://www.youtube.com/embed/POlCZlgNlio",
+                       "dificultad": "easy"
+                    }
+                    
+        ]
+    },
+        {
+          "titulo": "Peaky Blinders",
+          "subtitulo": "peaky",
+          "videos": [
+              {
+               "frase":  "...",
+               "url": "https://www.youtube.com/embed/2os2AGk_JAU",
+               "dificultad": "easy"
+              }
+           ]
+        }
+      ]
+}

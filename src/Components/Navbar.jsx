@@ -3,6 +3,7 @@ import  "./navbar.css"
 import Scroll from "react-scroll";
 const Link   = Scroll.Link;
 const scroll = Scroll.animateScroll;
+import { Link as Navigate, NavLink } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -24,6 +25,18 @@ const NavBar = () => {
         <nav className="flex-between">
 
             <ul className="lista-navbar flex-center-column">
+
+                <li className="p-2 li-nav project">
+                    <NavLink to={`/series/prueba`} className="flex-center-column scream"> 
+                        <span> Prueba </span>
+                    </NavLink>
+                </li>
+
+                <li className="p-2 li-nav project">
+                    <NavLink to={`/peliculas/prueba`} className="flex-center-column scream"> 
+                        <span> Prueba 2 </span>
+                    </NavLink>
+                </li>
                
                 <li className="p-2 li-nav project">
                     <Link to="" className="flex-center-column scream"  isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}> 
@@ -86,6 +99,12 @@ const NavBar = () => {
                     </Link>
                 </li>
                 
+                <li className="p-2 li-nav">
+                    <Navigate to="/input-comprensivo" className="flex-center-column" > 
+                        <span> Input Comprensivo</span>
+                    </Navigate>
+                    
+                </li>
                 
             </ul>
         </nav>

@@ -15,19 +15,16 @@ import Gumball from "../src/assets/gumball.webp"
 import Shrek2 from "../src/assets/shrek-2.png"
 import Peaky from "../src/assets/peaky.png"
 import TheRoom from "../src/assets/the-room.jpg"
-
-
-
-
+import { listaBojackVideo } from './data/database'
+import NewNavBar from './Components/NewNavbar'
 
 function App() {
-
-
   return (
     <>
       <div>
-        <Navbar></Navbar>
-        <h1>Audio Movies </h1>
+       <NewNavBar> </NewNavBar>
+        
+        <h1 className='titulo-principal'>Audio Movies </h1>
 
         <main className='container'>
 

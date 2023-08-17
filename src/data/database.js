@@ -10,7 +10,29 @@ export const listaScream = [
     [" What do you think? You're the expert", "./audios/scream/Grabacion7.m4a", "easy"]
 ]
 
+export const listaScreamVideo = [
+    ["Do you remember the beginning?", "https://www.youtube.com/embed/2os2AGk_JAU", "easy"], 
+    ["How well do you remember the original?", "https://www.youtube.com/embed/akOrnKvqfUI", "easy"],
+    ["She answers the wrong number and starts talking", "https://www.youtube.com/embed/GBN9wmCzfps", "medium"],
+]
+
+export const listaBojackVideo = [
+    ["...", "https://www.youtube.com/embed/mPRc-uTIvHg", "easy", "/assets/ghost-face.jpg"],
+    ["...", "https://www.youtube.com/embed/cdYuw9XJwRM", "easy", "/assets/ghost-face.jpg"],
+    ["...", "https://www.youtube.com/embed/bC5gQ8-ASew", "easy", "/assets/ghost-face.jpg"],
+    ["...", "https://www.youtube.com/embed/37TkRvVUG7I", "easy", "/assets/ghost-face.jpg"],
+    ["...", "https://www.youtube.com/embed/A_MROwh-lNM", "easy", "/assets/ghost-face.jpg"],
+    ["...", "https://www.youtube.com/embed/POlCZlgNlio", "easy", "/assets/ghost-face.jpg"],
+]
+
+export const listaPrueba2 = [
+    ["...", "https://www.youtube.com/embed/L-t8MJsfJ_U", "easy", "/assets/shrek-2.png"],
+    ["...", "https://www.youtube.com/embed/4VP_BLS9ZE4", "easy", "/assets/shrek-2.png"],
+    ["...", "https://www.youtube.com/embed/hYIhlki8MDc", "easy", "/assets/shrek-2.png"],
+]
+
 export const listaBojack = [
+
     ["Yeah great, get me away from the cameras?", "/audios/bojack/Grabacion1.m4a", "medium"], 
     ["...", "./audios/bojack/Grabacion2.m4a", "medium"],
     ["...", "./audios/bojack/Grabacion3.m4a", "medium"],
