@@ -3,6 +3,7 @@
       {
         "titulo": "Shrek 2",
         "subtitulo": "shrek-2",
+        "imagen": "../src/assets/shrek-2.png",
         "videos": [
             {
              "frase":  "...",
@@ -11,20 +12,36 @@
             },
             {
             "frase":  "...",
-            "url": "https://www.youtube.com/embed/4VP_BLS9ZE4",
+            "url": "https://www.youtube.com/embed/4VP_BLS9ZE4", 
             "dificultad": "easy"
-            }
+            },
+            {
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/hYIhlki8MDc", 
+              "dificultad": "easy"
+              }
          ]
       },
       {
-        "titulo": "Scary Movie 5",
-        "subtitulo": "scary-5",
+        "titulo": "Scream 5",
+        "subtitulo": "scream-5",
+        "imagen": "../src/assets/scream.png",
         "videos": [
             {
              "frase":  "Do you remember the beginning?",
-             "url": "./audios/scream/Grabacion.m4a",
+             "url": "https://www.youtube.com/embed/2os2AGk_JAU",
              "dificultad": "easy"
-            }
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/akOrnKvqfUI",
+              "dificultad": "easy"
+             },
+             {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/GBN9wmCzfps",
+              "dificultad": "easy"
+             }
          ]
       }
     ],

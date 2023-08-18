@@ -11,6 +11,7 @@ const Video = ({titulo, subtitulo, video, key, frase, dificultad}) => {
     const [idGrabar, setIdGrabar] = useState()
     let arrayAudios = []
 
+    /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
         setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
         if(grabaciones)  console.log(grabaciones)
@@ -149,7 +150,7 @@ const Video = ({titulo, subtitulo, video, key, frase, dificultad}) => {
                             
                             <div className={`div-grabaciones-${subtitulo}`}>
 
-                                { grabaciones ?<embed src={grabaciones[key].audio} className={`grabacion-${subtitulo}-${key}`} /> : "" }
+                                { grabaciones ? <embed src={grabaciones[key].audio} className={`grabacion-${subtitulo}-${key}`} /> : <div> </div> }
                                 
                             </div>
                             </section>

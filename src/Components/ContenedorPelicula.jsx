@@ -15,7 +15,8 @@ const ContenedorPelicula = () => {
     const fetchData = async () =>{
         if(pelicula){
             const { peliculas } = ListaVideos
-            setData(peliculas)
+            const encontrarPelicula = peliculas.find((e) => e.subtitulo == pelicula)
+            setData(encontrarPelicula)
             console.log(data)
       }
     }

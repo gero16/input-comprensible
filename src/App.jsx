@@ -26,81 +26,90 @@ function App() {
         
         <h1 className='titulo-principal'>Audio Movies </h1>
 
-        <main className='container'>
+        {
+          /*
+            <main className='container'>
 
-          <AudioSerie 
-            titulo={"Scream"}
-            img={Scream}
-            subtitulo={"scream"} 
-            listaAudios={listaScream}
-        
-          />
 
-          <AudioSerie 
-            titulo={"Bojack Hoerseman"}
-            subtitulo={"bojack"} 
-            img={Bojack}
-            listaAudios={listaBojack}
-          />
 
-          <AudioSerie 
-            titulo={"The Simpsons"}
-            img={Simpsons}
-            subtitulo={"simpsons"} 
-            listaAudios={listaSimpsons}
-          />
+            <AudioSerie 
+              titulo={"Scream"}
+              img={Scream}
+              subtitulo={"scream"} 
+              listaAudios={listaScream}
 
-          <AudioSerie 
-            titulo={"Harry Potter"}
-            img={HarryPotter}
-            subtitulo={"harry"} 
-            listaAudios={listaSimpsons}
-          />
+            />
 
-          <AudioSerie 
-            titulo={"Game of Thrones"}
-            img={Got}
-            subtitulo={"got"} 
-            listaAudios={listaSimpsons}
-          />
+            <AudioSerie 
+              titulo={"Bojack Hoerseman"}
+              subtitulo={"bojack"} 
+              img={Bojack}
+              listaAudios={listaBojack}
+            />
 
-          <AudioSerie 
-            titulo={"Friends"}
-            img={Friends}
-            subtitulo={"friends"} 
-            listaAudios={listaSimpsons}
-          />
+            <AudioSerie 
+              titulo={"The Simpsons"}
+              img={Simpsons}
+              subtitulo={"simpsons"} 
+              listaAudios={listaSimpsons}
+            />
 
-          <AudioSerie 
-            titulo={"The amazing world of Gumball"}
-            img={Gumball}
-            subtitulo={"gumball"} 
-            listaAudios={listaSimpsons}
-          />
-           
-         
-          <AudioSerie 
-            titulo={"Shrek 2"}
-            img={Shrek2}
-            subtitulo={"shrek-2"} 
-            listaAudios={listaShrek2}
-          />
+            <AudioSerie 
+              titulo={"Harry Potter"}
+              img={HarryPotter}
+              subtitulo={"harry"} 
+              listaAudios={listaSimpsons}
+            />
 
-          <AudioSerie 
-            titulo={"Peaky Blinders"}
-            img={Peaky}
-            subtitulo={"peaky"} 
-            listaAudios={listaPeaky}
-          />
+            <AudioSerie 
+              titulo={"Game of Thrones"}
+              img={Got}
+              subtitulo={"got"} 
+              listaAudios={listaSimpsons}
+            />
 
-          <AudioSerie 
-            titulo={"The Room"}
-            img={TheRoom}
-            subtitulo={"the-room"} 
-            listaAudios={listaRoom}
-          />
-           
-        </main>
+            <AudioSerie 
+              titulo={"Friends"}
+              img={Friends}
+              subtitulo={"friends"} 
+              listaAudios={listaSimpsons}
+            />
+
+            <AudioSerie 
+              titulo={"The amazing world of Gumball"}
+              img={Gumball}
+              subtitulo={"gumball"} 
+              listaAudios={listaSimpsons}
+            />
+            
+          
+            <AudioSerie 
+              titulo={"Shrek 2"}
+              img={Shrek2}
+              subtitulo={"shrek-2"} 
+              listaAudios={listaShrek2}
+            />
+
+            <AudioSerie 
+              titulo={"Peaky Blinders"}
+              img={Peaky}
+              subtitulo={"peaky"} 
+              listaAudios={listaPeaky}
+            />
+
+            <AudioSerie 
+              titulo={"The Room"}
+              img={TheRoom}
+              subtitulo={"the-room"} 
+              listaAudios={listaRoom}
+            />
+            
+          </main>
+
+          */
+        }
+
+      
 
       </div>
      

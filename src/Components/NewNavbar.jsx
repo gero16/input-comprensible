@@ -18,13 +18,13 @@ const NewNavbar = () => {
                 </li>
 
                 <li className="p-2 li-nav project">
-                    <NavLink to={`/peliculas/shrek2`} className="flex-center-column scream"> 
+                    <NavLink to={`/peliculas/shrek-2`} className="flex-center-column scream"> 
                         <span> Shrek 2 </span>
                     </NavLink>
                 </li>
 
                 <li className="p-2 li-nav project">
-                    <NavLink to={`/peliculas/prueba`} className="flex-center-column scream"> 
+                    <NavLink to={`/peliculas/scream-5`} className="flex-center-column scream"> 
                         <span> Scream (2022)</span>
                     </NavLink>
                 </li>
