@@ -1,7 +1,28 @@
+import { useEffect } from "react"
 import Video from "./Video"
 
 const Pelicula = ({data}) => {
-    console.log(data)
+    let arrayAudios = []
+
+    
+    useEffect(() => {
+        if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
+            if(data.videos) {
+                console.log(data.videos)
+         
+                
+                data.videos.forEach((element, index) => {
+                    arrayAudios.push({
+                        id : `${index}`,
+                        audio: ""
+                    })
+                    
+                });
+                localStorage.setItem(`${data.subtitulo}`, JSON.stringify( arrayAudios))
+            }
+        }
+    })
+
     return (
         <>
             <img src={data.imagen} className={`imagen-${data.subtitulo}`} alt="" />
@@ -9,13 +30,13 @@ const Pelicula = ({data}) => {
                 <section className='flex-center'>
                     {
                         data.titulo 
-                        ? data.videos.map((element, key) => {
+                        ? data.videos.map((element, index) => {
                         return (
                             <Video 
                                 titulo={data.titulo}
                                 subtitulo={data.subtitulo}
                                 video={element.url}
-                                key={key}
+                                index={index}
                                 frase={element.frase}
                                 dificultad={element.dificultad}
                             />

@@ -6,16 +6,19 @@
         "imagen": "../src/assets/shrek-2.png",
         "videos": [
             {
+             "id": 1,
              "frase":  "...",
              "url": "https://www.youtube.com/embed/L-t8MJsfJ_U",
              "dificultad": "easy"
             },
             {
+            "id": 2,
             "frase":  "...",
             "url": "https://www.youtube.com/embed/4VP_BLS9ZE4", 
             "dificultad": "easy"
             },
             {
+              "id": 3,
               "frase":  "...",
               "url": "https://www.youtube.com/embed/hYIhlki8MDc", 
               "dificultad": "easy"

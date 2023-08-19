@@ -12,19 +12,20 @@ const ContenedorPelicula = () => {
 
     const [data, setData] = useState([])
 
-    const fetchData = async () =>{
+    // LA IDEA ES QUE ESTO SE EJECUTE SOLO UNA PRIMERA VEZ PARA LLENAR LOCALSTORAGE
+
+    const fetchData = () =>{
         if(pelicula){
             const { peliculas } = ListaVideos
             const encontrarPelicula = peliculas.find((e) => e.subtitulo == pelicula)
             setData(encontrarPelicula)
-            console.log(data)
+            return data
       }
     }
 
     useEffect(() => {
-        fetchData()
+        fetchData() ;
     }, [])
-
 
    
     return (
