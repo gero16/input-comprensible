@@ -1,7 +1,7 @@
 import Video from "./Video"
 
 const Serie = ({data}) => {
-
+   console.log(data.temporadas)
     return (
         <>
             <img src={`/src/assets/${data.subtitulo}.png`} alt="" className={`imagen-titulo imagen-${data.subtitulo}`} />
@@ -11,8 +11,9 @@ const Serie = ({data}) => {
                 <section className='flex-center'>
                    
                 {
+                    /*
                     data.titulo
-                    ? data.temporada_1.map((element, key) => {
+                    ? data.temporadas["temporada_1"].map((element, key) => {
                         return (
                             <Video 
                                 titulo={data.titulo}
@@ -28,6 +29,7 @@ const Serie = ({data}) => {
                     : 
               
                 <div> Loading... </div>
+                */
             }
                 </section>
             </article>

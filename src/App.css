@@ -76,6 +76,14 @@ button:focus-visible {
   }
 }
 
+#btn-evaluar{
+  margin: 0px;
+}
+
+#btn-mostar-respuesta {
+  margin: 0px;
+}
+
 .flex-column-center {
   display: flex;
   flex-direction: column;

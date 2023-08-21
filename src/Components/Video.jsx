@@ -85,7 +85,23 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
             
                 <section className="section-video">
 
-                        <iframe 
+                    <section className="section-audio">
+                            
+                        <span className={`ocultar ${ subtitulo }-${ index }`} > { frase } </span>
+                        <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
+
+                        <span className={`bold ${dificultad} `}> {dificultad}</span>
+                    
+
+                        <input type="text" className={`input-${ subtitulo }-${ index }`} />
+                        <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
+                        <button onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
+                        <button onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
+
+                    </section>
+
+                    
+                    <iframe 
                             width="400" 
                             height="250" 
                             src={video}
@@ -93,20 +109,6 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         />
 
-                    <section className="section-audio">
-                            
-                        <h3 className={`ocultar ${ subtitulo }-${ index }`}> { frase } </h3>
-                        <h4 className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </h4>
-
-                        <span className={`bold ${dificultad} `}> {dificultad}</span>
-                    
-
-                        <input type="text" className={`input-${ subtitulo }-${ index }`} />
-                        <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
-                        <button onClick={(e) => evaluar(subtitulo, index)}>Evaluar</button>
-                        <button onClick={(e) => mostrarRespuesta(subtitulo, index)}> Mostrar Respuesta </button>
-
-                    </section>
 
                     <section className="" id={`grabar-${ subtitulo }-${ index }`} onClick={(e) => clickGrabar(e.target)}>
                         <h4> Grabar Audio </h4>
@@ -126,16 +128,15 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
                             }} 
                     
                         />
-                    
-                    <div className={`div-grabaciones-${subtitulo}`}>
-
-                    
-                    { grabaciones
-                        ? <embed src={grabaciones[index].audio} className={`grabacion-${subtitulo}-${index}`} /> 
-                        : "" 
-                    }
                         
-                    </div>
+                        <div className={`div-grabaciones-${subtitulo}`}>
+
+                            { grabaciones
+                                ? <embed src={grabaciones[index].audio} className={`grabacion-${subtitulo}-${index}`} /> 
+                                : "" 
+                            }
+                            
+                        </div>
                     </section>
 
                 </section>

@@ -25,7 +25,7 @@ const ContenedorPelicula = () => {
 
     useEffect(() => {
         fetchData() ;
-    }, [])
+    }, [pelicula])
 
    
     return (

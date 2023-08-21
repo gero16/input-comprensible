@@ -52,45 +52,59 @@
         {
           "titulo": "Bojack Horseman",
           "subtitulo": "bojack",
-          "temporada_1": [
-           
-                    {
+          "temporadas": [
+            {
+              "temporada_1": [
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/mPRc-uTIvHg",
+                    "dificultad": "easy"
+                  },
+                  {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/cdYuw9XJwRM",
+                    "dificultad": "easy"
+                  },
+                  {
                     "capitulo": 1,
-                     "frase":  "...",
-                     "url": "https://www.youtube.com/embed/mPRc-uTIvHg",
-                     "dificultad": "easy"
-                    },
-                    {
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/bC5gQ8-ASew",
+                      "dificultad": "easy"
+                  },
+                  {
                     "capitulo": 1,
-                     "frase":  "...",
-                     "url": "https://www.youtube.com/embed/cdYuw9XJwRM",
-                     "dificultad": "easy"
-                    },
-                    {
-                      "capitulo": 1,
-                       "frase":  "...",
-                       "url": "https://www.youtube.com/embed/bC5gQ8-ASew",
-                       "dificultad": "easy"
-                    },
-                    {
-                      "capitulo": 1,
-                       "frase":  "...",
-                       "url": "https://www.youtube.com/embed/37TkRvVUG7I",
-                       "dificultad": "easy"
-                    },
-                    {
-                      "capitulo": 1,
-                       "frase":  "...",
-                       "url": "https://www.youtube.com/embed/A_MROwh-lNM",
-                       "dificultad": "easy"
-                    },
-                    {
-                      "capitulo": 1,
-                       "frase":  "...",
-                       "url": "https://www.youtube.com/embed/POlCZlgNlio",
-                       "dificultad": "easy"
-                    }
-                    
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/37TkRvVUG7I",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/A_MROwh-lNM",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/POlCZlgNlio",
+                      "dificultad": "easy"
+                  }
+                  
+              ]
+            },
+            {
+              "temporada_2": [
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/mPRc-uTIvHg",
+                    "dificultad": "easy"
+                  }
+
+              ]
+            }
         ]
     },
         {
