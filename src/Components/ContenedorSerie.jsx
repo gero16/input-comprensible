@@ -14,7 +14,6 @@ const ContenedorSerie = () => {
           if(serie){
             const { series } = ListaVideos
             const serieElegida = series.find((element) => element.subtitulo === serie )
-            console.log(serieElegida)
             setData(serieElegida)
         }
     }

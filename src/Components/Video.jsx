@@ -14,7 +14,7 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
     useEffect(() => {
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
             setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
-            console.log(JSON.parse(localStorage.getItem(subtitulo)))
+            console.log(grabaciones)
         }
       }, [])
 
@@ -135,7 +135,7 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
 
                             { grabaciones
                                 ? <embed src={grabaciones[index].audio} className={`grabacion-${subtitulo}-${index}`} /> 
-                                : "" 
+                                : <div> Loading </div> 
                             }
                             
                         </div>

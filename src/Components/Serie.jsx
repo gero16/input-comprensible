@@ -1,7 +1,26 @@
+import { useEffect } from "react"
 import Video from "./Video"
 
 const Serie = ({data}) => {
     if(data.temporadas)  console.log(data.temporadas[0]["temporada_1"][0].capitulo)
+    let arrayAudios = []
+    console.log(data.subtitulo)
+    useEffect(() => {
+        if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
+            if(data.temporadas) {
+                console.log(data.temporadas
+                    )
+                data.temporadas[0]["temporada_1"].forEach((element, index) => {
+                    arrayAudios.push({
+                        id : `${index}`,
+                        audio: ""
+                    })
+                    
+                });
+                localStorage.setItem(`${data.subtitulo}`, JSON.stringify( arrayAudios))
+            }
+        }
+    })
 
     return (
         <>
@@ -27,6 +46,7 @@ const Serie = ({data}) => {
                                         frase={element.frase}
                                         dificultad={element.dificultad}
                                         capitulo={data.temporadas[0]["temporada_1"][0].capitulo}
+                                        index={key}
                                     />
                                 )
                                 
