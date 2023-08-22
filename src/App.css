@@ -117,11 +117,7 @@ button:focus-visible {
   background-color: #1a1919;
   border-radius: 5px;
 }
-h3 {
-  max-width: 250px;
-  height: 57px;
-  
-}
+
 
 .audio {
   margin: 10px 0px;

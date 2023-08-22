@@ -13,8 +13,8 @@ const ContenedorSerie = () => {
     const fetchData = async () =>{
           if(serie){
             const { series } = ListaVideos
-            console.log(series)
             const serieElegida = series.find((element) => element.subtitulo === serie )
+            console.log(serieElegida)
             setData(serieElegida)
         }
     }

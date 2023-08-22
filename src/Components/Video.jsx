@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
+const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) => {
+
     
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const recorderControls = useAudioRecorder()
@@ -81,9 +82,10 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
 
     return (
         <>
-            <article className={`article-video  subtitulo-${ subtitulo }`} id={ index }>
+            <article className={`article-video  `} id={ index }>
             
                 <section className="section-video">
+                {capitulo ? <h3> Capitulo {capitulo}</h3> : ""}
 
                     <section className="section-audio">
                             
@@ -100,7 +102,7 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad}) => {
 
                     </section>
 
-                    
+                  
                     <iframe 
                             width="400" 
                             height="250" 

@@ -1,7 +1,8 @@
 import Video from "./Video"
 
 const Serie = ({data}) => {
-   console.log(data.temporadas)
+    if(data.temporadas)  console.log(data.temporadas[0]["temporada_1"][0].capitulo)
+
     return (
         <>
             <img src={`/src/assets/${data.subtitulo}.png`} alt="" className={`imagen-titulo imagen-${data.subtitulo}`} />
@@ -11,25 +12,31 @@ const Serie = ({data}) => {
                 <section className='flex-center'>
                    
                 {
-                    /*
-                    data.titulo
-                    ? data.temporadas["temporada_1"].map((element, key) => {
-                        return (
-                            <Video 
-                                titulo={data.titulo}
-                                subtitulo={data.subtitulo}
-                                video={element.url}
-                                key={key}
-                                frase={element.frase}
-                                dificultad={element.dificultad}
-                            />
-                        )
-                        
-                    }) 
+                    
+                    data.temporadas
+                    ? 
+                    <>
+                        {
+                            data.temporadas[0]["temporada_1"].map((element, key) => {
+                                return (
+                                    <Video 
+                                        titulo={data.titulo}
+                                        subtitulo={data.subtitulo}
+                                        video={element.url}
+                                        key={key}
+                                        frase={element.frase}
+                                        dificultad={element.dificultad}
+                                        capitulo={data.temporadas[0]["temporada_1"][0].capitulo}
+                                    />
+                                )
+                                
+                            }) 
+                        }
+                    </>
                     : 
               
                 <div> Loading... </div>
-                */
+                
             }
                 </section>
             </article>
