@@ -10,6 +10,8 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
     const [grabaciones, setGrabaciones] = useState()
     const [idGrabar, setIdGrabar] = useState()
 
+
+
     /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
@@ -85,7 +87,7 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
             <article className={`article-video  `} id={ index }>
             
                 <section className="section-video">
-                {capitulo ? <h3> Capitulo {capitulo}</h3> : ""}
+                {capitulo ? <h3> Capitulo {capitulo} </h3> : ""}
 
                     <section className="section-audio">
                             

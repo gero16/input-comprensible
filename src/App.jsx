@@ -24,7 +24,7 @@ function App() {
       <div>
        <NewNavBar> </NewNavBar>
         
-        <h1 className='titulo-principal'>Audio Movies </h1>
+        <h1 className='titulo-principal'> Inmersion con peliculas </h1>
 
         {
           /*

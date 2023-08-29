@@ -4,7 +4,7 @@ import Video from "./Video"
 const Serie = ({data}) => {
     if(data.temporadas)  console.log(data.temporadas[0]["temporada_1"][0].capitulo)
     let arrayAudios = []
-    console.log(data.subtitulo)
+
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.temporadas) {
@@ -36,7 +36,9 @@ const Serie = ({data}) => {
                     ? 
                     <>
                         {
+         
                             data.temporadas[0]["temporada_1"].map((element, key) => {
+                            
                                 return (
                                     <Video 
                                         titulo={data.titulo}
@@ -45,12 +47,15 @@ const Serie = ({data}) => {
                                         key={key}
                                         frase={element.frase}
                                         dificultad={element.dificultad}
-                                        capitulo={data.temporadas[0]["temporada_1"][0].capitulo}
+                                        capitulo={element.capitulo}
                                         index={key}
                                     />
                                 )
+                        
                                 
                             }) 
+                                     
+                           
                         }
                     </>
                     : 

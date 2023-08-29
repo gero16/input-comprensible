@@ -7,13 +7,13 @@
         "videos": [
             {
              "id": 1,
-             "frase":  "...",
+             "frase":  "It’s so good to be home!",
              "url": "https://www.youtube.com/embed/L-t8MJsfJ_U",
              "dificultad": "easy"
             },
             {
             "id": 2,
-            "frase":  "...",
+            "frase":  "Donkey, what are you doing here?",
             "url": "https://www.youtube.com/embed/4VP_BLS9ZE4", 
             "dificultad": "easy"
             },
@@ -25,40 +25,107 @@
             },
             {
               "id": 4,
-              "frase":  "...",
+              "frase":  "I mean, don’t you think they might be a bit… shocked to see you like this?",
               "url": "https://www.youtube.com/embed/ioL72aFyN48", 
               "dificultad": "easy"
             },
             {
               "id": 5,
-              "frase":  "...",
+              "frase":  "Well, they might be a bit surprised. But they’re my parents, Shrek. They love me",
               "url": "https://www.youtube.com/embed/lbw-Y97ySSM", 
               "dificultad": "easy"
             },
             {
               "id": 6,
-              "frase":  "...",
+              "frase":  "Trust me. It’s a bad idea. We are not going! And that’s final!",
               "url": "https://www.youtube.com/embed/YHYeGXWvRMo", 
               "dificultad": "easy"
             },
             {
               "id": 7,
-              "frase":  "...",
+              "frase":  "So, you still think this was a good idea?",
               "url": "https://www.youtube.com/embed/OFdp1wMfAXI", 
               "dificultad": "easy"
             },
             {
               "id": 8,
-              "frase":  "...",
-              "url": "https://www.youtube.com/embed/a9jg7NKPKwE", 
+              "frase":  "Look! Mom and Dad look happy to see us",
+              "url": "https://www.youtube.com/embed/0ydh_YLE3gg", 
               "dificultad": "easy"
             },
             {
                 "id": 9,
                 "frase":  "...",
-                "url": "https://www.youtube.com/embed/h1HzV9RKV-Y", 
+                "url": "https://www.youtube.com/embed/bEqUJyo0e8w", 
                 "dificultad": "easy"
-              }
+            },
+            {
+              "id": 10,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/U_iOSq3ny-I", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 11,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/BbO9IZDAJxI", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 12,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/yB0Tx3TKv60", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 13,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/BaQwU5xpxvE", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 14,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/xUQ4BUW0kxE", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 15,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/9kQ9JmbGu4w", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 16,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 17,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/yDT5c71XJZE", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 18,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 19,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
+              "dificultad": "easy"
+            },
+            {
+              "id": 20,
+              "frase":  "...",
+              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
+              "dificultad": "easy"
+            }
+
          ]
       },
       {
@@ -68,19 +135,77 @@
         "videos": [
             {
              "frase":  "Do you remember the beginning?",
-             "url": "https://www.youtube.com/embed/2os2AGk_JAU",
+             "url": "https://www.youtube.com/embed/sTaJBad4dXg",
              "dificultad": "easy"
             },
             {
               "frase":  "Do you remember the beginning?",
-              "url": "https://www.youtube.com/embed/akOrnKvqfUI",
+              "url": "https://www.youtube.com/embed/DH88-GTA43I",
               "dificultad": "easy"
-             },
-             {
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/mrNIuwXs6y4",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/5GEpLRvVF4o",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/NeGBPFNzAwQ",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/4qDy27NJ5z0",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/twPIO_yb1Tg",
+              "dificultad": "easy"
+            },
+            {
               "frase":  "Do you remember the beginning?",
               "url": "https://www.youtube.com/embed/GBN9wmCzfps",
               "dificultad": "easy"
-             }
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/hkbBzvDV7Lc",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/76g6xzR_Sgc",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/wW7Vu_lsuGo",
+              "difi,cultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/z4HXMbI5JNk",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/8ZTqETMf_GY",
+              "dificultad": "easy"
+            },
+            {
+              "frase":  "Do you remember the beginning?",
+              "url": "https://www.youtube.com/embed/wph3plJPPPY",
+              "dificultad": "easy"
+            }
+             
+         
+      
          ]
       }
     ],
@@ -125,6 +250,108 @@
                     "capitulo": 1,
                       "frase":  "...",
                       "url": "https://www.youtube.com/embed/POlCZlgNlio",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/igGIoxeZzio",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/Seu5CGy5MYo",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/qbrS4WNTmBI",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/MhOFFZJwL00",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/vhjLOiUGNQw",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/9cGHRgJUKiA",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/jp73bayiJiM",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/T3YBrfIYloA",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/fc-_3cLk0v8",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/IdHV-C8pVKs",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/djqW7KNy1JU",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 1,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/TnldbjCM7os",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 3,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/pdJetxzlN-w",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 3,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/oSf6j0aYVKo",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 3,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/4xiQcPtHFIE",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 3,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/YjBeLZ3s9m0",
+                      "dificultad": "easy"
+                  },
+                  {
+                    "capitulo": 3,
+                      "frase":  "...",
+                      "url": "https://www.youtube.com/embed/YjBeLZ3s9m0",
                       "dificultad": "easy"
                   }
                   
