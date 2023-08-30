@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
 
-
+ul {
+  padding : 0px;
+}
 .flex-center-column {
   display: flex;
   justify-content: center;
@@ -22,18 +24,20 @@ nav {
 .lista-navbar {
   display: flex;
   flex-direction: row-reverse;
-  align-items: center;
+  align-items: flex-start;
   gap: 25px;
   font-size: smaller;
   margin-right: 15px;
   list-style: none;
   width: 90vw;
   flex-wrap: wrap;
+ 
 }
 
 .lista-navbar li {
   cursor: pointer;
   padding: 5px;
+  padding: 10px;
 }
 
 
@@ -59,4 +63,26 @@ nav {
   }
  
  }
+ 
 
+ .inactive {
+  opacity: 0;
+  transition: all 1s;
+  overflow: hidden;
+  max-height: 0;
+}
+
+
+.lista-temporadas {
+
+  top: 10;
+  opacity: 1;
+  transition: all 1s;
+  max-height: 9999999px;
+  z-index: 12;
+}
+
+.top {
+  
+  
+}

@@ -16,7 +16,6 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
     useEffect(() => {
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
             setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
-            console.log(grabaciones)
         }
       }, [])
 

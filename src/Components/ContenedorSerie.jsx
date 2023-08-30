@@ -6,7 +6,9 @@ import NewNavbar from './NewNavbar';
 import Serie from './Serie';
 
 const ContenedorSerie = () => {
-    let { serie } = useParams();
+    let { serie, temporada } = useParams();
+
+    console.log(temporada)
 
     const [data, setData] = useState([])
 
@@ -29,7 +31,7 @@ const ContenedorSerie = () => {
 
             <NewNavbar> </NewNavbar>
 
-            <Serie data={data} /> 
+            <Serie data={data} temporada={temporada}/> 
 
             
         </>
