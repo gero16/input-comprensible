@@ -1,15 +1,15 @@
 import { useEffect } from "react"
 import Video from "./Video"
+import { useState } from "react"
 
-const Serie = ({data}) => {
-    if(data.temporadas)  console.log(data.temporadas[0]["temporada_1"][0].capitulo)
+const Serie = ({data, temporada}) => {
     let arrayAudios = []
+    let numTemporada = temporada.split("-")
 
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.temporadas) {
-                console.log(data.temporadas
-                    )
+
                 data.temporadas[0]["temporada_1"].forEach((element, index) => {
                     arrayAudios.push({
                         id : `${index}`,
@@ -22,23 +22,25 @@ const Serie = ({data}) => {
         }
     })
 
+  
+
+ 
     return (
         <>
             <img src={`/src/assets/${data.subtitulo}.png`} alt="" className={`imagen-titulo imagen-${data.subtitulo}`} />
-            <h2>Temporada 1</h2>    
+            <h2>Temporada {numTemporada[1]} </h2>    
 
             <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
                 <section className='flex-center'>
                    
                 {
-                    
                     data.temporadas
                     ? 
+                    
                     <>
                         {
-         
-                            data.temporadas[0]["temporada_1"].map((element, key) => {
-                            
+                            data[`temporada_seleccionada`].map((element, key) => {
+
                                 return (
                                     <Video 
                                         titulo={data.titulo}
@@ -53,9 +55,7 @@ const Serie = ({data}) => {
                                 )
                         
                                 
-                            }) 
-                                     
-                           
+                            })  
                         }
                     </>
                     : 

@@ -106,26 +106,7 @@
               "frase":  "...",
               "url": "https://www.youtube.com/embed/yDT5c71XJZE", 
               "dificultad": "easy"
-            },
-            {
-              "id": 18,
-              "frase":  "...",
-              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
-              "dificultad": "easy"
-            },
-            {
-              "id": 19,
-              "frase":  "...",
-              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
-              "dificultad": "easy"
-            },
-            {
-              "id": 20,
-              "frase":  "...",
-              "url": "https://www.youtube.com/embed/D1K1eKdmHkI", 
-              "dificultad": "easy"
             }
-
          ]
       },
       {
@@ -351,7 +332,7 @@
                   {
                     "capitulo": 3,
                       "frase":  "...",
-                      "url": "https://www.youtube.com/embed/YjBeLZ3s9m0",
+                      "url": "https://www.youtube.com/embed/TpU3PI6I97I",
                       "dificultad": "easy"
                   }
                   
@@ -362,9 +343,26 @@
                 {
                   "capitulo": 1,
                     "frase":  "...",
-                    "url": "https://www.youtube.com/embed/mPRc-uTIvHg",
+                    "url": "https://www.youtube.com/embed/YjBeLZ3s9m0",
                     "dificultad": "easy"
-                  }
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/YjBeLZ3s9m0",
+                    "dificultad": "easy"
+                }
+
+              ]
+            },
+            {
+              "temporada_3": [
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/igGIoxeZzio",
+                    "dificultad": "easy"
+                }
 
               ]
             }
@@ -373,13 +371,72 @@
         {
           "titulo": "Peaky Blinders",
           "subtitulo": "peaky",
-          "videos": [
-              {
-               "frase":  "...",
-               "url": "https://www.youtube.com/embed/2os2AGk_JAU",
-               "dificultad": "easy"
-              }
-           ]
+          "temporadas": [
+            {
+              "temporada_1": [
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/v0Mteibx1mQ",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/1So4nzHbl18",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/fpfvJXRjk5U",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/8DLoBOldC-I",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/k8PKjC262Pc",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/PUWJ45Mr_mw",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/I-THao4NZ5Q",
+                    "dificultad": "easy"
+                },
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/4uDYkGmCLIQ",
+                    "dificultad": "easy"
+                }
+
+              ]
+            },
+            {
+              "temporada_2": [
+                {
+                  "capitulo": 1,
+                    "frase":  "...",
+                    "url": "https://www.youtube.com/embed/I-THao4NZ5Q",
+                    "dificultad": "easy"
+                }
+
+              ]
+            }
+          ]
         }
       ]
 }

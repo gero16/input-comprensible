@@ -40,12 +40,10 @@ nav {
   padding: 10px;
 }
 
-
 .li-nav {
   transition: ease-out 0.6s;
   
 }
-
 
 .li-nav:hover {
   transition: ease-out 0.3s;

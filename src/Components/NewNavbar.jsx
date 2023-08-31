@@ -6,9 +6,11 @@ import { Link as Navigate, NavLink } from "react-router-dom";
 const NewNavbar = () => {
 
     const seleccionarSerie = (e) => {
-       console.log(e.target.nextSibling.classList.toggle("inactive"))
-       e.target.nextSibling.classList.toggle("inactive")
-       e.target.nextSibling.classList.toggle("lista-temporadas")
+       if(!e.target.classList.contains("temporada-serie")) {
+           e.target.nextSibling.classList.toggle("inactive")
+           e.target.nextSibling.classList.toggle("lista-temporadas")
+
+       }
     }
     useEffect(() => {
 
@@ -19,24 +21,42 @@ const NewNavbar = () => {
         <nav className="flex-between">
 
             <ul className="lista-navbar flex-center-column">
+
+                <li className="serie" onClick={(e)=> seleccionarSerie(e)}> 
+                    <span className="serie"> Peaky Blinders  </span>
+
+                    <ul className="inactive">
+                        <li>
+                            <NavLink to={`/series/peaky/temporada-1`} > 
+                                <span className="temporada-serie"> Temporada 1 </span>
+                            </NavLink>
+                        </li>
+                        <li>      
+                            <NavLink to={`/series/peaky/temporada-2`}> 
+                                <span className="temporada-serie"> Temporada 2 </span>
+                            </NavLink>
+                        </li>
+                    </ul>
+               
+                </li>
                 
                 <li className="serie" onClick={(e)=> seleccionarSerie(e)}> 
                     <span className="serie"> Bojack Horseman </span>
 
                     <ul className="inactive">
                         <li>
-                            <NavLink to={`/series/bojack/temporada1`} > 
-                                <span className=""> Temporada 1 </span>
+                            <NavLink to={`/series/bojack/temporada-1`} > 
+                                <span className="temporada-serie"> Temporada 1 </span>
                             </NavLink>
                         </li>
                         <li>      
-                            <NavLink to={`/series/bojack/temporada2`}> 
-                                <span  className=""> Temporada 2 </span>
+                            <NavLink to={`/series/bojack/temporada-2`}> 
+                                <span className="temporada-serie"> Temporada 2 </span>
                             </NavLink>
                         </li>
                         <li>      
-                            <NavLink to={`/series/bojack/temporada3`}> 
-                                <span  className=""> Temporada 3 </span>
+                            <NavLink to={`/series/bojack/temporada-3`}> 
+                                <span  className="temporada-serie"> Temporada 3 </span>
                             </NavLink>
                         </li>
                     </ul>
