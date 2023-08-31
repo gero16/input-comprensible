@@ -8,12 +8,13 @@ import Serie from './Serie';
 const ContenedorSerie = () => {
     let { serie, temporada } = useParams();
 
+
     const [data, setData] = useState([])
+    const [season, setSeason] = useState([])
 
     const fetchData = async () => {
         let numTemporada = temporada.split("-")
-        console.log(temporada)
-
+ 
         const { series } = ListaVideos
         const serieElegida = series.find((element) => element.subtitulo === serie )
 
@@ -21,9 +22,7 @@ const ContenedorSerie = () => {
             const result = serieElegida.temporadas.forEach((e) => {
                 if(e[`${numTemporada[0]}_${numTemporada[1]}`]) {
                     serieElegida["temporada_seleccionada"] = e[`${numTemporada[0]}_${numTemporada[1]}`]
-                }
-                console.log(serieElegida)
-                
+                }  
             })
         }
 
@@ -37,6 +36,8 @@ const ContenedorSerie = () => {
 
     useEffect(() => {
         fetchData()
+        console.log(temporada)
+        setSeason(temporada)
     }, [temporada])
 
  

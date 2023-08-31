@@ -21,7 +21,7 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
 
       
     const clickGrabar = (e) => {
-        console.log(e)
+
         const idGrabar = e.classList[1]
         const claseNombrePelicula = e.classList[2]
         // Tengo un error si toco el btn pausar 

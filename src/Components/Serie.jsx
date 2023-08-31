@@ -3,6 +3,7 @@ import Video from "./Video"
 import { useState } from "react"
 
 const Serie = ({data, temporada}) => {
+    console.log(data)
     let arrayAudios = []
     let numTemporada = temporada.split("-")
 
@@ -34,7 +35,7 @@ const Serie = ({data, temporada}) => {
                 <section className='flex-center'>
                    
                 {
-                    data.temporadas
+                    data["temporada_seleccionada"]
                     ? 
                     
                     <>
