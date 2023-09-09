@@ -6,6 +6,7 @@ import Pelicula from './Components/Pelicula.jsx'
 import InputComprensivo from './Components/InputComprensivo'
 import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
 import ContenedorPelicula from './Components/ContenedorPelicula.jsx'
+import ContenedorAgregarClip from './Components/ContenedorAgregarClip.jsx'
 
 const router = createBrowserRouter([
       {
@@ -18,11 +19,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/peliculas/:pelicula",
-        element:  <ContenedorPelicula/>,
+        element:  <ContenedorPelicula />,
       },
       {
         path: "/input-comprensivo",
-        element:  <InputComprensivo/>,
+        element:  <InputComprensivo />,
+      },
+      {
+        path: "/agregar-clip",
+        element:  <ContenedorAgregarClip />,
       },
     
 ]);

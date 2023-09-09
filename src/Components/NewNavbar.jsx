@@ -21,6 +21,11 @@ const NewNavbar = () => {
         <nav className="flex-between">
 
             <ul className="lista-navbar flex-center-column">
+                <li className="p-2 li-nav project">
+                    <NavLink to={`/agregar-clip`} className="flex-center-column scream"> 
+                        <span> Agregar Clip </span>
+                    </NavLink>
+                </li>
 
                 <li className="serie" onClick={(e)=> seleccionarSerie(e)}> 
                     <span className="serie"> Peaky Blinders  </span>
