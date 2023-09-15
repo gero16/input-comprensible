@@ -7,6 +7,8 @@ import InputComprensivo from './Components/InputComprensivo'
 import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
 import ContenedorPelicula from './Components/ContenedorPelicula.jsx'
 import ContenedorAgregarClip from './Components/ContenedorAgregarClip.jsx'
+// No se si el fetch en vite funciono por esto pero por las dudas lo dejo
+//import 'vite/modulepreload-polyfill'
 
 const router = createBrowserRouter([
       {

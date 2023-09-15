@@ -33,15 +33,9 @@ const Serie = ({data, temporada}) => {
 
             <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
                 <section className='flex-center'>
-                   
-                {
-                    data["temporada_seleccionada"]
-                    ? 
-                    
-                    <>
-                        {
-                            data[`temporada_seleccionada`].map((element, key) => {
-
+                    {
+                        data ?
+                            data.map((element, key) => {
                                 return (
                                     <Video 
                                         titulo={data.titulo}
@@ -54,16 +48,10 @@ const Serie = ({data, temporada}) => {
                                         index={key}
                                     />
                                 )
-                        
-                                
-                            })  
+                            })
+                            :
+                            <h2> Loading .... </h2>
                         }
-                    </>
-                    : 
-              
-                <div> Loading... </div>
-                
-            }
                 </section>
             </article>
          

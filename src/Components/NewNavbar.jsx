@@ -32,12 +32,12 @@ const NewNavbar = () => {
 
                     <ul className="inactive">
                         <li>
-                            <NavLink to={`/series/peaky/temporada-1`} > 
+                            <NavLink to={`/series/peaky-blinders/temporada-1`} > 
                                 <span className="temporada-serie"> Temporada 1 </span>
                             </NavLink>
                         </li>
                         <li>      
-                            <NavLink to={`/series/peaky/temporada-2`}> 
+                            <NavLink to={`/series/peaky-blinders/temporada-2`}> 
                                 <span className="temporada-serie"> Temporada 2 </span>
                             </NavLink>
                         </li>

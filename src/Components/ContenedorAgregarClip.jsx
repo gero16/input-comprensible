@@ -23,12 +23,12 @@ const ContenedorAgregarClip = () => {
                 <ul>
                     <li>
                         <label htmlFor=""> Nombre de la Serie/Pelicula  </label>
-                        <input type="text" name="titulo" 
-                            onChange={(e) => setClip({ 
-                                ...clip,
-                                titulo : e.target.value
-                            })} 
-                        />
+                        <select name="select">
+                            <option value="shrek-2" selected> Shrek 2 </option>
+                            <option value="peaky-blinders">  Peaky Blinders </option>
+                            <option value="bojack-horseman"> Bojack Horseman </option>
+                            <option value="scream-2022"> Scream (2022) </option>
+                        </select>
                     </li>
                     
                     <li>
