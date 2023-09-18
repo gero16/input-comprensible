@@ -8,34 +8,17 @@ import Serie from './Serie';
 
 const ContenedorSerie = () => {
     let { serie, temporada } = useParams();
+    const urlBackend = import.meta.env.VITE_URL_BACKEND
 
     const [data, setData] = useState([])
     const [season, setSeason] = useState([])
 
     const fetchData = async () => {
-
-        const response = await fetch(`http://localhost:3000/serie/${serie}/temporada/${temporada}`);
+        const response = await fetch(`${urlBackend}/serie/${serie}/temporada/${temporada}`);
         const resp= await response.json();
         console.log(resp)
         if(!resp) console.log("No hay data")
 
-            /*
-        let numTemporada = temporada.split("-")
- 
-
-        const { series } = ListaVideos
-        const serieElegida = series.find((element) => element.subtitulo === serie )
-
-        if(serieElegida.temporadas)  {
-            const result = serieElegida.temporadas.forEach((e) => {
-                if(e[`${numTemporada[0]}_${numTemporada[1]}`]) {
-                    serieElegida["temporada_seleccionada"] = e[`${numTemporada[0]}_${numTemporada[1]}`]
-                }  
-            })
-        }
-
-        
-        */
         setData(resp.data)
         return data;
     }
