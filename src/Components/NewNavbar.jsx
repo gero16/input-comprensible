@@ -50,7 +50,7 @@ const NewNavbar = () => {
 
                     <ul className="inactive">
                         <li>
-                            <NavLink to={`/series/bojack/temporada-1`} > 
+                            <NavLink to={`/series/bojack-horseman/temporada-1`} > 
                                 <span className="temporada-serie"> Temporada 1 </span>
                             </NavLink>
                         </li>

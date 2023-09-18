@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { listaScream, listaBojackVideo } from '../data/database'
 import ListaVideos from '../data/videos'
 import NewNavbar from './NewNavbar';
 import Pelicula from './Pelicula';
