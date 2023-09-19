@@ -4,13 +4,10 @@ import Video from "./Video"
 const Pelicula = ({data}) => {
     let arrayAudios = []
 
-    
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.videos) {
                 console.log(data.videos)
-         
-                
                 data.videos.forEach((element, index) => {
                     arrayAudios.push({
                         id : `${index}`,
@@ -33,8 +30,8 @@ const Pelicula = ({data}) => {
                         ? data.map((element, index) => {
                         return (
                             <Video 
-                                titulo={data.titulo}
-                                subtitulo={data.subtitulo}
+                                titulo={element.titulo}
+                                subtitulo={element.subtitulo}
                                 video={element.url}
                                 index={index}
                                 frase={element.frase}

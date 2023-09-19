@@ -3,13 +3,10 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
 const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) => {
-
-    
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState()
     const [idGrabar, setIdGrabar] = useState()
-
 
 
     /** Grabaciones me esta dando problemaaaaaaaa  **/
@@ -83,14 +80,14 @@ const Video = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =
 
     return (
         <>
-            <article className={`article-video  `} id={ index }>
+            <article className={`article-video `} id={ index }>
             
                 <section className="section-video">
                 {capitulo ? <h3> Capitulo {capitulo} </h3> : ""}
 
                     <section className="section-audio">
                             
-                        <span className={`ocultar ${ subtitulo }-${ index }`} > { frase } </span>
+                        <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
 
                         <span className={`bold ${dificultad} `}> {dificultad}</span>

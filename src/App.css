@@ -2,7 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -15,7 +14,6 @@
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -113,9 +111,10 @@ button:focus-visible {
 
 .article-audio {
   margin: 30px 0px 0px 0px ;
-  padding: 10px;
+  padding: 20px;
   background-color: #1a1919;
   border-radius: 5px;
+  width: 90vw;
 }
 
 
@@ -222,15 +221,37 @@ ul {
 }
 
 .section-video {
-  margin: 15px 0px;
+  margin: 15px 10px;
 
 }
 
-.article-audio {
-  padding: 20px;
-}
+
 .article-video {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.frase {
+  max-width: 360px;
+  height: 75px;
+}
+
+.section-audio {
+  margin: 0px 0px 10px 0px;
+}
+
+.span-link {
+   transition: 0.3s;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+.span-link:hover {
+  transition: 0.3s;
+  filter: brightness(90%);
+  -webkit-transform:scale(1.1);
+  transform:scale(1.1);
+  color: white;
 }

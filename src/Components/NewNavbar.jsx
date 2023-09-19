@@ -21,14 +21,14 @@ const NewNavbar = () => {
         <nav className="flex-between">
 
             <ul className="lista-navbar flex-center-column">
-                <li className="p-2 li-nav project">
-                    <NavLink to={`/agregar-clip`} className="flex-center-column scream"> 
-                        <span> Agregar Clip </span>
+                <li className="p-2 li-nav">
+                    <NavLink to={`/agregar-clip`} className="flex-center-column"> 
+                        <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
 
-                <li className="serie" onClick={(e)=> seleccionarSerie(e)}> 
-                    <span className="serie"> Peaky Blinders  </span>
+                <li className="serie li-nav" onClick={(e)=> seleccionarSerie(e)}> 
+                    <span className="serie span-link"> Peaky Blinders  </span>
 
                     <ul className="inactive">
                         <li>
@@ -45,9 +45,10 @@ const NewNavbar = () => {
                
                 </li>
                 
-                <li className="serie" onClick={(e)=> seleccionarSerie(e)}> 
-                    <span className="serie"> Bojack Horseman </span>
-
+                <li className="serie li-nav" onClick={(e)=> seleccionarSerie(e)}> 
+   
+                    <span className="serie span-link"> Bojack Horseman </span>
+                   
                     <ul className="inactive">
                         <li>
                             <NavLink to={`/series/bojack-horseman/temporada-1`} > 
@@ -68,21 +69,21 @@ const NewNavbar = () => {
                
                 </li>
 
-                <li className="top">
+                <li className="li-nav">
                     <NavLink to={`/peliculas/shrek-2`}> 
-                        <span> Shrek 2 </span>
+                        <span className="span-link"> Shrek 2 </span>
                     </NavLink>
                 </li>
 
-                <li className="top">
-                    <NavLink to={`/peliculas/scream-5`}> 
-                        <span> Scream (2022)</span>
+                <li className="li-nav">
+                    <NavLink to={`/peliculas/scream-2022`}> 
+                        <span className="span-link"> Scream (2022)</span>
                     </NavLink>
                 </li>
 
-                <li className="top">
+                <li className="li-nav">
                     <NavLink to={`/`}> 
-                        <span> Inicio </span>
+                        <span className="span-link"> Inicio </span>
                     </NavLink>
                 </li>
                
