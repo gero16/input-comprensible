@@ -1,6 +1,6 @@
 import './App.css'
 import { listaBojackVideo } from './data/database'
-import NewNavBar from './Components/NewNavbar'
+import NewNavBar from './Components/Navbar/NewNavbar'
 
 function App() {
 

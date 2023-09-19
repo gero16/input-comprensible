@@ -1,6 +1,5 @@
 import { useEffect } from "react"
-import Video from "./Video"
-import { useState } from "react"
+import Clip from "../Clip/Clip"
 
 const Serie = ({data, temporada}) => {
     console.log(data)
@@ -37,7 +36,7 @@ const Serie = ({data, temporada}) => {
                         data ?
                             data.map((element, key) => {
                                 return (
-                                    <Video 
+                                    <Clip 
                                         titulo={data.titulo}
                                         subtitulo={data.subtitulo}
                                         video={element.url}

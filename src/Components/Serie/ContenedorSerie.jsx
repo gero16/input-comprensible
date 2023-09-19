@@ -1,8 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ListaVideos from '../data/videos'
-import NewNavbar from './NewNavbar';
+import NewNavbar from '../Navbar/NewNavbar';
 import Serie from './Serie';
 //import fetch from 'node-fetch'
 

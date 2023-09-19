@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import Video from "./Video"
+import Clip from "../Clip/Clip"
 
 const Pelicula = ({data}) => {
     let arrayAudios = []
@@ -29,7 +29,7 @@ const Pelicula = ({data}) => {
                         data
                         ? data.map((element, index) => {
                         return (
-                            <Video 
+                            <Clip 
                                 titulo={element.titulo}
                                 subtitulo={element.subtitulo}
                                 video={element.url}

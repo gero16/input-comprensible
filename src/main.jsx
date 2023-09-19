@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import ContenedorSerie from './Components/ContenedorSerie.jsx'
-import Pelicula from './Components/Pelicula.jsx'
+import ContenedorSerie from './Components/Serie/ContenedorSerie.jsx'
 import InputComprensivo from './Components/InputComprensivo'
 import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
-import ContenedorPelicula from './Components/ContenedorPelicula.jsx'
-import ContenedorAgregarClip from './Components/ContenedorAgregarClip.jsx'
+import ContenedorPelicula from './Components/Pelicula/ContenedorPelicula.jsx'
+import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarClip.jsx'
 // No se si el fetch en vite funciono por esto pero por las dudas lo dejo
 //import 'vite/modulepreload-polyfill'
 
