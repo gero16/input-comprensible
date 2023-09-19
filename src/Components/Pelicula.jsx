@@ -29,8 +29,8 @@ const Pelicula = ({data}) => {
             <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
                 <section className='flex-center'>
                     {
-                        data.titulo 
-                        ? data.videos.map((element, index) => {
+                        data
+                        ? data.map((element, index) => {
                         return (
                             <Video 
                                 titulo={data.titulo}
