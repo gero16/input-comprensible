@@ -30,6 +30,7 @@ const Pelicula = ({data}) => {
                         ? data.map((element, index) => {
                         return (
                             <Clip 
+                                id={element.id}
                                 titulo={element.titulo}
                                 subtitulo={element.subtitulo}
                                 video={element.url}

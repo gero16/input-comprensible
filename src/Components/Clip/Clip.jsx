@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-const Clip = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) => {
+const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo }) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState()
@@ -80,7 +80,7 @@ const Clip = ({titulo, subtitulo, video, index, frase, dificultad, capitulo}) =>
 
     return (
         <>
-            <article className={`article-video `} id={ index }>
+            <article className={`article-video `} id={id}>
             
                 <section className="section-video">
                 {capitulo ? <h3> Capitulo {capitulo} </h3> : ""}
