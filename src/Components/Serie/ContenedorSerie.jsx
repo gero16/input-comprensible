@@ -36,7 +36,7 @@ const ContenedorSerie = () => {
         <>
             <NewNavbar> </NewNavbar>
 
-            <Serie data={data} temporada={temporada}/>  
+            <Serie data={data} temporada={temporada} serie={serie}/>  
         </>
     )
 }

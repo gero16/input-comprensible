@@ -7,7 +7,8 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState()
     const [idGrabar, setIdGrabar] = useState()
-
+    //const [width, setWidth] = useState(window.innerWidth);
+    
     const separarDificultad = dificultad.split("-")
     const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
   
@@ -102,14 +103,14 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
 
                     </section>
 
-                  
+
                     <iframe 
-                            width="400" 
-                            height="250" 
-                            src={video}
-                            title="YouTube video player"  
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        />
+                        width="400" 
+                        height="230" 
+                        src={video}
+                        title="YouTube video player"  
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                   />
 
 
                     <section className="" id={`grabar-${ subtitulo }-${ index }`} onClick={(e) => clickGrabar(e.target)}>

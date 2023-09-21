@@ -138,7 +138,6 @@ const ContenedorAgregarClip = () => {
                             type="text" 
                             onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} 
                             placeholder="Bojack1x01-10"
-                            
                             />
                     </li>
                     <li id="li-agregar-clip">
