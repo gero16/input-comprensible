@@ -1,7 +1,5 @@
-import './App.css'
-import { listaBojackVideo } from './data/database'
-import NewNavBar from './Components/Navbar/NewNavbar'
-import { useState } from "react"
+import './Index.css'
+import NewNavBar from '../Navbar/NewNavbar'
 
 function App() {
 

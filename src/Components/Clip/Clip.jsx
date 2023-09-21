@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
+import { Context } from "../../context/context"
 
 const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo }) => {
-    const [evaluarAudio, setEvaluarAudio] = useState([false])
+    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState()
-    const [idGrabar, setIdGrabar] = useState()
     //const [width, setWidth] = useState(window.innerWidth);
     
     const separarDificultad = dificultad.split("-")
@@ -21,66 +21,7 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
       }, [])
 
       
-    const clickGrabar = (e) => {
-
-        const idGrabar = e.classList[1]
-        const claseNombrePelicula = e.classList[2]
-        // Tengo un error si toco el btn pausar 
-        if(claseNombrePelicula) {
-            const separar = claseNombrePelicula.split("-")
-            const nombrePelicula = separar[2]
-            const arrayRecorders = document.querySelectorAll(`.audio-recorder-${nombrePelicula}`)
-            const separar2 = idGrabar.split("-")
-            const idSolo = separar2[2]
-
-            const nodelistToArray = Array.apply(null, arrayRecorders);
-            nodelistToArray.forEach(element => {
-                if(!element.classList.contains(`audio-recorder-${idSolo}`))  element.style.display = "none"
-                if(element.children[0].title === "Save recording") element.style.display = "flex"
-            });
-            setIdGrabar(e.classList[1])
-        }
-    }
-
-    const evaluar = (subtitulo, id) => {
-        const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
-        const subtituloIncorrecto = document.querySelector(`.${subtitulo}-mostrar-${id}`)
-        const valueInput = document.querySelector(`.input-${subtitulo}-${id}`)
-        const respInput = document.querySelector(`.inputRespuesta-${subtitulo}-${id}`)
-   
-        if(valueInput.value == respInput.value) {
-            setEvaluarAudio(true)
-            valorAudio.classList.toggle("ocultar")
-            subtituloIncorrecto.classList.add("ocultar")
-        } else {
-            console.log("No son iguales!")
-            valorAudio.classList.add("ocultar")
-            subtituloIncorrecto.classList.toggle("ocultar")
-        }
-    }
-
-    const mostrarRespuesta = (subtitulo, id) => {
-        const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
-        valorAudio.classList.toggle("ocultar")
-    }
-
-    const addAudioElement = (blob, subtitulo, id) => {
-      let reader = new FileReader();
-      reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
   
-      reader.onload = function() {
-        const audiosLocalStorage = JSON.parse(localStorage.getItem(subtitulo))
-        const found = audiosLocalStorage.find((objetoAudio) => `audio-mic-${Number(objetoAudio.id)}` === idGrabar);
-
-        if(found && `audio-mic-${id}` === idGrabar ){  
-            const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
-            console.log(aud)
-            aud.src = reader.result
-            audiosLocalStorage[id].audio = reader.result
-            localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
-        }
-      }
-     };
 
     return (
         <>

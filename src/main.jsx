@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
+
+import { CustomProvider } from './context/context';
+
+import Index from './Components/Index/Index'
 import ContenedorSerie from './Components/Serie/ContenedorSerie.jsx'
 import InputComprensivo from './Components/InputComprensivo'
-import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
 import ContenedorPelicula from './Components/Pelicula/ContenedorPelicula.jsx'
 import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarClip.jsx'
 // No se si el fetch en vite funciono por esto pero por las dudas lo dejo
@@ -12,7 +15,7 @@ import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarCli
 const router = createBrowserRouter([
       {
         path: "/",
-        element: <App /> ,
+        element: <Index /> ,
       },
       {
         path: "/series/:serie/:temporada/",
@@ -36,7 +39,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={ router }   />
+      <CustomProvider>
+          <RouterProvider router={ router } />
+      </CustomProvider>
   </React.StrictMode>
 
     
