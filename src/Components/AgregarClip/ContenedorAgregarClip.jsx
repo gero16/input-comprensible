@@ -5,6 +5,7 @@ const ContenedorAgregarClip = () => {
 
     const [clip, setClip] = useState({
         titulo : "",
+        subtittulo: "",
         categoria: "",
         temporada: "",
         capitulo: "",
@@ -13,8 +14,9 @@ const ContenedorAgregarClip = () => {
         dificultad: ""
     })
 
-
+    // elements.join('-')
     console.log(clip)
+
 
     return (
         <>
@@ -23,11 +25,17 @@ const ContenedorAgregarClip = () => {
                 <ul>
                     <li>
                         <label htmlFor=""> Nombre de la Serie/Pelicula  </label>
-                        <select name="select">
-                            <option value="shrek-2" selected> Shrek 2 </option>
-                            <option value="peaky-blinders">  Peaky Blinders </option>
-                            <option value="bojack-horseman"> Bojack Horseman </option>
-                            <option value="scream-2022"> Scream (2022) </option>
+                        <select name="select"
+                            onChange={(e) => setClip({ 
+                                ...clip,
+                                titulo : e.target.value,
+                                subtitulo: e.target.value.toLowerCase().split(" ").join("-")
+                            })} 
+                        >
+                            <option value="Shrek 2" selected> Shrek 2 </option>
+                            <option value="Peaky Blinders">  Peaky Blinders </option>
+                            <option value="Bojack Horseman"> Bojack Horseman </option>
+                            <option value="Scream 2022"> Scream (2022) </option>
                         </select>
                     </li>
                     
@@ -36,7 +44,10 @@ const ContenedorAgregarClip = () => {
                         <input type="radio"  name="categoria" value="pelicula" 
                              onClick={(e) => setClip({ 
                                 ...clip,
-                                categoria : "pelicula"
+                                categoria : "pelicula",
+                                temporada: "",
+                                capitulo: "",
+                                
                             })} 
                             />
                         <label htmlFor="html"> Pelicula </label>
@@ -51,16 +62,30 @@ const ContenedorAgregarClip = () => {
 
                     <li>
                         <label htmlFor=""> Temporada </label>
-                        <select name="select" disabled>
-                            <option value="temporada-1" selected> Temporda 1 </option>
-                            <option value="temporada-2"> Temporada 2 </option>
-                            <option value="temporada-3"> Temporada 3 </option>
-                        </select>
+                        {
+                            clip.categoria === "serie" 
+                                ?  
+                                <select name="select" >
+                                    <option value="temporada-1" selected> Temporda 1 </option>
+                                    <option value="temporada-2"> Temporada 2 </option>
+                                    <option value="temporada-3"> Temporada 3 </option>
+                                </select>
+                                :
+                                <select name="select" disabled>
+                                    <option value="temporada-1" selected> Temporda 1 </option>
+                                </select>
+                        }
+                     
+                       
                     </li>
 
                     <li>
                         <label htmlFor="">  Capitulo </label>
-                        <input type="text" disabled />
+                        {
+                            clip.categoria === "serie" 
+                                ?  <input type="number"  onChange={(e) => setClip({ ...clip, capitulo : e.target.value })} /> 
+                                :  <input type="number" disabled/>
+                        }
                     </li>
 
 
@@ -86,12 +111,23 @@ const ContenedorAgregarClip = () => {
                     </li>
                     <li>
                         <label htmlFor=""> Dificultad </label>
-                        <input type="text" name="dificultad" 
-                             onChange={(e) => setClip({ 
+                        <select name="dificultad" 
+                            onChange={(e) => setClip({ 
                                 ...clip,
-                                dificultad : e.target.value
+                                dificultad: e.target.value.split(" ").join("-")
                             })} 
-                        />
+                        
+                        >
+                            <option value="very easy" >  very easy </option>
+                            <option value="easy" selected>  easy </option>
+                            <option value="medium"> medium  </option>
+                            <option value="hard"> hard  </option>
+                            <option value="very hard"> very hard  </option>
+                        </select>
+                    </li>
+                    <li>
+                        <label htmlFor=""> Nombre del Clip </label>
+                        <input type="text" onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} />
                     </li>
                     <li>
                         <button> Agregar Clip </button>

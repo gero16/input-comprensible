@@ -84,7 +84,7 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
     return (
         <>
             <article className={`article-video `} id={id}>
-            
+    
                 <section className="section-video">
                 {capitulo ? <h3> Capitulo {capitulo} </h3> : ""}
 

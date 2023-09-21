@@ -36,7 +36,8 @@ const Serie = ({data, temporada}) => {
                         data ?
                             data.map((element, key) => {
                                 return (
-                                    <Clip 
+                                    <Clip
+                                        id={element.id} 
                                         titulo={data.titulo}
                                         subtitulo={data.subtitulo}
                                         video={element.url}
