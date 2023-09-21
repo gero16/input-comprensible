@@ -1,5 +1,6 @@
 import { useState } from "react"
-
+import "./AgregarClip.css"
+import NewNavBar from '../Navbar/NewNavbar'
 
 const ContenedorAgregarClip = () => {
 
@@ -11,7 +12,7 @@ const ContenedorAgregarClip = () => {
         capitulo: "",
         link: "",
         frase: "",
-        dificultad: ""
+        dificultad: "easy"
     })
 
     // elements.join('-')
@@ -20,9 +21,10 @@ const ContenedorAgregarClip = () => {
 
     return (
         <>
+            <NewNavBar> </NewNavBar>
             <div className="div-agregar-video">
                 <h1> Agregar Clip </h1>
-                <ul>
+                <ul className="lista-formulario-clip">
                     <li>
                         <label htmlFor=""> Nombre de la Serie/Pelicula  </label>
                         <select name="select"
@@ -41,23 +43,28 @@ const ContenedorAgregarClip = () => {
                     
                     <li>
                         <label htmlFor=""> Categoria </label>
-                        <input type="radio"  name="categoria" value="pelicula" 
-                             onClick={(e) => setClip({ 
-                                ...clip,
-                                categoria : "pelicula",
-                                temporada: "",
-                                capitulo: "",
-                                
-                            })} 
-                            />
-                        <label htmlFor="html"> Pelicula </label>
-                        <input type="radio" name="categoria" value="serie" 
-                             onClick={(e) => setClip({ 
-                                ...clip,
-                                categoria : "serie"
-                            })} 
-                            />
-                        <label htmlFor="css">Serie </label>
+
+                        <div>
+                            <input type="radio"  name="categoria" value="pelicula" 
+                                onClick={(e) => setClip({ 
+                                    ...clip,
+                                    categoria : "pelicula",
+                                    temporada: "",
+                                    capitulo: "",
+                                    
+                                })} 
+                                />
+                
+                            <label htmlFor="html"> Pelicula </label>
+                            <input type="radio" name="categoria" value="serie" 
+                                onClick={(e) => setClip({ 
+                                    ...clip,
+                                    categoria : "serie"
+                                })} 
+                                />
+                            <label htmlFor="css">Serie </label>
+
+                        </div>
                     </li>
 
                     <li>
@@ -84,7 +91,7 @@ const ContenedorAgregarClip = () => {
                         {
                             clip.categoria === "serie" 
                                 ?  <input type="number"  onChange={(e) => setClip({ ...clip, capitulo : e.target.value })} /> 
-                                :  <input type="number" disabled/>
+                                :  <input type="number" disabled placeholder="1"/>
                         }
                     </li>
 
@@ -127,9 +134,14 @@ const ContenedorAgregarClip = () => {
                     </li>
                     <li>
                         <label htmlFor=""> Nombre del Clip </label>
-                        <input type="text" onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} />
+                        <input 
+                            type="text" 
+                            onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} 
+                            placeholder="Bojack1x01-10"
+                            
+                            />
                     </li>
-                    <li>
+                    <li id="li-agregar-clip">
                         <button> Agregar Clip </button>
                     </li>
                 </ul>
