@@ -8,6 +8,9 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
     const [grabaciones, setGrabaciones] = useState()
     const [idGrabar, setIdGrabar] = useState()
 
+    const separarDificultad = dificultad.split("-")
+    const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
+  
 
     /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
@@ -90,9 +93,8 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
 
-                        <span className={`bold ${dificultad} `}> {dificultad}</span>
+                        <span className={`bold ${dificultad} `}> {newDificultad} </span>
                     
-
                         <input type="text" className={`input-${ subtitulo }-${ index }`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
                         <button onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>

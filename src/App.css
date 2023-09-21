@@ -144,12 +144,16 @@ button {
   font-weight: bold;
 }
 
+.very-easy {
+  color: rgb(168, 255, 87);
+}
+
 .easy {
   color: green;
 }
 
 .medium {
-  color: rgb(199, 183, 36);
+  color: rgb(241, 219, 14);
 }
 
 .hard {
