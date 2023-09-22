@@ -6,10 +6,11 @@ const Serie = ({data, serie, temporada}) => {
     let arrayAudios = []
     let numTemporada = temporada.split("-")
     
+    /*
 
     useEffect(() => {
-        if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
-            console.log(data)
+        if(!JSON.parse(localStorage.getItem(serie))) {
+            //console.log(data)
             if(data) {
                 data.forEach((element, index) => {
                     arrayAudios.push({
@@ -18,11 +19,12 @@ const Serie = ({data, serie, temporada}) => {
                     })
                     
                 });
-                localStorage.setItem(`${serie}`, JSON.stringify( arrayAudios))
+                localStorage.setItem(`${serie}`, JSON.stringify(arrayAudios))
             }
         }
     })
     
+    */
  
     return (
         <>

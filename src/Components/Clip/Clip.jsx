@@ -6,18 +6,55 @@ import { Context } from "../../context/context"
 const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
     const recorderControls = useAudioRecorder()
-    const [grabaciones, setGrabaciones] = useState()
+    const [grabaciones, setGrabaciones] = useState([])
+    const [records, setRecords] = useState()
     //const [width, setWidth] = useState(window.innerWidth);
+
+    
     
     const separarDificultad = dificultad.split("-")
     const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
   
+    const fetchData = async () => {
+        const url = `http://localhost:3000/grabaciones`
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        //console.log(resp[0].grabacion)
+        if(!resp) console.log("No hay data")
+
+        let arrayGrabaciones = []
+
+        resp.forEach(element => {
+            //console.log(element)
+            arrayGrabaciones.push(element.grabacion)
+        });
+
+        setGrabaciones(arrayGrabaciones)
+        
+        
+        console.log(arrayGrabaciones)
+        console.log(grabaciones)
+        return grabaciones
+    }
 
     /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
+        
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
+            //console.log(JSON.parse(localStorage.getItem(subtitulo)))
             setGrabaciones( JSON.parse(localStorage.getItem(subtitulo)))
         }
+
+        fetchData()
+        console.log(records)
       }, [])
 
       
@@ -44,6 +81,11 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
 
                     </section>
 
+                    <embed 
+                        src={records}
+                         id="HOLAAAAA"
+                    
+                    />
 
                     <iframe 
                         width="400" 
@@ -74,10 +116,10 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
                         />
                         
                         <div className={`div-grabaciones-${subtitulo}`}>
-
-                            { grabaciones
-                                ? <embed src={grabaciones[index].audio} className={`grabacion-${subtitulo}-${index}`} /> 
-                                : <div> Loading </div> 
+                            
+                            { grabaciones.length > 0
+                                ? <embed src={grabaciones[0]} className={`grabacion-${subtitulo}-${index}`} /> 
+                                : <div> Cargando grabaciones.. </div> 
                             }
                             
                         </div>

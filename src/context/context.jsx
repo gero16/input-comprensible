@@ -1,5 +1,4 @@
 import { useState, createContext } from "react"
-import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
 export const Context = createContext()
 
@@ -50,7 +49,9 @@ export const CustomProvider = ({ children }) => {
         valorAudio.classList.toggle("ocultar")
     }
 
+    // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
     const addAudioElement = (blob, subtitulo, id) => {
+        console.log(blob)
       let reader = new FileReader();
       reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
   
@@ -60,6 +61,7 @@ export const CustomProvider = ({ children }) => {
 
         if(found && `audio-mic-${id}` === idGrabar ){  
             const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
+            console.log(reader.result)
             aud.src = reader.result
             audiosLocalStorage[id].audio = reader.result
             localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
