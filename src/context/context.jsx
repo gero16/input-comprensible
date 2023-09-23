@@ -25,6 +25,8 @@ export const CustomProvider = ({ children }) => {
             });
             setIdGrabar(e.classList[1])
         }
+
+        
     }
 
     const evaluar = (subtitulo, id) => {
@@ -56,15 +58,20 @@ export const CustomProvider = ({ children }) => {
       reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
   
       reader.onload = function() {
-        const audiosLocalStorage = JSON.parse(localStorage.getItem(subtitulo))
-        const found = audiosLocalStorage.find((objetoAudio) => `audio-mic-${Number(objetoAudio.id)}` === idGrabar);
-
-        if(found && `audio-mic-${id}` === idGrabar ){  
+        // ANTES con localStorage - if(found && `audio-mic-${id}` === idGrabar ){ 
+        if(`audio-mic-${id}` === idGrabar ){ 
             const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
+            console.log(aud)
             console.log(reader.result)
             aud.src = reader.result
-            audiosLocalStorage[id].audio = reader.result
-            localStorage.setItem(`${subtitulo}`, JSON.stringify(audiosLocalStorage))
+            const grabacion = {
+                grabacion : reader.result,
+                usuario: "anonimus",
+                id_usuario: "1GagaF",
+                id_clip: id,
+
+            }
+            localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
         }
       }
      };

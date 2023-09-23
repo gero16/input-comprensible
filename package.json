@@ -16,7 +16,8 @@
     "react-audio-voice-recorder": "^2.1.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

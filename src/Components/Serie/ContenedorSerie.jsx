@@ -7,14 +7,14 @@ import Serie from './Serie';
 
 const ContenedorSerie = () => {
     let { serie, temporada } = useParams();
-    const urlBackend = import.meta.env.VITE_URL_BACKEND
-    const urlBackend2 = import.meta.env.VITE_URL_BACKEND2
+    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
     const [data, setData] = useState([])
     const [season, setSeason] = useState([])
 
     const fetchData = async () => {
-        const url = `${urlBackend}/serie/${serie}/temporada/${temporada}`
+        const url = `${urlBackend_Desarrollo}/serie/${serie}/temporada/${temporada}`
 
         const response = await fetch(url,  
             {
@@ -26,12 +26,11 @@ const ContenedorSerie = () => {
                 })
             })
 
-        console.log(response)
+        //console.log(response)
         const resp= await response.json();
-        console.log(resp)
+        //console.log(resp)
 
         if(!resp) console.log("No hay data")
-
         setData(resp.data)
         return data;
     }
