@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import  "./navbar.css"
-import { Link as Navigate, NavLink } from "react-router-dom";
+import { Link as Navigate, NavLink, useParams } from "react-router-dom";
 
 
 const NavbarUser = () => {
     const [data, setData] = useState([])
+    let { usuario } = useParams();
+
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
@@ -15,6 +17,7 @@ const NavbarUser = () => {
 
        }
     }
+
 
     let arrayTitulos = []
     const fetchData = async () => {
@@ -29,7 +32,7 @@ const NavbarUser = () => {
                 })
             })
         const resp= await response.json();
-        console.log(resp.data)
+        //console.log(resp.data)
         if(!resp) console.log("No hay data")
 
         resp.data.forEach(element => {
@@ -38,12 +41,11 @@ const NavbarUser = () => {
         });
 
         setData(arrayTitulos)
-        console.log(arrayTitulos)
+        //console.log(arrayTitulos)
         return data
     }
     useEffect(() => {
         fetchData()
-        console.log(data)
     }, [])
     
     return (
@@ -60,17 +62,16 @@ const NavbarUser = () => {
                     data 
                         ? 
                         data.map((element, key) => {
-                            console.log(element)
                             return (
-                            <li>
+                            <li key={key}>
                               
                                     {
                                         element[2] === "pelicula"
-                                        ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
+                                        ? <NavLink to={`/usuario/${usuario}/peliculas/${element[1]}`} className="flex-center-column"> 
                                             <span className="span-link "> {element[0]} </span>
                                         </NavLink>
                                 
-                                        : <NavLink to={`/series/${element[1]}`} className="flex-center-column"> 
+                                        : <NavLink to={`/usuario/${usuario}/series/${element[1]}`} className="flex-center-column"> 
                                             <span className="span-link "> {element[0]} </span>
                                         </NavLink>
                                     }

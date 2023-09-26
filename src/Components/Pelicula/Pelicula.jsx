@@ -3,7 +3,7 @@ import Clip from "../Clip/Clip"
 
 const Pelicula = ({data}) => {
     let arrayAudios = []
-
+    console.log(data)
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.videos) {

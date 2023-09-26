@@ -26,7 +26,7 @@ const IniciarSesion = () => {
         console.log(resp)
 
         if(response.status === 200) {
-            //navigate(`/usuario/${resp.usuario}`)
+            navigate(`/usuario/${resp.usuario}`)
         }
     }
         

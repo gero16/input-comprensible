@@ -11,6 +11,7 @@ import ContenedorPelicula from './Components/Pelicula/ContenedorPelicula.jsx'
 import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarClip.jsx'
 import Registro from './Components/Usuario/Registro';
 import IniciarSesion from './Components/Usuario/Sesion';
+import Usuario from './Components/Usuario/Usuario';
 
 const router = createBrowserRouter([
       {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         element: <Index /> ,
       },
       {
-        path: "/series/:serie/:temporada/",
+        path: "/series/:serie/:temporada",
         element:  <ContenedorSerie />,
       },
       {
@@ -42,8 +43,18 @@ const router = createBrowserRouter([
         element:  <IniciarSesion />,
       },
       {
-        path: "/usuario/:usuario/",
-        element:  <IniciarSesion />,
+        path: "/usuario/:usuario",
+        element:  <Usuario />,
+        children: [
+          {
+            path: "series/:serie/:temporada",
+            element:  <ContenedorSerie />,
+          },
+          {
+            path: "peliculas/:pelicula",
+            element:  <ContenedorPelicula />,
+          },
+        ]
       },
     
 ]);

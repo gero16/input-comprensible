@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NewNavbar from '../Navbar/NewNavbar';
 import Pelicula from './Pelicula';
+import NavbarUser from '../Navbar/NavbarUser';
 
 const ContenedorPelicula = () => {
-    let { pelicula } = useParams();
+    let { pelicula, usuario } = useParams();
+    console.log(usuario)
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
     const [data, setData] = useState([])
@@ -28,13 +30,21 @@ const ContenedorPelicula = () => {
     }, [pelicula])
 
     
-
-   
     return (
         <>
-            <NewNavbar> </NewNavbar>
-
-            <Pelicula data={data} />      
+            {
+                usuario ?
+                <> 
+                    <NavbarUser />
+                    <Pelicula data={data} />      
+                </>
+                :  <> 
+                <NewNavbar/>
+                <Pelicula data={data} />      
+                </>
+            }
+          
+           
         </>
     )
 }
