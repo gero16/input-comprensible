@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         path: "/iniciar-sesion",
         element:  <IniciarSesion />,
       },
+      {
+        path: "/usuario/:usuario/",
+        element:  <IniciarSesion />,
+      },
     
 ]);
 
