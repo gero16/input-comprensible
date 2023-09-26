@@ -26,6 +26,16 @@ const NewNavbar = () => {
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
+                <li className="p-2 li-nav">
+                    <NavLink to={`/registro`} className="flex-center-column"> 
+                        <span className="span-link "> Registrarse </span>
+                    </NavLink>
+                </li>
+                <li className="p-2 li-nav">
+                    <NavLink to={`/iniciar-sesion`} className="flex-center-column"> 
+                        <span className="span-link "> Iniciar Sesion </span>
+                    </NavLink>
+                </li>
 
                 <li className="serie li-nav" onClick={(e)=> seleccionarSerie(e)}> 
                     <span className="serie span-link"> Peaky Blinders  </span>
@@ -67,6 +77,12 @@ const NewNavbar = () => {
                         </li>
                     </ul>
                
+                </li>
+
+                <li className="p-2 li-nav">
+                    <NavLink to={`/peliculas/the-room-2003`} className="flex-center-column"> 
+                        <span className="span-link "> The Room 2003 </span>
+                    </NavLink>
                 </li>
 
                 <li className="li-nav">

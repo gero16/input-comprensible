@@ -9,8 +9,8 @@ import ContenedorSerie from './Components/Serie/ContenedorSerie.jsx'
 import InputComprensivo from './Components/InputComprensivo'
 import ContenedorPelicula from './Components/Pelicula/ContenedorPelicula.jsx'
 import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarClip.jsx'
-// No se si el fetch en vite funciono por esto pero por las dudas lo dejo
-//import 'vite/modulepreload-polyfill'
+import Registro from './Components/Usuario/Registro';
+import IniciarSesion from './Components/Usuario/Sesion';
 
 const router = createBrowserRouter([
       {
@@ -32,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/agregar-clip",
         element:  <ContenedorAgregarClip />,
+      },
+      {
+        path: "/registro",
+        element:  <Registro />,
+      },
+      {
+        path: "/iniciar-sesion",
+        element:  <IniciarSesion />,
       },
     
 ]);
