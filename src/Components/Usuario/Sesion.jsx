@@ -26,6 +26,7 @@ const IniciarSesion = () => {
         console.log(resp)
 
         if(response.status === 200) {
+            localStorage.setItem("sesion", resp.usuario);
             navigate(`/usuario/${resp.usuario}`)
         }
     }

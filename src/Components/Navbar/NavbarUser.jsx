@@ -18,6 +18,12 @@ const NavbarUser = () => {
        }
     }
 
+    const transformarTitulo = (titulo) => {
+        const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")
+        return nuevo
+    }
+
+
 
     let arrayTitulos = []
     const fetchData = async () => {
@@ -36,8 +42,9 @@ const NavbarUser = () => {
         if(!resp) console.log("No hay data")
 
         resp.data.forEach(element => {
-            const titulo = [element.titulo, element.subtitulo, element.categoria]
+            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada]
             arrayTitulos.push(titulo)
+           // console.log(arrayTitulos)
         });
 
         setData(arrayTitulos)
@@ -63,7 +70,7 @@ const NavbarUser = () => {
                         ? 
                         data.map((element, key) => {
                             return (
-                            <li key={key}>
+                            <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
                               
                                     {
                                         element[2] === "pelicula"
@@ -71,10 +78,25 @@ const NavbarUser = () => {
                                             <span className="span-link "> {element[0]} </span>
                                         </NavLink>
                                 
-                                        : <NavLink to={`/usuario/${usuario}/series/${element[1]}`} className="flex-center-column"> 
-                                            <span className="span-link "> {element[0]} </span>
-                                        </NavLink>
+                                        :   
+                                        <> 
+                                            <span> {element[0]} </span> 
+                                            <ul className="inactive"> 
+                                            {
+                                               element[3].map((elemento, key) => 
+                                                <li key={key}> 
+                                                    <NavLink to={`/usuario/${usuario}/series/${element[1]}/${transformarTitulo(elemento)}`} > 
+
+                                                        <span className="temporada-serie"> {elemento} </span>
+                                                        
+                                                    </NavLink>
+                                                </li>
+                                                )
+                                            }
+                                            </ul>
+                                        </>
                                     }
+                                      
                                   
                            
                             </li>

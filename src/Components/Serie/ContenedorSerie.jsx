@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NewNavbar from '../Navbar/NewNavbar';
 import Serie from './Serie';
+import NavbarUser from '../Navbar/NavbarUser';
 //import fetch from 'node-fetch'
 
 const ContenedorSerie = () => {
-    let { serie, temporada } = useParams();
+    let { serie, temporada, usuario } = useParams();
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
@@ -47,9 +48,18 @@ const ContenedorSerie = () => {
  
     return (
         <>
-            <NewNavbar> </NewNavbar>
 
-            <Serie data={data} temporada={temporada} serie={serie}/>  
+            {
+                usuario ?
+                <> 
+                    <NavbarUser />
+                    <Serie data={data} temporada={temporada} serie={serie} />      
+                </>
+                :  <> 
+                <NewNavbar/>
+                <Serie data={data} temporada={temporada} serie={serie} />      
+                </>
+            } 
         </>
     )
 }

@@ -7,12 +7,9 @@ import NavbarUser from '../Navbar/NavbarUser';
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
-    console.log(usuario)
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
     const [data, setData] = useState([])
-
-    // LA IDEA ES QUE ESTO SE EJECUTE SOLO UNA PRIMERA VEZ PARA LLENAR LOCALSTORAGE
 
     const fetchData = async () =>{
         
