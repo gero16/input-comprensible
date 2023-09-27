@@ -14,6 +14,34 @@ const ContenedorSerie = () => {
     const [data, setData] = useState([])
     const [season, setSeason] = useState([])
 
+    const fetchGrabaciones = async (clips) => {
+        const url = `http://localhost:3000/grabaciones/series/${serie}/temporada/${temporada}/${usuario}`
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        if(!resp) console.log("No hay data")
+
+        let arrayClips = clips
+        console.log(resp.grabaciones)
+        arrayClips.forEach(clip => {
+            resp.grabaciones.forEach((grabacion) => {
+                if(clip.id ===  grabacion.id_clip) {
+                    clip.grabacion = grabacion.grabacion 
+                }
+            })
+        });
+
+        console.log(arrayClips)
+       return arrayClips
+    }
+
     const fetchData = async () => {
         const url = `${urlBackend_Desarrollo}/serie/${serie}/temporada/${temporada}`
 
@@ -26,13 +54,12 @@ const ContenedorSerie = () => {
                     'Access-Control-Allow-Origin': '*',
                 })
             })
-
-        //console.log(response)
         const resp= await response.json();
-        //console.log(resp)
-
         if(!resp) console.log("No hay data")
-        setData(resp.data)
+        const respuesta = await fetchGrabaciones(resp.data)
+        console.log(respuesta)
+
+        setData(respuesta)
         return data;
     }
 
@@ -48,7 +75,6 @@ const ContenedorSerie = () => {
  
     return (
         <>
-
             {
                 usuario ?
                 <> 

@@ -27,6 +27,8 @@ const Serie = ({data, serie, temporada}) => {
                                         dificultad={element.dificultad}
                                         capitulo={element.capitulo}
                                         index={key}
+                                        grabacion={element.grabacion}
+                                        categoria={element.categoria}
                                     />
                                 )
                             })

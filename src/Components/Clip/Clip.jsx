@@ -3,10 +3,10 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 
-const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo, grabacion }) => {
+const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacion }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
-    let {  usuario } = useParams();
-
+    let {  usuario, temporada } = useParams();
+  
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState([])
     const [grabacionesPrueba, setGrabacionesPrueba] = useState([])
@@ -18,13 +18,19 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
   
 
     const guardarGrabacion = async (elemento, indice) => {
-        const url = `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
+        const url = 
+            categoria === "serie"
+            ? `http://localhost:3000/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
+
+            console.log(url)
         const objetoGrabacion = {
                 "fecha": "2023-09-22",
                 "grabacion": elemento.src, 
                 "subtitulo": `${subtitulo}`,
-                "id_clip": id
+                "id_clip": id,
         }
+       
         const response = await fetch(url,  
             {
                 method: 'POST',
