@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import  "./navbar.css"
-import { Link as Navigate, NavLink, useParams } from "react-router-dom";
+import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 
 
 const NavbarUser = () => {
     const [data, setData] = useState([])
+    const navigate = useNavigate()
+    
     let { usuario } = useParams();
 
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
@@ -20,6 +22,11 @@ const NavbarUser = () => {
     const transformarTitulo = (titulo) => {
         const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")
         return nuevo
+    }
+
+    const cerrarSesion = () => {
+        localStorage.removeItem("sesion");
+        navigate("/")
     }
 
     let arrayTitulos = []
@@ -58,9 +65,13 @@ const NavbarUser = () => {
 
             <ul className="lista-navbar flex-center-column">
                 <li className="p-2 li-nav">
-                    <NavLink to={`/usuario`} className="flex-center-column"> 
+                    <NavLink to={`/agregar-clip`} className="flex-center-column"> 
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
+                </li>
+                <li className="p-2 li-nav" onClick={(e) => cerrarSesion() }>
+                    <span className="span-link "> Cerrar Sesión </span>
+                   
                 </li>
                 {
                     data 

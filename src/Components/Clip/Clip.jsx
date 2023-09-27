@@ -18,14 +18,12 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
   
 
     const guardarGrabacion = async (elemento, indice) => {
-        //console.log(elemento)
-        //console.log(grabaciones)
-        
+    
         const url = `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
         const objetoGrabacion = {
                 "fecha": "2023/09/22",
                 "grabacion": elemento.src, 
-                "subtitulo": "scream-2022",
+                "subtitulo": `${subtitulo}`,
                 "id_clip": 1
         }
         const response = await fetch(url,  

@@ -12,7 +12,7 @@ const ContenedorPelicula = () => {
   
     let [data, setData] = useState([])
 
-    const fetchGrabaciones = async (datos) => {
+    const fetchGrabaciones = async (clips) => {
         const url = `http://localhost:3000/grabaciones/${pelicula}/${usuario}`
         const response = await fetch(url,  
             {
@@ -26,31 +26,23 @@ const ContenedorPelicula = () => {
         const resp= await response.json();
         if(!resp) console.log("No hay data")
 
-        console.log(resp)
-
-        let arrayClips = datos
-        console.log(arrayClips)
+        let arrayClips = clips
         arrayClips.forEach(clip => {
             resp.grabaciones.forEach((grabacion) => {
                 if(clip.id ===  grabacion.id_clip) {
-                    //arrayGrabaciones.push(element.grabacion)
-                    console.log("Hay grabacion para el clip")
-                    //console.log(clip)
-                   //console.log(grabacion)
                     clip.grabacion = grabacion.grabacion 
                 }
             })
 
         });
         
-       console.log(arrayClips)
+  
        return arrayClips
     }
     const fetchData = async () =>{
         const response = await fetch(`${ urlBackend_Desarrollo }/pelicula/${ pelicula }`);
         const resp= await response.json();
         if(!resp) console.log("No hay data")
-
         const respuesta = await fetchGrabaciones(resp.data)
         console.log(respuesta)
 
