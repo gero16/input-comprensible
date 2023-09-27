@@ -47,7 +47,11 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     }
 
     const actualizarGrabacion = async (elemento, indice) => {
-        const url = `http://localhost:3000/actualizar-grabacion/${subtitulo}/${usuario}`
+        const url = 
+            categoria === "serie"
+            ? `http://localhost:3000/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `http://localhost:3000/actualizar-grabacion/${subtitulo}/${usuario}`
+            
         const objetoGrabacion = {
                 "fecha": "2023-09-27",
                 "grabacion": elemento.src, 
