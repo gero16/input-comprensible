@@ -14,7 +14,6 @@ const NavbarUser = () => {
        if(!e.target.classList.contains("temporada-serie")) {
            e.target.nextSibling.classList.toggle("inactive")
            e.target.nextSibling.classList.toggle("lista-temporadas")
-
        }
     }
 
@@ -22,8 +21,6 @@ const NavbarUser = () => {
         const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")
         return nuevo
     }
-
-
 
     let arrayTitulos = []
     const fetchData = async () => {

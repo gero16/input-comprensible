@@ -1,13 +1,15 @@
 import { useEffect } from "react"
 import Clip from "../Clip/Clip"
+import { useParams } from "react-router-dom";
 
 const Pelicula = ({data}) => {
+    let {  usuario, pelicula } = useParams();
     let arrayAudios = []
-    console.log(data)
+    //console.log(data)
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.videos) {
-                console.log(data.videos)
+               // console.log(data.videos)
                 data.videos.forEach((element, index) => {
                     arrayAudios.push({
                         id : `${index}`,
@@ -19,6 +21,11 @@ const Pelicula = ({data}) => {
             }
         }
     })
+
+    
+    useEffect(() => {
+        //fetchGrabaciones()
+    }, [])
 
     return (
         <>
@@ -37,6 +44,7 @@ const Pelicula = ({data}) => {
                                 index={index}
                                 frase={element.frase}
                                 dificultad={element.dificultad}
+                                grabacion={element.grabacion}
                             />
                         )
                         })

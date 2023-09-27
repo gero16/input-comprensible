@@ -3,41 +3,44 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 
-const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo }) => {
+const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo, grabacion }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
+    let {  usuario } = useParams();
+
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState([])
     const [grabacionesPrueba, setGrabacionesPrueba] = useState([])
-    
     const [records, setRecords] = useState()
     //const [width, setWidth] = useState(window.innerWidth);
-
 
     const separarDificultad = dificultad.split("-")
     const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
   
-    const fetchData = async () => {
-        const url = `http://localhost:3000/grabaciones`
+
+    const guardarGrabacion = async (elemento, indice) => {
+        //console.log(elemento)
+        //console.log(grabaciones)
+        
+        const url = `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
+        const objetoGrabacion = {
+                "fecha": "2023/09/22",
+                "grabacion": elemento.src, 
+                "subtitulo": "scream-2022",
+                "id_clip": 1
+        }
         const response = await fetch(url,  
             {
-                method: 'GET',
+                method: 'POST',
                 headers: new Headers({
                     "Origin": "https://localhost:5173",
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
-                })
+                }),
+                body : JSON.stringify(objetoGrabacion)
             })
         const resp= await response.json();
         if(!resp) console.log("No hay data")
-
-        let arrayGrabaciones = []
-
-        resp.forEach(element => {
-            arrayGrabaciones.push(element.grabacion)
-        });
-
-        setGrabaciones(arrayGrabaciones)
-        return grabaciones
+        
     }
 
     /** Grabaciones me esta dando problemaaaaaaaa  **/
@@ -46,7 +49,6 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
             //console.log(JSON.parse(localStorage.getItem(subtitulo)))
             setGrabaciones(JSON.parse(localStorage.getItem(subtitulo)))
         }
-        fetchData()
         console.log(records)
       }, [])
 
@@ -104,13 +106,13 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
                         
                         <div className={`div-grabaciones-${subtitulo}`}>
                            
-                            { grabaciones.length > 0
-                                ? <embed src={grabaciones[0]} className={`grabacionBD-${subtitulo}-${index}`} /> 
+                            { grabacion
+                                ? <embed src={grabacion} className={`grabacionBD-${subtitulo}-${index}`} /> 
                                 : <div> No hay grabaciones </div> 
                             }
 
                             <embed src={""}className={`grabacion-${subtitulo}-${index}`}  />
-                            <button> Guardar Grabación </button>
+                            <button onClick={(e) => guardarGrabacion(e.target.previousElementSibling) }> Guardar Grabación </button>
                             
                         </div>
                     </section>
