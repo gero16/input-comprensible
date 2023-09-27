@@ -33,7 +33,6 @@ const ContenedorPelicula = () => {
                     clip.grabacion = grabacion.grabacion 
                 }
             })
-
         });
         
   

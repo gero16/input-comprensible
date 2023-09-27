@@ -18,17 +18,39 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
   
 
     const guardarGrabacion = async (elemento, indice) => {
-    
         const url = `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
         const objetoGrabacion = {
-                "fecha": "2023/09/22",
+                "fecha": "2023-09-22",
                 "grabacion": elemento.src, 
                 "subtitulo": `${subtitulo}`,
-                "id_clip": 1
+                "id_clip": id
         }
         const response = await fetch(url,  
             {
                 method: 'POST',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }),
+                body : JSON.stringify(objetoGrabacion)
+            })
+        const resp= await response.json();
+        if(!resp) console.log("No hay data")
+        
+    }
+
+    const actualizarGrabacion = async (elemento, indice) => {
+        const url = `http://localhost:3000/actualizar-grabacion/${subtitulo}/${usuario}`
+        const objetoGrabacion = {
+                "fecha": "2023-09-27",
+                "grabacion": elemento.src, 
+                "subtitulo": `${subtitulo}`,
+                "id_clip": id
+        }
+        const response = await fetch(url,  
+            {
+                method: 'PUT',
                 headers: new Headers({
                     "Origin": "https://localhost:5173",
                     'Content-Type': 'application/json',
@@ -110,7 +132,17 @@ const Clip = ({ id, titulo, subtitulo, video, index, frase, dificultad, capitulo
                             }
 
                             <embed src={""}className={`grabacion-${subtitulo}-${index}`}  />
-                            <button onClick={(e) => guardarGrabacion(e.target.previousElementSibling) }> Guardar Grabación </button>
+
+                            {
+                                document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
+                                    ? <button onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
+                                        Actualizar Grabación 
+                                      </button>
+                                
+                                    : <button onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
+                                        Guardar Grabación 
+                                      </button>
+                            }
                             
                         </div>
                     </section>
