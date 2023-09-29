@@ -1,6 +1,5 @@
 import './Index.css'
-import NewNavBar from '../Navbar/NewNavbar'
-import NavbarUser from '../Navbar/NavbarUser'
+import Navbar from '../Navbar/Navbar'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -19,7 +18,7 @@ function App() {
     <>
       <div>
    
-        <NewNavBar> </NewNavBar>
+        <Navbar> </Navbar>
         <h1 className='titulo-principal'> Inmersion con peliculas </h1>
 
       </div>

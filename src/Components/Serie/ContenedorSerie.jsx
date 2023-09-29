@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import NewNavbar from '../Navbar/NewNavbar';
+import Navbar from '../Navbar/Navbar'
 import Serie from './Serie';
 import NavbarUser from '../Navbar/NavbarUser';
 //import fetch from 'node-fetch'
@@ -82,7 +82,7 @@ const ContenedorSerie = () => {
                     <Serie data={data} temporada={temporada} serie={serie} />      
                 </>
                 :  <> 
-                <NewNavbar/>
+                <Navbar/>
                 <Serie data={data} temporada={temporada} serie={serie} />      
                 </>
             } 

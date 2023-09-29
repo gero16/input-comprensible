@@ -1,114 +1,123 @@
+import { useEffect, useState } from "react";
 import  "./navbar.css"
-
-import Scroll from "react-scroll";
-const Link   = Scroll.Link;
-const scroll = Scroll.animateScroll;
-import { Link as Navigate, NavLink } from "react-router-dom";
+import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 
 
-const NavBar = () => {
+const Navbar = () => {
+    const [data, setData] = useState([])
+    const navigate = useNavigate()
+    
+    let { usuario } = useParams();
 
-    const scrollMore = (e) => {
-        console.log(window.innerWidth)
-        console.log(e.classList.contains("project"))
-        if(e.classList.contains("scream")) scroll.scrollToTop(0);
-        if(e.classList.contains("bojack")) scroll.scrollTo(1500);
-        if(e.classList.contains("simpsons")) scroll.scrollTo(2600);
-        if(e.classList.contains("harry")) scroll.scrollTo(3200);
-        if(e.classList.contains("got")) scroll.scrollTo(3900);
-        if(e.classList.contains("friends")) scroll.scrollTo(4500);
-        if(e.classList.contains("gumball")) scroll.scrollTo(5100);
+    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+
+    const seleccionarSerie = (e) => {
+       if(!e.target.classList.contains("temporada-serie")) {
+           e.target.nextSibling.classList.toggle("inactive")
+           e.target.nextSibling.classList.toggle("lista-temporadas")
+       }
     }
+
+    const transformarTitulo = (titulo) => {
+        const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")
+        return nuevo
+    }
+
+    const cerrarSesion = () => {
+        localStorage.removeItem("sesion");
+        navigate("/")
+    }
+
+    let arrayTitulos = []
+    const fetchData = async () => {
+        const url = `${urlBackend_Desarrollo}/titulos`
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        //console.log(resp.data)
+        if(!resp) console.log("No hay data")
+
+        resp.data.forEach(element => {
+            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada]
+            arrayTitulos.push(titulo)
+           // console.log(arrayTitulos)
+        });
+
+        setData(arrayTitulos)
+        //console.log(arrayTitulos)
+        return data
+    }
+    useEffect(() => {
+        fetchData()
+    }, [])
     
     return (
         <>
         <nav className="flex-between">
 
             <ul className="lista-navbar flex-center-column">
-
-                <li className="p-2 li-nav project">
-                    <NavLink to={`/series/prueba`} className="flex-center-column scream"> 
-                        <span> Prueba </span>
-                    </NavLink>
-                </li>
-
-                <li className="p-2 li-nav project">
-                    <NavLink to={`/peliculas/prueba`} className="flex-center-column scream"> 
-                        <span> Prueba 2 </span>
-                    </NavLink>
-                </li>
-               
-                <li className="p-2 li-nav project">
-                    <Link to="" className="flex-center-column scream"  isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}> 
-                    <span> Scream</span>
-                    </Link>
-                    
-                </li>
-
-                <li className="p-2 li-nav project">
-                    <Link to="" className="flex-center-column bojack"  isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}> 
-                    <span> Bojack Horseman</span>
-                    </Link>
-                    
-                </li>
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column simpsons" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                        <span>The Simpsons</span>
-                          
-                    </Link>
-                </li>
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column harry" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                        <span>Harry Potter</span>
-                    </Link>
-                </li>
-               
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column got" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                        <span>Game Of Thrones</span>
-                          
-                    </Link>
-                </li>
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column a friends" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                        <span>Friends </span>
-                    </Link>
-                </li>
-
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                            <span> Gumball</span>
-                    </Link>
-                </li>
-
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                            <span> Shrek 2 </span>
-                    </Link>
-                </li>
-
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                            <span> Peaky Blinders</span>
-                    </Link>
-                </li>
-
-                <li className="p-2 li-nav main">
-                    <Link to="main" className="flex-center-column a gumball" isDynamic={true} onClick={(e) => scrollMore(e.target.parentNode)}>
-                            <span> The Room </span>
-                    </Link>
-                </li>
-                
                 <li className="p-2 li-nav">
-                    <Navigate to="/input-comprensivo" className="flex-center-column" > 
-                        <span> Input Comprensivo</span>
-                    </Navigate>
-                    
+                    <NavLink to={`/agregar-clip`} className="flex-center-column"> 
+                        <span className="span-link "> Agregar Clip </span>
+                    </NavLink>
                 </li>
+                <li className="p-2 li-nav" onClick={(e) => cerrarSesion() }>
+                    <span className="span-link "> Cerrar Sesión </span>
+                   
+                </li>
+                {
+                    data 
+                        ? 
+                        data.map((element, key) => {
+                            return (
+                            <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
+                              
+                                    {
+                                        element[2] === "pelicula"
+                                        ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
+                                            <span className="span-link "> {element[0]} </span>
+                                        </NavLink>
+                                
+                                        :   
+                                        <> 
+                                            <span> {element[0]} </span> 
+                                            <ul className="inactive"> 
+                                            {
+                                               element[3].map((elemento, key) => 
+                                                <li key={key}> 
+                                                    <NavLink to={`/series/${element[1]}/${transformarTitulo(elemento)}`} > 
+
+                                                        <span className="temporada-serie"> {elemento} </span>
+                                                        
+                                                    </NavLink>
+                                                </li>
+                                                )
+                                            }
+                                            </ul>
+                                        </>
+                                    }
+                                      
+                                  
+                           
+                            </li>
+
+                            )
+                        }) 
+                        : 
+                        <> No hay Titulos </>
+                }
                 
             </ul>
         </nav>
         </>
     )
 }
-export default NavBar
+export default Navbar

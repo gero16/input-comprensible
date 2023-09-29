@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "./AgregarClip.css"
-import NewNavBar from '../Navbar/NewNavbar'
+import Navbar from '../Navbar/Navbar'
 
 const ContenedorAgregarClip = () => {
 
@@ -21,7 +21,7 @@ const ContenedorAgregarClip = () => {
 
     return (
         <>
-            <NewNavBar> </NewNavBar>
+            <Navbar> </Navbar>
             <div className="div-agregar-video">
                 <h1> Agregar Clip </h1>
                 <ul className="lista-formulario-clip">

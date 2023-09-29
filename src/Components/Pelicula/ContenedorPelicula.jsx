@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import NewNavbar from '../Navbar/NewNavbar';
+import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
 import NavbarUser from '../Navbar/NavbarUser';
 
@@ -63,7 +63,7 @@ const ContenedorPelicula = () => {
                     <Pelicula data={data} />      
                 </>
                 :  <> 
-                <NewNavbar/>
+                <Navbar/>
                 <Pelicula data={data}  />      
                 </>
             }
