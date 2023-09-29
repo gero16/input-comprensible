@@ -24,11 +24,6 @@ const Navbar = () => {
         return nuevo
     }
 
-    const cerrarSesion = () => {
-        localStorage.removeItem("sesion");
-        navigate("/")
-    }
-
     let arrayTitulos = []
     const fetchData = async () => {
         const url = `${urlBackend_Desarrollo}/titulos`
@@ -69,10 +64,17 @@ const Navbar = () => {
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
-                <li className="p-2 li-nav" onClick={(e) => cerrarSesion() }>
-                    <span className="span-link "> Cerrar Sesión </span>
-                   
+                <li className="p-2 li-nav">
+                    <NavLink to={`/iniciar-sesion`} className="flex-center-column"> 
+                        <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
+                    </NavLink>
                 </li>
+                <li className="p-2 li-nav">
+                    <NavLink to={`/registro`} className="flex-center-column"> 
+                        <span className="span-link "> Registrarse </span>
+                    </NavLink>
+                </li>
+
                 {
                     data 
                         ? 
@@ -104,9 +106,6 @@ const Navbar = () => {
                                             </ul>
                                         </>
                                     }
-                                      
-                                  
-                           
                             </li>
 
                             )

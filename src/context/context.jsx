@@ -6,6 +6,9 @@ export const CustomProvider = ({ children }) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const [idGrabar, setIdGrabar] = useState()
 
+    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+
     const clickGrabar = (e) => {
 
         const idGrabar = e.classList[1]
@@ -77,7 +80,9 @@ export const CustomProvider = ({ children }) => {
      };
 
 return (
-    <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement }}> 
+    <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
+        urlBackend_Produccion, urlBackend_Desarrollo
+    }}> 
         { children } 
     </Context.Provider>
     )
