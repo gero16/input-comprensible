@@ -9,6 +9,54 @@ export const CustomProvider = ({ children }) => {
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
+    const fetchTitulos = async (titulos, setTitulos) => {
+        let arrayTitulos = []
+        const url = `${urlBackend_Desarrollo}/titulos`
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        //console.log(resp.data)
+        if(!resp) console.log("No hay data")
+
+        resp.data.forEach(element => {
+            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo]
+            arrayTitulos.push(titulo)
+           // console.log(arrayTitulos)
+        });
+
+
+        console.log(arrayTitulos)
+        setTitulos(arrayTitulos)
+        //console.log(arrayTitulos)
+        return titulos
+    }
+
+    const fetchCapitulos = async (titulo) => {
+        let arrayCapitulos = []
+        const url = `${urlBackend_Desarrollo}/titulos/${titulo}`
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        //console.log(resp.data)
+        if(!resp) console.log("No hay data")
+      
+        return resp.data
+    }
+
     const clickGrabar = (e) => {
 
         const idGrabar = e.classList[1]
@@ -81,7 +129,7 @@ export const CustomProvider = ({ children }) => {
 
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
-        urlBackend_Produccion, urlBackend_Desarrollo
+        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos
     }}> 
         { children } 
     </Context.Provider>

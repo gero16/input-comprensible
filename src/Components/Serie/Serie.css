@@ -1,0 +1,10 @@
+.ul-capitulos {
+    display: flex;
+    justify-content: center;
+}
+.li-capitulos {
+    background-color: rgb(44, 43, 43);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}

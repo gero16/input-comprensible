@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import  "./navbar.css"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import { Context } from "../../context/context";
 
 
 const Navbar = () => {
-    const [data, setData] = useState([])
+    const [titulos, setTitulos] = useState([])
     const navigate = useNavigate()
-    
-    let { usuario } = useParams();
+    const { fetchTitulos } = useContext(Context)
 
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
@@ -19,39 +19,13 @@ const Navbar = () => {
        }
     }
 
-    const transformarTitulo = (titulo) => {
-        const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")
+    const transformarMinuscula = (texto) => {
+        const nuevo = texto.toLocaleLowerCase().split(" ").join("-")
         return nuevo
     }
 
-    let arrayTitulos = []
-    const fetchData = async () => {
-        const url = `${urlBackend_Desarrollo}/titulos`
-        const response = await fetch(url,  
-            {
-                method: 'GET',
-                headers: new Headers({
-                    "Origin": "https://localhost:5173",
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        const resp= await response.json();
-        //console.log(resp.data)
-        if(!resp) console.log("No hay data")
-
-        resp.data.forEach(element => {
-            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada]
-            arrayTitulos.push(titulo)
-           // console.log(arrayTitulos)
-        });
-
-        setData(arrayTitulos)
-        //console.log(arrayTitulos)
-        return data
-    }
     useEffect(() => {
-        fetchData()
+        fetchTitulos(titulos, setTitulos)
     }, [])
     
     return (
@@ -76,12 +50,12 @@ const Navbar = () => {
                 </li>
 
                 {
-                    data 
+                    titulos 
                         ? 
-                        data.map((element, key) => {
+                        titulos.map((element, key) => {
                             return (
                             <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
-                              
+    
                                     {
                                         element[2] === "pelicula"
                                         ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
@@ -95,10 +69,8 @@ const Navbar = () => {
                                             {
                                                element[3].map((elemento, key) => 
                                                 <li key={key}> 
-                                                    <NavLink to={`/series/${element[1]}/${transformarTitulo(elemento)}`} > 
-
+                                                    <NavLink to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} > 
                                                         <span className="temporada-serie"> {elemento} </span>
-                                                        
                                                     </NavLink>
                                                 </li>
                                                 )

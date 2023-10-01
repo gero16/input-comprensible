@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Index /> ,
       },
       {
-        path: "/series/:serie/:temporada",
+        path: "/series/:serie/:temporada/:capitulo",
         element:  <ContenedorSerie />,
       },
       {
