@@ -1,5 +1,5 @@
 import { useState, createContext } from "react"
-
+import 'react-audio-voice-recorder';
 export const Context = createContext()
 
 export const CustomProvider = ({ children }) => {
@@ -57,29 +57,6 @@ export const CustomProvider = ({ children }) => {
         return resp.data
     }
 
-    const clickGrabar = (e) => {
-
-        const idGrabar = e.classList[1]
-        const claseNombrePelicula = e.classList[2]
-        // Tengo un error si toco el btn pausar 
-        if(claseNombrePelicula) {
-            const separar = claseNombrePelicula.split("-")
-            const nombrePelicula = separar[2]
-            const arrayRecorders = document.querySelectorAll(`.audio-recorder-${nombrePelicula}`)
-            const separar2 = idGrabar.split("-")
-            const idSolo = separar2[2]
-
-            const nodelistToArray = Array.apply(null, arrayRecorders);
-            nodelistToArray.forEach(element => {
-                if(!element.classList.contains(`audio-recorder-${idSolo}`))  element.style.display = "none"
-                if(element.children[0].title === "Save recording") element.style.display = "flex"
-            });
-            setIdGrabar(e.classList[1])
-        }
-
-        
-    }
-
     const evaluar = (subtitulo, id) => {
         const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
         const subtituloIncorrecto = document.querySelector(`.${subtitulo}-mostrar-${id}`)
@@ -100,6 +77,28 @@ export const CustomProvider = ({ children }) => {
     const mostrarRespuesta = (subtitulo, id) => {
         const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
         valorAudio.classList.toggle("ocultar")
+    }
+
+    const clickGrabar = (e) => {
+        const idGrabar = e.classList[1]
+        const claseNombrePelicula = e.classList[2]
+        // Tengo un error si toco el btn pausar 
+        if(claseNombrePelicula) {
+            const separar = claseNombrePelicula.split("-")
+            const nombrePelicula = separar[2]
+            const arrayRecorders = document.querySelectorAll(`.audio-recorder-${nombrePelicula}`)
+            const separar2 = idGrabar.split("-")
+            const idSolo = separar2[2]
+
+            const nodelistToArray = Array.apply(null, arrayRecorders);
+            nodelistToArray.forEach(element => {
+                if(!element.classList.contains(`audio-recorder-${idSolo}`))  element.style.display = "none"
+                if(element.children[0].title === "Save recording") element.style.display = "flex"
+            });
+            setIdGrabar(e.classList[1])
+        }
+        console.log(idGrabar)
+        
     }
 
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed

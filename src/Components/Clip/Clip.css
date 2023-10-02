@@ -1,3 +1,9 @@
+.div-grabaciones {
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+
 iframe {
     width: 450px;
     height: 250px;
@@ -9,3 +15,4 @@ iframe {
         height: 200px;
     }
   }
+

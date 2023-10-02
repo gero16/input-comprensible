@@ -14,7 +14,6 @@ const Serie = ({data, serie, temporada ,capitulos }) => {
     }
     const separarCapitulo = (capitulo) => {
         const result = capitulo.split(" ")
-        console.log(result)
         return result[1]
     }
 

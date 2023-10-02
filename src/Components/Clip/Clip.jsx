@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
+import "./Clip.css"
 
 const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacion }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
@@ -18,6 +19,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
   
 
     const guardarGrabacion = async (elemento, indice) => {
+
         const url = 
             categoria === "serie"
             ? `http://localhost:3000/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
@@ -148,7 +150,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                     
                         />
                         
-                        <div className={`div-grabaciones-${subtitulo}`}>
+                        <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
                             { grabacion
                                 ? <embed src={grabacion} className={`grabacionBD-${subtitulo}-${index}`} /> 
