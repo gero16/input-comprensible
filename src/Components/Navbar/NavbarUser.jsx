@@ -61,7 +61,7 @@ const NavbarUser = () => {
     
     return (
         <>
-        <nav className="flex-between">
+        <nav className="navbar flex-between">
 
             <ul className="lista-navbar flex-center-column">
                 <li className="p-2 li-nav">

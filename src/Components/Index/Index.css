@@ -42,7 +42,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+.button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -53,11 +53,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+.button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.button:focus,
+.button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -69,7 +69,7 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  .button {
     background-color: #f9f9f9;
   }
 }
@@ -126,7 +126,7 @@ input {
   padding: 5px;
 }
 
-button {
+.button {
   margin: 10px;
 }
 
@@ -168,17 +168,6 @@ button {
   color: white;
 }
 
-.subtitulo-scream {
-  color: #F33333;
-}
-
-.subtitulo-bojack {
-  color: #6e3602;
-}
-
-.subtitulo-simpsons {
-  color: rgb(221, 201, 16);
-}
 
 .imagen-titulo {
   margin-top: 100px;

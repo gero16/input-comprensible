@@ -5,6 +5,8 @@ import Navbar from '../Navbar/Navbar'
 import Serie from './Serie';
 import NavbarUser from '../Navbar/NavbarUser';
 import { Context } from '../../context/context';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 //import fetch from 'node-fetch'
 
 const ContenedorSerie = () => {
@@ -86,6 +88,7 @@ const ContenedorSerie = () => {
         fetchData()
     }, [capitulo])
  
+
     return (
         <>
             {
@@ -96,7 +99,13 @@ const ContenedorSerie = () => {
                 </>
                 :  <> 
                 <Navbar/>
-                <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos}/>      
+                <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos}/>    
+
+                <footer id='footer'>
+                    <Pagination count={6} variant="outlined" />
+               
+                </footer>
+               
                 </>
             } 
         </>

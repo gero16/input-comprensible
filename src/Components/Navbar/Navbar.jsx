@@ -35,7 +35,7 @@ const Navbar = () => {
     
     return (
         <>
-        <nav className="flex-between">
+        <nav className="navbar flex-between">
             <ul className="lista-navbar flex-center-column">
                 <li className="p-2 li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 
@@ -56,7 +56,7 @@ const Navbar = () => {
                 { titulos 
                     ? titulos.map((element, key) => {
                         return (
-                            <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
+                            <li key={key}  className="li-nav" onClick={(e)=> seleccionarSerie(e)} >
 
                                 { element[2] === "pelicula"
                                     ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
@@ -64,11 +64,11 @@ const Navbar = () => {
                                     </NavLink>
                             
                                     : <> 
-                                        <span className="link-serie"> {element[0]} </span> 
+                                        <span className="link-serie span-link"> {element[0]} </span> 
                                         <ul className="inactive"> 
                                         {
                                             element[3].map((elemento, key) => 
-                                            <li key={key}> 
+                                            <li key={key} className="li-nav"> 
                                                 <NavLink 
                                                     to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} 
                                                     className={"temporada-serie"}
