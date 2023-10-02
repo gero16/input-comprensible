@@ -72,7 +72,21 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
         if(!resp) console.log("No hay data")
         
     }
+    
+    const separarCapitulo = (capitulo) => {
+        const result = capitulo.split("-")
+        return result
+    }
+    
+    const formatearCapitulo = (capitulo) => {
+        const result = separarCapitulo(capitulo)
+        const resultado = result[0].charAt(0).toUpperCase() + result[0].slice(1)
+        const resultadoFinal = `${resultado} ${result[1]}`
+        console.log(resultadoFinal)
+        return resultadoFinal
+    }
 
+    
     /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
@@ -87,9 +101,9 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     return (
         <>
             <article className={`article-video `} id={id}>
+                {capitulo ? <h2> {formatearCapitulo(capitulo)} </h2> : ""}
     
                 <section className="section-video">
-                {capitulo ? <h3> Capitulo {capitulo} </h3> : ""}
 
                     <section className="section-audio">
                             
