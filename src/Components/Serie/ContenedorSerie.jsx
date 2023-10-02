@@ -22,7 +22,7 @@ const ContenedorSerie = () => {
     const [capituloSeleccionado, setCapituloSeleccionado] = useState([])
  
     const fetchGrabaciones = async (clips) => {
-        const url = `http://localhost:3000/grabaciones/series/${serie}/temporada/${temporada}/${usuario}`
+        const url = `${ urlBackend_Desarrollo }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
         const response = await fetch(url,  
             {
                 method: 'GET',
@@ -48,7 +48,7 @@ const ContenedorSerie = () => {
     }
 
     const fetchData = async () => {
-        const url = `${urlBackend_Desarrollo}/serie/${serie}/temporada/${temporada}/${capitulo}`
+        const url = `${ urlBackend_Desarrollo }/serie/${serie}/temporada/${temporada}/${capitulo}`
 
         const response = await fetch(url,  
             {

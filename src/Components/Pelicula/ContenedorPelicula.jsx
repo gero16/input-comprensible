@@ -13,7 +13,7 @@ const ContenedorPelicula = () => {
     let [data, setData] = useState([])
 
     const fetchGrabaciones = async (clips) => {
-        const url = `http://localhost:3000/grabaciones/${pelicula}/${usuario}`
+        const url = `${ urlBackend_Desarrollo }/grabaciones/${pelicula}/${usuario}`
         const response = await fetch(url,  
             {
                 method: 'GET',

@@ -22,8 +22,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
         const url = 
             categoria === "serie"
-            ? `http://localhost:3000/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `http://localhost:3000/agregar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Desarrollo }/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Desarrollo }/agregar-grabacion/${subtitulo}/${usuario}`
 
             console.log(url)
         const objetoGrabacion = {
@@ -51,8 +51,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     const actualizarGrabacion = async (elemento, indice) => {
         const url = 
             categoria === "serie"
-            ? `http://localhost:3000/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `http://localhost:3000/actualizar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Desarrollo }/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Desarrollo }/actualizar-grabacion/${subtitulo}/${usuario}`
             
         const objetoGrabacion = {
                 "fecha": "2023-09-27",
@@ -116,8 +116,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                     
                         <input type="text" className={`input-${ subtitulo }-${ index }`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
-                        <button onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
-                        <button onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
+                        <button className="button" onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
+                        <button className="button" onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
 
                     </section>
 
@@ -161,11 +161,11 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
                             {
                                 document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
-                                    ? <button onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
+                                    ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
                                         Actualizar Grabación 
                                       </button>
                                 
-                                    : <button onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
+                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
                                         Guardar Grabación 
                                       </button>
                             }
