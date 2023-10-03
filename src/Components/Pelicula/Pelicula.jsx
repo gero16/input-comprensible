@@ -1,11 +1,14 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Clip from "../Clip/Clip"
 import { useParams } from "react-router-dom";
+import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula } = useParams();
+    const { transformarMayuscula } = useContext(Context)
+
     let arrayAudios = []
-    //console.log(data)
+    console.log(data)
     useEffect(() => {
         if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
             if(data.videos) {
@@ -29,6 +32,7 @@ const Pelicula = ({data}) => {
 
     return (
         <>
+            <h1> { transformarMayuscula(pelicula) } </h1>
             <img src={data.imagen} className={`imagen-${data.subtitulo}`} alt="" />
             <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
                 <section className='flex-center'>

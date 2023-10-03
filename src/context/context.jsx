@@ -103,30 +103,6 @@ export const CustomProvider = ({ children }) => {
 
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
     const addAudioElement = (blob, subtitulo, id) => {
-       /*
-      let reader = new FileReader();
-      reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
-  
-      reader.onload = function() {
-        // ANTES con localStorage - if(found && `audio-mic-${id}` === idGrabar ){ 
-        if(`audio-mic-${id}` === idGrabar ){ 
-            const aud = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
-            console.log(aud)
-            console.log(reader.result)
-            aud.src = reader.result
-            const grabacion = {
-                grabacion : reader.result,
-                usuario: "anonimus",
-                id_usuario: "1GagaF",
-                id_clip: id,
-
-            }
-            localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
-        }
-      }
-      */
-      
-
       if(`audio-mic-${id}` === idGrabar ){ 
         const url = URL.createObjectURL(blob);
         const audio = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
@@ -142,12 +118,25 @@ export const CustomProvider = ({ children }) => {
         }
         localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
     }
-    
+  }
+
+  const separarTexto = (texto, separador) => {
+    const result = texto.split(separador)
+    return result
+}
+
+  const transformarMayuscula = (texto) => {
+    const result = separarTexto(texto, "-")
+        const primeraPalabra = result[0].charAt(0).toUpperCase() + result[0].slice(1)
+        const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
+        const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
+        console.log(resultadoFinal)
+        return resultadoFinal
   }
 
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
-        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos
+        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula
     }}> 
         { children } 
     </Context.Provider>

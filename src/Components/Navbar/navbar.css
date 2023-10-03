@@ -10,10 +10,11 @@ ul {
   flex-direction: column;
 }
 
+h1 {
+  margin: 0px;
+}
+
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
     z-index: 10;
     padding: 10px 15px 10px 0px; 
     background-color: #242424be;

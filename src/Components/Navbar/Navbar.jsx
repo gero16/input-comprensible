@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import  "./navbar.css"
+import  "./Navbar.css"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
@@ -36,7 +36,7 @@ const Navbar = () => {
     
     return (
         <>
-        <nav className="navbar flex-between">
+        <nav className="nav flex-between">
             <ul className="lista-navbar flex-center-column">
                 <li className="p-2 li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 

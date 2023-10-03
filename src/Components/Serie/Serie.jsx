@@ -1,10 +1,12 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Clip from "../Clip/Clip"
 import "./Serie.css"
 import { useNavigate } from "react-router-dom"
+import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate()
+    const { transformarMayuscula } = useContext(Context)
     //console.log(data)
     let numTemporada = temporada.split("-")
 
@@ -16,21 +18,6 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         const result = capitulo.split(" ")
         return result[1]
     }
-
-       
-    const separarCapitulo2 = (capitulo) => {
-        const result = capitulo.split("-")
-        return result
-    }
-    
-    const formatearCapitulo = (capitulo) => {
-        const result = separarCapitulo2(capitulo)
-        const resultado = result[0].charAt(0).toUpperCase() + result[0].slice(1)
-        const resultadoFinal = `${resultado} ${result[1]}`
-        console.log(resultadoFinal)
-        return resultadoFinal
-    }
-
 
 
     return (
@@ -52,7 +39,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
             </section>
 
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
-                    <h2> {  formatearCapitulo(capitulo) } </h2>
+                    <h2> {  transformarMayuscula(capitulo) } </h2>
                 <section className='flex-center'>
                     
                     {

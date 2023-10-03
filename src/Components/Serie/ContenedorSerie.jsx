@@ -10,10 +10,7 @@ import Pagination from '@mui/material/Pagination';
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchCapitulos } = useContext(Context)
-    
-    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
-    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+    const { fetchCapitulos, urlBackend_Produccion } = useContext(Context)
     
     const [data, setData] = useState([])
     const [season, setSeason] = useState([])
