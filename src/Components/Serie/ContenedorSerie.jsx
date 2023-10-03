@@ -6,7 +6,6 @@ import Serie from './Serie';
 import NavbarUser from '../Navbar/NavbarUser';
 import { Context } from '../../context/context';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 //import fetch from 'node-fetch'
 
 const ContenedorSerie = () => {
@@ -22,7 +21,7 @@ const ContenedorSerie = () => {
     const [capituloSeleccionado, setCapituloSeleccionado] = useState([])
  
     const fetchGrabaciones = async (clips) => {
-        const url = `${ urlBackend_Desarrollo }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
+        const url = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
         const response = await fetch(url,  
             {
                 method: 'GET',
@@ -48,7 +47,7 @@ const ContenedorSerie = () => {
     }
 
     const fetchData = async () => {
-        const url = `${ urlBackend_Desarrollo }/serie/${serie}/temporada/${temporada}/${capitulo}`
+        const url = `${ urlBackend_Produccion }/serie/${serie}/temporada/${temporada}/${capitulo}`
 
         const response = await fetch(url,  
             {
@@ -95,14 +94,14 @@ const ContenedorSerie = () => {
                 usuario ?
                 <> 
                     <NavbarUser />
-                    <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos} />      
+                    <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo} />      
                 </>
                 :  <> 
                 <Navbar/>
-                <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos}/>    
+                <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
 
                 <footer id='footer'>
-                    <Pagination count={6} variant="outlined" />
+                    <Pagination count={6} variant="outlined"  size="large" />
                
                 </footer>
                

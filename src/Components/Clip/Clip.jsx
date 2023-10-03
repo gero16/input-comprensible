@@ -4,7 +4,7 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 
-const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacion }) => {
+const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
     let {  usuario, temporada } = useParams();
   
@@ -17,13 +17,12 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     const separarDificultad = dificultad.split("-")
     const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
   
-
     const guardarGrabacion = async (elemento, indice) => {
 
         const url = 
             categoria === "serie"
-            ? `${ urlBackend_Desarrollo }/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `${ urlBackend_Desarrollo }/agregar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Produccion }/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Produccion }/agregar-grabacion/${subtitulo}/${usuario}`
 
             console.log(url)
         const objetoGrabacion = {
@@ -51,8 +50,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     const actualizarGrabacion = async (elemento, indice) => {
         const url = 
             categoria === "serie"
-            ? `${ urlBackend_Desarrollo }/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `${ urlBackend_Desarrollo }/actualizar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Produccion }/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Produccion }/actualizar-grabacion/${subtitulo}/${usuario}`
             
         const objetoGrabacion = {
                 "fecha": "2023-09-27",
@@ -74,19 +73,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
         if(!resp) console.log("No hay data")
         
     }
-    
-    const separarCapitulo = (capitulo) => {
-        const result = capitulo.split("-")
-        return result
-    }
-    
-    const formatearCapitulo = (capitulo) => {
-        const result = separarCapitulo(capitulo)
-        const resultado = result[0].charAt(0).toUpperCase() + result[0].slice(1)
-        const resultadoFinal = `${resultado} ${result[1]}`
-        console.log(resultadoFinal)
-        return resultadoFinal
-    }
+ 
 
     
     /** Grabaciones me esta dando problemaaaaaaaa  **/
@@ -102,8 +89,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
     return (
         <>
-            <article className={`article-video `} id={id}>
-                {capitulo ? <h2> {formatearCapitulo(capitulo)} </h2> : ""}
+            <article className={`article-video `} id={`id-BD-${id}`}>
+              
     
                 <section className="section-video">
 
@@ -116,8 +103,11 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                     
                         <input type="text" className={`input-${ subtitulo }-${ index }`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
-                        <button className="button" onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
-                        <button className="button" onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
+                        <section className="flex-between">
+                            <button className="button" onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
+
+                            <button className="button" onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
+                        </section>
 
                     </section>
 
@@ -131,7 +121,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                    />
 
 
-                    <section className="" id={`grabar-${ subtitulo }-${ index }`} onClick={(e) => clickGrabar(e.target)}>
+                    <section id={`grabar-${ subtitulo }-${ index }`} onClick={(e) => clickGrabar(e.target)}>
+                      
                         <h4> Grabar Audio </h4>
                         <AudioRecorder 
                             onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
@@ -147,17 +138,21 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                                 AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo}`,
                                 AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
                             }} 
-                    
+
                         />
+                    
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
-                            { grabacion
-                                ? <embed src={grabacion} className={`grabacionBD-${subtitulo}-${index}`} /> 
-                                : <div> No hay grabaciones </div> 
+                            { grabacionBD
+                                ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} /> 
+                                : <div> Aun no hay grabación para este clip </div> 
                             }
 
-                            <embed src={""}className={`grabacion-${subtitulo}-${index}`}  />
+                        
+                            <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
+                            
+                            
 
                             {
                                 document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
@@ -166,7 +161,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                                       </button>
                                 
                                     : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
-                                        Guardar Grabación 
+                                        Guardar Grabacion
                                       </button>
                             }
                             

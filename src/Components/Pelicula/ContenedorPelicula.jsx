@@ -13,7 +13,7 @@ const ContenedorPelicula = () => {
     let [data, setData] = useState([])
 
     const fetchGrabaciones = async (clips) => {
-        const url = `${ urlBackend_Desarrollo }/grabaciones/${pelicula}/${usuario}`
+        const url = `${ urlBackend_Produccion }/grabaciones/${pelicula}/${usuario}`
         const response = await fetch(url,  
             {
                 method: 'GET',
@@ -39,7 +39,7 @@ const ContenedorPelicula = () => {
        return arrayClips
     }
     const fetchData = async () =>{
-        const response = await fetch(`${ urlBackend_Desarrollo }/pelicula/${ pelicula }`);
+        const response = await fetch(`${ urlBackend_Produccion }/pelicula/${ pelicula }`);
         const resp= await response.json();
         if(!resp) console.log("No hay data")
         const respuesta = await fetchGrabaciones(resp.data)

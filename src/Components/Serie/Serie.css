@@ -1,21 +1,47 @@
 .ul-capitulos {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
+
+.span-link {
+    transition: 0.3s;
+   font-weight: 500;
+   text-decoration: inherit;
+ }
+ 
 .li-capitulos {
     background-color: rgb(44, 43, 43);
     border-radius: 10px;
     padding: 30px;
+    margin: 10px;
     cursor: pointer;
+    transition: 0.3s;
+   font-weight: 500;
+   text-decoration: inherit;
+   color: white;
 }
 
-.serie-capitulos {
-    margin-top: 100px;
+.li-capitulos:hover {
+    transition: 0.3s;
+    border: 1px solid #dedee2;
+    filter: brightness(90%);
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
 }
+
+
+  .li-capitulos:focus,
+  .li-capitulos:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
 
 #footer {
     position: relative;
     bottom: 0;
+    display: flex;
+    justify-content: center;
    
 }
 

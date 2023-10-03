@@ -11,7 +11,7 @@ export const CustomProvider = ({ children }) => {
 
     const fetchTitulos = async (titulos, setTitulos) => {
         let arrayTitulos = []
-        const url = `${urlBackend_Desarrollo}/titulos`
+        const url = `${urlBackend_Produccion}/titulos`
         const response = await fetch(url,  
             {
                 method: 'GET',
@@ -40,7 +40,7 @@ export const CustomProvider = ({ children }) => {
 
     const fetchCapitulos = async (titulo) => {
         let arrayCapitulos = []
-        const url = `${urlBackend_Desarrollo}/titulos/${titulo}`
+        const url = `${urlBackend_Produccion}/titulos/${titulo}`
         const response = await fetch(url,  
             {
                 method: 'GET',
@@ -103,7 +103,7 @@ export const CustomProvider = ({ children }) => {
 
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
     const addAudioElement = (blob, subtitulo, id) => {
-        console.log(blob)
+       /*
       let reader = new FileReader();
       reader.readAsDataURL(blob); // convierte el blob a base64 y llama a onload
   
@@ -124,7 +124,26 @@ export const CustomProvider = ({ children }) => {
             localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
         }
       }
-     };
+      */
+      
+
+      if(`audio-mic-${id}` === idGrabar ){ 
+        const url = URL.createObjectURL(blob);
+        const audio = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
+        audio.src = url;
+        audio.controls = true;       
+
+        const grabacion = {
+            grabacion : url,
+            usuario: "anonimus",
+            id_usuario: "1GagaF",
+            id_clip: id,
+
+        }
+        localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
+    }
+    
+  }
 
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,

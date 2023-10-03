@@ -1,11 +1,11 @@
 import './Index.css'
 import Navbar from '../Navbar/Navbar'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Context } from '../../context/context'
 
 function App() {
-
-  console.log(import.meta.env.VITE_URL_BACKEND)   
+  const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
   const navigate = useNavigate()
   
    useEffect(() => {

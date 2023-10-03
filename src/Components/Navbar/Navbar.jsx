@@ -10,6 +10,7 @@ const Navbar = () => {
 
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+    console.log(urlBackend_Produccion)
 
     const seleccionarSerie = (e) => {
        

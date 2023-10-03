@@ -1,17 +1,21 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Context } from "../../context/context"
 
 const IniciarSesion = () => {
+    const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
     const navigate = useNavigate()
+    console.log(urlBackend_Produccion)
     
     const [sesion, setSesion] = useState({
         correo : "",
         password: "",
     })
-    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+
     console.log(sesion)
+
     const fetchIniciarSesion = async (usuario) => {
-        const response = await fetch(`${urlBackend_Desarrollo}/usuario/iniciar-sesion`,  
+        const response = await fetch(`${ urlBackend_Desarrollo }/usuario/iniciar-sesion`,  
             {
                 method: 'POST',
                 headers: new Headers({

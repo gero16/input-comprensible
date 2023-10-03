@@ -14,7 +14,7 @@ const Registro = () => {
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
     const fetchRegistrarse = async (usuario) => {
-        const response = await fetch(`${urlBackend_Desarrollo}/usuario/agregar-usuario`,  
+        const response = await fetch(`${urlBackend_Produccion}/usuario/agregar-usuario`,  
             {
                 method: 'POST',
                 headers: new Headers({

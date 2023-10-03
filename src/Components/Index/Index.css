@@ -213,38 +213,3 @@ ul {
   list-style: none;
 }
 
-.section-video {
-  margin: 15px 10px;
-
-}
-
-
-.article-video {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.frase {
-  max-width: 360px;
-  height: 75px;
-}
-
-.section-audio {
-  margin: 0px 0px 10px 0px;
-}
-
-.span-link {
-   transition: 0.3s;
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-.span-link:hover {
-  transition: 0.3s;
-  filter: brightness(90%);
-  -webkit-transform:scale(1.1);
-  transform:scale(1.1);
-  color: white;
-}
