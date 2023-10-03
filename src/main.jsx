@@ -12,7 +12,6 @@ import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarCli
 import Registro from './Components/Usuario/Registro';
 import IniciarSesion from './Components/Usuario/Sesion';
 import Usuario from './Components/Usuario/Usuario';
-//import GrabarAudioContainer from './Components/GrabarAudio/GrabarAudioContainer';
 
 
 const router = createBrowserRouter([
@@ -44,12 +43,6 @@ const router = createBrowserRouter([
         path: "/iniciar-sesion",
         element:  <IniciarSesion />,
       },
-      /*
-      {
-        path: "/grabar-audio",
-        element:  <GrabarAudio />,
-      },
-      */
       {
         path: "/usuario/:usuario",
         element:  <Usuario />,
