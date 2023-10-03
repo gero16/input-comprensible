@@ -10,7 +10,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
   
     const recorderControls = useAudioRecorder()
     const [grabaciones, setGrabaciones] = useState([])
-    const [grabacionesPrueba, setGrabacionesPrueba] = useState([])
+
     const [records, setRecords] = useState()
     //const [width, setWidth] = useState(window.innerWidth);
 
@@ -78,20 +78,20 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     
     /** Grabaciones me esta dando problemaaaaaaaa  **/
     useEffect(() => {
+
         if(JSON.parse(localStorage.getItem(subtitulo))) { 
             //console.log(JSON.parse(localStorage.getItem(subtitulo)))
             setGrabaciones(JSON.parse(localStorage.getItem(subtitulo)))
         }
         console.log(records)
+        console.log(document.querySelector(".grabacion-bojack-horseman-0"))
       }, [])
 
-    
+ 
 
     return (
         <>
-            <article className={`article-video `} id={`id-BD-${id}`}>
-              
-    
+            <article className={`article-video`} id={`id-BD-${id}`}>
                 <section className="section-video">
 
                     <section className="section-audio">
@@ -112,19 +112,20 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                     </section>
 
 
-                    <iframe 
-                        width="400" 
-                        height="230" 
-                        src={video}
-                        title="YouTube video player"  
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                   />
-
-
-                    <section id={`grabar-${ subtitulo }-${ index }`} onClick={(e) => clickGrabar(e.target)}>
+                    <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
+                            
+                        <iframe 
+                            width="400" 
+                            height="230" 
+                            src={video}
+                            title="YouTube video player"  
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        />
                       
-                        <h4> Grabar Audio </h4>
-                        <AudioRecorder 
+                        
+                        <div className="flex-center">
+                            <span className="grabar-audio"> Grabar Audio - </span>
+                            <AudioRecorder 
                             onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
                             recorderControls={recorderControls}
                             audioTrackConstraints={{
@@ -141,6 +142,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
                         />
                     
+                        </div>
+                       
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
@@ -150,10 +153,10 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                             }
 
                         
-                            <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
+                            <div className={`div-grabacion-${subtitulo}-${index}`}>
+                                <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
+                            </div>
                             
-                            
-
                             {
                                 document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
                                     ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
@@ -161,7 +164,13 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                                       </button>
                                 
                                     : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
-                                        Guardar Grabacion
+                                       {
+                                        document.querySelector(`.grabacionBD-${subtitulo}-${index}`) &&  document.querySelector(`.grabacion-${subtitulo}-${index}`).src===""
+                                        ? ""
+                                        : "Guardar Grabacion"                                        
+                                       }
+                                   
+                                       
                                       </button>
                             }
                             

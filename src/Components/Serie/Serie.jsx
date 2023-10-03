@@ -51,7 +51,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                 </ul>
             </section>
 
-            <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
                     <h2> {  formatearCapitulo(capitulo) } </h2>
                 <section className='flex-center'>
                     
