@@ -9,10 +9,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     let {  usuario, temporada } = useParams();
   
     const recorderControls = useAudioRecorder()
-    
-
-    const [records, setRecords] = useState([])
-    //const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(window.innerWidth);
+    console.log(width)
 
     const separarDificultad = dificultad.split("-")
     const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
@@ -101,33 +99,36 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                             
+                            {
+                               
+
+                            }
                         <iframe 
-                            width="400" 
-                            height="230" 
+                            width={ width > 1300 ? "430" : "350"} 
+                            height={ width > 1300 ? "230" : "200"} 
                             src={video}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         />
                       
                         
-                        <div className="flex-center">
-                            <span className="grabar-audio"> Grabar Audio - </span>
+                        <div className={ width > 1300 ? "flex-center" : ""}>
+                            <span className="grabar-audio"> { width > 1300 ? "Grabar Audio -" : "Grabar Audio -"} </span>
                             <AudioRecorder 
-                            onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
-                            recorderControls={recorderControls}
-                            audioTrackConstraints={{
-                                noiseSuppression: true,
-                                echoCancellation: true,
-                                channelCount:true,
-                            }} 
-                            downloadFileExtension="mp3"
-                            showVisualizer={true}
-                            classes={{
-                                AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo}`,
-                                AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
-                            }} 
-
-                        />
+                                onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
+                                recorderControls={recorderControls}
+                                audioTrackConstraints={{
+                                    noiseSuppression: true,
+                                    echoCancellation: true,
+                                    channelCount:true,
+                                }} 
+                                downloadFileExtension="mp3"
+                                showVisualizer={true}
+                                classes={{
+                                    AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo} audio-recorder`,
+                                    AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
+                                }} 
+                            />
                     
                         </div>
                        
@@ -136,7 +137,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                            
                             { grabacionBD
                                 ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} /> 
-                                : <div> Aun no hay grabación para este clip </div> 
+                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este clip </div> 
                             }
 
                         

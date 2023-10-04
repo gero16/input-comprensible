@@ -69,4 +69,9 @@ audio {
 
 .grabar-audio {
   font-weight: 700;
+  
+}
+
+.div-nohay-grabaciones {
+  margin: 5px;
 }
