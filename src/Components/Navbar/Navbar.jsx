@@ -6,11 +6,7 @@ import { Context } from "../../context/context";
 
 const Navbar = () => {
     const [titulos, setTitulos] = useState([])
-    const { fetchTitulos } = useContext(Context)
-
-    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
-    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
-    console.log(urlBackend_Produccion)
+    const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
 
     const seleccionarSerie = (e) => {
        

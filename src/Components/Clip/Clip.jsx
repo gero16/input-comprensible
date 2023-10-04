@@ -5,13 +5,13 @@ import { Context } from "../../context/context"
 import "./Clip.css"
 
 const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD }) => {
-    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement } = useContext(Context)
+    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage } = useContext(Context)
     let {  usuario, temporada } = useParams();
   
     const recorderControls = useAudioRecorder()
-    const [grabaciones, setGrabaciones] = useState([])
+    
 
-    const [records, setRecords] = useState()
+    const [records, setRecords] = useState([])
     //const [width, setWidth] = useState(window.innerWidth);
 
     const separarDificultad = dificultad.split("-")
@@ -73,22 +73,9 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
         if(!resp) console.log("No hay data")
         
     }
- 
 
-    
-    /** Grabaciones me esta dando problemaaaaaaaa  **/
-    useEffect(() => {
-
-        if(JSON.parse(localStorage.getItem(subtitulo))) { 
-            //console.log(JSON.parse(localStorage.getItem(subtitulo)))
-            setGrabaciones(JSON.parse(localStorage.getItem(subtitulo)))
-        }
-        console.log(records)
-        console.log(document.querySelector(".grabacion-bojack-horseman-0"))
-      }, [])
-
- 
-
+    console.log(grabacionLocalStorage)
+    console.log(grabacionLocalStorage.grabacion)
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -165,9 +152,9 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                                 
                                     : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
                                        {
-                                        document.querySelector(`.grabacionBD-${subtitulo}-${index}`) &&  document.querySelector(`.grabacion-${subtitulo}-${index}`).src===""
-                                        ? ""
-                                        : "Guardar Grabacion"                                        
+                                         grabacionLocalStorage.grabacion === `grabacion-${subtitulo}-${index}` 
+                                        ?    "Guardar Grabacion"   
+                                        :    ""      
                                        }
                                    
                                        

@@ -6,6 +6,11 @@ export const CustomProvider = ({ children }) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const [idGrabar, setIdGrabar] = useState()
 
+    const [grabacionLocalStorage, setGrabacionLocalStorage] =  useState({
+        grabacion: '',
+        storage: false,
+      });
+
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
@@ -116,6 +121,10 @@ export const CustomProvider = ({ children }) => {
             id_clip: id,
 
         }
+
+        setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
+
+        
         localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
     }
   }
@@ -130,13 +139,13 @@ export const CustomProvider = ({ children }) => {
         const primeraPalabra = result[0].charAt(0).toUpperCase() + result[0].slice(1)
         const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
         const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
-        console.log(resultadoFinal)
         return resultadoFinal
   }
 
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
-        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula
+        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
+        grabacionLocalStorage
     }}> 
         { children } 
     </Context.Provider>

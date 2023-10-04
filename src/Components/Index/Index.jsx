@@ -10,6 +10,9 @@ function App() {
   
    useEffect(() => {
     const sesion = localStorage.getItem("sesion");
+    const hola = localStorage.getItem('sex-education-0')
+    console.log(hola)
+    
     if(sesion) navigate(`/usuario/${sesion}`)
    
 
