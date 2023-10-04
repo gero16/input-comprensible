@@ -48,3 +48,11 @@
 #footer button {
     color: whitesmoke;
 }
+
+.serie-capitulos {
+  margin : 10px;
+}
+
+.header-serie {
+  padding: 10px;
+}

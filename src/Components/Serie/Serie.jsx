@@ -1,13 +1,15 @@
 import { useContext, useEffect } from "react"
 import Clip from "../Clip/Clip"
 import "./Serie.css"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate()
+    let { titulo } = useParams();
     const { transformarMayuscula } = useContext(Context)
-    //console.log(data)
+
+    //console.log(data) 
     let numTemporada = temporada.split("-")
 
     const transformarMinuscula = (texto) => {
@@ -19,27 +21,31 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         return result[1]
     }
 
+    console.log(data)
 
     return (
         <>
-            <img src={`/src/assets/${data.subtitulo}.png`} alt="" className={`imagen-titulo imagen-${data.subtitulo}`} />
-           
-            <section className="serie-capitulos">
-                <h1>Temporada {numTemporada[1]} - Capitulos </h1>
-                <ul className="ul-capitulos">
-                        { capitulos.map((element, key) => {
-                            return (
-                                <li className="li-capitulos" onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
-                                    {separarCapitulo(element)}
-                                </li>
-                            )
-                        })}
-                   
-                </ul>
-            </section>
+            
 
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
+                <header className="header-serie">
+                    <h1> {data.length > 0 ?  ` ${data[0].titulo} - Temporada ${numTemporada[1]} `  : ""} </h1>
+            
                     <h2> {  transformarMayuscula(capitulo) } </h2>
+                
+
+                    <ul className="ul-capitulos">
+                            { capitulos.map((element, key) => {
+                                return (
+                                    <li className="li-capitulos" onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
+                                        {separarCapitulo(element)}
+                                    </li>
+                                )
+                            })}
+                    
+                    </ul>
+                </header>
+                  
                 <section className='flex-center'>
                     
                     {

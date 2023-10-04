@@ -113,7 +113,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                       
                         
                         <div className={ width > 1300 ? "flex-center" : ""}>
-                            <span className="grabar-audio"> { width > 1300 ? "Grabar Audio -" : "Grabar Audio -"} </span>
+                            <span className="grabar-audio"> { width > 1300 ? "Grabar Audio" : "Grabar Audio -"} </span>
                             <AudioRecorder 
                                 onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
                                 recorderControls={recorderControls}

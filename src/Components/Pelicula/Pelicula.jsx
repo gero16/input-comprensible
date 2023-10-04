@@ -32,9 +32,9 @@ const Pelicula = ({data}) => {
 
     return (
         <>
-            <h1> { transformarMayuscula(pelicula) } </h1>
             <img src={data.imagen} className={`imagen-${data.subtitulo}`} alt="" />
-            <article className={`article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <h1> { transformarMayuscula(pelicula) } </h1>
                 <section className='flex-center'>
                     {
                         data
