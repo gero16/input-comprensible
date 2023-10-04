@@ -5,15 +5,17 @@ import { Context } from "../../context/context"
 import "./Clip.css"
 
 const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD }) => {
-    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage } = useContext(Context)
+    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
-  
     const recorderControls = useAudioRecorder()
+
     const [width, setWidth] = useState(window.innerWidth);
-    console.log(width)
 
     const separarDificultad = dificultad.split("-")
-    const newDificultad = dificultad.includes("-") ? `${separarDificultad[0]} ${separarDificultad[1]}` : separarDificultad
+    const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1)
+    const segundaPalabra = dificultad.includes("-") ? separarDificultad[1].charAt(0).toUpperCase() + separarDificultad[1].slice(1) : " "
+    const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra
+    
   
     const guardarGrabacion = async (elemento, indice) => {
 
@@ -72,8 +74,6 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
         
     }
 
-    console.log(grabacionLocalStorage)
-    console.log(grabacionLocalStorage.grabacion)
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -137,7 +137,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                            
                             { grabacionBD
                                 ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} /> 
-                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este clip </div> 
+                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
                             }
 
                         

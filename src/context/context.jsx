@@ -135,7 +135,7 @@ export const CustomProvider = ({ children }) => {
 }
 
   const transformarMayuscula = (texto) => {
-    const result = separarTexto(texto, "-")
+        const result = separarTexto(texto, "-")
         const primeraPalabra = result[0].charAt(0).toUpperCase() + result[0].slice(1)
         const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
         const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
