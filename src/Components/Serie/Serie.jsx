@@ -1,12 +1,11 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Clip from "../Clip/Clip"
 import "./Serie.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
-    const navigate = useNavigate()
-    let { titulo } = useParams();
+    const navigate = useNavigate();
     const { transformarMayuscula } = useContext(Context)
 
     //console.log(data) 
@@ -21,8 +20,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         return result[1]
     }
 
-    console.log(data)
-
+   
     return (
         <>
             
@@ -37,7 +35,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                     <ul className="ul-capitulos">
                             { capitulos.map((element, key) => {
                                 return (
-                                    <li className="li-capitulos" onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
+                                    <li className="li-capitulos" 
+                                        onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
                                         {separarCapitulo(element)}
                                     </li>
                                 )

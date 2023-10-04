@@ -10,13 +10,14 @@ import Pagination from '@mui/material/Pagination';
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchCapitulos, urlBackend_Produccion } = useContext(Context)
+    const { fetchCapitulos, urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
+        paginaActual, paginaClips, mostrarClipsPagina  } = useContext(Context)
     
     const [data, setData] = useState([])
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
-    const [capituloSeleccionado, setCapituloSeleccionado] = useState([])
- 
+    
+   
     const fetchGrabaciones = async (clips) => {
         const url = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
         const response = await fetch(url,  
@@ -58,7 +59,9 @@ const ContenedorSerie = () => {
         const resp= await response.json();
         if(!resp) console.log("No hay data")
         const respuesta = await fetchGrabaciones(resp.data)
-        //console.log(respuesta)
+        console.log(respuesta)
+
+        mostrarClipsPagina(respuesta, 0, 19)
             
         setData(respuesta)
         return data;
@@ -72,36 +75,43 @@ const ContenedorSerie = () => {
     useEffect(() => {
         fetchData()
         traerCapitulos()
-        //setCapituloSeleccionado(capitulo)
+        setearClipsPagina()
     }, [serie])
 
     useEffect(() => {
         fetchData()
         setSeason(temporada)
+        setearClipsPagina()
     }, [temporada])
 
     useEffect(() => {
         fetchData()
+        setearClipsPagina()
     }, [capitulo])
- 
+
+   
+    useEffect(() => {
+        setearClipsPagina(data)
+        console.log(paginaClips)
+    }, [paginaActual])
 
     return (
         <>
-            {
-                usuario ?
-                <> 
+            { usuario 
+                ? <> 
                     <NavbarUser />
-                    <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo} />      
+                    <Serie data={data} cambiarPagina={cambiarPagina} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo} />      
                 </>
                 :  <> 
-                <Navbar/>
-                <Serie data={data} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
+                    <Navbar/>
+                    <Serie data={paginaClips} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
 
-                <footer id='footer'>
-                    <Pagination count={6} variant="outlined"  size="large" />
-               
-                </footer>
-               
+                    <footer id='footer'>
+                        <button onClick={() => cambiarPagina(1)}>  1  </button>
+                        <button onClick={() => cambiarPagina(2)}>  2  </button>
+                        <button onClick={() => cambiarPagina(3)}>  3  </button>
+                    </footer>
+                
                 </>
             } 
         </>

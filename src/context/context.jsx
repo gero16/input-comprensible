@@ -5,6 +5,8 @@ export const Context = createContext()
 export const CustomProvider = ({ children }) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const [idGrabar, setIdGrabar] = useState()
+    const [paginaActual, setPaginaActual] = useState([1])
+    const [paginaClips, setPaginaClips] = useState([])
 
     const [grabacionLocalStorage, setGrabacionLocalStorage] =  useState({
         grabacion: '',
@@ -35,9 +37,6 @@ export const CustomProvider = ({ children }) => {
             arrayTitulos.push(titulo)
            // console.log(arrayTitulos)
         });
-
-
-        console.log(arrayTitulos)
         setTitulos(arrayTitulos)
         //console.log(arrayTitulos)
         return titulos
@@ -73,7 +72,6 @@ export const CustomProvider = ({ children }) => {
             valorAudio.classList.toggle("ocultar")
             subtituloIncorrecto.classList.add("ocultar")
         } else {
-            console.log("No son iguales!")
             valorAudio.classList.add("ocultar")
             subtituloIncorrecto.classList.toggle("ocultar")
         }
@@ -102,8 +100,6 @@ export const CustomProvider = ({ children }) => {
             });
             setIdGrabar(e.classList[1])
         }
-        console.log(idGrabar)
-        
     }
 
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
@@ -141,11 +137,31 @@ export const CustomProvider = ({ children }) => {
         const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
         return resultadoFinal
   }
+  const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
+    let paginas = []
+    for (let index = primerValor; index < ultimoValor; index++) {
+        if(datos[index] === undefined) break
+        paginas.push(datos[index])
+    }      
+    setPaginaClips(paginas, primerValor, ultimoValor)
 
+    return paginaClips
+}
+  const setearClipsPagina = (data) => {
+    if(paginaActual === 1) mostrarClipsPagina(data, 0, 19)
+    if(paginaActual === 2) mostrarClipsPagina(data, 20, 39)
+    if(paginaActual === 3) mostrarClipsPagina(data, 40, 59)
+    if(paginaActual === 4) mostrarClipsPagina(data, 60, 79)
+    if(paginaActual === 5) mostrarClipsPagina(data, 80, 99)
+    }
+    const cambiarPagina = (numero) => {
+        setPaginaActual(numero)
+        return paginaActual
+    }
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
         urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
-        grabacionLocalStorage
+        grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina 
     }}> 
         { children } 
     </Context.Provider>
