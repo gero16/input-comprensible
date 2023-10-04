@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import  "./Navbar.css"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import { Context } from "../../context/context";
 
 
 const NavbarUser = () => {
-    const [data, setData] = useState([])
+    const [titulos, setTitulos] = useState([])
     const navigate = useNavigate()
+    const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
     
     let { usuario } = useParams();
-
-    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
-    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
     const seleccionarSerie = (e) => {
        if(!e.target.classList.contains("temporada-serie")) {
@@ -29,34 +28,8 @@ const NavbarUser = () => {
         navigate("/")
     }
 
-    let arrayTitulos = []
-    const fetchData = async () => {
-        const url = `${urlBackend_Desarrollo}/titulos`
-        const response = await fetch(url,  
-            {
-                method: 'GET',
-                headers: new Headers({
-                    "Origin": "https://localhost:5173",
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        const resp= await response.json();
-        //console.log(resp.data)
-        if(!resp) console.log("No hay data")
-
-        resp.data.forEach(element => {
-            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada]
-            arrayTitulos.push(titulo)
-           // console.log(arrayTitulos)
-        });
-
-        setData(arrayTitulos)
-        //console.log(arrayTitulos)
-        return data
-    }
     useEffect(() => {
-        fetchData()
+        fetchTitulos(titulos, setTitulos)
     }, [])
     
     return (
@@ -74,9 +47,9 @@ const NavbarUser = () => {
                    
                 </li>
                 {
-                    data 
+                    titulos 
                         ? 
-                        data.map((element, key) => {
+                        titulos.map((element, key) => {
                             return (
                             <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
                               

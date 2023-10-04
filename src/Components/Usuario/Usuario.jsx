@@ -1,12 +1,21 @@
-import { Outlet as Page } from "react-router-dom"
+import { Outlet as Page, useLocation, useParams  } from "react-router-dom"
 import NavbarUser from "../Navbar/NavbarUser"
 
 const Usuario = () => {
+    const location = useLocation()
+    let { usuario } = useParams();
+
+    useParams
     return (
         <>
 
             <NavbarUser> </NavbarUser>
-            <h1> Bienvenido </h1>
+            {
+                location.pathname === `/usuario/${usuario}` 
+                ?  <h1> Bienvenido </h1>
+                : <> </>
+            }
+           
             <Page> </Page>
            
         </>

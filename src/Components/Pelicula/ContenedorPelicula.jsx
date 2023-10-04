@@ -59,7 +59,6 @@ const ContenedorPelicula = () => {
             {
                 usuario ?
                 <> 
-                    <NavbarUser />
                     <Pelicula data={data} />      
                 </>
                 :  <> 
