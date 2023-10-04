@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element:  <Usuario />,
         children: [
           {
-            path: "series/:serie/:temporada",
+            path: "series/:serie/:temporada/:capitulo",
             element:  <ContenedorSerie />,
           },
           {

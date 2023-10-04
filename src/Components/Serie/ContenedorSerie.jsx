@@ -75,18 +75,18 @@ const ContenedorSerie = () => {
     useEffect(() => {
         fetchData()
         traerCapitulos()
-        setearClipsPagina()
+        setearClipsPagina(data)
     }, [serie])
 
     useEffect(() => {
         fetchData()
         setSeason(temporada)
-        setearClipsPagina()
+        setearClipsPagina(data)
     }, [temporada])
 
     useEffect(() => {
         fetchData()
-        setearClipsPagina()
+        setearClipsPagina(data)
     }, [capitulo])
 
    
@@ -95,11 +95,11 @@ const ContenedorSerie = () => {
         console.log(paginaClips)
     }, [paginaActual])
 
+
     return (
         <>
             { usuario 
                 ? <> 
-                    <NavbarUser />
                     <Serie data={data} cambiarPagina={cambiarPagina} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo} />      
                 </>
                 :  <> 

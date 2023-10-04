@@ -33,18 +33,19 @@ const Navbar = () => {
     return (
         <>
         <nav className="nav flex-between">
+
             <ul className="lista-navbar flex-center-column">
-                <li className="p-2 li-nav">
+                <li className="li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
-                <li className="p-2 li-nav">
+                <li className="li-nav">
                     <NavLink to={`/iniciar-sesion`} className="flex-center-column"> 
                         <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
                     </NavLink>
                 </li>
-                <li className="p-2 li-nav">
+                <li className="li-nav">
                     <NavLink to={`/registro`} className="flex-center-column"> 
                         <span className="span-link "> Registrarse </span>
                     </NavLink>
@@ -57,7 +58,7 @@ const Navbar = () => {
 
                                 { element[2] === "pelicula"
                                     ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
-                                        <span className="span-link "> {element[0]} </span>
+                                        <span className="span-link"> {element[0]} </span>
                                     </NavLink>
                             
                                     : <> 
@@ -65,7 +66,7 @@ const Navbar = () => {
                                         <ul className="inactive"> 
                                         {
                                             element[3].map((elemento, key) => 
-                                            <li key={key} className="li-nav"> 
+                                            <li className="li-nav" key={key} > 
                                                 <NavLink 
                                                     to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} 
                                                     className={"temporada-serie"}

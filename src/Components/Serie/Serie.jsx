@@ -28,8 +28,14 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
                 <header className="header-serie">
                     <h1> {data.length > 0 ?  ` ${data[0].titulo} - Temporada ${numTemporada[1]} `  : ""} </h1>
-            
+
+
+
+                    {/*
+        
                     <h2> {  transformarMayuscula(capitulo) } </h2>
+
+                    */}
                 
 
                     <ul className="ul-capitulos">

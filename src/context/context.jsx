@@ -126,8 +126,10 @@ export const CustomProvider = ({ children }) => {
   }
 
   const separarTexto = (texto, separador) => {
-    const result = texto.split(separador)
-    return result
+    if(texto.split(separador)) {
+        const result = texto.split(separador)
+        return result
+    }
 }
 
   const transformarMayuscula = (texto) => {

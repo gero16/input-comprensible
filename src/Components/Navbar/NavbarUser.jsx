@@ -34,15 +34,15 @@ const NavbarUser = () => {
     
     return (
         <>
-        <nav className="navbar flex-between">
+        <nav className="nav flex-between">
 
             <ul className="lista-navbar flex-center-column">
-                <li className="p-2 li-nav">
+                <li className="li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
-                <li className="p-2 li-nav" onClick={(e) => cerrarSesion() }>
+                <li className="li-nav" onClick={(e) => cerrarSesion() }>
                     <span className="span-link "> Cerrar Sesión </span>
                    
                 </li>
@@ -56,19 +56,20 @@ const NavbarUser = () => {
                                     {
                                         element[2] === "pelicula"
                                         ? <NavLink to={`/usuario/${usuario}/peliculas/${element[1]}`} className="flex-center-column"> 
-                                            <span className="span-link "> {element[0]} </span>
+                                            <span className="span-link"> {element[0]} </span>
                                         </NavLink>
                                 
-                                        :   
-                                        <> 
-                                            <span> {element[0]} </span> 
+                                        : <> 
+                                            <span className="link-serie span-link"> {element[0]} </span> 
                                             <ul className="inactive"> 
                                             {
                                                element[3].map((elemento, key) => 
-                                                <li key={key}> 
-                                                    <NavLink to={`/usuario/${usuario}/series/${element[1]}/${transformarTitulo(elemento)}`} > 
-
-                                                        <span className="temporada-serie"> {elemento} </span>
+                                                <li className="li-nav" key={key}> 
+                                                    <NavLink 
+                                                        to={`/usuario/${usuario}/series/${element[1]}/${transformarTitulo(elemento)}/capitulo-1`} 
+                                                        className={"temporada-serie"}
+                                                        > 
+                                                        {elemento}
                                                         
                                                     </NavLink>
                                                 </li>
@@ -76,10 +77,7 @@ const NavbarUser = () => {
                                             }
                                             </ul>
                                         </>
-                                    }
-                                      
-                                  
-                           
+                                    }               
                             </li>
 
                             )

@@ -5,7 +5,6 @@ const Usuario = () => {
     const location = useLocation()
     let { usuario } = useParams();
 
-    useParams
     return (
         <>
 
