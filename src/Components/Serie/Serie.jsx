@@ -29,14 +29,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                 <header className="header-serie">
                     <h1> {data.length > 0 ?  ` ${data[0].titulo} - Temporada ${numTemporada[1]} `  : ""} </h1>
 
-
-
-                    {/*
-        
                     <h2> {  transformarMayuscula(capitulo) } </h2>
-
-                    */}
-                
 
                     <ul className="ul-capitulos">
                             { capitulos.map((element, key) => {

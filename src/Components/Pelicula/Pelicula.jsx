@@ -62,3 +62,6 @@ const Pelicula = ({data}) => {
 }
 
 export default Pelicula
+
+
+

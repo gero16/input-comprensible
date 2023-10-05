@@ -1,15 +1,15 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
 import NavbarUser from '../Navbar/NavbarUser';
+import { Context } from '../../context/context';
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
-    const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
-    const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
-  
+    const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
+        paginaActual, paginaClips, mostrarClipsPagina  } = useContext(Context)
     let [data, setData] = useState([])
 
     const fetchGrabaciones = async (clips) => {
@@ -44,30 +44,34 @@ const ContenedorPelicula = () => {
         if(!resp) console.log("No hay data")
         const respuesta = await fetchGrabaciones(resp.data)
         console.log(respuesta)
-
+        mostrarClipsPagina(respuesta, 0, 19)  
         setData(respuesta)
         return data;
     }
 
     useEffect(() => {
-        fetchData() ;
-        
+        fetchData();
+        setearClipsPagina(data)
     }, [pelicula])
     
+    useEffect(() => {
+        setearClipsPagina(data)
+    }, [paginaActual])
     return (
         <>
             {
-                usuario ?
-                <> 
-                    <Pelicula data={data} />      
-                </>
-                :  <> 
-                <Navbar/>
-                <Pelicula data={data}  />      
+                usuario 
+                ? <> <Pelicula data={data} /> </>
+                : <> 
+                    <Navbar/>
+                    <Pelicula data={paginaClips}  />      
                 </>
             }
-          
-           
+            <footer id='footer'>
+                <button onClick={() => cambiarPagina(1)}>  1  </button>
+                <button onClick={() => cambiarPagina(2)}>  2  </button>
+                <button onClick={() => cambiarPagina(3)}>  3  </button>
+            </footer>
         </>
     )
 }

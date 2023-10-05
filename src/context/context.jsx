@@ -117,10 +117,7 @@ export const CustomProvider = ({ children }) => {
             id_clip: id,
 
         }
-
         setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
-
-        
         localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
     }
   }
@@ -132,12 +129,18 @@ export const CustomProvider = ({ children }) => {
     }
 }
 
-  const transformarMayuscula = (texto) => {
+  const transformarMayuscula = (texto, palabras) => {
         const result = separarTexto(texto, "-")
         const primeraPalabra = result[0].charAt(0).toUpperCase() + result[0].slice(1)
-        const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
-        const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
+        if(result.length > 1) {
+            const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
+            const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
+            return resultadoFinal
+        }
+
+        const resultadoFinal = `${primeraPalabra}`
         return resultadoFinal
+      
   }
   const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
     let paginas = []
@@ -158,8 +161,10 @@ export const CustomProvider = ({ children }) => {
     }
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
+
         return paginaActual
     }
+
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
         urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
