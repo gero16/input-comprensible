@@ -153,12 +153,12 @@ export const CustomProvider = ({ children }) => {
     return paginaClips
 }
   const setearClipsPagina = (data) => {
-    if(paginaActual === 1) mostrarClipsPagina(data, 0, 19)
-    if(paginaActual === 2) mostrarClipsPagina(data, 20, 39)
-    if(paginaActual === 3) mostrarClipsPagina(data, 40, 59)
-    if(paginaActual === 4) mostrarClipsPagina(data, 60, 79)
-    if(paginaActual === 5) mostrarClipsPagina(data, 80, 99)
-    }
+    if(paginaActual === 1) mostrarClipsPagina(data, 0, 20)
+    if(paginaActual === 2) mostrarClipsPagina(data, 21, 41)
+    if(paginaActual === 3) mostrarClipsPagina(data, 42, 62)
+    if(paginaActual === 4) mostrarClipsPagina(data, 63, 83)
+    if(paginaActual === 5) mostrarClipsPagina(data, 84, 104)
+}
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
 

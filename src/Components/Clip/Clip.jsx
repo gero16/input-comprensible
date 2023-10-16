@@ -4,7 +4,7 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 
-const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD }) => {
+const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD, numero_clip }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
     const recorderControls = useAudioRecorder()
@@ -77,6 +77,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
+
                 <section className="section-video">
 
                     <section className="section-audio">
@@ -99,13 +100,9 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
 
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                             
-                            {
-                               
-
-                            }
                         <iframe 
-                            width={ width > 1300 ? "430" : "350"} 
-                            height={ width > 1300 ? "230" : "200"} 
+                            width={ width > 1200 ? "430" : "320"} 
+                            height={ width > 1200 ? "230" : "180"} 
                             src={video}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

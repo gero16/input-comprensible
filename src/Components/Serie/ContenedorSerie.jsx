@@ -13,7 +13,7 @@ const ContenedorSerie = () => {
     const { fetchCapitulos, urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
         paginaActual, paginaClips, mostrarClipsPagina  } = useContext(Context)
     
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]) 
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
     
@@ -106,12 +106,12 @@ const ContenedorSerie = () => {
                     <Navbar/>
                     <Serie data={paginaClips} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
 
-                    <footer id='footer'>
-                        <button onClick={() => cambiarPagina(1)}>  1  </button>
-                        <button onClick={() => cambiarPagina(2)}>  2  </button>
-                        <button onClick={() => cambiarPagina(3)}>  3  </button>
+                    <footer className='footer'>
+                        <button className='button-pagina' onClick={() => cambiarPagina(1)}>  1  </button>
+                        <button  className='button-pagina' onClick={() => cambiarPagina(2)}>  2  </button>
+                        <button  className='button-pagina' onClick={() => cambiarPagina(3)}>  3  </button>
                     </footer>
-                
+
                 </>
             } 
         </>

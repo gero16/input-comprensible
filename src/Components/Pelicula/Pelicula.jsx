@@ -49,6 +49,7 @@ const Pelicula = ({data}) => {
                                 frase={element.frase}
                                 dificultad={element.dificultad}
                                 grabacion={element.grabacion}
+                                numero_clip={element["numero_clip"]}
                             />
                         )
                         })

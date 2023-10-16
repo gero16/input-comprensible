@@ -23,7 +23,6 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
    
     return (
         <>
-            
 
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
                 <header className="header-serie">
@@ -62,6 +61,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                         index={key}
                                         grabacionBD={element.grabacion}
                                         categoria={element.categoria}
+                                        numero_clip={element["numero_clip"]}
                                     />
                                 )
                             })
