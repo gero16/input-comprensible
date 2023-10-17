@@ -21,7 +21,7 @@ const ContenedorSerie = () => {
     const [totalClips, setTotalClips] = useState(0) 
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
-    const [totalPaginas, setTotalPaginas] = useState([1]) 
+    const [totalPaginas, setTotalPaginas] = useState([]) 
     
    
     const fetchGrabaciones = async (clips) => {
@@ -126,6 +126,7 @@ const ContenedorSerie = () => {
 
                     <footer className='footer'>
                         { totalPaginas.map((element, key) => {
+                            console.log(element)
                                 return (
                                  
                                     <BotonPagina 

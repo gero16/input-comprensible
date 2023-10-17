@@ -157,8 +157,8 @@ export const CustomProvider = ({ children }) => {
 
 const cantidadPaginasHtml = (data) => { 
     let arrayPaginas = []
-    if(data.length > 22) arrayPaginas = [1]
-    if(data.length > 22 && data.length < 42) arrayPaginas = [1,2]
+    if(data.length <= 21) arrayPaginas = [1]
+    if(data.length > 21 && data.length < 42) arrayPaginas = [1,2]
     if(data.length > 43 && data.length < 63) arrayPaginas = [1,2,3]
     if(data.length > 64 && data.length < 74) arrayPaginas = [1,2,3,4]
     if(data.length > 75 && data.length < 85) arrayPaginas = [1,2,3,4,5]
