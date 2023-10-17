@@ -37,6 +37,7 @@ export const CustomProvider = ({ children }) => {
             arrayTitulos.push(titulo)
            // console.log(arrayTitulos)
         });
+        console.log(resp.data)
         setTitulos(arrayTitulos)
         //console.log(arrayTitulos)
         return titulos
@@ -161,7 +162,6 @@ export const CustomProvider = ({ children }) => {
 }
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
-
         return paginaActual
     }
 

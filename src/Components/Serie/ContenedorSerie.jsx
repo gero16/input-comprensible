@@ -59,7 +59,6 @@ const ContenedorSerie = () => {
         const resp= await response.json();
         if(!resp) console.log("No hay data")
         const respuesta = await fetchGrabaciones(resp.data)
-        console.log(respuesta)
 
         mostrarClipsPagina(respuesta, 0, 19)
             
@@ -92,7 +91,7 @@ const ContenedorSerie = () => {
    
     useEffect(() => {
         setearClipsPagina(data)
-        console.log(paginaClips)
+        console.log(paginaActual)
     }, [paginaActual])
 
 
@@ -107,9 +106,18 @@ const ContenedorSerie = () => {
                     <Serie data={paginaClips} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
 
                     <footer className='footer'>
-                        <button className='button-pagina' onClick={() => cambiarPagina(1)}>  1  </button>
-                        <button  className='button-pagina' onClick={() => cambiarPagina(2)}>  2  </button>
-                        <button  className='button-pagina' onClick={() => cambiarPagina(3)}>  3  </button>
+                        <button 
+                            className={`button-pagina ${paginaActual == 1 ? "button-selected" : ""  }`} 
+                            onClick={() => cambiarPagina(1)}>  1  
+                        </button>
+                        <button 
+                            className={`button-pagina ${paginaActual == 2 ? "button-selected" : ""  }`} 
+                            onClick={() => cambiarPagina(2)}>  2  
+                        </button>
+                        <button 
+                            className={`button-pagina ${paginaActual == 3 ? "button-selected" : ""  }`} 
+                            onClick={() => cambiarPagina(3)}>  3  
+                        </button>
                     </footer>
 
                 </>

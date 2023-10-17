@@ -77,6 +77,11 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
+            
+            {
+                /*<h3> Id {id} - Numero de clip {numero_clip}  </h3> */
+            }
+            
 
                 <section className="section-video">
 

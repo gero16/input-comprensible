@@ -207,7 +207,7 @@ ul {
 }
 .button-pagina {
   font-size: large;
-  border-radius: 50%;
+  border-radius: 5px;
   padding: 8px 12px;
   border: none;
   cursor: pointer;
@@ -220,4 +220,8 @@ ul {
   transition: ease-out 0.3s;
   transform: scale(1.15);
   filter: hue-rotate(30deg) brightness(65%);
+}
+
+.button-selected {
+  background-color: #1a1a1a;
 }
