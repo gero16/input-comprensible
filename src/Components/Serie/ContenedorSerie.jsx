@@ -6,16 +6,22 @@ import Serie from './Serie';
 import NavbarUser from '../Navbar/NavbarUser';
 import { Context } from '../../context/context';
 import Pagination from '@mui/material/Pagination';
+import BotonPagina from '../BotonPagina/BotonPagina';
 //import fetch from 'node-fetch'
+
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
     const { fetchCapitulos, urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-        paginaActual, paginaClips, mostrarClipsPagina  } = useContext(Context)
+        paginaActual, paginaClips, mostrarClipsPagina, cantidadPaginasHtml,
+    
+    } = useContext(Context)
     
     const [data, setData] = useState([]) 
+    const [totalClips, setTotalClips] = useState(0) 
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
+    const [totalPaginas, setTotalPaginas] = useState([1]) 
     
    
     const fetchGrabaciones = async (clips) => {
@@ -59,9 +65,10 @@ const ContenedorSerie = () => {
         const resp= await response.json();
         if(!resp) console.log("No hay data")
         const respuesta = await fetchGrabaciones(resp.data)
+        const arrayPaginas =  cantidadPaginasHtml(resp.data)
+        setTotalPaginas(arrayPaginas)
 
-        mostrarClipsPagina(respuesta, 0, 19)
-            
+        mostrarClipsPagina(respuesta, 0, 21)
         setData(respuesta)
         return data;
     }
@@ -99,25 +106,37 @@ const ContenedorSerie = () => {
         <>
             { usuario 
                 ? <> 
-                    <Serie data={data} cambiarPagina={cambiarPagina} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo} />      
+                    <Serie 
+                        data={data} 
+                        cambiarPagina={cambiarPagina} 
+                        temporada={temporada} 
+                        serie={serie} 
+                        capitulos={capitulos} 
+                        capitulo={capitulo} />      
                 </>
                 :  <> 
                     <Navbar/>
-                    <Serie data={paginaClips} temporada={temporada} serie={serie} capitulos={capitulos} capitulo={capitulo}/>    
+                    <Serie 
+                        data={paginaClips} 
+                        temporada={temporada} 
+                        serie={serie} 
+                        capitulos={capitulos} 
+                        capitulo={capitulo}
+                    />    
 
                     <footer className='footer'>
-                        <button 
-                            className={`button-pagina ${paginaActual == 1 ? "button-selected" : ""  }`} 
-                            onClick={() => cambiarPagina(1)}>  1  
-                        </button>
-                        <button 
-                            className={`button-pagina ${paginaActual == 2 ? "button-selected" : ""  }`} 
-                            onClick={() => cambiarPagina(2)}>  2  
-                        </button>
-                        <button 
-                            className={`button-pagina ${paginaActual == 3 ? "button-selected" : ""  }`} 
-                            onClick={() => cambiarPagina(3)}>  3  
-                        </button>
+                        { totalPaginas.map((element, key) => {
+                                return (
+                                 
+                                    <BotonPagina 
+                                        paginaActual={paginaActual}
+                                        cambiarPagina={cambiarPagina} 
+                                        numeroPagina={element}
+                                    /> 
+                                
+                                )
+                            })}
+                        
                     </footer>
 
                 </>

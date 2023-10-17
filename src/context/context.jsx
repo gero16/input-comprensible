@@ -7,7 +7,7 @@ export const CustomProvider = ({ children }) => {
     const [idGrabar, setIdGrabar] = useState()
     const [paginaActual, setPaginaActual] = useState([1])
     const [paginaClips, setPaginaClips] = useState([])
-
+    const [totalClips, setTotalClips] = useState(0) 
     const [grabacionLocalStorage, setGrabacionLocalStorage] =  useState({
         grabacion: '',
         storage: false,
@@ -145,6 +145,7 @@ export const CustomProvider = ({ children }) => {
   }
   const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
     let paginas = []
+    console.log(datos.length)
     for (let index = primerValor; index < ultimoValor; index++) {
         if(datos[index] === undefined) break
         paginas.push(datos[index])
@@ -153,13 +154,27 @@ export const CustomProvider = ({ children }) => {
 
     return paginaClips
 }
-  const setearClipsPagina = (data) => {
-    if(paginaActual === 1) mostrarClipsPagina(data, 0, 20)
-    if(paginaActual === 2) mostrarClipsPagina(data, 21, 41)
-    if(paginaActual === 3) mostrarClipsPagina(data, 42, 62)
-    if(paginaActual === 4) mostrarClipsPagina(data, 63, 83)
-    if(paginaActual === 5) mostrarClipsPagina(data, 84, 104)
+
+const cantidadPaginasHtml = (data) => { 
+    let arrayPaginas = []
+    if(data.length > 22) arrayPaginas = [1]
+    if(data.length > 22 && data.length < 42) arrayPaginas = [1,2]
+    if(data.length > 43 && data.length < 63) arrayPaginas = [1,2,3]
+    if(data.length > 64 && data.length < 74) arrayPaginas = [1,2,3,4]
+    if(data.length > 75 && data.length < 85) arrayPaginas = [1,2,3,4,5]
+    if(data.length > 86 && data.length < 106) arrayPaginas = [1,2,3,4,5,6]
+
+    return arrayPaginas
 }
+  const setearClipsPagina = (data) => {
+    if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
+    if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
+    if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
+    if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
+    if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
+}
+
+
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
         return paginaActual
@@ -168,7 +183,9 @@ export const CustomProvider = ({ children }) => {
 return (
     <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
         urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
-        grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina 
+        grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
+        cantidadPaginasHtml
+    
     }}> 
         { children } 
     </Context.Provider>
