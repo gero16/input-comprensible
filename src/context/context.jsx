@@ -13,6 +13,9 @@ export const CustomProvider = ({ children }) => {
         storage: false,
       });
 
+    const [totalPaginas, setTotalPaginas] = useState([]) 
+    const [data, setData] = useState([]) 
+
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
@@ -142,17 +145,18 @@ export const CustomProvider = ({ children }) => {
         const resultadoFinal = `${primeraPalabra}`
         return resultadoFinal
       
-  }
-  const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
-    let paginas = []
-    console.log(datos.length)
-    for (let index = primerValor; index < ultimoValor; index++) {
-        if(datos[index] === undefined) break
-        paginas.push(datos[index])
-    }      
-    setPaginaClips(paginas, primerValor, ultimoValor)
+}
 
-    return paginaClips
+const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
+let paginas = []
+console.log(datos.length)
+for (let index = primerValor; index < ultimoValor; index++) {
+    if(datos[index] === undefined) break
+    paginas.push(datos[index])
+}      
+setPaginaClips(paginas, primerValor, ultimoValor)
+
+return paginaClips
 }
 
 const cantidadPaginasHtml = (data) => { 
@@ -166,7 +170,8 @@ const cantidadPaginasHtml = (data) => {
 
     return arrayPaginas
 }
-  const setearClipsPagina = (data) => {
+
+const setearClipsPagina = (data) => {
     if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
     if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
     if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
@@ -174,18 +179,66 @@ const cantidadPaginasHtml = (data) => {
     if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
 }
 
+const cambiarPagina = (numero) => {
+    setPaginaActual(numero)
+    return paginaActual
+}
 
-    const cambiarPagina = (numero) => {
-        setPaginaActual(numero)
-        return paginaActual
-    }
+
+const fetchGrabaciones = async (clips, urlGrabaciones) => {
+  
+    const response = await fetch(urlGrabaciones,  
+        {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": "https://localhost:5173",
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+    const resp= await response.json();
+    if(!resp) console.log("No hay data")
+
+    let arrayClips = clips
+    //console.log(resp.grabaciones)
+    arrayClips.forEach(clip => {
+        resp.grabaciones.forEach((grabacion) => {
+            if(clip.id ===  grabacion.id_clip) {
+                clip.grabacion = grabacion.grabacion 
+            }
+        })
+    });
+   return arrayClips
+}
+
+const fetchClips = async (urlClips, urlGrabaciones) => {
+    const response = await fetch(urlClips,  
+        {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": "https://localhost:5173",
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+    const resp= await response.json();
+    if(!resp) console.log("No hay data")
+    const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
+    const arrayPaginas = cantidadPaginasHtml(resp.data)
+    setTotalPaginas(arrayPaginas)
+
+    mostrarClipsPagina(respuesta, 0, 21)
+    setData(respuesta)
+    console.log(data)
+    return data;
+}
 
 return (
-    <Context.Provider value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
-        urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
-        grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-        cantidadPaginasHtml
-    
+    <Context.Provider 
+        value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
+            urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
+            grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
+            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas
     }}> 
         { children } 
     </Context.Provider>
