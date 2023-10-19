@@ -94,7 +94,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
 
                         <span className={`bold ${dificultad} `}> {newDificultad} </span>
-                        <input type="text" className={`input-${ subtitulo }-${ index }`} />
+                        <input type="text" className={`input-${ subtitulo }-${ index } input-frase`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
 
                         <section className="flex-between">

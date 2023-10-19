@@ -87,3 +87,9 @@ footer button {
 iframe {
   border: 2px solid rgb(178, 182, 178);
 }
+
+.input-frase {
+  margin-top: 5px;
+  width: 80%;
+  padding: 8px;
+}

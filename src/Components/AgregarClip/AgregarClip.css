@@ -5,10 +5,28 @@ body {
 label {
  width: 300px;
 }
-input, select, option {
+
+.lista-formulario-clip {
+    font-size: large;
+}
+
+.lista-formulario-clip  input {
+    padding: 6px;
+    width: 480px;
+    font-size: large;
+ 
+}
+
+select {
     padding: 6px;
     font-size: large;
-    width: 480px;
+    width: 495px; /* No se porque no me tengo que ponerle 15 px mas para que quede igual que el 480px del input */
+}
+
+.lista-formulario-clip  label {
+    padding: 6px;
+    font-size: large;
+ 
 }
 
 #radio {
