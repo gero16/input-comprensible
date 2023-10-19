@@ -8,6 +8,11 @@ label {
 input, select, option {
     padding: 6px;
     font-size: large;
+    width: 450px;
+}
+
+#radio {
+    width: 50px;
 }
 
 li {
@@ -39,4 +44,9 @@ option{
 
 button {
     padding: 15px;
+}
+
+.div-categoria {
+    display: flex;
+    justify-content: center;
 }

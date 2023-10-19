@@ -1,22 +1,75 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "./AgregarClip.css"
 import Navbar from '../Navbar/Navbar'
+import { Context } from "../../context/context"
+import { useEffect } from "react"
 
 const ContenedorAgregarClip = () => {
+    const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
 
+    const [titulos, setTitulos] = useState([])
+    const [infoSerie, setInfoSerie] = useState({
+        capitulos: [],
+        temporadas: []
+    })
+    const [selected, setSelected] = useState('pelicula');
     const [clip, setClip] = useState({
         titulo : "",
-        subtittulo: "",
-        categoria: "",
+        subtitulo: "",
+        categoria: "pelicula",
         temporada: "",
         capitulo: "",
-        link: "",
+        link: "https://www.youtube.com/embed/",
         frase: "",
         dificultad: "easy"
     })
 
-    // elements.join('-')
-    console.log(clip)
+
+    useEffect(() => {
+        fetchTitulos(titulos, setTitulos)
+        console.log(titulos)
+        
+    }, [])
+
+    useEffect(() => {
+        console.log(titulos[3])
+        console.log(titulos[4])
+        const encontrarSerie = titulos.find((element) => element[1] === clip.titulo )
+        if(encontrarSerie) {
+            console.log(clip)
+            console.log(encontrarSerie[4])
+            setInfoSerie({
+                ...infoSerie,
+                capitulos : encontrarSerie[4],
+                temporadas : encontrarSerie[3]
+            })
+        }
+        
+
+        console.log(infoSerie)
+    }, [clip.categoria])
+
+    const seleccionarRadioButton = (event, categoria) => {
+        console.log(event.target.value);
+        setSelected(event.target.value);
+        if(categoria === "pelicula") {
+            setClip({ 
+                ...clip,
+                categoria : "pelicula",
+                temporada: "",
+                capitulo: "",
+                
+            })
+        }
+        if(categoria === "serie") {
+            setClip({ 
+                ...clip,
+                categoria : "serie"
+            })
+        }
+      }
+
+    
 
 
     return (
@@ -33,76 +86,100 @@ const ContenedorAgregarClip = () => {
                                 titulo : e.target.value,
                                 subtitulo: e.target.value.toLowerCase().split(" ").join("-")
                             })} 
+                            
                         >
-                            <option value="Shrek 2" selected> Shrek 2 </option>
-                            <option value="Peaky Blinders">  Peaky Blinders </option>
-                            <option value="Bojack Horseman"> Bojack Horseman </option>
-                            <option value="Scream 2022"> Scream (2022) </option>
+                            { titulos ?
+                                titulos.map((element, key) => {
+                                    return (
+                                        <option key={key} value={element[1]} defaultValue> {element[0]} </option>
+                                    )
+                                }) 
+                                : <> </>
+                            }
+                         
                         </select>
                     </li>
                     
                     <li>
                         <label htmlFor=""> Categoria </label>
 
-                        <div>
-                            <input type="radio"  name="categoria" value="pelicula" 
-                                onClick={(e) => setClip({ 
-                                    ...clip,
-                                    categoria : "pelicula",
-                                    temporada: "",
-                                    capitulo: "",
-                                    
-                                })} 
+                        <div className="div-categoria">
+                            <span>
+                                <input 
+                                    type="radio"  
+                                    name="categoria" 
+                                    value="pelicula" 
+                                    id="radio"  
+                                    checked={selected === 'pelicula'}
+                                    onChange={(e) => seleccionarRadioButton (e, "pelicula")} 
                                 />
-                
-                            <label htmlFor="html"> Pelicula </label>
-                            <input type="radio" name="categoria" value="serie" 
-                                onClick={(e) => setClip({ 
-                                    ...clip,
-                                    categoria : "serie"
-                                })} 
+                    
+                                <label htmlFor="html"> Pelicula </label>
+
+                            </span>
+                            <span>
+                                <input 
+                                    type="radio" 
+                                    name="categoria" 
+                                    value="serie" 
+                                    id="radio"  
+                                    checked={selected === 'serie'}
+                                    onChange={(e) => seleccionarRadioButton(e, "serie")} 
                                 />
-                            <label htmlFor="css">Serie </label>
+                                <label htmlFor="css">Serie </label>
+
+                            </span>
 
                         </div>
                     </li>
 
-                    <li>
-                        <label htmlFor=""> Temporada </label>
-                        {
-                            clip.categoria === "serie" 
-                                ?  
-                                <select name="select" >
-                                    <option value="temporada-1" selected> Temporda 1 </option>
-                                    <option value="temporada-2"> Temporada 2 </option>
-                                    <option value="temporada-3"> Temporada 3 </option>
-                                </select>
-                                :
-                                <select name="select" disabled>
-                                    <option value="temporada-1" selected> Temporda 1 </option>
-                                </select>
-                        }
-                     
-                       
-                    </li>
+                    {  clip.categoria === "serie" 
+                    ? <>
+                        <li>
+                            <label htmlFor=""> Temporada </label>
+                        
+                            
+                                
+                                    <select name="select" >
+                                        {
+                                       
+                                        infoSerie.temporadas.map((element, key) => {
+                                            return (
+                                                <option key={key} value={element} defaultValue> {element} </option>
+                                            )
+                                        }) 
+                                            
+                                        }
+                                    </select>
+                                
+                        </li>
+                        <li>
+                            <label htmlFor="">  Capitulo </label>
+                            <select name="select" >
+                                {
+                                    infoSerie.capitulos.map((element, key) => {
+                                        return (
+                                            <option key={key} value={element} defaultValue> {element} </option>
+                                        )
+                                    }) 
+                                }
+                            </select>
+                        </li>
 
-                    <li>
-                        <label htmlFor="">  Capitulo </label>
-                        {
-                            clip.categoria === "serie" 
-                                ?  <input type="number"  onChange={(e) => setClip({ ...clip, capitulo : e.target.value })} /> 
-                                :  <input type="number" disabled placeholder="1"/>
-                        }
-                    </li>
-
+                    
+                    </>
+                    : <> </>
+                    }
 
                     <li>
                         <label htmlFor=""> Link del video </label>
-                        <input type="text" name="link" 
-                             onChange={(e) => setClip({ 
+                        <input 
+                            type="text" name="link" 
+                            onChange={(e) => setClip({ 
                                 ...clip,
                                 link : e.target.value
                             })} 
+                            value={clip.link}
                         />
                     </li>
 
@@ -125,11 +202,11 @@ const ContenedorAgregarClip = () => {
                             })} 
                         
                         >
-                            <option value="very easy" >  very easy </option>
-                            <option value="easy" selected>  easy </option>
+                            <option value="very-easy" >  very easy </option>
+                            <option value="easy" defaultValue> easy </option>
                             <option value="medium"> medium  </option>
                             <option value="hard"> hard  </option>
-                            <option value="very hard"> very hard  </option>
+                            <option value="very-hard"> very hard  </option>
                         </select>
                     </li>
                     <li>
@@ -138,6 +215,14 @@ const ContenedorAgregarClip = () => {
                             type="text" 
                             onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} 
                             placeholder="Bojack1x01-10"
+                            />
+                    </li>
+                    <li>
+                        <label htmlFor=""> Numero del Clip </label>
+                        <input 
+                            type="number" 
+                            onChange={(e) => setClip({ ...clip, nnumero_clip: e.target.value })} 
+                            placeholder="10"
                             />
                     </li>
                     <li id="li-agregar-clip">

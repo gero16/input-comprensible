@@ -79,9 +79,10 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
             <article className={`article-video`} id={`id-BD-${id}`}>
             
             {
-                /*
+                /*   
                 <h3> Id {id} - Numero de clip {numero_clip}  </h3> 
                 */
+            
             }
             
 
@@ -108,9 +109,9 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                             
                         <iframe 
-                            width={ width > 1400 ? "430" : "350"} 
-                            height={ width > 1400 ? "230" : "190"} 
-                            src={video}
+                            width={ width > 1400 ? "440" : "350"} 
+                            height={ width > 1400 ? "240" : "190"} 
+                            src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         />
