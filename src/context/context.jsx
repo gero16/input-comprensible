@@ -239,8 +239,10 @@ return (
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
             cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas
-    }}> 
+            }}> 
+            
         { children } 
+
     </Context.Provider>
     )
 }

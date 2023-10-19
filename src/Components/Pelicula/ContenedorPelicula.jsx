@@ -9,48 +9,13 @@ import { Context } from '../../context/context';
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-        paginaActual, paginaClips, mostrarClipsPagina  } = useContext(Context)
-    let [data, setData] = useState([])
-
-    const fetchGrabaciones = async (clips) => {
-        const url = `${ urlBackend_Produccion }/grabaciones/${pelicula}/${usuario}`
-        const response = await fetch(url,  
-            {
-                method: 'GET',
-                headers: new Headers({
-                    "Origin": "https://localhost:5173",
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        const resp= await response.json();
-        if(!resp) console.log("No hay data")
-
-        let arrayClips = clips
-        arrayClips.forEach(clip => {
-            resp.grabaciones.forEach((grabacion) => {
-                if(clip.id ===  grabacion.id_clip) {
-                    clip.grabacion = grabacion.grabacion 
-                }
-            })
-        });
-        
-  
-       return arrayClips
-    }
-    const fetchData = async () =>{
-        const response = await fetch(`${ urlBackend_Produccion }/pelicula/${ pelicula }`);
-        const resp= await response.json();
-        if(!resp) console.log("No hay data")
-        const respuesta = await fetchGrabaciones(resp.data)
-        console.log(respuesta)
-        mostrarClipsPagina(respuesta, 0, 19)  
-        setData(respuesta)
-        return data;
-    }
+            paginaActual, paginaClips, fetchClips, data,   
+    } = useContext(Context)
+    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/${pelicula}/${usuario}`
+    const urlClips = `${ urlBackend_Produccion }/pelicula/${ pelicula }`
 
     useEffect(() => {
-        fetchData();
+        fetchClips(urlClips, urlGrabaciones);
         setearClipsPagina(data)
     }, [pelicula])
     
