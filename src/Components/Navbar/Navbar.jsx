@@ -27,7 +27,7 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        fetchTitulos()
+        fetchTitulos(titulos, setTitulos)
     }, [])
     
     return (

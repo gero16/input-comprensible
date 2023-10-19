@@ -3,7 +3,7 @@ body {
     font-size: large;
 }
 label {
- 
+ width: 300px;
 }
 input, select, option {
     padding: 6px;
@@ -19,27 +19,26 @@ li {
     margin: 10px;
 }
 
-option{
-   
-}
+
 
 .div-agregar-video {
-    margin-top: 110px;
+    margin-top: 0px;
 }
 
 .lista-formulario-clip {
-
+margin: 50px 0px;
    
 }
 
 .lista-formulario-clip li {
     display: flex;
     gap: 60px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #li-agregar-clip {
     justify-content: center;
+    margin: 30px;
 }
 
 button {
@@ -49,4 +48,5 @@ button {
 .div-categoria {
     display: flex;
     justify-content: center;
+    width: 450px;
 }
