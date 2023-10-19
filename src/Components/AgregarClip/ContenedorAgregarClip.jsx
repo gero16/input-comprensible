@@ -12,8 +12,11 @@ const ContenedorAgregarClip = () => {
         capitulos: [],
         temporadas: []
     })
-    const [selected, setSelected] = useState('pelicula');
+    const [categoriaSeleccionada, setCategoriaSelecionada] = useState('pelicula');
+    const [esSerie, setEsSerie] = useState(false);
+
     const [cantidadClips, setCantidadClips] = useState(0);
+    
 
     const [clip, setClip] = useState({
         titulo : "Scream 2022",
@@ -37,69 +40,79 @@ const ContenedorAgregarClip = () => {
                 })
             })
         const resp= await response.json();
-        console.log(response)
         if(!resp) console.log("No hay data")
-        console.log(resp.Cantidad)
         setCantidadClips(resp.Cantidad)
     }
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)
-
+        
         fetchCantidadClips(`${urlBackend_Produccion}/pelicula/scream-2022/cantidad`)
         setCantidadClips()
     }, [])
 
+
     useEffect(() => {
         const encontrarSerie = titulos.find((element) => element[1] === clip.titulo )
+       
         if(encontrarSerie) {
-            console.log(clip)
-            console.log(encontrarSerie[4])
             setInfoSerie({
                 ...infoSerie,
-                capitulos : encontrarSerie[4],
-                temporadas : encontrarSerie[3]
+                capitulos : encontrarSerie[4] ? encontrarSerie[4] : "",
+                temporadas : encontrarSerie[3] ? encontrarSerie[3] : "" 
             })
+            setEsSerie(false)
+            console.log(encontrarSerie)
+
+            if(encontrarSerie[4]) {
+                setEsSerie(true)
+                setCategoriaSelecionada("serie")
+                setClip({
+                    ...clip,
+                    categoria : "serie"
+                })
+            }
+            if(!encontrarSerie[4]) {
+                setCategoriaSelecionada("pelicula")
+                setClip({ 
+                    ...clip,
+                    categoria : "pelicula"
+                })
+            }
         }
-        
-
-        console.log(infoSerie)
-        fetchCantidadClips()
-        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`)
-        setCantidadClips()
-
-    }, [clip.categoria])
-
-    useEffect(() => {
+           
         fetchTitulos(titulos, setTitulos)
 
-        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`)
+        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+        const urlCantidadPelicula = `${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`
+        if(categoriaSeleccionada === "pelicula") fetchCantidadClips(urlCantidadPelicula)
+        if(categoriaSeleccionada === "serie")  fetchCantidadClips(urlCantidadSerie)
+      
+        setCantidadClips()
+        console.log(infoSerie)
+    }, [clip.subtitulo])
+
+    useEffect(() => {
+        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+        fetchCantidadClips(urlCantidadSerie)
         setCantidadClips()
         console.log(clip)
-    }, [clip])
+    }, [clip.serie])
 
+    useEffect(() => {
+        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+        fetchCantidadClips(urlCantidadSerie)
+        setCantidadClips()
+        console.log(clip)
 
-    const seleccionarRadioButton = (event, categoria) => {
-        console.log(event.target.value);
-        setSelected(event.target.value);
-        if(categoria === "pelicula") {
-            setClip({ 
-                ...clip,
-                categoria : "pelicula",
-                temporada: "",
-                capitulo: "",
-                
-            })
-        }
-        if(categoria === "serie") {
-            setClip({ 
-                ...clip,
-                categoria : "serie"
-            })
-        }
-      }
+    }, [clip.capitulo])
 
-    
+    useEffect(() => {
+        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+        fetchCantidadClips(urlCantidadSerie)
+        setCantidadClips()
+        console.log(clip)
+    }, [clip.temporada])
 
 
     return (
@@ -140,8 +153,7 @@ const ContenedorAgregarClip = () => {
                                     name="categoria" 
                                     value="pelicula" 
                                     id="radio"  
-                                    checked={selected === 'pelicula'}
-                                    onChange={(e) => seleccionarRadioButton (e, "pelicula")} 
+                                    checked={categoriaSeleccionada === 'pelicula'}
                                 />
                     
                                 <label htmlFor="html"> Pelicula </label>
@@ -153,8 +165,7 @@ const ContenedorAgregarClip = () => {
                                     name="categoria" 
                                     value="serie" 
                                     id="radio"  
-                                    checked={selected === 'serie'}
-                                    onChange={(e) => seleccionarRadioButton(e, "serie")} 
+                                    checked={categoriaSeleccionada === 'serie'}
                                 />
                                 <label htmlFor="css">Serie </label>
 
@@ -170,12 +181,20 @@ const ContenedorAgregarClip = () => {
                         
                             
                                 
-                                    <select name="select" >
+                                    <select name="select"  onChange={(e) => setClip({ 
+                                                    ...clip,
+                                                    temporada : e.target.value })}  >
                                         {
                                        
                                         infoSerie.temporadas.map((element, key) => {
+                                            let newTemporada = element.toLowerCase().split(" ")
                                             return (
-                                                <option key={key} value={element} defaultValue> {element} </option>
+                                                <option 
+                                                key={key} 
+                                                value={newTemporada.join("-")} 
+                                                defaultValue> 
+                                                {element} 
+                                            </option>
                                             )
                                         }) 
                                             
@@ -185,11 +204,20 @@ const ContenedorAgregarClip = () => {
                         </li>
                         <li>
                             <label htmlFor="">  Capitulo </label>
-                            <select name="select" >
+                            <select name="select"  onChange={(e) => setClip({ 
+                                                    ...clip,
+                                                    capitulo : e.target.value })}  >
                                 {
                                     infoSerie.capitulos.map((element, key) => {
+                                        let newCapitulo = element.toLowerCase().split(" ")
                                         return (
-                                            <option key={key} value={element} defaultValue> {element} </option>
+                                            <option 
+                                               
+                                                key={key} 
+                                                value={newCapitulo.join("-")}
+                                                defaultValue> 
+                                                {element} 
+                                            </option>
                                         )
                                     }) 
                                 }
@@ -262,6 +290,7 @@ const ContenedorAgregarClip = () => {
                     </li>
                 </ul>
             </div>
+
         </>
     )
 }
