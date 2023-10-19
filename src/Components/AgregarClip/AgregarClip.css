@@ -8,7 +8,7 @@ label {
 input, select, option {
     padding: 6px;
     font-size: large;
-    width: 450px;
+    width: 480px;
 }
 
 #radio {
@@ -48,5 +48,5 @@ button {
 .div-categoria {
     display: flex;
     justify-content: center;
-    width: 450px;
+    width: 480px;
 }

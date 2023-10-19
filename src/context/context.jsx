@@ -38,9 +38,9 @@ export const CustomProvider = ({ children }) => {
         resp.data.forEach(element => {
             const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo]
             arrayTitulos.push(titulo)
-           console.log(arrayTitulos)
+           //console.log(arrayTitulos)
         });
-        console.log(resp.data)
+        //console.log(resp.data)
         setTitulos(arrayTitulos)
         //console.log(arrayTitulos)
         return titulos

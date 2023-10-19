@@ -5,17 +5,19 @@ import { Context } from "../../context/context"
 import { useEffect } from "react"
 
 const ContenedorAgregarClip = () => {
-    const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
-
+    const { fetchTitulos, urlBackend_Produccion, fetchClips  } = useContext(Context)
+    
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
         capitulos: [],
         temporadas: []
     })
     const [selected, setSelected] = useState('pelicula');
+    const [cantidadClips, setCantidadClips] = useState(0);
+
     const [clip, setClip] = useState({
-        titulo : "",
-        subtitulo: "",
+        titulo : "Scream 2022",
+        subtitulo: "scream-2022",
         categoria: "pelicula",
         temporada: "",
         capitulo: "",
@@ -24,16 +26,31 @@ const ContenedorAgregarClip = () => {
         dificultad: "easy"
     })
 
+    const fetchCantidadClips = async (urlClips) => {
+        const response = await fetch(urlClips,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": "https://localhost:5173",
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        const resp= await response.json();
+        console.log(response)
+        if(!resp) console.log("No hay data")
+        console.log(resp.Cantidad)
+        setCantidadClips(resp.Cantidad)
+    }
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)
-        console.log(titulos)
-        
+
+        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/scream-2022/cantidad`)
+        setCantidadClips()
     }, [])
 
     useEffect(() => {
-        console.log(titulos[3])
-        console.log(titulos[4])
         const encontrarSerie = titulos.find((element) => element[1] === clip.titulo )
         if(encontrarSerie) {
             console.log(clip)
@@ -47,7 +64,20 @@ const ContenedorAgregarClip = () => {
         
 
         console.log(infoSerie)
+        fetchCantidadClips()
+        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`)
+        setCantidadClips()
+
     }, [clip.categoria])
+
+    useEffect(() => {
+        fetchTitulos(titulos, setTitulos)
+
+        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`)
+        setCantidadClips()
+        console.log(clip)
+    }, [clip])
+
 
     const seleccionarRadioButton = (event, categoria) => {
         console.log(event.target.value);
@@ -214,7 +244,8 @@ const ContenedorAgregarClip = () => {
                         <input 
                             type="text" 
                             onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} 
-                            placeholder="Bojack1x01-10"
+                            placeholder="scream-2022-1x01-22"
+                            value={`${ clip.subtitulo }-1x01-${ cantidadClips + 1}`}
                             />
                     </li>
                     <li>
@@ -223,6 +254,7 @@ const ContenedorAgregarClip = () => {
                             type="number" 
                             onChange={(e) => setClip({ ...clip, nnumero_clip: e.target.value })} 
                             placeholder="10"
+                            value={`${cantidadClips + 1}`}
                             />
                     </li>
                     <li id="li-agregar-clip">
