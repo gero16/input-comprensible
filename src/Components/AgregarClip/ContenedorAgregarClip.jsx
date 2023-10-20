@@ -13,10 +13,7 @@ const ContenedorAgregarClip = () => {
         temporadas: []
     })
     const [categoriaSeleccionada, setCategoriaSelecionada] = useState('pelicula');
-    const [esSerie, setEsSerie] = useState(false);
 
-    const [cantidadClips, setCantidadClips] = useState(0);
-    
     const [clip, setClip] = useState({
         titulo : "Scream 2022",
         subtitulo: "scream-2022",
@@ -25,10 +22,13 @@ const ContenedorAgregarClip = () => {
         capitulo: "capitulo-1",
         link: "https://www.youtube.com/embed/",
         frase: "",
-        dificultad: "easy"
+        dificultad: "easy",
+        nombre_clip: "scream-2022-1x01-22",
+        numero_clip: 22
     })
 
     const fetchCantidadClips = async (urlClips) => {
+        console.log(urlClips)
         const response = await fetch(urlClips,  {
                 method: 'GET',
                 headers: new Headers({
@@ -39,67 +39,108 @@ const ContenedorAgregarClip = () => {
             })
         const resp= await response.json();
         if(!resp) console.log("No hay data")
-        setCantidadClips(resp.Cantidad)
+        console.log(resp.Cantidad)
+  
+        return resp.Cantidad
     }
 
-    const seleccionarTemporada = (valor) => {
-        setClip({ ...clip,temporada : valor })
-    }
-
-    const seleccionarCapitulo = (valor) => {
-        setClip({...clip, capitulo : valor })
-    }
+    const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
+    const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
 
     useEffect(() => {
-        fetchTitulos(titulos, setTitulos)
-        fetchCantidadClips(`${urlBackend_Produccion}/pelicula/scream-2022/cantidad`)
-        setCantidadClips()
+        fetchTitulos(titulos, setTitulos)     
     }, [])
 
 
     useEffect(() => {
-        const encontrarSerie = titulos.find((element) => element[1] === clip.titulo )
+        console.log(clip)
+        const encontrarSerie = titulos.find((element) => element[1] === clip.subtitulo )
         console.log(encontrarSerie)
+        const separarTemporada =  clip.temporada.split("-")
+        const separarCapitulo =  clip.capitulo.split("-")
         if(encontrarSerie && encontrarSerie[2]  ==="serie") {
             const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
-            setEsSerie(true)
-            setCategoriaSelecionada("serie")
-            setClip({...clip, categoria : "serie",})
-            setInfoSerie({
-                temporadas : encontrarSerie[3],
-                capitulos : encontrarSerie[4]
+            let resultado = fetchCantidadClips(urlCantidadSerie)
+            console.log(resultado)
+            resultado.then((cantidad) => {
+                setCategoriaSelecionada("serie")
+                setClip({
+                    ...clip, 
+                    categoria : "serie",
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ cantidad + 1}`,
+                    numero_clip : cantidad +1
+                })
+                setInfoSerie({
+                    temporadas : encontrarSerie[3],
+                    capitulos : encontrarSerie[4]
+                })
+    
             })
-
-            fetchCantidadClips(urlCantidadSerie)
         }
         if(encontrarSerie && encontrarSerie[2] === "pelicula") {
             const urlCantidadPelicula = `${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`
-            setCategoriaSelecionada("pelicula")
-            setEsSerie(false)
-            setClip({ ...clip,categoria : "pelicula"})
-            fetchCantidadClips(urlCantidadPelicula)
+            let resultado =    fetchCantidadClips(urlCantidadPelicula)
+            resultado.then((cantidad) => {
+                console.log(cantidad)
+                setCategoriaSelecionada("pelicula")
+
+                setClip({ 
+                    ...clip,
+                    categoria : "pelicula",
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
+                    numero_clip : cantidad + 1
+                })
+                
+            })
         }
-
-        setCantidadClips()
-
+        console.log("subtitulo")
     }, [clip.subtitulo])
 
     useEffect(() => {
-        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
-        fetchCantidadClips(urlCantidadSerie)
-        setCantidadClips()
-        console.log(clip)
+        if(categoriaSeleccionada === "serie") {
 
+            const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            let resultado = fetchCantidadClips(urlCantidadSerie)
+            resultado.then((cantidad) => {
+                const separarTemporada =  clip.temporada.split("-")
+                const separarCapitulo =  clip.capitulo.split("-")
+                setClip({
+                    ...clip,
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
+                    numero_clip : cantidad +1
+                })
+            })
+    
+            
+        }
+      
+        console.log("capitulo")
+      
     }, [clip.capitulo])
 
+
     useEffect(() => {
-        const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
-        fetchCantidadClips(urlCantidadSerie)
-        setCantidadClips()
-        console.log(clip)
+        if(categoriaSeleccionada === "serie") {
+            const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            const separarTemporada =  clip.temporada.split("-")
+            const separarCapitulo =  clip.capitulo.split("-")
+            let resultado = fetchCantidadClips(urlCantidadSerie)
+            resultado.then((cantidad) => {
+                const separarTemporada =  clip.temporada.split("-")
+                const separarCapitulo =  clip.capitulo.split("-")
+                setClip({
+                    ...clip,
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
+                    numero_clip : cantidad +1
+                })
+                })
+    
+            } 
+            
+            console.log("temporada")
     }, [clip.temporada])
 
-
+    
     return (
         <>
             <Navbar> </Navbar>
@@ -228,7 +269,7 @@ const ContenedorAgregarClip = () => {
                         <select name="dificultad" 
                             onChange={(e) => setClip({ 
                                 ...clip,
-                                dificultad: e.target.value.split(" ").join("-")
+                                dificultad: e.target.value
                             })} 
                         
                         >
@@ -245,16 +286,16 @@ const ContenedorAgregarClip = () => {
                             type="text" 
                             onChange={(e) => setClip({ ...clip, nombre_clip: e.target.value })} 
                             placeholder="scream-2022-1x01-22"
-                            value={cantidadClips === 0 ? `${ clip.subtitulo }-1x01-0` : `${ clip.subtitulo }-1x01-${ cantidadClips + 1}`}
+                            value={clip.nombre_clip}
                             />
                     </li>
                     <li>
                         <label htmlFor=""> Numero del Clip </label>
                         <input 
                             type="number" 
-                            onChange={(e) => setClip({ ...clip, nnumero_clip: e.target.value })} 
+                            onChange={(e) => setClip({ ...clip, numero_clip: e.target.value })} 
                             placeholder="10"
-                            value={cantidadClips === 0 ? 0 : `${cantidadClips + 1}`}
+                            value={clip.numero_clip}
                             />
                     </li>
                     <li id="li-agregar-clip">

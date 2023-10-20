@@ -44,7 +44,9 @@ li {
 }
 
 .lista-formulario-clip {
-margin: 50px 0px;
+    margin: 50px 0px;
+    padding: 20px;
+    background-color: rgb(31, 29, 29);
    
 }
 
