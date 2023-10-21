@@ -5,7 +5,7 @@ import { Context } from "../../context/context"
 import { useEffect } from "react"
 
 const ContenedorAgregarClip = () => {
-    const { fetchTitulos, urlBackend_Produccion, fetchClips  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -134,13 +134,23 @@ const ContenedorAgregarClip = () => {
                     numero_clip : cantidad +1
                 })
                 })
-    
             } 
-            
             console.log("temporada")
     }, [clip.temporada])
 
     
+    const agregarClip = async (data) => {
+        let response = await fetch(`${urlBackend_Produccion}/agregar-clip`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          let result = await response.json();
+          console.log(result)
+    }
     return (
         <>
             <Navbar> </Navbar>
@@ -299,7 +309,7 @@ const ContenedorAgregarClip = () => {
                             />
                     </li>
                     <li id="li-agregar-clip">
-                        <button> Agregar Clip </button>
+                        <button onClick={() => agregarClip(clip) }> Agregar Clip </button>
                     </li>
                 </ul>
             </div>
