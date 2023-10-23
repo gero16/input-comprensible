@@ -5,7 +5,6 @@ import Navbar from '../Navbar/Navbar'
 import Serie from './Serie';
 import NavbarUser from '../Navbar/NavbarUser';
 import { Context } from '../../context/context';
-import Pagination from '@mui/material/Pagination';
 import BotonPagina from '../BotonPagina/BotonPagina';
 //import fetch from 'node-fetch'
 
@@ -13,8 +12,8 @@ import BotonPagina from '../BotonPagina/BotonPagina';
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
     const { fetchCapitulos, urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, mostrarClipsPagina, cantidadPaginasHtml, fetchClips,
-            data, totalPaginas, setTotalPaginas 
+            paginaActual, paginaClips, fetchClips,
+            data, totalPaginas 
         } = useContext(Context)
     
     const [season, setSeason] = useState([])

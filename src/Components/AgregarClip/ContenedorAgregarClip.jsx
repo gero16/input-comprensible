@@ -19,8 +19,10 @@ const ContenedorAgregarClip = () => {
         subtitulo: "scream-2022",
         categoria: "pelicula",
         temporada: "temporada-1",
+        numero_temporada: 1,
         capitulo: "capitulo-1",
-        link: "https://www.youtube.com/embed/",
+        numero_capitulo : 1,
+        url: "https://www.youtube.com/embed/",
         frase: "",
         dificultad: "easy",
         nombre_clip: "scream-2022-1x01-22",
@@ -28,7 +30,6 @@ const ContenedorAgregarClip = () => {
     })
 
     const fetchCantidadClips = async (urlClips) => {
-        console.log(urlClips)
         const response = await fetch(urlClips,  {
                 method: 'GET',
                 headers: new Headers({
@@ -53,15 +54,12 @@ const ContenedorAgregarClip = () => {
 
 
     useEffect(() => {
-        console.log(clip)
         const encontrarSerie = titulos.find((element) => element[1] === clip.subtitulo )
-        console.log(encontrarSerie)
         const separarTemporada =  clip.temporada.split("-")
         const separarCapitulo =  clip.capitulo.split("-")
         if(encontrarSerie && encontrarSerie[2]  ==="serie") {
             const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
             let resultado = fetchCantidadClips(urlCantidadSerie)
-            console.log(resultado)
             resultado.then((cantidad) => {
                 setCategoriaSelecionada("serie")
                 setClip({
@@ -81,7 +79,7 @@ const ContenedorAgregarClip = () => {
             const urlCantidadPelicula = `${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`
             let resultado =    fetchCantidadClips(urlCantidadPelicula)
             resultado.then((cantidad) => {
-                console.log(cantidad)
+ 
                 setCategoriaSelecionada("pelicula")
 
                 setClip({ 
@@ -90,10 +88,10 @@ const ContenedorAgregarClip = () => {
                     nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
                     numero_clip : cantidad + 1
                 })
-                
+          
             })
         }
-        console.log("subtitulo")
+    
     }, [clip.subtitulo])
 
     useEffect(() => {
@@ -109,13 +107,8 @@ const ContenedorAgregarClip = () => {
                     nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
                     numero_clip : cantidad +1
                 })
-            })
-    
-            
-        }
-      
-        console.log("capitulo")
-      
+            })  
+        }      
     }, [clip.capitulo])
 
 
@@ -135,7 +128,7 @@ const ContenedorAgregarClip = () => {
                 })
                 })
             } 
-            console.log("temporada")
+           
     }, [clip.temporada])
 
     
@@ -254,12 +247,12 @@ const ContenedorAgregarClip = () => {
                     <li>
                         <label htmlFor=""> Link del video </label>
                         <input 
-                            type="text" name="link" 
+                            type="text" name="url" 
                             onChange={(e) => setClip({ 
                                 ...clip,
-                                link : e.target.value
+                                url : e.target.value
                             })} 
-                            value={clip.link}
+                            value={clip.url}
                         />
                     </li>
 

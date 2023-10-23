@@ -5,11 +5,12 @@ import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
 import NavbarUser from '../Navbar/NavbarUser';
 import { Context } from '../../context/context';
+import BotonPagina from '../BotonPagina/BotonPagina';
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, fetchClips, data,   
+            paginaActual, paginaClips, fetchClips, data,  totalPaginas  
     } = useContext(Context)
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/${pelicula}/${usuario}`
     const urlClips = `${ urlBackend_Produccion }/pelicula/${ pelicula }`
@@ -32,10 +33,21 @@ const ContenedorPelicula = () => {
                     <Pelicula data={paginaClips}  />      
                 </>
             }
-            <footer id='footer'>
-                <button onClick={() => cambiarPagina(1)}>  1  </button>
-                <button onClick={() => cambiarPagina(2)}>  2  </button>
-                <button onClick={() => cambiarPagina(3)}>  3  </button>
+
+            <footer className='footer'>
+                { totalPaginas.map((element, key) => {
+                    console.log(element)
+                        return (
+                            
+                            <BotonPagina 
+                                paginaActual={paginaActual}
+                                cambiarPagina={cambiarPagina} 
+                                numeroPagina={element}
+                            /> 
+                        
+                        )
+                    })}
+  
             </footer>
         </>
     )
