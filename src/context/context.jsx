@@ -36,7 +36,7 @@ export const CustomProvider = ({ children }) => {
         if(!resp) console.log("No hay data")
 
         resp.data.forEach(element => {
-            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo]
+            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
             arrayTitulos.push(titulo)
            //console.log(arrayTitulos)
         });
@@ -162,11 +162,11 @@ return paginaClips
 const cantidadPaginasHtml = (data) => { 
     let arrayPaginas = []
     if(data.length <= 21) arrayPaginas = [1]
-    if(data.length > 21 && data.length < 42) arrayPaginas = [1,2]
-    if(data.length > 43 && data.length < 63) arrayPaginas = [1,2,3]
-    if(data.length > 64 && data.length < 74) arrayPaginas = [1,2,3,4]
-    if(data.length > 75 && data.length < 85) arrayPaginas = [1,2,3,4,5]
-    if(data.length > 86 && data.length < 106) arrayPaginas = [1,2,3,4,5,6]
+    if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
+    if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
+    if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
+    if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
+    if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
 
     return arrayPaginas
 }

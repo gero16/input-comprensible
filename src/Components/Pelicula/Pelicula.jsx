@@ -32,9 +32,8 @@ const Pelicula = ({data}) => {
 
     return (
         <>
-            <img src={data.imagen} className={`imagen-${data.subtitulo}`} alt="" />
+            <img src={`../src/assets/${pelicula}.png`} className={`imagen-${pelicula}`} alt="" />
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
-            <h1> { transformarMayuscula(pelicula) } </h1>
                 <section className='flex-center'>
                     {
                         data
@@ -50,6 +49,7 @@ const Pelicula = ({data}) => {
                                 dificultad={element.dificultad}
                                 grabacion={element.grabacion}
                                 numero_clip={element["numero_clip"]}
+                                imagen={element.imagen}
                             />
                         )
                         })

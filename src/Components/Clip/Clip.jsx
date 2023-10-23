@@ -4,7 +4,8 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 
-const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionBD, numero_clip }) => {
+const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
+                capitulo, grabacionBD, numero_clip }) => {
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
     const recorderControls = useAudioRecorder()
@@ -73,7 +74,7 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
         if(!resp) console.log("No hay data")
         
     }
-
+    console.log(imagen)
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -84,7 +85,8 @@ const Clip = ({ id, categoria, subtitulo, video, index, frase, dificultad, capit
                 */
             
             }
-            
+                {imagen ?  <img src={imagen} alt="" /> : <> </>}
+               
 
                 <section className="section-video">
 

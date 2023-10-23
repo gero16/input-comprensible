@@ -49,7 +49,8 @@ const ContenedorAgregarClip = () => {
     const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
 
     useEffect(() => {
-        fetchTitulos(titulos, setTitulos)     
+        fetchTitulos(titulos, setTitulos)  
+        console.log(titulos)   
     }, [])
 
 
