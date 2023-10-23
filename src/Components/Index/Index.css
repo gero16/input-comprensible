@@ -176,12 +176,18 @@ h1 {
 .imagen-shrek-2{
   width: 50vw;
 }
-.imagen-peaky {
+.imagen-peaky-blinders {
   width: 32vw;
 }
 .imagen-scream-2022 {
   width: 40vw;
 }
+
+.imagen-the-room-2003 {
+  width: 30vw;
+}
+
+
 .lista-input {
   background-color: #1a1919e3;
   border-radius: 5px;
