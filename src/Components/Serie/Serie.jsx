@@ -23,12 +23,11 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
    
     return (
         <>
-            <img src={`../src/assets/${serie}.png`} className={`imagen-${serie}`} alt="" />
+            <img src={`/src/assets/${serie}.png`} className={`imagen-${serie}`} alt="" />
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>  
                 <header className="header-serie">
-                    <h1> {data.length > 0 ?  ` ${data[0].titulo} - Temporada ${numTemporada[1]} `  : ""} </h1>
 
-                    <h2> {  transformarMayuscula(capitulo) } </h2>
+                    <h2> Temporada {numTemporada[1]} - {  transformarMayuscula(capitulo) } </h2>
 
                     <ul className="ul-capitulos">
                             { capitulos.map((element, key) => {
