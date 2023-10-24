@@ -110,14 +110,23 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                             
-                        <iframe 
-                            width={ width <= 1500 ? "410" : "450"} 
-                            height={ width <= 1500 ? "210" : "260"} 
+                      { width < 540 
+                        ? <iframe 
+                            width={"300"} 
+                            height={"160"} 
                             src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         />
-                      
+                        
+                        : <iframe 
+                            width={ width <= 1511 ? "410" : "450"} 
+                            height={ width <= 1511 ? "210" : "260"} 
+                            src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
+                            title="YouTube video player"  
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        />
+                      }
                         
                         <div className={ width > 1300 ? "flex-center" : ""}>
                             <span className="grabar-audio"> { width > 1300 ? "Grabar Audio" : "Grabar Audio -"} </span>
