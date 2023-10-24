@@ -5,7 +5,7 @@ import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula } = useParams();
-    const { transformarMayuscula } = useContext(Context)
+    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion  } = useContext(Context)
 
     let arrayAudios = []
     console.log(data)
@@ -25,14 +25,13 @@ const Pelicula = ({data}) => {
         }
     })
 
-    
     useEffect(() => {
         //fetchGrabaciones()
     }, [])
 
     return (
         <>
-            <img src={`../src/assets/${pelicula}.png`} className={`imagen-${pelicula}`} alt="" />
+            <img src={`../${pelicula}.png`} className={`imagen-${pelicula}`} alt="" />
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
                 <section className='flex-center'>
                     {

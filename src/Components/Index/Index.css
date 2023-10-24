@@ -174,10 +174,10 @@ h1 {
 }
 
 .imagen-shrek-2{
-  width: 50vw;
+  width: 40vw;
 }
 .imagen-peaky-blinders {
-  width: 40vw;
+  width: 55vw;
 }
 .imagen-scream-2022 {
   width: 40vw;
@@ -240,4 +240,7 @@ ul {
 
 .button-selected {
   background-color: #1a1a1a;
+}
+.titulo-temporada {
+  font-size: xx-large;
 }
