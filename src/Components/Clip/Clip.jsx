@@ -111,8 +111,8 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                             
                         <iframe 
-                            width={ width > 1400 ? "440" : "350"} 
-                            height={ width > 1400 ? "240" : "190"} 
+                            width={ width <= 1500 ? "410" : "450"} 
+                            height={ width <= 1500 ? "210" : "260"} 
                             src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
