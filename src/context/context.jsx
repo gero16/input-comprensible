@@ -143,6 +143,7 @@ export const CustomProvider = ({ children }) => {
         }
 
         const resultadoFinal = `${primeraPalabra}`
+        console.log(resultadoFinal)
         return resultadoFinal
       
 }
@@ -238,7 +239,7 @@ return (
         value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas
+            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto
             }}> 
             
         { children } 

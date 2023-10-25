@@ -36,6 +36,14 @@ const router = createBrowserRouter([
         element:  <ContenedorAgregarClip />,
       },
       {
+        path: "/agregar-clip/:serie/:temporada/:capitulo",
+        element:  <ContenedorAgregarClip />,
+      },
+      {
+        path: "/agregar-clip/:pelicula",
+        element:  <ContenedorAgregarClip />,
+      },
+      {
         path: "/registro",
         element:  <Registro />,
       },

@@ -45,7 +45,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                 <section className='flex-center'>
                     
                     {
-                        data ?
+                        data.length > 0 ?
                             data.map((element, key) => {
                                 return (
                                     <Clip
@@ -65,7 +65,12 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                 )
                             })
                             :
-                            <h2> Loading .... </h2>
+                             <div> 
+                                 <h2> Lo siento! </h2>
+                                 <h2> Todavia no hay clips en el capitulo de esta temporada</h2>
+                                 <h3> Si quiere agregar uno </h3>
+                                 <button onClick={() => navigate(`/agregar-clip/${serie}/${temporada}/${capitulo}`)}> Ir a Agregar Clip </button>
+                             </div>
                         }
                 </section>
             </article>
