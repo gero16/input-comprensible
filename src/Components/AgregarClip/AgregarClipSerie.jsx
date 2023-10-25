@@ -38,6 +38,8 @@ const AgregarClipSerie = () => {
         console.log(titulos)   
     }, [])
 
+
+
     return (
         <> 
             <div className="div-agregar-video">

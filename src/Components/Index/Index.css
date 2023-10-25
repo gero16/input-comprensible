@@ -155,52 +155,14 @@ h1 {
 }
 
 
-.imagen-titulo {
-  margin-top: 100px;
-  width: 30vw;
-}
-
-.imagen-harry {
-  width: 25vw;
-}
-
-.imagen-got {
-  width: 40vw;
-}
-
-.imagen-friends {
-  width: 25vw;
-
-}
-
-.imagen-shrek-2{
-  width: 40vw;
-}
-.imagen-peaky-blinders {
-  width: 55vw;
-}
-.imagen-scream-2022 {
-  width: 40vw;
-}
-
-.imagen-the-room-2003 {
-  width: 30vw;
-}
-
-.imagen-sex-education {
-  width: 45vw;
-}
-
-.imagen-bojack-horseman {
-  width: 35vw;
-}
-
 
 .lista-input {
   background-color: #1a1919e3;
   border-radius: 5px;
   padding: 50px;
 }
+
+
 
 .card {
   padding: 2em;
@@ -243,4 +205,93 @@ ul {
 }
 .titulo-temporada {
   font-size: xx-large;
+}
+
+.imagen-titulo {
+  margin-top: 100px;
+  width: 30vw;
+}
+
+.imagen-harry {
+  width: 25vw;
+}
+
+.imagen-got {
+  width: 40vw;
+}
+
+.imagen-friends {
+  width: 25vw;
+
+}
+
+.imagen-shrek-2{
+  width: 40vw;
+}
+.imagen-peaky-blinders {
+  width: 55vw;
+}
+.imagen-scream-2022 {
+  width: 40vw;
+}
+
+.imagen-the-room-2003 {
+  width: 30vw;
+  filter: invert(1);
+}
+
+.imagen-sex-education {
+  width: 45vw;
+  position: absolute;
+  top: 13%;
+}
+
+.imagen-bojack-horseman {
+  width: 35vw;
+}
+
+
+.imagen-house-of-the-dragon {
+  width: 70vw;
+  /*
+
+  margin-right: 35px;
+  */
+}
+
+.imagen-super-mario-bros {
+  width: 16vw;
+  position: absolute;
+  right: 35px;
+}
+
+.imagen-kill-bill {
+  position: absolute;
+  width: 25vw;
+  filter: contrast(-0%) sepia(1) hue-rotate(-5deg) saturate(1000%);
+  top: 35%;
+  left: 20px;
+}
+
+.imagen-bastardos-sin-gloria {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 25vw;
+}
+.portada {
+  height: 400px;
+}
+
+
+.btn-ir-agregar-clip {
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+@media (min-width: 1600px) {
+  .portada {
+    height: 560px;
+  }
 }

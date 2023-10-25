@@ -29,13 +29,40 @@ const Pelicula = ({data}) => {
         //fetchGrabaciones()
     }, [])
 
+    const posicionImagen = {
+        "shrek-2": 27,
+        "super-mario-bros": 45,
+        "scream-2022":  33,
+        "the-room-2003": 60,
+        "kill-bill": 35,
+        "bastardos-sin-gloria": 15
+    }
+    const style = {
+        backgroundImage: `url("../${pelicula}-portada.jpg")`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: `5% ${posicionImagen[pelicula]}%`,
+        backgroundSize: 'cover',
+        filter: 'brightness(0.7)'
+    }
+
     return (
         <>
-            <img src={`../${pelicula}.png`} className={`imagen-${pelicula}`} alt="" />
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            
+                <div className={`portada portada-${pelicula} flex-center`} style={style}>
+                    
+                    {
+                        pelicula === "scream-2022" || pelicula === "super-mario-bros" || pelicula ==="the-room-2003" 
+                            ||  pelicula ==="kill-bill" || pelicula ==="bastardos-sin-gloria"
+                            ? <img src={`../${pelicula}.png`} className={`imagen-${pelicula}`} alt="" /> 
+                            : <> </>
+              
+                    }
+                </div>
+
                 <section className='flex-center'>
                     {
-                        data
+                        data.length > 0
                         ? data.map((element, index) => {
                         return (
                             <Clip 
@@ -52,7 +79,18 @@ const Pelicula = ({data}) => {
                             />
                         )
                         })
-                        : <div> Loading ... </div>
+                        : <div> 
+                            <h2> Lo siento! </h2>
+                            <h2> Todavia no hay clips para esta pelicula </h2>
+                            <h3> Si quiere agregar uno - 
+                                <button 
+                                    onClick={() => navigate(`/agregar-clip/${pelicula}`)}
+                                    className="btn-ir-agregar-clip"
+                                    > 
+                                    Ir a Agregar Clip 
+                                </button></h3>
+                          
+                        </div>
                     }
                 </section>
             </article>
