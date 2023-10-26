@@ -31,11 +31,12 @@ const Pelicula = ({data}) => {
 
     const posicionImagen = {
         "shrek-2": 27,
-        "super-mario-bros": 45,
+        "super-mario-bros": 63,
         "scream-2022":  33,
         "the-room-2003": 60,
         "kill-bill": 35,
-        "bastardos-sin-gloria": 15
+        "bastardos-sin-gloria": 15,
+        "harry-potter-1": 32
     }
     const style = {
         backgroundImage: `url("../${pelicula}-portada.jpg")`,
@@ -47,20 +48,24 @@ const Pelicula = ({data}) => {
 
     return (
         <>
+          
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
             
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                     
                     {
                         pelicula === "scream-2022" || pelicula === "super-mario-bros" || pelicula ==="the-room-2003" 
-                            ||  pelicula ==="kill-bill" || pelicula ==="bastardos-sin-gloria"
+                            ||  pelicula ==="kill-bill" || pelicula ==="bastardos-sin-gloria" || pelicula ==="harry-potter-1" 
                             ? <img src={`../${pelicula}.png`} className={`imagen-${pelicula}`} alt="" /> 
                             : <> </>
               
                     }
                 </div>
-
+              
                 <section className='flex-center'>
+                   
+                
+
                     {
                         data.length > 0
                         ? data.map((element, index) => {

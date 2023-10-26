@@ -260,9 +260,10 @@ ul {
 }
 
 .imagen-super-mario-bros {
-  width: 16vw;
+  width: 13vw;
   position: absolute;
-  right: 35px;
+  top: 10%;
+  right: 75px;
 }
 
 .imagen-kill-bill {
@@ -279,6 +280,14 @@ ul {
   left: 0;
   width: 25vw;
 }
+
+.imagen-harry-potter-1 {
+  position: absolute;
+  width: 30vw;
+  top: 20px;
+  right: 0px;
+}
+
 .portada {
   height: 400px;
 }

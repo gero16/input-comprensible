@@ -7,7 +7,7 @@ import { Context } from "../../context/context"
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate();
     const { transformarMayuscula } = useContext(Context)
-
+    const [width, setWidth] = useState(window.innerWidth);
     //console.log(data) 
     let numTemporada = temporada.split("-")
 
@@ -31,7 +31,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         backgroundImage: `url("../../../${serie}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
-        backgroundSize: 'cover',
+        backgroundSize: width < 540 ? "contain" : "cover",
         filter: 'brightness(0.7)'
     }
 
@@ -104,7 +104,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                     <button 
                                         onClick={() => navigate(`/agregar-clip/${serie}/${temporada}/${capitulo}`)}
                                         className="btn-ir-agregar-clip"
-                                        > Ir a Agregar Clip </button> 
+                                        > Ir a Agregar Clip 
+                                    </button> 
                                 </h3>
                                
                              </div>

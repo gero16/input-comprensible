@@ -30,6 +30,7 @@ const ContenedorPelicula = () => {
                 ? <> <Pelicula data={data} /> </>
                 : <> 
                     <Navbar/>
+                    
                     <Pelicula data={paginaClips}  />      
                 </>
             }
