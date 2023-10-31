@@ -11,7 +11,7 @@ const AgregarClipSerie = () => {
         capitulos: [],
         temporadas: []
     })
-    const [categoriaSeleccionada, setCategoriaSelecionada] = useState('pelicula');
+    const [categoriaSeleccionada, setCategoriaSelecionada] = useState('serie');
 
     const separarTemporada = separarTexto(temporada, "-")
     const separarCapitulo = separarTexto(capitulo, "-")
@@ -20,9 +20,9 @@ const AgregarClipSerie = () => {
         titulo : transformarMayuscula(serie),
         subtitulo: serie,
         categoria: "serie",
-        temporada: transformarMayuscula(temporada),
+        temporada: temporada,
         numero_temporada: separarTemporada[1],
-        capitulo: transformarMayuscula(capitulo),
+        capitulo: capitulo,
         numero_capitulo : separarCapitulo[1],
         url: "https://www.youtube.com/embed/",
         frase: "",
@@ -38,7 +38,21 @@ const AgregarClipSerie = () => {
         console.log(titulos)   
     }, [])
 
-
+    const agregarClip = async (data) => {
+        console.log(data)
+        
+        let response = await fetch(`${urlBackend_Desarrollo}/agregar-clip`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          let result = await response.json();
+          console.log(result)
+          
+    }
 
     return (
         <> 
@@ -86,13 +100,13 @@ const AgregarClipSerie = () => {
                     <li>
                         <label htmlFor=""> Temporada </label>
                             <select name="select"  onChange={(e) =>  seleccionarTemporada(e.target.value)}  >
-                                <option value={temporada}> {clip.temporada} </option>
+                                <option value={ temporada }> { transformarMayuscula(temporada) } </option>
                             </select>
                     </li>
                     <li>
                         <label htmlFor="">  Capitulo </label>
                         <select name="select"  onChange={(e) =>  seleccionarCapitulo(e.target.value)}  >       
-                            <option value={capitulo}> {clip.capitulo} </option>
+                            <option value={ capitulo }> { transformarMayuscula(capitulo) } </option>
                         </select>
                     </li>
 

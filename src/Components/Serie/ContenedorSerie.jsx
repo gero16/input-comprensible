@@ -11,15 +11,16 @@ import BotonPagina from '../BotonPagina/BotonPagina';
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchCapitulos, urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, fetchClips,
+    const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo, 
+            setearClipsPagina, cambiarPagina,  paginaActual, paginaClips, fetchClips,
             data, totalPaginas 
         } = useContext(Context)
     
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
+     
 
-    const urlClips = `${ urlBackend_Produccion }/serie/${serie}/temporada/${temporada}/${capitulo}`
+    const urlClips = `${ urlBackend_Desarrollo }/serie/${serie}/temporada/${temporada}/${capitulo}`
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
  
     const traerCapitulos = async () => {
