@@ -41,7 +41,7 @@ const AgregarClipSerie = () => {
     const agregarClip = async (data) => {
         console.log(data)
         
-        let response = await fetch(`${urlBackend_Desarrollo}/agregar-clip`, {
+        let response = await fetch(`${urlBackend_Produccion}/agregar-clip`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
