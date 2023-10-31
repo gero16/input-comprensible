@@ -110,7 +110,14 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                
                              </div>
                         }
+
+                                 
                 </section>
+                <button 
+                    onClick={() => navigate(`/agregar-clip/${serie}/${temporada}/${capitulo}`)}
+                    className="btn-ir-agregar-clip"
+                    > Ir a Agregar Clip 
+                </button> 
             </article>
 
         </>

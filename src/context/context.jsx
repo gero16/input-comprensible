@@ -230,7 +230,7 @@ const fetchClips = async (urlClips, urlGrabaciones) => {
 
     mostrarClipsPagina(respuesta, 0, 21)
     setData(respuesta)
-    console.log(data)
+    console.log(respuesta)
     return data;
 }
 

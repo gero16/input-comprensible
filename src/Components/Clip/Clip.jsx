@@ -80,9 +80,9 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             <article className={`article-video`} id={`id-BD-${id}`}>
             
             {
-                /*   
+                
                 <h3> Id {id} - Numero de clip {numero_clip}  </h3> 
-                */
+            
             
             }
                 {imagen ?  <img src={imagen} alt="" /> : <> </>}

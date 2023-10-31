@@ -20,7 +20,7 @@ const ContenedorSerie = () => {
     const [capitulos, setCapitulos] = useState([])
      
 
-    const urlClips = `${ urlBackend_Desarrollo }/serie/${serie}/temporada/${temporada}/${capitulo}`
+    const urlClips = `${ urlBackend_Produccion }/serie/${serie}/temporada/${temporada}/${capitulo}`
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
  
     const traerCapitulos = async () => {
