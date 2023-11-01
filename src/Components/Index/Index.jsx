@@ -3,9 +3,11 @@ import Navbar from '../Navbar/Navbar'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../../context/context'
+import { inject } from '@vercel/analytics';
 
 
 function App() {
+  inject();
   const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
   const navigate = useNavigate()
   
@@ -21,7 +23,7 @@ function App() {
   return (
     <>
       <div>
-        
+
         <Navbar> </Navbar>
         <h1 className='titulo-principal'> Input Comprensible </h1>
 
