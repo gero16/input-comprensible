@@ -50,7 +50,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                 <div className={`portada portada-${serie} flex-center`} style={style}>
                     {
                           serie === "house-of-the-dragon" || serie === "bojack-horseman"  || "sex-education"
-                          ?    <img src={`../../../${serie}.png`} className={`imagen-${serie}`} style={style2} alt="" />
+                          ?    <img src={`../../../${serie}.png`} className={`imagen-${serie}`} style={style2} alt={`imagen portada sobre ${serie}`} />
                           : <> </>
                     }
                  
