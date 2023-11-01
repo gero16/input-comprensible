@@ -36,6 +36,11 @@ const Navbar = () => {
 
             <ul className="lista-navbar flex-center-column">
                 <li className="li-nav">
+                    <NavLink to={`/`} className="flex-center-column"> 
+                        <span className="span-link "> Inicio </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
