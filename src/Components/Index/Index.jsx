@@ -21,13 +21,13 @@ function App() {
   return (
     <>
       <div>
-   
+        
         <Navbar> </Navbar>
         <h1 className='titulo-principal'> Input Comprensible </h1>
 
         <main className="main" >
         <p> En esta página podrás encontrar un lugar donde practicar el input comprensible
-          mediante pequeños clips de series y peliculas</p>
+          mediante clips cortos de series y peliculas</p>
           <ul>
             <li className="flex-center div-meme"> 
               <img src="../../../rana.png" className="png-inicio" alt="imagen del meme rene" />
@@ -36,7 +36,6 @@ function App() {
             </li>
             <li className='flex-center div-meme'  >
               <span>
-
                 Con input comprensible nos referimos a un término relacionado con la adquision de un nueva lengua,
                 que se deriva de la teoría de la Adquisición del Lenguaje de Stephen Krashen. Esta teoria se 
                 refiere a la idea de que para que una persona aprenda un idioma de manera efectiva, el material 
@@ -54,7 +53,6 @@ function App() {
                 alt="imagen del meme de cheems" 
                 className="img-meme"/>
               <span>
-
                 Es decir, que entenderiamos por comprensible todo aquel input aquel que se presente en un 
                 nivel lingüístico ligeramente por encima del conocimiento actual del idioma del estudiante. 
                 En otras palabras, que debe ser lo suficientemente desafiante como para que el estudiante tenga 
