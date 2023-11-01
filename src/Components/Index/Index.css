@@ -91,7 +91,7 @@ h1 {
 }
 
 .titulo-principal  {
-  margin-top: 125px;
+  margin-top: 30px;
 }
 .container {
   width: 90%;
@@ -222,7 +222,6 @@ ul {
 
 .imagen-friends {
   width: 25vw;
-
 }
 
 .imagen-shrek-2{
@@ -303,4 +302,30 @@ ul {
   .portada {
     height: 560px;
   }
+}
+
+.png-inicio {
+  width: 120px;
+}
+
+.gato {
+  transform: scaleX(-1);
+  width: 140px;
+}
+
+.div-meme {
+  flex-wrap: nowrap;
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius : 10px;
+  margin-bottom: 20px;
+}
+
+.img-meme {
+  width: 170px;
+}
+
+.main{
+  margin: 0 auto;
+  width: 75vw;
 }
