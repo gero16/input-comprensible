@@ -37,13 +37,17 @@ function App() {
           
             </li>
             <li className='flex-center div-meme'  >
-              <span>
+              <div>
+                <p>
                 Con input comprensible nos referimos a un término relacionado con la adquision de un nueva lengua,
-                que se deriva de la teoría de la Adquisición del Lenguaje de Stephen Krashen. Esta teoria se 
-                refiere a la idea de que para que una persona aprenda un idioma de manera efectiva, el material 
+                que se deriva de la teoría de la Adquisición del Lenguaje de Stephen Krashen. 
+                </p>
+                <p>
+                Esta teoria se refiere a la idea de que para que una persona aprenda un idioma de manera efectiva, el material 
                 de entrada o input (como textos, conversaciones, videos, etc.) debe ser comprensible para el mismo.
-              </span>
-            
+                </p>
+              </div>
+      
             <img 
               src="../../../viejo.png" 
               alt="imagen del meme de un hombre que se rie incomododamente" 
@@ -54,51 +58,56 @@ function App() {
                 src="../../../cheems.png" 
                 alt="imagen del meme de cheems" 
                 className="img-meme"/>
-              <span>
-                Es decir, que entenderiamos por comprensible todo aquel input aquel que se presente en un 
-                nivel lingüístico ligeramente por encima del conocimiento actual del idioma del estudiante. 
-                En otras palabras, que debe ser lo suficientemente desafiante como para que el estudiante tenga 
+                <div>
+                  <p>   Es decir, que entenderiamos por input comprensible todo aquel input que reprepresente un 
+                nivel lingüístico ligeramente por encima del conocimiento actual del estudiante. </p>
+                  <p>   En otras palabras, que debe ser lo suficientemente desafiante como para que el estudiante tenga 
                 que esforzarse un poco para entenderlo, pero no tan difícil como para que resulte incomprensible 
-                o abrumador.
-              </span>
-              
+                o abrumador.</p>
+                </div>
+          
+            
             </li>
             <li className="flex-center div-meme" >
-              La idea de este concepto es que cuando un estudiante se expone a una entrada de informacion
-              un poco más avanzada que su nivel actual de competencia en el idioma, se encuentra en una "zona de 
-              desarrollo próximo". Esta es la zona en la que el aprendizaje es más efectivo, ya que el estudiante está 
-              en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya sabe. Por lo que su practica
-              fomentaria la adquisición natural del lenguaje a través de la exposición constante y gradual a 
-              estructuras lingüísticas más complejas.
+              <div>
+                <p> La idea del concepto propone que cuando un estudiante se expone a una entrada de informacion
+                    un poco más avanzada que su nivel actual de competencia, se encuentra en una "zona de 
+                    desarrollo próximo". Esta es la zona en la que el aprendizaje es más efectivo, ya que el estudiante está 
+                    en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya sabe. </p>
+                <p>Por lo que su practica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
+                  y gradual a estructuras lingüísticas más complejas.</p>
+              </div>
             <img 
               src="../../../rana3.png" 
               alt="" 
-              className="img-meme"/>
+              className="img-meme rana2"/>
+
             </li>
 
             <li className="flex-center div-meme">
               <img 
                 src="../../../strong-cheems.png" 
                 alt="imagen del meme cheems musculoso" 
-                className="img-meme"/>
-              <span>
-                Hay que tener en cuenta que los clips pueden variar en su dificultad de comprension segun
-                su complejidad, idiosincracia, o por el vocabulario que manejan. Por lo que para que la 
-                practica del input comprensible tenga efectivad y no se vuelva algo imposible o tedioso 
-                se recomienda buscar clips en series/peliculas que puedan estar acorde a su nivel. 
-                Asi como haber visto con antelacion la pelicula o el capitulo de su interes. 
-                Debido a que en ocaciones si no se tiene en cuenta el contexto puede resultar imposible entender 
-                lo que se dice en forma aislada.
+                className="img-meme strong-cheems"/>
 
-              </span>
+                <div>
+                  <p> Hay que tener en cuenta que los clips pueden variar en su dificultad de comprension según
+                la complejidad de la situación que representan, la idiosincracia del pais de origen para expresarse, 
+                o por la propia forma de hablar de los actores para personificar un personaje. </p>
+                  <p> Por lo que para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan estar acorde a su nivel.  </p>
+                  <p>   Asi como también haber visto con antelacion la pelicula o el capitulo de su interes. 
+                Debido a que en ocasiones si no se tiene en cuenta el contexto puede resultar imposible entender 
+                lo que se dice en forma aislada. </p>
+                  
+                </div>
+      
             </li>
 
             <li className="flex-center div-meme">
               <span>
-                 Para cada clip tiene la posibilidad de evaluar su comprension, escribiendo lo que 
-                 le parecio escuchar en el mismo. Asi como practicar el output correspondiente a un 
-                 clip determinado, grabando un audio, que puede guardar y actualizar, para compararlo 
-                 con el input.
+                 Por cada clip presente tiene la posibilidad de evaluar su comprensión, escribiendo en su campo correspondiente. 
+                 Asi como practicar el output correspondiente a un clip determinado, grabando un audio, que puede guardar o en caso de que ya exista
+                 actualizar. De forma que quede un registro donde pueda evaluar la similitud entre ambos
               </span>
               <img 
                 src="../../../gato.png" 

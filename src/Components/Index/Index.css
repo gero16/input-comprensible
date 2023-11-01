@@ -313,6 +313,13 @@ ul {
   width: 140px;
 }
 
+.strong-cheems {
+  width: 210px !important;
+}
+
+.rana2 {
+  width: 190px !important;
+}
 .div-meme {
   flex-wrap: nowrap;
   background-color: #1a1a1a;
