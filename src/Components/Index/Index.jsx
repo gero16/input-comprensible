@@ -30,7 +30,7 @@ function App() {
           mediante pequeños clips de series y peliculas</p>
           <ul>
             <li className="flex-center div-meme"> 
-              <img src="../../../rana.png" className="png-inicio" alt="" />
+              <img src="../../../rana.png" className="png-inicio" alt="imagen del meme rene" />
               <h2> Pero ¿Que es el input comprensible? </h2>
           
             </li>
@@ -43,10 +43,16 @@ function App() {
                 de entrada o input (como textos, conversaciones, videos, etc.) debe ser comprensible para el mismo.
               </span>
             
-            <img src="../../../viejo.png" alt="" className="img-meme"/>
+            <img 
+              src="../../../viejo.png" 
+              alt="imagen del meme de un hombre que se rie incomododamente" 
+              className="img-meme"/>
             </li>
             <li className="flex-center div-meme">
-              <img src="../../../cheems.png" alt="" className="img-meme"/>
+              <img 
+                src="../../../cheems.png" 
+                alt="imagen del meme de cheems" 
+                className="img-meme"/>
               <span>
 
                 Es decir, que entenderiamos por comprensible todo aquel input aquel que se presente en un 
@@ -64,11 +70,17 @@ function App() {
               en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya sabe. Por lo que su practica
               fomentaria la adquisición natural del lenguaje a través de la exposición constante y gradual a 
               estructuras lingüísticas más complejas.
-            <img src="../../../rana3.png" alt="" className="img-meme"/>
+            <img 
+              src="../../../rana3.png" 
+              alt="" 
+              className="img-meme"/>
             </li>
 
             <li className="flex-center div-meme">
-              <img src="../../../strong-cheems.png" alt="" className="img-meme"/>
+              <img 
+                src="../../../strong-cheems.png" 
+                alt="imagen del meme cheems musculoso" 
+                className="img-meme"/>
               <span>
                 Hay que tener en cuenta que los clips pueden variar en su dificultad de comprension segun
                 su complejidad, idiosincracia, o por el vocabulario que manejan. Por lo que para que la 
@@ -88,7 +100,10 @@ function App() {
                  clip determinado, grabando un audio, que puede guardar y actualizar, para compararlo 
                  con el input.
               </span>
-              <img src="../../../gato.png" className="png-inicio gato" alt="" />
+              <img 
+                src="../../../gato.png" 
+                className="png-inicio gato" 
+                alt="imagen del meme de un gato negro harto" />
             </li>
           </ul>
 
