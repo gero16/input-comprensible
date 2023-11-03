@@ -51,7 +51,7 @@ const IniciarSesion = () => {
              ? <> 
               <h1> Iniciar Sesion </h1>
                 <NavLink to={`/`}> 
-                    <h3> Volver a la página principal </h3>
+                    <h3 className="subtitulo-volver"> Volver a la página principal </h3>
                 </NavLink>
                 <form>
                 <ul className="lista-registro">

@@ -54,11 +54,13 @@ const Pelicula = ({data}) => {
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                     
                     {
+                        /*
                         pelicula === "scream-2022" || pelicula === "super-mario-bros" || pelicula ==="the-room-2003" 
                             ||  pelicula ==="kill-bill" || pelicula ==="bastardos-sin-gloria" || pelicula ==="harry-potter-1" 
                             ? <img src={`../${pelicula}.png`} className={`imagen-${pelicula}`} alt={`imagen portada sobre ${pelicula}`} /> 
                             : <> </>
               
+                            */
                     }
                 </div>
               
