@@ -1,4 +1,6 @@
 import { useState } from "react"
+import "./Usuario.css"
+import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 
 const Registro = () => {
 
@@ -14,7 +16,7 @@ const Registro = () => {
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
     const fetchRegistrarse = async (usuario) => {
-        const response = await fetch(`${urlBackend_Produccion}/usuario/agregar-usuario`,  
+        const response = await fetch(`${ urlBackend_Produccion }/usuario/agregar-usuario`,  
             {
                 method: 'POST',
                 headers: new Headers({
@@ -40,9 +42,15 @@ const Registro = () => {
         {
             usuarioConfirmado === false
              ? <> 
+ 
                 <h1> Registrarse </h1>
-                <form action="/agregar-usuario" method="POST">
-                    <ul>
+                <NavLink to={`/`}> 
+                    <h3> Volver a la página principal </h3>
+                </NavLink>
+ 
+                
+                <form>
+                    <ul className="lista-registro">
                         <li>
                             <label>Usuario</label>
                             <input type="text"  onChange={(e) => setUsuario({ ...usuario,  usuario : e.target.value }) } />
@@ -58,7 +66,7 @@ const Registro = () => {
                             <input type="password" onChange={(e) => setUsuario({ ...usuario,  password : e.target.value }) } />
                 
                         </li>
-                        <button type="button" onClick={ () => fetchRegistrarse(usuario) }> Registrarse </button>
+                        <button type="button" onClick={ () => fetchRegistrarse(usuario) }> Confirmar </button>
                     </ul>
                 </form>
              </>
