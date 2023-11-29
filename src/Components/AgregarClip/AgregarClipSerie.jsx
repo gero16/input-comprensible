@@ -4,7 +4,7 @@ import { Context } from "../../context/context";
 
 const AgregarClipSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, separarTexto, transformarMayuscula  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -12,6 +12,8 @@ const AgregarClipSerie = () => {
         temporadas: []
     })
     const [categoriaSeleccionada, setCategoriaSelecionada] = useState('serie');
+
+    const [mensaje, setMensaje] = useState("")
 
     const separarTemporada = separarTexto(temporada, "-")
     const separarCapitulo = separarTexto(capitulo, "-")
@@ -31,7 +33,7 @@ const AgregarClipSerie = () => {
         numero_clip: 1
     })
 
-    console.log(clip)
+   // console.log(clip)
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
@@ -50,7 +52,9 @@ const AgregarClipSerie = () => {
           });
           
           let result = await response.json();
-          console.log(result)
+          console.log(result.Clip)
+          setMensaje(result.Clip)
+          console.log(mensaje)
           
     }
 
@@ -169,6 +173,10 @@ const AgregarClipSerie = () => {
                     </li>
                     <li id="li-agregar-clip">
                         <button onClick={() => agregarClip(clip) }> Agregar Clip </button>
+                    </li>
+
+                    <li>
+                        <span className="mensaje"> {mensaje !== ""  ? mensaje : ""} </span>
                     </li>
                 </ul>
             </div>

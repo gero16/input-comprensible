@@ -29,6 +29,9 @@ const AgregarClipMulti = () => {
         numero_clip: 22
     })
 
+    const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
+    const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
+
     const fetchCantidadClips = async (urlClips) => {
         const response = await fetch(urlClips,  {
                 method: 'GET',
@@ -40,13 +43,10 @@ const AgregarClipMulti = () => {
             })
         const resp= await response.json();
         if(!resp) console.log("No hay data")
-        console.log(resp.Cantidad)
+        console.log(resp.Numero_Siguiente)
   
-        return resp.Cantidad
+        return resp.Numero_Siguiente
     }
-
-    const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
-    const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
@@ -105,8 +105,8 @@ const AgregarClipMulti = () => {
                 const separarCapitulo =  clip.capitulo.split("-")
                 setClip({
                     ...clip,
-                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
-                    numero_clip : cantidad +1
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad}`,
+                    numero_clip : cantidad 
                 })
             })  
         }      
@@ -124,8 +124,8 @@ const AgregarClipMulti = () => {
                 const separarCapitulo =  clip.capitulo.split("-")
                 setClip({
                     ...clip,
-                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
-                    numero_clip : cantidad +1
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad}`,
+                    numero_clip : cantidad 
                 })
                 })
             } 
