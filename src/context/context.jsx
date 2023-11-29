@@ -234,12 +234,28 @@ const fetchClips = async (urlClips, urlGrabaciones) => {
     return data;
 }
 
+const fetchCantidadClips = async (urlClips) => {
+    const response = await fetch(urlClips,  {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": "https://localhost:5173",
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+    const resp= await response.json();
+    if(!resp) console.log("No hay data")
+    console.log(resp.Numero_Siguiente)
+
+    return resp.Numero_Siguiente
+}
+
 return (
     <Context.Provider 
         value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto
+            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips
             }}> 
             
         { children } 

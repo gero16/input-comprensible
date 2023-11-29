@@ -5,7 +5,7 @@ import { Context } from "../../context/context"
 import { useEffect } from "react"
 
 const AgregarClipMulti = () => {
-    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, fetchCantidadClips  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -31,22 +31,6 @@ const AgregarClipMulti = () => {
 
     const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
     const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
-
-    const fetchCantidadClips = async (urlClips) => {
-        const response = await fetch(urlClips,  {
-                method: 'GET',
-                headers: new Headers({
-                    "Origin": "https://localhost:5173",
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        const resp= await response.json();
-        if(!resp) console.log("No hay data")
-        console.log(resp.Numero_Siguiente)
-  
-        return resp.Numero_Siguiente
-    }
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
