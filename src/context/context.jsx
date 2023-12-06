@@ -19,6 +19,8 @@ export const CustomProvider = ({ children }) => {
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
+    const urlOrigin = "http://localhost:5173"
+
     const fetchTitulos = async (titulos, setTitulos) => {
         let arrayTitulos = []
         const url = `${urlBackend_Produccion}/titulos`
@@ -26,7 +28,7 @@ export const CustomProvider = ({ children }) => {
             {
                 method: 'GET',
                 headers: new Headers({
-                    "Origin": "https://localhost:5173",
+                    "Origin": urlOrigin,
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                 })
@@ -48,18 +50,19 @@ export const CustomProvider = ({ children }) => {
 
     const fetchCapitulos = async (titulo) => {
         let arrayCapitulos = []
-        const url = `${urlBackend_Produccion}/titulos/${titulo}`
+        const url = `${urlBackend_Desarrollo}/titulos/${titulo}`
         const response = await fetch(url,  
             {
                 method: 'GET',
                 headers: new Headers({
-                    "Origin": "https://localhost:5173",
+                    "Origin": urlOrigin,
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                 })
             })
         const resp= await response.json();
         //console.log(resp.data)
+        
         if(!resp) console.log("No hay data")
       
         return resp.data
@@ -192,24 +195,28 @@ const fetchGrabaciones = async (clips, urlGrabaciones) => {
         {
             method: 'GET',
             headers: new Headers({
-                "Origin": "https://localhost:5173",
+                "Origin": urlOrigin,
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             })
         })
-    const resp= await response.json();
-    if(!resp) console.log("No hay data")
 
-    let arrayClips = clips
-    //console.log(resp.grabaciones)
-    arrayClips.forEach(clip => {
-        resp.grabaciones.forEach((grabacion) => {
-            if(clip.id ===  grabacion.id_clip) {
-                clip.grabacion = grabacion.grabacion 
-            }
-        })
-    });
-   return arrayClips
+        if(response) {
+            const resp= await response.json();
+            
+            if(!resp) console.log("No hay data")
+        
+            let arrayClips = clips
+            //console.log(resp.grabaciones)
+            arrayClips.forEach(clip => {
+                resp.grabaciones.forEach((grabacion) => {
+                    if(clip.id ===  grabacion.id_clip) {
+                        clip.grabacion = grabacion.grabacion 
+                    }
+                })
+            });
+           return arrayClips
+        }
 }
 
 const fetchClips = async (urlClips, urlGrabaciones) => {
@@ -217,38 +224,47 @@ const fetchClips = async (urlClips, urlGrabaciones) => {
         {
             method: 'GET',
             headers: new Headers({
-                "Origin": "https://localhost:5173",
+                "Origin": urlOrigin,
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             })
         })
-    const resp= await response.json();
-    if(!resp) console.log("No hay data")
-    const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
-    const arrayPaginas = cantidadPaginasHtml(resp.data)
-    setTotalPaginas(arrayPaginas)
-
-    mostrarClipsPagina(respuesta, 0, 21)
-    setData(respuesta)
-    console.log(respuesta)
-    return data;
+    if(response) {
+        const resp= await response.json();
+        if(!resp) console.log("No hay data")
+        const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
+        if(respuesta) {
+            const arrayPaginas = cantidadPaginasHtml(resp.data)
+            setTotalPaginas(arrayPaginas)
+        
+            mostrarClipsPagina(respuesta, 0, 21)
+            setData(respuesta)
+            console.log(respuesta)
+            return data;
+        }
+    }
 }
 
 const fetchCantidadClips = async (urlClips) => {
     const response = await fetch(urlClips,  {
             method: 'GET',
             headers: new Headers({
-                "Origin": "https://localhost:5173",
+                "Origin": urlOrigin,
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             })
         })
-    const resp= await response.json();
-    if(!resp) console.log("No hay data")
-    console.log(resp.Numero_Siguiente)
 
-    return resp.Numero_Siguiente
-}
+    if(response) {
+        const resp= await response.json();
+        if(!resp) console.log("No hay data")
+        
+        console.log(resp.Numero_Siguiente)
+        
+        return resp.Numero_Siguiente
+    }
+    }
+    
 
 return (
     <Context.Provider 

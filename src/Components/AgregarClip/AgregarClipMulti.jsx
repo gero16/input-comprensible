@@ -5,7 +5,7 @@ import { Context } from "../../context/context"
 import { useEffect } from "react"
 
 const AgregarClipMulti = () => {
-    const { fetchTitulos, urlBackend_Produccion, fetchCantidadClips  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, fetchCantidadClips  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -42,16 +42,18 @@ const AgregarClipMulti = () => {
         const encontrarSerie = titulos.find((element) => element[1] === clip.subtitulo )
         const separarTemporada =  clip.temporada.split("-")
         const separarCapitulo =  clip.capitulo.split("-")
+
         if(encontrarSerie && encontrarSerie[2]  ==="serie") {
-            const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            const urlCantidadSerie = `${urlBackend_Desarrollo}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
             let resultado = fetchCantidadClips(urlCantidadSerie)
-            resultado.then((cantidad) => {
+            resultado.then((cantidadClip) => {
+                console.log(cantidadClip)
                 setCategoriaSelecionada("serie")
                 setClip({
                     ...clip, 
                     categoria : "serie",
-                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ cantidad + 1}`,
-                    numero_clip : cantidad +1
+                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ cantidadClip }`,
+                    numero_clip : cantidadClip
                 })
                 setInfoSerie({
                     temporadas : encontrarSerie[3],
@@ -60,18 +62,21 @@ const AgregarClipMulti = () => {
     
             })
         }
+
         if(encontrarSerie && encontrarSerie[2] === "pelicula") {
-            const urlCantidadPelicula = `${urlBackend_Produccion}/pelicula/${clip.subtitulo}/cantidad`
+
+            const urlCantidadPelicula = `${urlBackend_Desarrollo}/pelicula/${clip.subtitulo}/cantidad`
+
             let resultado =    fetchCantidadClips(urlCantidadPelicula)
-            resultado.then((cantidad) => {
- 
+            resultado.then((cantidadClip) => {
+                console.log(cantidadClip)
                 setCategoriaSelecionada("pelicula")
 
                 setClip({ 
                     ...clip,
                     categoria : "pelicula",
-                    nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${cantidad + 1}`,
-                    numero_clip : cantidad + 1
+                    nombre_clip : `${clip.subtitulo}-${ cantidadClip }`,
+                    numero_clip : cantidadClip
                 })
           
             })

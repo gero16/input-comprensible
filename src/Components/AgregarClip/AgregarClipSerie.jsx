@@ -4,7 +4,7 @@ import { Context } from "../../context/context";
 
 const AgregarClipSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchTitulos, urlBackend_Produccion, separarTexto, transformarMayuscula  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, fetchCantidadClips  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -38,12 +38,24 @@ const AgregarClipSerie = () => {
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
         console.log(titulos)   
+
+        const urlCantidadSerie = `${ urlBackend_Desarrollo }/serie/${clip.subtitulo}/temporada/${temporada}/capitulo/${capitulo}/cantidad`
+        let resultado = fetchCantidadClips(urlCantidadSerie)
+        resultado.then((cantidadClip) => {
+             console.log(cantidadClip)
+             setClip({
+                ...clip, 
+                nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ cantidadClip }`,
+                numero_clip : cantidadClip
+            })
+        })
+     
     }, [])
 
     const agregarClip = async (data) => {
         console.log(data)
         
-        let response = await fetch(`${urlBackend_Produccion}/agregar-clip`, {
+        let response = await fetch(`${ urlBackend_Desarrollo }/agregar-clip`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
@@ -51,11 +63,19 @@ const AgregarClipSerie = () => {
             body: JSON.stringify(data)
           });
           
-          let result = await response.json();
-          console.log(result.Clip)
-          setMensaje(result.Clip)
-          console.log(mensaje)
-          
+          console.log(response.status)
+
+          if(response.status === 200) {
+            let result = await response.json();
+            console.log(result.Clip)
+            setMensaje(result.Clip)
+            
+            setClip({
+                ...clip, 
+                nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ clip.numero_clip + 1  }`,
+                numero_clip : clip.numero_clip + 1
+            })
+          }
     }
 
     return (
