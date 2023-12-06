@@ -4,7 +4,8 @@ import { Context } from "../../context/context";
 
 const AgregarClipSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, fetchCantidadClips  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, 
+        fetchCantidadClips  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -17,9 +18,11 @@ const AgregarClipSerie = () => {
 
     const separarTemporada = separarTexto(temporada, "-")
     const separarCapitulo = separarTexto(capitulo, "-")
+    const separarSubtitulo = separarTexto(serie, "-")
+
 
     const [clip, setClip] = useState({
-        titulo : transformarMayuscula(serie),
+        titulo : transformarMayuscula(serie, separarSubtitulo.length),
         subtitulo: serie,
         categoria: "serie",
         temporada: temporada,
@@ -32,13 +35,11 @@ const AgregarClipSerie = () => {
         nombre_clip: `${serie}-${separarTemporada[1]}x0${separarCapitulo[1]}-1`,
         numero_clip: 1
     })
-
-   // console.log(clip)
+   
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
-        console.log(titulos)   
-
+       
         const urlCantidadSerie = `${ urlBackend_Desarrollo }/serie/${clip.subtitulo}/temporada/${temporada}/capitulo/${capitulo}/cantidad`
         let resultado = fetchCantidadClips(urlCantidadSerie)
         resultado.then((cantidadClip) => {

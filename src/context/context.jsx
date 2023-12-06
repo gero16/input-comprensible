@@ -136,19 +136,21 @@ export const CustomProvider = ({ children }) => {
     }
 }
 
-  const transformarMayuscula = (texto, palabras) => {
-        const result = separarTexto(texto, "-")
-        const primeraPalabra = result[0].charAt(0).toUpperCase() + result[0].slice(1)
-        if(result.length > 1) {
-            const segundaPalabra = result[1].charAt(0).toUpperCase() + result[1].slice(1)
-            const resultadoFinal = `${primeraPalabra} ${segundaPalabra} ${result[2] ? result[2] : ""}`
-            return resultadoFinal
+const transformarMayuscula = (texto, palabras) => {
+        const textoSeparado = separarTexto(texto, "-")
+        if(palabras > 1) {
+            let tituloFinal = ""
+            for (let i = 0; i < textoSeparado.length; i++) {
+                const palabra = textoSeparado[i].charAt(0).toUpperCase() + textoSeparado[i].slice(1)
+                tituloFinal = tituloFinal +  " " + palabra
+            }
+            return tituloFinal
         }
 
-        const resultadoFinal = `${primeraPalabra}`
-        console.log(resultadoFinal)
-        return resultadoFinal
-      
+        if(palabras === 1) {
+            const resultadoFinal = texto.charAt(0).toUpperCase() + texto.slice(1)
+            return resultadoFinal
+        }
 }
 
 const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {

@@ -29,6 +29,7 @@ const AgregarClipMulti = () => {
         numero_clip: 22
     })
 
+    
     const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
     const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
 
