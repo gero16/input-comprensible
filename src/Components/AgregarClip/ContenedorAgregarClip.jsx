@@ -1,11 +1,10 @@
-import { useContext, useState } from "react"
 import "./AgregarClip.css"
+import { useParams } from "react-router-dom"
+
 import Navbar from '../Navbar/Navbar'
-import { Context } from "../../context/context"
-import { useEffect } from "react"
 import AgregarClipMulti from "./AgregarClipMulti"
 import AgregarClipSerie from "./AgregarClipSerie"
-import { useParams } from "react-router-dom"
+import AgregarClipPelicula from "./AgregarClipPelicula"
 
 const ContenedorAgregarClip = () => {
     let { pelicula, serie, temporada, usuario, capitulo } = useParams();
@@ -17,9 +16,9 @@ const ContenedorAgregarClip = () => {
                 {
                     !pelicula && !temporada  
                     ? <AgregarClipMulti> </AgregarClipMulti>
-                    : pelicula 
+                    : serie 
                         ? <AgregarClipSerie> </AgregarClipSerie> 
-                        : <AgregarClipSerie> </AgregarClipSerie> 
+                        : <AgregarClipPelicula> </AgregarClipPelicula> 
                 }
             </div>
 

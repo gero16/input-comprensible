@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react"
 import Clip from "../Clip/Clip"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula } = useParams();
     const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion  } = useContext(Context)
 
+    const navigate = useNavigate();
+    
     let arrayAudios = []
     console.log(data)
     useEffect(() => {
@@ -100,6 +102,12 @@ const Pelicula = ({data}) => {
                         </div>
                     }
                 </section>
+
+                <button 
+                    onClick={() => navigate(`/agregar-clip/${pelicula}`)}
+                    className="btn-ir-agregar-clip"
+                    > Ir a Agregar Clip 
+                </button> 
             </article>
 
         </>
