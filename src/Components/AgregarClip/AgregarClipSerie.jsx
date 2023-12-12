@@ -37,9 +37,10 @@ const AgregarClipSerie = () => {
     })
    
 
+
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
-       
+
         const urlCantidadSerie = `${ urlBackend_Desarrollo }/serie/${clip.subtitulo}/temporada/${temporada}/capitulo/${capitulo}/cantidad`
         let resultado = fetchCantidadClips(urlCantidadSerie)
         resultado.then((cantidadClip) => {
@@ -50,7 +51,7 @@ const AgregarClipSerie = () => {
                 numero_clip : cantidadClip
             })
         })
-     
+        console.log(clip)
     }, [])
 
     const agregarClip = async (data) => {
@@ -125,13 +126,13 @@ const AgregarClipSerie = () => {
                     <li>
                         <label htmlFor=""> Temporada </label>
                             <select name="select"  onChange={(e) =>  seleccionarTemporada(e.target.value)}  >
-                                <option value={ temporada }> { transformarMayuscula(temporada) } </option>
+                                <option value={ temporada }> { transformarMayuscula(temporada, 2) } </option>
                             </select>
                     </li>
                     <li>
                         <label htmlFor="">  Capitulo </label>
                         <select name="select"  onChange={(e) =>  seleccionarCapitulo(e.target.value)}  >       
-                            <option value={ capitulo }> { transformarMayuscula(capitulo) } </option>
+                            <option value={ capitulo }> { transformarMayuscula(capitulo, 2) } </option>
                         </select>
                     </li>
 

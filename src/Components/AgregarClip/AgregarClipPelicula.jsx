@@ -24,6 +24,7 @@ const AgregarClipPelicula = () => {
         nombre_clip: `${pelicula}-0`,
         numero_clip: 0
     })
+
    
 
     useEffect(() => {
