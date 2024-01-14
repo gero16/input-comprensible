@@ -19,14 +19,15 @@ export const CustomProvider = ({ children }) => {
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
-    const urlOrigin = "http://localhost:5173"
+    const urlOrigin = "http://localhost:5173" 
 
     const fetchTitulos = async (titulos, setTitulos) => {
         let arrayTitulos = []
-        const url = `${urlBackend_Produccion}/titulos`
+        const url = `${urlBackend_Desarrollo}/titulos`
         const response = await fetch(url,  
             {
                 method: 'GET',
+                mode: 'cors',
                 headers: new Headers({
                     "Origin": urlOrigin,
                     'Content-Type': 'application/json',
@@ -127,145 +128,145 @@ export const CustomProvider = ({ children }) => {
         setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
         localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
     }
-  }
-
-  const separarTexto = (texto, separador) => {
-    if(texto.split(separador)) {
-        const result = texto.split(separador)
-        return result
     }
-}
 
-const transformarMayuscula = (texto, palabras) => {
-        const textoSeparado = separarTexto(texto, "-")
-        if(palabras > 1) {
-            let tituloFinal = ""
-            for (let i = 0; i < textoSeparado.length; i++) {
-                const palabra = textoSeparado[i].charAt(0).toUpperCase() + textoSeparado[i].slice(1)
-                tituloFinal = tituloFinal +  " " + palabra
+    const separarTexto = (texto, separador) => {
+        if(texto.split(separador)) {
+            const result = texto.split(separador)
+            return result
+        }
+    }
+
+    const transformarMayuscula = (texto, palabras) => {
+            const textoSeparado = separarTexto(texto, "-")
+            if(palabras > 1) {
+                let tituloFinal = ""
+                for (let i = 0; i < textoSeparado.length; i++) {
+                    const palabra = textoSeparado[i].charAt(0).toUpperCase() + textoSeparado[i].slice(1)
+                    tituloFinal = tituloFinal +  " " + palabra
+                }
+                return tituloFinal
             }
-            return tituloFinal
-        }
 
-        if(palabras === 1) {
-            const resultadoFinal = texto.charAt(0).toUpperCase() + texto.slice(1)
-            return resultadoFinal
-        }
-}
+            if(palabras === 1) {
+                const resultadoFinal = texto.charAt(0).toUpperCase() + texto.slice(1)
+                return resultadoFinal
+            }
+    }
 
-const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
-let paginas = []
-console.log(datos.length)
-for (let index = primerValor; index < ultimoValor; index++) {
-    if(datos[index] === undefined) break
-    paginas.push(datos[index])
-}      
-setPaginaClips(paginas, primerValor, ultimoValor)
+    const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
+    let paginas = []
+    console.log(datos.length)
+    for (let index = primerValor; index < ultimoValor; index++) {
+        if(datos[index] === undefined) break
+        paginas.push(datos[index])
+    }      
+    setPaginaClips(paginas, primerValor, ultimoValor)
 
-return paginaClips
-}
+    return paginaClips
+    }
 
-const cantidadPaginasHtml = (data) => { 
-    let arrayPaginas = []
-    if(data.length <= 21) arrayPaginas = [1]
-    if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
-    if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
-    if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
-    if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
-    if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
+    const cantidadPaginasHtml = (data) => { 
+        let arrayPaginas = []
+        if(data.length <= 21) arrayPaginas = [1]
+        if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
+        if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
+        if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
+        if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
+        if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
 
-    return arrayPaginas
-}
+        return arrayPaginas
+    }
 
-const setearClipsPagina = (data) => {
-    if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
-    if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
-    if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
-    if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
-    if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
-}
+    const setearClipsPagina = (data) => {
+        if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
+        if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
+        if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
+        if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
+        if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
+    }
 
-const cambiarPagina = (numero) => {
-    setPaginaActual(numero)
-    return paginaActual
-}
+    const cambiarPagina = (numero) => {
+        setPaginaActual(numero)
+        return paginaActual
+    }
 
 
-const fetchGrabaciones = async (clips, urlGrabaciones) => {
-  
-    const response = await fetch(urlGrabaciones,  
-        {
-            method: 'GET',
-            headers: new Headers({
-                "Origin": urlOrigin,
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+    const fetchGrabaciones = async (clips, urlGrabaciones) => {
+    
+        const response = await fetch(urlGrabaciones,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": urlOrigin,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
             })
-        })
+
+            if(response) {
+                const resp= await response.json();
+                
+                if(!resp) console.log("No hay data")
+            
+                let arrayClips = clips
+                //console.log(resp.grabaciones)
+                arrayClips.forEach(clip => {
+                    resp.grabaciones.forEach((grabacion) => {
+                        if(clip.id ===  grabacion.id_clip) {
+                            clip.grabacion = grabacion.grabacion 
+                        }
+                    })
+                });
+            return arrayClips
+            }
+    }
+
+    const fetchClips = async (urlClips, urlGrabaciones) => {
+        const response = await fetch(urlClips,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": urlOrigin,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        if(response) {
+            const resp= await response.json();
+            if(!resp) console.log("No hay data")
+            const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
+            if(respuesta) {
+                const arrayPaginas = cantidadPaginasHtml(resp.data)
+                setTotalPaginas(arrayPaginas)
+            
+                mostrarClipsPagina(respuesta, 0, 21)
+                setData(respuesta)
+                console.log(respuesta)
+                return data;
+            }
+        }
+    }
+
+    const fetchCantidadClips = async (urlClips) => {
+        const response = await fetch(urlClips,  {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": urlOrigin,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
 
         if(response) {
             const resp= await response.json();
-            
             if(!resp) console.log("No hay data")
-        
-            let arrayClips = clips
-            //console.log(resp.grabaciones)
-            arrayClips.forEach(clip => {
-                resp.grabaciones.forEach((grabacion) => {
-                    if(clip.id ===  grabacion.id_clip) {
-                        clip.grabacion = grabacion.grabacion 
-                    }
-                })
-            });
-           return arrayClips
+            
+            console.log(resp.Numero_Siguiente)
+            
+            return resp.Numero_Siguiente
         }
-}
-
-const fetchClips = async (urlClips, urlGrabaciones) => {
-    const response = await fetch(urlClips,  
-        {
-            method: 'GET',
-            headers: new Headers({
-                "Origin": urlOrigin,
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-            })
-        })
-    if(response) {
-        const resp= await response.json();
-        if(!resp) console.log("No hay data")
-        const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
-        if(respuesta) {
-            const arrayPaginas = cantidadPaginasHtml(resp.data)
-            setTotalPaginas(arrayPaginas)
-        
-            mostrarClipsPagina(respuesta, 0, 21)
-            setData(respuesta)
-            console.log(respuesta)
-            return data;
         }
-    }
-}
-
-const fetchCantidadClips = async (urlClips) => {
-    const response = await fetch(urlClips,  {
-            method: 'GET',
-            headers: new Headers({
-                "Origin": urlOrigin,
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-            })
-        })
-
-    if(response) {
-        const resp= await response.json();
-        if(!resp) console.log("No hay data")
-        
-        console.log(resp.Numero_Siguiente)
-        
-        return resp.Numero_Siguiente
-    }
-    }
     
 
 return (
