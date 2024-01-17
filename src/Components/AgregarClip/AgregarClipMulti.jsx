@@ -45,7 +45,7 @@ const AgregarClipMulti = () => {
         const separarCapitulo =  clip.capitulo.split("-")
 
         if(encontrarSerie && encontrarSerie[2]  ==="serie") {
-            const urlCantidadSerie = `${urlBackend_Desarrollo}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            const urlCantidadSerie = `${ urlBackend_Produccion }/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
             let resultado = fetchCantidadClips(urlCantidadSerie)
             resultado.then((cantidadClip) => {
                 console.log(cantidadClip)
@@ -66,7 +66,7 @@ const AgregarClipMulti = () => {
 
         if(encontrarSerie && encontrarSerie[2] === "pelicula") {
 
-            const urlCantidadPelicula = `${urlBackend_Desarrollo}/pelicula/${clip.subtitulo}/cantidad`
+            const urlCantidadPelicula = `${ urlBackend_Produccion }/pelicula/${clip.subtitulo}/cantidad`
 
             let resultado =    fetchCantidadClips(urlCantidadPelicula)
             resultado.then((cantidadClip) => {
@@ -88,7 +88,7 @@ const AgregarClipMulti = () => {
     useEffect(() => {
         if(categoriaSeleccionada === "serie") {
 
-            const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            const urlCantidadSerie = `${ urlBackend_Produccion }/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
             let resultado = fetchCantidadClips(urlCantidadSerie)
             resultado.then((cantidad) => {
                 const separarTemporada =  clip.temporada.split("-")
@@ -105,7 +105,7 @@ const AgregarClipMulti = () => {
 
     useEffect(() => {
         if(categoriaSeleccionada === "serie") {
-            const urlCantidadSerie = `${urlBackend_Produccion}/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
+            const urlCantidadSerie = `${ urlBackend_Produccion }/serie/${clip.subtitulo}/temporada/${clip.temporada}/capitulo/${clip.capitulo}/cantidad`
             const separarTemporada =  clip.temporada.split("-")
             const separarCapitulo =  clip.capitulo.split("-")
             let resultado = fetchCantidadClips(urlCantidadSerie)
@@ -124,7 +124,7 @@ const AgregarClipMulti = () => {
 
     
     const agregarClip = async (data) => {
-        let response = await fetch(`${urlBackend_Produccion}/agregar-clip`, {
+        let response = await fetch(`${ urlBackend_Produccion }/agregar-clip`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'

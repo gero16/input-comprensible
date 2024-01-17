@@ -1,7 +1,8 @@
 import { useState, createContext } from "react"
 import 'react-audio-voice-recorder';
 import { fetchTitulos } from "./titulos";
-import { cantidadPaginasHtml,  fetchCantidadClips,  fetchCapitulos,  fetchGrabaciones,  mostrarRespuesta,  separarTexto, transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, urlOrigin } from "./helpers";
+import { cantidadPaginasHtml,  fetchCantidadClips,  fetchCapitulos,  fetchGrabaciones,  mostrarRespuesta,  
+    separarTexto, transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, urlOrigin } from "./helpers";
 
 export const Context = createContext()
 
@@ -93,15 +94,13 @@ export const CustomProvider = ({ children }) => {
         setPaginaClips(paginas, primerValor, ultimoValor)
     
         return paginaClips
-        }
+    }
     
-   
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
         return paginaActual
     }
 
-   
     const fetchClips = async (urlClips, urlGrabaciones) => {
         const response = await fetch(urlClips,  
             {
@@ -129,8 +128,6 @@ export const CustomProvider = ({ children }) => {
     }
 
     
-    
-
 return (
     <Context.Provider 
         value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
