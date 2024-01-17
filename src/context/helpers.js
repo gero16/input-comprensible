@@ -1,3 +1,16 @@
+// Todos los helpers del Context que no usan useState 
+
+export const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+export const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+export const urlOrigin = "https://input-comprensible.vercel.app/" 
+
+export const urlBackend_Produccion1 = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+export const urlBackend_Desarrollo1 = import.meta.env.VITE_URL_BACKEND_DESARROLLO
+
+export const mostrarRespuesta = (subtitulo, id) => {
+    const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
+    valorAudio.classList.toggle("ocultar")
+}
 export const separarTexto = (texto, separador) => {
     if(texto.split(separador)) {
         const result = texto.split(separador)
@@ -34,10 +47,74 @@ export const cantidadPaginasHtml = (data) => {
     return arrayPaginas
 }
 
-export const setearClipsPagina = (data) => {
-    if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
-    if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
-    if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
-    if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
-    if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
+export const fetchCapitulos = async (titulo) => {
+    let arrayCapitulos = []
+    const url = `${urlBackend_Desarrollo1}/titulos/${titulo}`
+    const response = await fetch(url,  
+        {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": urlOrigin,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+    const resp= await response.json();
+    //console.log(resp.data)
+    
+    if(!resp) console.log("No hay data")
+  
+    return resp.data
 }
+
+export const fetchGrabaciones = async (clips, urlGrabaciones) => {
+    
+    const response = await fetch(urlGrabaciones,  
+        {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": urlOrigin,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+
+        if(response) {
+            const resp= await response.json();
+            
+            if(!resp) console.log("No hay data")
+        
+            let arrayClips = clips
+            //console.log(resp.grabaciones)
+            arrayClips.forEach(clip => {
+                resp.grabaciones.forEach((grabacion) => {
+                    if(clip.id ===  grabacion.id_clip) {
+                        clip.grabacion = grabacion.grabacion 
+                    }
+                })
+            });
+        return arrayClips
+        }
+}
+
+export const fetchCantidadClips = async (urlClips) => {
+    const response = await fetch(urlClips,  {
+            method: 'GET',
+            headers: new Headers({
+                "Origin": urlOrigin,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            })
+        })
+
+    if(response) {
+        const resp= await response.json();
+        if(!resp) console.log("No hay data")
+        
+        console.log(resp.Numero_Siguiente)
+        
+        return resp.Numero_Siguiente
+    }
+    }
+
+    
