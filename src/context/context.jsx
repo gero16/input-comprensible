@@ -19,7 +19,7 @@ export const CustomProvider = ({ children }) => {
     const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
     const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 
-    const urlOrigin = "http://localhost:5173" 
+    const urlOrigin = "https://input-comprensible.vercel.app/" 
 
     const fetchTitulos = async (titulos, setTitulos) => {
         let arrayTitulos = []
@@ -28,12 +28,10 @@ export const CustomProvider = ({ children }) => {
             const response = await fetch(url,  
                 {
                     method: 'GET',
-                    mode: 'cors',
                     headers: new Headers({
-                        "Origin": urlOrigin,
                         'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
-                    })
+                        'Access-Control-Allow-Origin': urlOrigin,
+                    }),
                 })
             const resp= await response.json();
             //console.log(resp.data)
