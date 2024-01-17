@@ -34,28 +34,29 @@ const Navbar = () => {
         <>
         <nav className="nav flex-between">
 
-            <ul className="lista-navbar flex-center-column">
+            <ul className="lista-navbar navbar-principal flex-center-column">
                 <li className="li-nav">
-                    <NavLink to={`/`} className="flex-center-column"> 
-                        <span className="span-link "> Inicio </span>
-                    </NavLink>
-                </li>
-                <li className="li-nav">
-                    <NavLink to={`/agregar-clip`} className="flex-center-column"> 
-                        <span className="span-link "> Agregar Clip </span>
-                    </NavLink>
-                </li>
-                <li className="li-nav">
-                    <NavLink to={`/iniciar-sesion`} className="flex-center-column"> 
+                    <NavLink to={`/iniciar-sesion`} > 
                         <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
-                    <NavLink to={`/registro`} className="flex-center-column"> 
+                    <NavLink to={`/registro`} > 
                         <span className="span-link "> Registrarse </span>
                     </NavLink>
                 </li>
-
+                <li className="li-nav">
+                    <NavLink to={`/agregar-clip`} > 
+                        <span className="span-link "> Agregar Clip </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/`}> 
+                        <span className="span-link "> Inicio </span>
+                    </NavLink>
+                </li>
+            </ul>
+            <ul className="lista-navbar flex-center-column">
                 { titulos 
                     ? titulos.map((element, key) => {
                         return (
@@ -84,13 +85,12 @@ const Navbar = () => {
                                         </ul>
                                     </>
                                 }
-                        </li>
+                            </li>
                         )
                     }) 
 
                     : <> No hay Titulos </>
                 }
-                
             </ul>
         </nav>
         </>
