@@ -24,29 +24,35 @@ export const CustomProvider = ({ children }) => {
     const fetchTitulos = async (titulos, setTitulos) => {
         let arrayTitulos = []
         const url = `${urlBackend_Produccion}/titulos`
-        const response = await fetch(url,  
-            {
-                method: 'GET',
-                mode: 'cors',
-                headers: new Headers({
-                    "Origin": urlOrigin,
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
+        try {
+            const response = await fetch(url,  
+                {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: new Headers({
+                        "Origin": urlOrigin,
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                    })
                 })
-            })
-        const resp= await response.json();
-        //console.log(resp.data)
-        if(!resp) console.log("No hay data")
-
-        resp.data.forEach(element => {
-            const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
-            arrayTitulos.push(titulo)
-           //console.log(arrayTitulos)
-        });
-        //console.log(resp.data)
-        setTitulos(arrayTitulos)
-        //console.log(arrayTitulos)
-        return titulos
+            const resp= await response.json();
+            //console.log(resp.data)
+            if(!resp) console.log("No hay data")
+    
+            resp.data.forEach(element => {
+                const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
+                arrayTitulos.push(titulo)
+               //console.log(arrayTitulos)
+            });
+            //console.log(resp.data)
+            setTitulos(arrayTitulos)
+            //console.log(arrayTitulos)
+            return titulos
+            
+        } catch (error) {
+            console.log(error)
+        }
+            
     }
 
     const fetchCapitulos = async (titulo) => {
