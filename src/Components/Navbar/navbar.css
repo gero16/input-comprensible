@@ -53,7 +53,9 @@ h1 {
   filter: hue-rotate(30deg) brightness(500%);
 }
 
-
+.navbar-principal{
+  color: white !important;
+}
 
 @media (min-width: 800px) {
   .lista-navbar {

@@ -1,5 +1,8 @@
 import { useState, createContext } from "react"
 import 'react-audio-voice-recorder';
+import { fetchTitulos } from "./titulos";
+import { cantidadPaginasHtml, separarTexto, setearClipsPagina, transformarMayuscula } from "./helpers";
+
 export const Context = createContext()
 
 export const CustomProvider = ({ children }) => {
@@ -21,37 +24,6 @@ export const CustomProvider = ({ children }) => {
 
     const urlOrigin = "https://input-comprensible.vercel.app/" 
 
-    const fetchTitulos = async (titulos, setTitulos) => {
-        let arrayTitulos = []
-        const url = `${urlBackend_Produccion}/titulos`
-        try {
-            const response = await fetch(url,  
-                {
-                    method: 'GET',
-                    headers: new Headers({
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': urlOrigin,
-                    }),
-                })
-            const resp= await response.json();
-            //console.log(resp.data)
-            if(!resp) console.log("No hay data")
-    
-            resp.data.forEach(element => {
-                const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
-                arrayTitulos.push(titulo)
-               //console.log(arrayTitulos)
-            });
-            //console.log(resp.data)
-            setTitulos(arrayTitulos)
-            //console.log(arrayTitulos)
-            return titulos
-            
-        } catch (error) {
-            console.log(error)
-        }
-            
-    }
 
     const fetchCapitulos = async (titulo) => {
         let arrayCapitulos = []
@@ -134,30 +106,6 @@ export const CustomProvider = ({ children }) => {
     }
     }
 
-    const separarTexto = (texto, separador) => {
-        if(texto.split(separador)) {
-            const result = texto.split(separador)
-            return result
-        }
-    }
-
-    const transformarMayuscula = (texto, palabras) => {
-            const textoSeparado = separarTexto(texto, "-")
-            if(palabras > 1) {
-                let tituloFinal = ""
-                for (let i = 0; i < textoSeparado.length; i++) {
-                    const palabra = textoSeparado[i].charAt(0).toUpperCase() + textoSeparado[i].slice(1)
-                    tituloFinal = tituloFinal +  " " + palabra
-                }
-                return tituloFinal
-            }
-
-            if(palabras === 1) {
-                const resultadoFinal = texto.charAt(0).toUpperCase() + texto.slice(1)
-                return resultadoFinal
-            }
-    }
-
     const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
     let paginas = []
     console.log(datos.length)
@@ -170,31 +118,11 @@ export const CustomProvider = ({ children }) => {
     return paginaClips
     }
 
-    const cantidadPaginasHtml = (data) => { 
-        let arrayPaginas = []
-        if(data.length <= 21) arrayPaginas = [1]
-        if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
-        if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
-        if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
-        if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
-        if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
-
-        return arrayPaginas
-    }
-
-    const setearClipsPagina = (data) => {
-        if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
-        if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
-        if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
-        if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
-        if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
-    }
-
+   
     const cambiarPagina = (numero) => {
         setPaginaActual(numero)
         return paginaActual
     }
-
 
     const fetchGrabaciones = async (clips, urlGrabaciones) => {
     
