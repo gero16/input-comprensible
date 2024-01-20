@@ -1,6 +1,5 @@
 import { useContext, useState } from "react"
 import "./AgregarClip.css"
-import Navbar from '../Navbar/Navbar'
 import { Context } from "../../context/context"
 import { useEffect } from "react"
 
@@ -29,7 +28,6 @@ const AgregarClipMulti = () => {
         numero_clip: 22
     })
 
-    
     const seleccionarTemporada = (valor) => setClip({ ...clip,temporada : valor })
     const seleccionarCapitulo = (valor) => setClip({...clip, capitulo : valor })
 

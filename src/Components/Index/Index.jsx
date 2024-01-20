@@ -28,14 +28,13 @@ function App() {
         <h1 className='titulo-principal'> Input Comprensible </h1>
 
         <main className="main" >
-        <p> En esta página podrás encontrar un lugar donde practicar el input comprensible
-          mediante clips cortos de series y peliculas</p>
           <ul>
-            <li className="flex-center div-meme"> 
-              <img src="../../../rana.png" className="png-inicio" alt="imagen del meme rene" />
-              <h2> Pero ¿Que es el input comprensible? </h2>
-          
+            <li className='flex-center div-meme'  >
+              
+                <p> En esta página podrás encontrar un lugar donde practicar el input comprensible
+            mediante clips cortos de series y peliculas</p>
             </li>
+           
             <li className='flex-center div-meme'  >
               <div>
                 <p>
@@ -48,21 +47,15 @@ function App() {
                 </p>
               </div>
       
-            <img 
-              src="../../../viejo.png" 
-              alt="imagen del meme de un hombre que se rie incomododamente" 
-              className="img-meme"/>
+       
             </li>
             <li className="flex-center div-meme">
-              <img 
-                src="../../../cheems.png" 
-                alt="imagen del meme de cheems" 
-                className="img-meme"/>
+           
                 <div>
-                  <p>   Es decir, que entenderiamos por input comprensible todo aquel input que reprepresente un 
+                  <p>   Es decir, se entiende por input comprensible todo aquella entrada de información que reprepresente un 
                 nivel lingüístico ligeramente por encima del conocimiento actual del estudiante. </p>
-                  <p>   En otras palabras, que debe ser lo suficientemente desafiante como para que el estudiante tenga 
-                que esforzarse un poco para entenderlo, pero no tan difícil como para que resulte incomprensible 
+                  <p>   En otras palabras, que debe ser lo suficientemente desafiante para que el estudiante tenga 
+                que esforzarse para entenderlo, pero no tan difícil como para que resulte incomprensible 
                 o abrumador.</p>
                 </div>
           
@@ -70,49 +63,35 @@ function App() {
             </li>
             <li className="flex-center div-meme" >
               <div>
-                <p> La idea del concepto propone que cuando un estudiante se expone a una entrada de informacion
+                <p> La idea del concepto propone que cuando un estudiante se expone a una entrada de información
                     un poco más avanzada que su nivel actual de competencia, se encuentra en una "zona de 
-                    desarrollo próximo". Esta es la zona en la que el aprendizaje es más efectivo, ya que el estudiante está 
-                    en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya sabe. </p>
-                <p>Por lo que su practica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
-                  y gradual a estructuras lingüísticas más complejas.</p>
+                    desarrollo próximo". Zona en la que el aprendizaje es más efectivo, debido a que el estudiante está 
+                    en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya conoce. </p>
+                <p> Por lo que su práctica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
+                  y gradual a estructuras lingüísticas más complejas. </p>
               </div>
-            <img 
-              src="../../../rana3.png" 
-              alt="" 
-              className="img-meme rana2"/>
-
+  
             </li>
 
             <li className="flex-center div-meme">
-              <img 
-                src="../../../strong-cheems.png" 
-                alt="imagen del meme cheems musculoso" 
-                className="img-meme strong-cheems"/>
+    
 
                 <div>
-                  <p> Hay que tener en cuenta que los clips pueden variar en su dificultad de comprension según
-                la complejidad de la situación que representan, la idiosincracia del pais de origen para expresarse, 
-                o por la propia forma de hablar de los actores para personificar un personaje. </p>
-                  <p> Por lo que para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan estar acorde a su nivel.  </p>
-                  <p>   Asi como también haber visto con antelacion la pelicula o el capitulo de su interes. 
-                Debido a que en ocasiones si no se tiene en cuenta el contexto puede resultar imposible entender 
-                lo que se dice en forma aislada. </p>
+                  <p> Para clasificar la dificultad de comprensión de los clips se tomaron en cuenta diferentes factores.
+                Entre ellos estan la complejidad de la situación que representan, la forma en la que los actores se expresan, sus modismos, etc. </p>
+                  <p> Para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan estar acorde a su nivel.  </p>
+                  <p>   Asi como ya haber visto la pelicula o el capitulo de su interés. Para tener el contexto suficiente para la comprensión del mismo</p>
                   
                 </div>
       
             </li>
 
             <li className="flex-center div-meme">
-              <span>
-                 Por cada clip presente tiene la posibilidad de evaluar su comprensión, escribiendo en su campo correspondiente. 
-                 Asi como practicar el output correspondiente a un clip determinado, grabando un audio, que puede guardar o en caso de que ya exista
-                 actualizar. De forma que quede un registro donde pueda evaluar la similitud entre ambos
-              </span>
-              <img 
-                src="../../../gato.png" 
-                className="png-inicio gato" 
-                alt="imagen del meme de un gato negro harto" />
+              <p>
+                En cada clip se presenta la posibilidad de evaluar su comprensión escribiendo en su campo correspondiente y seleccionado el boton 'Evaluar'. 
+        
+              </p>
+              <p> También se puede practicar el output correspondiente al clip grabando un audio, que puede guardar o actualizar. </p>
             </li>
           </ul>
 
