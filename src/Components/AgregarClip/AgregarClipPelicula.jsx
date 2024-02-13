@@ -30,7 +30,7 @@ const AgregarClipPelicula = () => {
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
        
-        const urlCantidadPelicula = `${ urlBackend_Desarrollo }/pelicula/${clip.subtitulo}/cantidad`
+        const urlCantidadPelicula = `${ urlBackend_Produccion }/pelicula/${clip.subtitulo}/cantidad`
         let resultado = fetchCantidadClips(urlCantidadPelicula)
         resultado.then((cantidadClip) => {
              console.log(cantidadClip)
@@ -45,7 +45,7 @@ const AgregarClipPelicula = () => {
 
     const agregarClip = async (data) => {
         
-        let response = await fetch(`${ urlBackend_Desarrollo }/agregar-clip`, {
+        let response = await fetch(`${ urlBackend_Produccion }/agregar-clip/pelicula`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
