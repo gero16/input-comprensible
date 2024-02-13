@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import  "./navbar.css"
-import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link as Navigate, NavLink,} from "react-router-dom";
 import { Context } from "../../context/context";
 
 
@@ -38,6 +38,11 @@ const Navbar = () => {
                 <li className="li-nav">
                     <NavLink to={`/iniciar-sesion`} > 
                         <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/ingles`} > 
+                        <span className="span-link "> Inglés </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">

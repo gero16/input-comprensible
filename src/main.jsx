@@ -12,6 +12,7 @@ import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarCli
 import Registro from './Components/Usuario/Registro';
 import IniciarSesion from './Components/Usuario/Sesion';
 import Usuario from './Components/Usuario/Usuario';
+import Ingles from './Components/Ingles/Ingles.jsx';
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/iniciar-sesion",
         element:  <IniciarSesion />,
+      },
+      {
+        path: "/ingles",
+        element:  <Ingles />,
       },
       {
         path: "/usuario/:usuario",
