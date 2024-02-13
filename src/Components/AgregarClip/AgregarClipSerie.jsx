@@ -41,7 +41,7 @@ const AgregarClipSerie = () => {
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
 
-        const urlCantidadSerie = `${ urlBackend_Desarrollo }/serie/${clip.subtitulo}/temporada/${temporada}/capitulo/${capitulo}/cantidad`
+        const urlCantidadSerie = `${ urlBackend_Desarrollo }/series/${clip.subtitulo}/${temporada}/${capitulo}/cantidad`
         let resultado = fetchCantidadClips(urlCantidadSerie)
         resultado.then((cantidadClip) => {
              console.log(cantidadClip)
