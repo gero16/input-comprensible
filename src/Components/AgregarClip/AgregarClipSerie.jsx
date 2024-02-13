@@ -57,7 +57,7 @@ const AgregarClipSerie = () => {
     const agregarClip = async (data) => {
         console.log(data)
         
-        let response = await fetch(`${ urlBackend_Desarrollo }/agregar-clip`, {
+        let response = await fetch(`${ urlBackend_Produccion }/agregar-clip/serie`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
@@ -72,10 +72,11 @@ const AgregarClipSerie = () => {
             console.log(result.Clip)
             setMensaje(result.Clip)
             
+            console.log(clip.numero_clip)
             setClip({
                 ...clip, 
-                nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ clip.numero_clip + 1  }`,
-                numero_clip : clip.numero_clip + 1
+                nombre_clip : `${clip.subtitulo}-${separarTemporada[1]}x0${separarCapitulo[1]}-${ Number(clip.numero_clip) + 1  }`,
+                numero_clip : Number(clip.numero_clip) + 1
             })
           }
     }
