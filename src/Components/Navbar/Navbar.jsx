@@ -41,8 +41,8 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="li-nav">
-                    <NavLink to={`/ingles`} > 
-                        <span className="span-link "> Inglés </span>
+                    <NavLink to={`/recursos`} > 
+                        <span className="span-link "> Recursos </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">

@@ -12,7 +12,7 @@ import ContenedorAgregarClip from './Components/AgregarClip/ContenedorAgregarCli
 import Registro from './Components/Usuario/Registro';
 import IniciarSesion from './Components/Usuario/Sesion';
 import Usuario from './Components/Usuario/Usuario';
-import Ingles from './Components/Ingles/Ingles.jsx';
+import Recursos from './Components/Recursos/Recursos.jsx';
 
 
 const router = createBrowserRouter([
@@ -53,8 +53,14 @@ const router = createBrowserRouter([
         element:  <IniciarSesion />,
       },
       {
-        path: "/ingles",
-        element:  <Ingles />,
+        path: "/recursos", 
+        element:  <Recursos />,
+        children : [
+          {
+            path: "real-conversations",
+            element:  <ContenedorSerie />,
+          },
+        ]
       },
       {
         path: "/usuario/:usuario",
