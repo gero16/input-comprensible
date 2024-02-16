@@ -13,6 +13,8 @@ import Registro from './Components/Usuario/Registro';
 import IniciarSesion from './Components/Usuario/Sesion';
 import Usuario from './Components/Usuario/Usuario';
 import Recursos from './Components/Recursos/Recursos.jsx';
+import Recurso from "./Components/Recursos/Recurso.jsx"
+
 
 
 const router = createBrowserRouter([
@@ -57,8 +59,8 @@ const router = createBrowserRouter([
         element:  <Recursos />,
         children : [
           {
-            path: "real-conversations",
-            element:  <ContenedorSerie />,
+            path: "recurso/:recurso",
+            element:  <Recurso />,
           },
         ]
       },

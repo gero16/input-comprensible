@@ -36,30 +36,42 @@ const Ingles = () => {
             <NavLink to={`/`}> 
                 <img src={ImageVolver} className='imagen-volver' title="Volver a Inicio" alt='icono para volver a inicio' />
             </NavLink>
-    
            
-
+           
             <main>
                 <section className='grid-2'>
                     <article className=''>
                         <h2> Speaking </h2>
+                <NavLink to={`/recursos/speaking`}> 
                         <img src={ImageSpeaking} className='image-speaking' alt="" />
+                </NavLink>
                     </article>
                     <article>
                         <h2> Real Conversations </h2>
+                <NavLink to={`/recursos/listening`}> 
                         <img src={ImageConversations}  className='image-conversations' alt="" />
+                </NavLink>
                     </article>
+       
+                
                 </section>
 
                 <section className='grid-2'>
+          
+       
                     <article>
                         <h2> Listenings </h2>
+                <NavLink to={`/`}> 
                         <img src={ImageListening}   className='image-listenings' alt="" />
+                </NavLink>
                     </article>
                     <article>
                         <h2> Podcast & AudioBooks </h2>
+                    <NavLink to={`/`}> 
                         <img src={ImagePodcast}  className='image-podcast' alt="" />
+                    </NavLink>
                     </article>
+       
                 </section>
                
               

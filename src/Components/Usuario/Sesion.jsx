@@ -31,10 +31,11 @@ const IniciarSesion = () => {
         console.log(response)
         const resp = await response.json()
         console.log(resp)
+        console.log(resp[1].usuario)
 
         if(response.status === 200) {
-            localStorage.setItem("sesion", resp.usuario);
-            navigate(`/usuario/${resp.usuario}`)
+            localStorage.setItem("sesion", resp[1].usuario);
+            // navigate(`/usuario/${resp.usuario}`)
         }
         if(response.status === 401) {
             setError(true)

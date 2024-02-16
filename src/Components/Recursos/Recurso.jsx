@@ -2,7 +2,12 @@ import YouTube from 'react-youtube';
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import "./Recursos.css"
 
-const Ingles = () => {
+
+const Recurso = () => {
+
+    console.log("asasasaas")
+    let { recurso } = useParams();
+    console.log(recurso)
     const opts = {
         height: '400',
         width: '800',
@@ -19,11 +24,12 @@ const Ingles = () => {
           // https://developers.google.com/youtube/player_parameters
           autoplay: 1,
           start: 5,
-          end: 10
+          end: 10,
+          fs: 0
         },
     }
 
-
+// getSecondsLoaded()	
     return (
         
         <>
@@ -59,7 +65,7 @@ const Ingles = () => {
                  
                 </ul>
             </nav>
-            <h1> Info Speaking </h1>
+
             <main>
                 <h2> Listenings </h2>
                 <h3> How to Understand Fast English </h3>
@@ -76,4 +82,4 @@ const Ingles = () => {
     )
 }
 
-export default Ingles
+export default Recurso

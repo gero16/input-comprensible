@@ -4,6 +4,10 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 import { urlBackend_Produccion } from "../../context/helpers";
+import YouTube from 'react-youtube';
+
+// fs
+const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionBD, numero_clip }) => {

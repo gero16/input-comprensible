@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.2.0",
+    "react-player": "^2.14.1",
     "react-router-dom": "^6.14.2",
     "react-scroll": "^1.8.9",
     "react-youtube": "^10.1.0",

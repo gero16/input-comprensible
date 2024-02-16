@@ -41,7 +41,7 @@ const Pelicula = ({data}) => {
         "harry-potter-1": 32
     }
     const style = {
-        backgroundImage: `url("../${pelicula}-portada.jpg")`,
+        backgroundImage:  usuario ? `url("/${pelicula}-portada.jpg")` : `url("../${pelicula}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[pelicula]}%`,
         backgroundSize: 'cover',
@@ -67,8 +67,6 @@ const Pelicula = ({data}) => {
                 </div>
               
                 <section className='flex-center'>
-                   
-                
 
                     {
                         data.length > 0

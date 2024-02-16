@@ -7,6 +7,7 @@ import { Context } from "../../context/context"
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate();
     const { transformarMayuscula } = useContext(Context)
+    let {  usuario } = useParams();
     const [width, setWidth] = useState(window.innerWidth);
     //console.log(data) 
     let numTemporada = temporada.split("-")
@@ -28,7 +29,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     }
 
     const style = {
-        backgroundImage: `url("../../../${serie}-portada.jpg")`,
+        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("../../../${serie}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
         backgroundSize: width < 540 ? "contain" : "cover",
