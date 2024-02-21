@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element:  <Recursos />,
         children : [
           {
-            path: "recurso/:recurso",
+            path: ":recurso",
             element:  <Recurso />,
           },
         ]
