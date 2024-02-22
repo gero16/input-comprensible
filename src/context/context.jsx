@@ -116,6 +116,7 @@ export const CustomProvider = ({ children }) => {
             if(!resp) console.log("No hay data")
             const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
             if(respuesta) {
+                console.log(respuesta)
                 const arrayPaginas = cantidadPaginasHtml(resp.data)
                 setTotalPaginas(arrayPaginas)
             

@@ -3,7 +3,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
-import { urlBackend_Produccion } from "../../context/helpers";
+import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
 import YouTube from 'react-youtube';
 
 // fs
@@ -11,6 +11,7 @@ const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionBD, numero_clip }) => {
+
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
     const recorderControls = useAudioRecorder()
@@ -24,20 +25,19 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     
   
     const guardarGrabacion = async (elemento, indice) => {
-
         const url = 
             categoria === "serie"
-            ? `${ urlBackend_Produccion }/agregar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `${ urlBackend_Produccion }/agregar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Produccion }/agregar-grabacion/series/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Desarrollo }/agregar-grabacion/peliculas/${subtitulo}/${usuario}`
 
             console.log(url)
         const objetoGrabacion = {
                 "fecha": "2023-09-22",
-                "grabacion": elemento.src, 
+                "grabacion": elemento.firstElementChild.src, 
                 "subtitulo": `${subtitulo}`,
                 "id_clip": id,
         }
-       
+       console.log(objetoGrabacion)
         const response = await fetch(url,  
             {
                 method: 'POST',
@@ -48,6 +48,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                 }),
                 body : JSON.stringify(objetoGrabacion)
             })
+        console.log(response)
         const resp= await response.json();
         if(!resp) console.log("No hay data")
         
@@ -79,7 +80,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         if(!resp) console.log("No hay data")
         
     }
-    console.log(imagen)
+   
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -157,7 +158,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
                             { grabacionBD
-                                ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} /> 
+                                ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} controls /> 
                                 : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
                             }
 

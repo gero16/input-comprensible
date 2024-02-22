@@ -38,18 +38,18 @@ const Recurso = () => {
                 <ul className="lista-navbar navbar-principal flex-center-column">
                  
                     <li className="li-nav">
-                        <NavLink to={`/recursos/listening`} > 
-                            <span className="span-link "> Listenings <noscript></noscript> </span>
+                        <NavLink to={`/recursos/practica`} > 
+                            <span className="span-link "> Práctica </span>
                         </NavLink>
                     </li>
                     <li className="li-nav">
-                        <NavLink to={`/recursos/speaking`} > 
-                            <span className="span-link "> Practice Speaking  </span>
+                        <NavLink to={`/recursos/podcast`} > 
+                            <span className="span-link "> Podcasts </span>
                         </NavLink>
                     </li>
                     <li className="li-nav">
                         <NavLink to={`/recursos/conversations`} > 
-                            <span className="span-link "> Real Conversations </span>
+                            <span className="span-link "> Conversaciones </span>
                         </NavLink>
                     </li>
                     <li className="li-nav">
@@ -68,7 +68,7 @@ const Recurso = () => {
 
             <main>
                 {
-                    location.pathname === `/recursos/listening` 
+                    location.pathname === `/recursos/practica` 
                     ? <>
                      
                         <h2> Listenings </h2>
@@ -91,16 +91,23 @@ const Recurso = () => {
                         <h3>  </h3>
 
                         <section>
-                            <h3> Advanced Listening Practice </h3>
+                            <h3> </h3>
                             <YouTube 
                                 videoId="LeYIndII13w?si=Ou3TzcNJze46AcjZ" 
                                 opts={opts2} 
                                 />
                         </section>
                         <section>
-                            <h3> Advanced Listening Practice </h3>
+                            <h3> </h3>
                             <YouTube 
-                                videoId="52MSH5pmHk0?si=_fOzXOdG8CpczOFu" 
+                                videoId="b-PzAyZae-g?si=9rOCNXHoFMd8hyfb" 
+                                opts={opts2} 
+                                />
+                        </section>
+                        <section>
+                            <h3> </h3>
+                            <YouTube 
+                                videoId="QO66N1LrNCg?si=_fOzXOdG8CpczOFu" 
                                 opts={opts2} 
                                 />
                         </section>
@@ -109,7 +116,7 @@ const Recurso = () => {
                     : <> </>
                 }
 
-{
+                {
                       location.pathname === `/recursos/mejorar` 
                         ? <>
                           <h2> Mejorar Comprensión oral </h2>
@@ -138,12 +145,54 @@ const Recurso = () => {
 
                             
                             </section>
+                            <section>
+                                <h3>  </h3>
+                                <YouTube 
+                                    videoId="52MSH5pmHk0?si=FI0IVQF-tbBaO8hD" 
+                                    opts={opts2} 
+                                />
 
+                            
+                            </section>
+                            <section>
+                                <h3>  </h3>
+                                <YouTube 
+                                    videoId="h0AEBxmEDBo?si=v1w5Y4W3uXSy_SNw" 
+                                    opts={opts2} 
+                                />
+                            </section>
+                            
+                  
                            
                         </>
                         : <> </>
                 }
-                
+                 {
+                      location.pathname === `/recursos/podcasts` 
+                        ? <>
+                          <h2> Podcasts </h2>
+                           
+                          <section>
+                                <h3>  </h3>
+                                <YouTube 
+                                    videoId="ZnJCowa9RWE?si=ZHsuejcko4d-g66c" 
+                                    opts={opts2} 
+                                    />
+                            </section>
+                            <section>
+                                <h3> sh </h3>
+                                <YouTube 
+                                    videoId="Pgwbvpu9F9E?si=JbLvfXWf3N8Wh0AW" 
+                                    opts={opts2} 
+                                />
+                            </section>
+                            
+                  
+                           
+                        </>
+                        : <> </>
+                }
+          
               
             </main>
         </>

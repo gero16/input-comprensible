@@ -44,36 +44,35 @@ const Recursos = () => {
            
                 <main>
                     <section className='grid-2'>
-                        <article className=''>
-                            <h2> Mejorar </h2>
-                    <NavLink to={`/recursos/mejorar`}> 
-                            <img src={ImageSpeaking} className='image-speaking' alt="" />
-                    </NavLink>
+                        <article>
+                            <h2> Práctica </h2>
+                            <NavLink to={`/recursos/practica`}> 
+                                <img src={ImageSpeaking}   className='image-listenings' alt="" />
+                            </NavLink>
                         </article>
+                    
                         <article>
                             <h2> Conversaciones Reales </h2>
-                    <NavLink to={`/recursos/conversations`}> 
-                            <img src={ImageConversations}  className='image-conversations' alt="" />
-                    </NavLink>
+                            <NavLink to={`/recursos/conversations`}> 
+                                <img src={ImageConversations}  className='image-conversations' alt="" />
+                            </NavLink>
                         </article>
         
                     
                     </section>
 
                     <section className='grid-2'>
-            
-        
+                        <article className=''>
+                                <h2> Mejorar </h2>
+                                <NavLink to={`/recursos/mejorar`}> 
+                                    <img src={ImageListening} className='image-speaking' alt="" />
+                                </NavLink>
+                            </article>
                         <article>
-                            <h2> Listenings </h2>
-                        <NavLink to={`/recursos/listening`}> 
-                            <img src={ImageListening}   className='image-listenings' alt="" />
-                    </NavLink>
-                        </article>
-                        <article>
-                            <h2> Podcast & AudioBooks </h2>
+                            <h2> Podcasts & AudioLibros </h2>
                             <NavLink to={`/recursos/podcasts`}> 
-                            <img src={ImagePodcast}  className='image-podcast' alt="" />
-                        </NavLink>
+                                <img src={ImagePodcast}  className='image-podcast' alt="" />
+                            </NavLink>
                         </article>
         
                     </section>
