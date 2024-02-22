@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.11",
     "@vercel/analytics": "^1.1.1",
+    "aws-sdk": "^2.1563.0",
     "mic-recorder-to-mp3": "^2.2.2",
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",

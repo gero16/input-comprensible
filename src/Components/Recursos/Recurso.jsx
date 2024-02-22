@@ -95,6 +95,7 @@ const Recurso = () => {
                             <YouTube 
                                 videoId="LeYIndII13w?si=Ou3TzcNJze46AcjZ" 
                                 opts={opts2} 
+                                loading={"lazy"}
                                 />
                         </section>
                         <section>
@@ -102,6 +103,7 @@ const Recurso = () => {
                             <YouTube 
                                 videoId="b-PzAyZae-g?si=9rOCNXHoFMd8hyfb" 
                                 opts={opts2} 
+                                loading={"lazy"}
                                 />
                         </section>
                         <section>
@@ -109,6 +111,7 @@ const Recurso = () => {
                             <YouTube 
                                 videoId="QO66N1LrNCg?si=_fOzXOdG8CpczOFu" 
                                 opts={opts2} 
+                                loading={"lazy"}
                                 />
                         </section>
                       

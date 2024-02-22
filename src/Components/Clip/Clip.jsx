@@ -6,12 +6,13 @@ import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
 import YouTube from 'react-youtube';
 
-// fs
+
 const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionBD, numero_clip }) => {
 
+    console.log(grabacionBD)
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
     const recorderControls = useAudioRecorder()
@@ -57,12 +58,12 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const actualizarGrabacion = async (elemento, indice) => {
         const url = 
             categoria === "serie"
-            ? `${ urlBackend_Produccion }/actualizar-grabacion/${subtitulo}/${temporada}/${usuario}`
-            : `${ urlBackend_Produccion }/actualizar-grabacion/${subtitulo}/${usuario}`
+            ? `${ urlBackend_Produccion }/actualizar-grabacion/series/${subtitulo}/${temporada}/${usuario}`
+            : `${ urlBackend_Desarrollo }/actualizar-grabacion/peliculas/${subtitulo}/${usuario}`
             
         const objetoGrabacion = {
                 "fecha": "2023-09-27",
-                "grabacion": elemento.src, 
+                "grabacion":  elemento.firstElementChild.src, 
                 "subtitulo": `${subtitulo}`,
                 "id_clip": id
         }
@@ -81,6 +82,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         
     }
    
+
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -120,17 +122,19 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         ? <iframe 
                             width={"300"} 
                             height={"160"} 
-                            src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
+                            src={`${video}`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            loading="lazy"
                         />
                         
                         : <iframe 
                             width={ width <= 1511 ? "410" : "450"} 
                             height={ width <= 1511 ? "210" : "260"} 
-                            src={`${video}?enablejsapi=1&origin=http://localhost:5173/`}
+                            src={`${video}`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            loading="lazy"
                         />
                       }
                         
@@ -150,6 +154,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                     AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo} audio-recorder`,
                                     AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
                                 }} 
+                          
                             />
                     
                         </div>
@@ -167,22 +172,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
                             </div>
                             
-                            {
-                                document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
-                                    ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
-                                        Actualizar Grabación 
-                                      </button>
-                                
-                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
-                                       {
-                                         grabacionLocalStorage.grabacion === `grabacion-${subtitulo}-${index}` 
-                                        ?    "Guardar Grabacion"   
-                                        :    ""      
-                                       }
-                                   
-                                       
-                                      </button>
-                            }
+                        <audio src="https://grabaciones-clips.s3.amazonaws.com/audio.webm" controls></audio>
                             
                         </div>
                     </section>

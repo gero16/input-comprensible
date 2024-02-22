@@ -53,7 +53,7 @@
 .div-grabaciones {
     display: flex;
     flex-direction: column;
-    height: 150px;
+    height: 200px;
     align-items: center;
 }
 
