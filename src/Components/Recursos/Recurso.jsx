@@ -53,8 +53,8 @@ const Recurso = () => {
                         </NavLink>
                     </li>
                     <li className="li-nav">
-                        <NavLink to={`recursos//pronunciation`} > 
-                            <span className="span-link "> Pronunciation </span>
+                        <NavLink to={`/recursos/mejorar`} > 
+                            <span className="span-link "> Mejorar </span>
                         </NavLink>
                     </li>
                     <li className="li-nav">
@@ -73,7 +73,7 @@ const Recurso = () => {
                      
                         <h2> Listenings </h2>
                         <section>
-                            <h3> Como unir palabras en inglés </h3>
+                            <h3> Advanced Listening Practice </h3>
                             <YouTube 
                                 videoId="QO66N1LrNCg?si=_fOzXOdG8CpczOFu" 
                                 opts={opts2} 
@@ -89,15 +89,22 @@ const Recurso = () => {
                     ? <>
                         <h2> Conversations </h2>
                         <h3>  </h3>
-             
-                        <YouTube 
-                            videoId="LeYIndII13w?si=Ou3TzcNJze46AcjZ" 
-                            opts={opts2} 
-                        />
+
+                        <section>
+                            <h3> Advanced Listening Practice </h3>
                             <YouTube 
-                                videoId="52MSH5pmHk0?si=dsUBBDJxBGhzJFqO" 
-                                opts={opts} 
-                        />
+                                videoId="LeYIndII13w?si=Ou3TzcNJze46AcjZ" 
+                                opts={opts2} 
+                                />
+                        </section>
+                        <section>
+                            <h3> Advanced Listening Practice </h3>
+                            <YouTube 
+                                videoId="52MSH5pmHk0?si=_fOzXOdG8CpczOFu" 
+                                opts={opts2} 
+                                />
+                        </section>
+                      
                     </>
                     : <> </>
                 }
