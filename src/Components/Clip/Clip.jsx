@@ -4,13 +4,13 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
-import YouTube from 'react-youtube';
 
 
 const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionBD, numero_clip }) => {
+
 
     console.log(grabacionBD)
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
@@ -96,6 +96,8 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                 {imagen ?  <img src={imagen} alt="" /> : <> </>}
                
 
+           
+
                 <section className="section-video">
 
                     <section className="section-audio">
@@ -154,7 +156,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                     AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo} audio-recorder`,
                                     AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
                                 }} 
-                          
+                                downloadOnSavePress={true}
                             />
                     
                         </div>
@@ -163,16 +165,19 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
                             { grabacionBD
-                                ? <audio src={ grabacionBD } className={`grabacionBD-${subtitulo}-${index}`} controls /> 
+                                ? <audio src={ "https://drive.google.com/uc?export=view&id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3" } className={`grabacionBD-${subtitulo}-${index}`} controls /> 
                                 : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
                             }
 
-                        
+                            {
+                                /*  <iframe src="https://drive.google.com/file/d/id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3/" width="640" height="480"></iframe>
+                                */
+                            }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
                             </div>
                             
-                        <audio src="https://grabaciones-clips.s3.amazonaws.com/audio.webm" controls></audio>
+                  
                             
                         </div>
                     </section>

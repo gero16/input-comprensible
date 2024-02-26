@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react"
-import Clip from "../Clip/Clip"
+import Clip from "../Components/Clip/Clip"
 import { useNavigate, useParams } from "react-router-dom";
-import { Context } from "../../context/context";
+import { Context } from "../context/context";
 
 
-const Pelicula = ({data}) => {
+const Pruebas = ({data}) => {
     let {  usuario, pelicula } = useParams();
     const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion  } = useContext(Context)
     const navigate = useNavigate();
     
-
+    const [grabacion, setGrabacion] = useState([])
 
     let arrayAudios = []
     console.log(data)
@@ -31,8 +31,28 @@ const Pelicula = ({data}) => {
 
     useEffect(() => {
         //fetchGrabaciones()
-       
-        //console.log(grabacion)
+        const traerGrabacion = async () => {
+            const response = await fetch("http://localhost:3000/grabaciones",  
+                {
+                    method: 'GET',
+                    headers: new Headers({
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                    })
+                })
+            if(response) {
+                const resp = await response.json();
+                if(!resp) console.log("No hay data")
+                
+                console.log(resp)
+                setGrabacion(resp.url, resp.token)
+                return resp;
+                
+            }
+        }
+        
+        traerGrabacion()
+        console.log(grabacion)
     }, [])
 
     const posicionImagen = {
@@ -60,6 +80,7 @@ const Pelicula = ({data}) => {
                
 
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
+                    
                 </div>
               
                 <section className='flex-center'>
@@ -86,6 +107,10 @@ const Pelicula = ({data}) => {
                         : <div> 
                             <h2> Lo siento! </h2>
 
+                       
+                        <iframe src="https://drive.google.com/file/d/1CDIZoC9UqGzsNBZkdUOCKxkw9pIPNEdS/preview" width="450" height="60" controls></iframe>
+                        
+
                             <h2> Todavia no hay clips para esta pelicula </h2>
                             <h3> Si quiere agregar uno - 
                                 <button 
@@ -110,7 +135,7 @@ const Pelicula = ({data}) => {
     )
 }
 
-export default Pelicula
+export default Pruebas
 
 
 
