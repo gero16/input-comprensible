@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element:  <IniciarSesion />,
       },
       {
-        path: "/pruebas/:pelicula",
+        path: "/pruebas/:pelicula/:usuario",
         element:  <ContenedorPruebas />,
       },
       {

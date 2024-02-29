@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import Clip from "../Components/Clip/Clip"
+import ClipPrueba from "./ClipPrueba"
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../context/context";
 
@@ -90,7 +90,7 @@ const Pruebas = ({data}) => {
                         data.length > 0
                         ? data.map((element, index) => {
                         return (
-                            <Clip 
+                            <ClipPrueba
                                 id={element.id}
                                 titulo={element.titulo}
                                 subtitulo={element.subtitulo}
