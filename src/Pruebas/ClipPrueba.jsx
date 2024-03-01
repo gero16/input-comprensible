@@ -32,6 +32,7 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     }
 
     const guardarFoto = async (elemento, indice) => {
+  
         console.log(elemento.target.files[0])
         
         var file = elemento.firstElementChild.src//the file
@@ -48,16 +49,25 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     }
    
     const guardarGrabacion = async (elemento, indice) => {
+        console.log(subtitulo)
         const urlBlob = elemento.firstElementChild.src
         const response = await fetch(urlBlob);
         if (response.ok) {
             const blob = await response.blob();
-            console.log(blob)
-
+   
+            const objetoGrabacion = {
+                    "fecha": "2023-09-22",
+                    "grabacion": blob, 
+                    "subtitulo": `${subtitulo}`,
+                    "id_clip": id,
+            }
             const formData = new FormData()
             formData.append("grabacion", blob);
-
-            fetch("http://localhost:3000/agregar-grabacion/peliculas/shrek-2/geronicola", {
+            formData.append("subtitulo", subtitulo);
+            formData.append("id_clip", id);
+            
+            const urlGuardarGrabacion =
+            fetch(`http://localhost:3000/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`, {
             method: "POST",
             body: formData,
             });
@@ -143,10 +153,9 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
-                            { grabacionBD
-                                ? <audio src={ "https://drive.google.com/uc?export=view&id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3" } className={`grabacionBD-${subtitulo}-${index}`} controls /> 
-                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
-                            }
+                      
+                                 <iframe src="https://drive.google.com/file/d/1hqPh1HDVFnb4H9TmFMwC5956mDQ4ZVZt/preview" width="400" height="60" allow="autoplay"></iframe>
+                        
 
                             {
                                 /*  <iframe src="https://drive.google.com/file/d/id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3/" width="640" height="480"></iframe>
