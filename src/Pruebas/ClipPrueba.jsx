@@ -48,8 +48,8 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
       
     }
    
-    const guardarGrabacion = async (elemento, indice) => {
-        console.log(subtitulo)
+    const guardarGrabacion = async (elemento, indice, id) => {
+        console.log(indice)
         const urlBlob = elemento.firstElementChild.src
         const response = await fetch(urlBlob);
         if (response.ok) {
@@ -59,12 +59,13 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                     "fecha": "2023-09-22",
                     "grabacion": blob, 
                     "subtitulo": `${subtitulo}`,
-                    "id_clip": id,
+                    "id_clip": indice,
             }
             const formData = new FormData()
             formData.append("grabacion", blob);
             formData.append("subtitulo", subtitulo);
             formData.append("id_clip", id);
+            formData.append("numero_clip", indice);
             
             const urlGuardarGrabacion =
             fetch(`http://localhost:3000/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`, {
@@ -153,10 +154,11 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
-                      
-                                 <iframe src="https://drive.google.com/file/d/1hqPh1HDVFnb4H9TmFMwC5956mDQ4ZVZt/preview" width="400" height="60" allow="autoplay"></iframe>
-                        
-
+                        { grabacionBD
+                                ?  <iframe src={`https://drive.google.com/file/d/${grabacionID}/preview`} width="400" height="60" allow="autoplay"></iframe>
+                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
+                            }
+  
                             {
                                 /*  <iframe src="https://drive.google.com/file/d/id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3/" width="640" height="480"></iframe>
                                 */
@@ -172,7 +174,7 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                                         Actualizar Grabación 
                                       </button>
                                 
-                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
+                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
                                        {
                                          grabacionLocalStorage.grabacion === `grabacion-${subtitulo}-${index}` 
                                         ?    "Guardar Grabacion"   
