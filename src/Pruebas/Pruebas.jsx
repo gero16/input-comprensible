@@ -10,9 +10,8 @@ const Pruebas = ({data}) => {
     const navigate = useNavigate();
     
     let arrayAudios = []
-    //console.log(data)
-    useEffect(() => {
 
+    useEffect(() => {
         const traerGrabacion = async () => {
             const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
             {
@@ -86,7 +85,6 @@ const Pruebas = ({data}) => {
                         data.length > 0
                         ? data.map((element, index) => {
                          
-  
                         return (
                             <ClipPrueba
                                 id={element.id}
@@ -107,7 +105,6 @@ const Pruebas = ({data}) => {
 
                        
                         <iframe src="https://drive.google.com/file/d/1CDIZoC9UqGzsNBZkdUOCKxkw9pIPNEdS/preview" width="450" height="60" controls></iframe>
-                        
 
                             <h2> Todavia no hay clips para esta pelicula </h2>
                             <h3> Si quiere agregar uno - 

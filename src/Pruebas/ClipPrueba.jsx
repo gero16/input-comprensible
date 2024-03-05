@@ -88,10 +88,9 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
-            <input type="file"  className="input-file" onChange={(e) => guardarFoto(e)}/>
             
             {
-                <h3> Id {id} - Numero de clip {numero_clip}  </h3> 
+              /*  <h3> Id {id} - Numero de clip {numero_clip}  </h3> */
             }
                 {imagen ?  <img src={imagen} alt="" /> : <> </>}
                
@@ -160,7 +159,13 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
                         { grabacion
-                                ?  <iframe src={`https://drive.google.com/file/d/13tg-qBdumaCeP_k4PLeTRfbGJ_Yr6Fj3/preview`} width="400" height="60" allow="autoplay"></iframe>
+                                ?  <iframe 
+                                    src={`https://drive.google.com/file/d/13tg-qBdumaCeP_k4PLeTRfbGJ_Yr6Fj3/preview`} 
+                                    width="410" 
+                                    height="60" 
+                                    allow="autoplay"
+                                    className="iframe-grabacion">
+                                    </iframe>
                                 : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
                             }
   
@@ -187,24 +192,6 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                             }
                             
                             
-                            {
-                                /*
-                                document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
-                                    ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
-                                        Actualizar Grabación 
-                                      </button>
-                                
-                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling) } > 
-                                       {
-                                         grabacionLocalStorage.grabacion === `grabacion-${subtitulo}-${index}` 
-                                        ?    "Guardar Grabacion"   
-                                        :    ""      
-                                       }
-                                   
-                                       
-                                      </button>
-                                      */
-                            }
                         </div>
                     </section>
 

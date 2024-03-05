@@ -53,7 +53,7 @@
 .div-grabaciones {
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 20px;
     align-items: center;
 }
 
@@ -71,7 +71,7 @@ audio {
 }
 
 .div-nohay-grabaciones {
-  margin: 5px;
+  margin: 30px 0px;
 }
 
 footer {
@@ -92,4 +92,8 @@ iframe {
   margin-top: 5px;
   width: 80%;
   padding: 8px;
+}
+
+.iframe-grabacion {
+  margin: 14px 0px;
 }
