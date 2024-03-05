@@ -11,7 +11,7 @@ import Pruebas from './Pruebas';
 const ContenedorPruebas = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, urlBackend_Desarrollo, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, fetchClips, data,  totalPaginas  
+            paginaActual, paginaClips, fetchClips, data,  totalPaginas, setData  
     } = useContext(Context)
     const urlGrabaciones = `${ urlBackend_Desarrollo }/grabaciones/peliculas/${pelicula}/${usuario}`
     const urlClips = `${ urlBackend_Desarrollo }/pelicula/${ pelicula }`
@@ -29,11 +29,11 @@ const ContenedorPruebas = () => {
         <>
             {
                 usuario 
-                ? <> <Pruebas data={data} /> </>
+                ? <> <Pruebas data={data} setData={setData} /> </>
                 : <> 
                     <Navbar/>
                     
-                    <Pruebas data={paginaClips}  />      
+                    <Pruebas data={paginaClips}  setData={setData} />      
                 </>
             }
 

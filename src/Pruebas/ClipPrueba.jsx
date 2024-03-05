@@ -8,10 +8,10 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../context/helpers
 const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 
 const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
-                capitulo, grabacionBD, numero_clip }) => {
+                capitulo, grabacionID, numero_clip }) => {
 
+    console.log(grabacionID)
 
-    console.log(grabacionBD)
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada } = useParams();
     const recorderControls = useAudioRecorder()
@@ -22,6 +22,13 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1)
     const segundaPalabra = dificultad.includes("-") ? separarDificultad[1].charAt(0).toUpperCase() + separarDificultad[1].slice(1) : " "
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra
+
+    const [grabacion, setGrabacion] = useState([])
+    
+
+    useEffect(() => {
+        setGrabacion(grabacionID)
+    }, [])
     
     const credentials = {
         access_token: 'ya29.a0AfB_byAXbRTE1Acg8yHwIam0R1RSQcXIy4yzYrAqbsYGNrDe_EhTnDD6FY9sXEKam2KjR6bAmm4xgSP3buTZcgSFOdv-B02jq9v-HK_ydV91eqNydCyqu-O8XEwN5oH6T-omP7gnNuVUZ0-YBccjEtQStRDRhmTriXvQaCgYKAbQSARESFQHGX2MiO-S8RPQb8LolXUdygejhwg0171',
@@ -32,7 +39,6 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     }
 
     const guardarFoto = async (elemento, indice) => {
-  
         console.log(elemento.target.files[0])
         
         var file = elemento.firstElementChild.src//the file
@@ -146,7 +152,6 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                                     AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo} audio-recorder`,
                                     AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
                                 }} 
-                                downloadOnSavePress={true}
                             />
                     
                         </div>
@@ -154,15 +159,11 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
-                        { grabacionBD
-                                ?  <iframe src={`https://drive.google.com/file/d/${grabacionID}/preview`} width="400" height="60" allow="autoplay"></iframe>
+                        { grabacion
+                                ?  <iframe src={`https://drive.google.com/file/d/13tg-qBdumaCeP_k4PLeTRfbGJ_Yr6Fj3/preview`} width="400" height="60" allow="autoplay"></iframe>
                                 : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
                             }
   
-                            {
-                                /*  <iframe src="https://drive.google.com/file/d/id=10wyIuY6ajIymVboPZsAc0hE71j3fOea3/" width="640" height="480"></iframe>
-                                */
-                            }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
                             </div>

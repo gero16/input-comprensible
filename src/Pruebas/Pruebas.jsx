@@ -6,34 +6,19 @@ import { Context } from "../context/context";
 
 const Pruebas = ({data}) => {
     let {  usuario, pelicula } = useParams();
-    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion  } = useContext(Context)
+    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, setData={setData}  } = useContext(Context)
     const navigate = useNavigate();
     
     const [grabacion, setGrabacion] = useState([])
 
+    
     let arrayAudios = []
-    console.log(data)
+    //console.log(data)
     useEffect(() => {
-        if(!JSON.parse(localStorage.getItem(data.subtitulo))) {
-            if(data.videos) {
-               // console.log(data.videos)
-                data.videos.forEach((element, index) => {
-                    arrayAudios.push({
-                        id : `${index}`,
-                        audio: ""
-                    })
-                    
-                });
-                localStorage.setItem(`${data.subtitulo}`, JSON.stringify( arrayAudios))
-            }
-        }
-    })
 
-    useEffect(() => {
-        //fetchGrabaciones()
         const traerGrabacion = async () => {
-            const response = await fetch("http://localhost:3000/grabaciones",  
-                {
+            const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
+            {
                     method: 'GET',
                     headers: new Headers({
                         'Content-Type': 'application/json',
@@ -47,13 +32,34 @@ const Pruebas = ({data}) => {
                 console.log(resp)
                 setGrabacion(resp.url, resp.token)
                 return resp;
-                
             }
         }
-        
-        traerGrabacion()
-        console.log(grabacion)
+    
+        const resultado = traerGrabacion();
+
+        resultado.then((result) => {
+   
+            // result - no es un state como data
+            result.grabaciones.forEach((grabacion, index) => {
+    
+                if(grabacion.id_clip === result.clips[index].numero_clip ) {
+                    console.log("hola")
+                    result.clips[index].grabacion_id = grabacion.id_drive_grabacion
+                }
+                console.log(result.clips)
+            });
+
+            //console.log(result)
+
+            
+       
+            setData(result.clips)
+        });
+
     }, [])
+
+
+
 
     const posicionImagen = {
         "shrek-2": 27,
@@ -77,18 +83,18 @@ const Pruebas = ({data}) => {
           
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
 
-               
-
+    
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                     
                 </div>
               
                 <section className='flex-center'>
-                    
-
+         
                     {
                         data.length > 0
                         ? data.map((element, index) => {
+                         
+  
                         return (
                             <ClipPrueba
                                 id={element.id}
@@ -98,7 +104,7 @@ const Pruebas = ({data}) => {
                                 index={index}
                                 frase={element.frase}
                                 dificultad={element.dificultad}
-                                grabacionBD={element.grabacion}
+                                grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
                                 numero_clip={element["numero_clip"]}
                                 imagen={element.imagen}
                             />

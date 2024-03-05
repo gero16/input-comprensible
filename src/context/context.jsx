@@ -86,7 +86,7 @@ export const CustomProvider = ({ children }) => {
     
     const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
         let paginas = []
-        console.log(datos.length)
+    
         for (let index = primerValor; index < ultimoValor; index++) {
             if(datos[index] === undefined) break
             paginas.push(datos[index])
@@ -116,13 +116,13 @@ export const CustomProvider = ({ children }) => {
             if(!resp) console.log("No hay data")
             const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
             if(respuesta) {
-                console.log(respuesta)
+                // console.log(respuesta)
                 const arrayPaginas = cantidadPaginasHtml(resp.data)
                 setTotalPaginas(arrayPaginas)
             
                 mostrarClipsPagina(respuesta, 0, 21)
                 setData(respuesta)
-                console.log(respuesta)
+                //console.log(respuesta)
                 return data;
             }
         }
