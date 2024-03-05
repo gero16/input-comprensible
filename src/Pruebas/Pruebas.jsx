@@ -9,9 +9,6 @@ const Pruebas = ({data}) => {
     const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, setData={setData}  } = useContext(Context)
     const navigate = useNavigate();
     
-    const [grabacion, setGrabacion] = useState([])
-
-    
     let arrayAudios = []
     //console.log(data)
     useEffect(() => {
@@ -30,7 +27,6 @@ const Pruebas = ({data}) => {
                 if(!resp) console.log("No hay data")
                 
                 console.log(resp)
-                setGrabacion(resp.url, resp.token)
                 return resp;
             }
         }
@@ -49,10 +45,6 @@ const Pruebas = ({data}) => {
                 console.log(result.clips)
             });
 
-            //console.log(result)
-
-            
-       
             setData(result.clips)
         });
 
