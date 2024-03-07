@@ -28,6 +28,8 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
 
     useEffect(() => {
         setGrabacion(grabacionID)
+
+    
     }, [])
     
     const credentials = {
@@ -53,6 +55,8 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
         });
       
     }
+
+
    
     const guardarGrabacion = async (elemento, indice, id) => {
         console.log(indice)
@@ -73,11 +77,8 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
             formData.append("id_clip", id);
             formData.append("numero_clip", indice);
             
-            const urlGuardarGrabacion =
-            fetch(`http://localhost:3000/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`, {
-            method: "POST",
-            body: formData,
-            });
+            const urlGuardarGrabacion = `http://localhost:3000/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
+            fetch(urlGuardarGrabacion, { method: "POST", body: formData });
         
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);
@@ -158,16 +159,19 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                         
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
-                        { grabacion
+                        { grabacion 
                                 ?  <iframe 
-                                    src={`https://drive.google.com/file/d/13tg-qBdumaCeP_k4PLeTRfbGJ_Yr6Fj3/preview`} 
+                                    src={`https://drive.google.com/file/d/${grabacion}/preview`} 
                                     width="410" 
                                     height="60" 
                                     allow="autoplay"
-                                    className="iframe-grabacion">
+                                    className={`iframe-${subtitulo}-${index}`}>
                                     </iframe>
-                                : <div className="div-nohay-grabaciones"> Aun no hay grabación para este Clip </div> 
-                            }
+                                    
+                                : 
+                                <> </>
+                        }
+
   
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
@@ -175,20 +179,20 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                             
                   
                             {
-                                document.querySelector(`.grabacionBD-${subtitulo}-${index}`)
-                                    ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
+                                document.querySelector(`.iframe-${subtitulo}-${index}`)
+                                    ? <>
+                                      <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
                                         Actualizar Grabación 
                                       </button>
+                                 
+                                    </>
+                                  
                                 
-                                    : <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
-                                       {
-                                         grabacionLocalStorage.grabacion === `grabacion-${subtitulo}-${index}` 
-                                        ?    "Guardar Grabacion"   
-                                        :    ""      
-                                       }
-                                   
-                                       
-                                      </button>
+                                    : document.querySelector(`.grabacion-${subtitulo}-${index}`) 
+                                        ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
+                                          Guardar Grabación
+                                        </button>
+                                        : <button className="button"> No hay grabacion! </button>
                             }
                             
                             

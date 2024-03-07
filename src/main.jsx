@@ -14,8 +14,9 @@ import IniciarSesion from './Components/Usuario/Sesion';
 import Usuario from './Components/Usuario/Usuario';
 import Recursos from './Components/Recursos/Recursos.jsx';
 import Recurso from "./Components/Recursos/Recurso.jsx"
-import Pruebas from "./Pruebas/Pruebas.jsx"
-import ContenedorPruebas from './Pruebas/ContenedorPruebas.jsx';
+
+import ContenedorPruebasPelicula from './Pruebas/ContenedorPruebasPelicula.jsx';
+import Pruebas from './Pruebas/Pruebas.jsx';
 
 
 
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
         element:  <IniciarSesion />,
       },
       {
+        path: "/pruebas",
+        element:  <Pruebas />,
+      },
+      {
         path: "/pruebas/:pelicula/:usuario",
-        element:  <ContenedorPruebas />,
+        element:  <ContenedorPruebasPelicula />,
       },
       {
         path: "/recursos", 

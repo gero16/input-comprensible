@@ -81,7 +81,9 @@ h1 {
 #btn-mostar-respuesta {
   margin: 0px;
 }
-
+.flex {
+  display: flex;
+}
 .flex-column-center {
   display: flex;
   flex-direction: column;
@@ -335,4 +337,8 @@ ul {
 .main{
   margin: 0 auto;
   width: 75vw;
+}
+
+.section-pruebas {
+  margin-left: 40px;
 }

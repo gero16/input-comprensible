@@ -71,8 +71,8 @@ export const CustomProvider = ({ children }) => {
             id_clip: id,
 
         }
-        setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
         localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
+        setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
     }
     }
 
@@ -133,8 +133,8 @@ return (
     <Context.Provider 
         value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
-            grabacionLocalStorage, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips
+            grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
+            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips,  
             }}> 
             
         { children } 

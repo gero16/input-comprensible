@@ -5,10 +5,10 @@ import Navbar from '../Components/Navbar/Navbar';
 
 import { Context } from '../context/context';
 import BotonPagina from '../Components/BotonPagina/BotonPagina';
-import Pruebas from './Pruebas';
+import PruebasPelicula from './PruebasPelicula';
 
 
-const ContenedorPruebas = () => {
+const ContenedorPruebasPelicula = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, urlBackend_Desarrollo, setearClipsPagina, cambiarPagina, 
             paginaActual, paginaClips, fetchClips, data,  totalPaginas, setData  
@@ -29,11 +29,11 @@ const ContenedorPruebas = () => {
         <>
             {
                 usuario 
-                ? <> <Pruebas data={data} setData={setData} /> </>
+                ? <> <PruebasPelicula data={data} setData={setData} /> </>
                 : <> 
                     <Navbar/>
                     
-                    <Pruebas data={paginaClips}  setData={setData} />      
+                    <PruebasPelicula data={paginaClips}  setData={setData} />      
                 </>
             }
 
@@ -58,4 +58,4 @@ const ContenedorPruebas = () => {
     )
 }
 
-export default ContenedorPruebas
+export default ContenedorPruebasPelicula
