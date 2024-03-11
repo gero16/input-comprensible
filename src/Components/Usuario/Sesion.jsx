@@ -18,7 +18,7 @@ const IniciarSesion = () => {
     console.log(sesion)
 
     const fetchIniciarSesion = async (usuario) => {
-        const response = await fetch(`${ urlBackend_Produccion }/usuario/iniciar-sesion`,  
+        const response = await fetch(`${ urlBackend_Desarrollo }/usuario/iniciar-sesion`,  
             {
                 method: 'POST',
                 headers: new Headers({
@@ -30,12 +30,12 @@ const IniciarSesion = () => {
             })
         console.log(response)
         const resp = await response.json()
-        console.log(resp)
-        console.log(resp[1].usuario)
-
+            // geronicola1696@gmail.com
         if(response.status === 200) {
-            localStorage.setItem("sesion", resp[1].usuario);
-            // navigate(`/usuario/${resp.usuario}`)
+            console.log(resp)
+            const objeto = {usuario : resp.usuario, rol : resp.rol}
+            localStorage.setItem("sesion", JSON.stringify(objeto));
+            navigate(`/usuario/${resp.usuario}`)
         }
         if(response.status === 401) {
             setError(true)

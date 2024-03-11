@@ -10,10 +10,13 @@ const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionID, numero_clip }) => {
 
-    console.log(grabacionID)
+                    console.log(video)
+
+    //console.log(grabacionID)
 
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
-    let {  usuario, temporada } = useParams();
+    let {  usuario, temporada, } = useParams();
+
     const recorderControls = useAudioRecorder()
 
     const [width, setWidth] = useState(window.innerWidth);
@@ -29,7 +32,9 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
     useEffect(() => {
         setGrabacion(grabacionID)
 
-    
+        // Funcion para limiar todos los sessionStorage cada vez que se actualice la pagina
+        window.localStorage.clear();
+
     }, [])
     
     const credentials = {
@@ -77,8 +82,13 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
             formData.append("id_clip", id);
             formData.append("numero_clip", indice);
             
-            const urlGuardarGrabacion = `http://localhost:3000/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
-            fetch(urlGuardarGrabacion, { method: "POST", body: formData });
+            const urlGuardarGrabacion =  pelicula 
+                ? `${urlBackend_Desarrollo}/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
+                : `${urlBackend_Desarrollo}/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
+            const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
+            console.log(resultado)
+
+            window.localStorage.clear();
         
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);

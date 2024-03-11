@@ -1,17 +1,14 @@
 import { useContext, useEffect, useState } from "react"
-import "./Serie.css"
+import "../Components/Serie/Serie.css"
 import { useNavigate, useParams } from "react-router-dom"
-import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { Context } from '../context/context';
-import BotonPagina from '../Components/BotonPagina/BotonPagina';
-import PruebasPelicula from './PruebasPelicula';
+
 import ClipPrueba from "./ClipPrueba"
 
 
 const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate();
-    const { transformarMayuscula } = useContext(Context)
+    const { transformarMayuscula, setData } = useContext(Context)
     let {  usuario } = useParams();
     const [width, setWidth] = useState(window.innerWidth);
     //console.log(data) 
@@ -34,7 +31,7 @@ const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
     }
 
     const style = {
-        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("../../../${serie}-portada.jpg")`,
+        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("./${serie}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
         backgroundSize: width < 540 ? "contain" : "cover",
@@ -82,9 +79,10 @@ const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
                   
                 <section className='flex-center'>
                     
-                    {
-                        data.length > 0 ?
-                            data.map((element, key) => {
+
+                    { data.length > 0 
+                        ? data.map((element, key) => {
+
                                 return (
                                     <ClipPrueba
                                         id={element.id} 
@@ -102,8 +100,8 @@ const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                     />
                                 )
                             })
-                            :
-                             <div> 
+
+                            : <div> 
                                  <h2> Lo siento! </h2>
                                  <h2> Todavia no hay clips en este capitulo </h2>
                                  <h3> Si quiere agregar uno -   
@@ -116,6 +114,8 @@ const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                
                              </div>
                         }
+                        
+                    
 
                                  
                 </section>

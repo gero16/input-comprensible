@@ -11,6 +11,8 @@ const NavbarUser = () => {
     
     let { usuario } = useParams();
 
+    const [esAdmin, setEsAdmin] = useState(false)
+
     const seleccionarSerie = (e) => {
        if(!e.target.classList.contains("temporada-serie")) {
            e.target.nextSibling.classList.toggle("inactive")
@@ -29,6 +31,9 @@ const NavbarUser = () => {
     }
 
     useEffect(() => {
+        const sesion = JSON.parse(localStorage.getItem("sesion"))
+        console.log(sesion)
+        if(sesion.rol === "ADMIN") setEsAdmin(true)
         fetchTitulos(titulos, setTitulos)
     }, [])
     
@@ -38,13 +43,18 @@ const NavbarUser = () => {
 
             <ul className="lista-navbar flex-center-column">
                 <li className="li-nav">
-                    <NavLink to={`/`} className="flex-center-column"> 
+                    <NavLink to={`/usuario/${usuario}`} className="flex-center-column"> 
                         <span className="span-link "> Inicio </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
                     <NavLink to={`/agregar-clip`} className="flex-center-column"> 
                         <span className="span-link "> Agregar Clip </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/pruebas`} className="flex-center-column"> 
+                        <span className="span-link "> Pruebas </span>
                     </NavLink>
                 </li>
                 <li className="li-nav" onClick={(e) => cerrarSesion() }>

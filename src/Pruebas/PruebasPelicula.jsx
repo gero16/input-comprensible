@@ -6,37 +6,37 @@ import { Context } from "../context/context";
 
 const PruebasPelicula = ({data}) => {
     let {  usuario, pelicula } = useParams();
-    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, setData={setData}  } = useContext(Context)
+    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, setData  } = useContext(Context)
     const navigate = useNavigate();
+
+    console.log(data)
     
     let arrayAudios = []
 
-    useEffect(() => {
-        const traerGrabacion = async () => {
-            const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
-            {
-                    method: 'GET',
-                    headers: new Headers({
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
-                    })
+    const traerGrabacion = async () => {
+        const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
+        {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
                 })
-            if(response) {
-                const resp = await response.json();
-                if(!resp) console.log("No hay data")
-                
-                console.log(resp)
-                return resp;
-            }
+            })
+        if(response) {
+            const resp = await response.json();
+            if(!resp) console.log("No hay data")
+            
+            console.log(resp)
+            return resp;
         }
-    
-        const resultado = traerGrabacion();
+    }
 
+    const traerGrabaciones = (resultado) => {
         resultado.then((result) => {
-   
+
             // result - no es un state como data
             result.grabaciones.forEach((grabacion, index) => {
-    
+                console.log(grabacion)
                 if(grabacion.id_clip === result.clips[index].numero_clip ) {
                     console.log("hola")
                     result.clips[index].grabacion_id = grabacion.id_drive_grabacion
@@ -46,11 +46,12 @@ const PruebasPelicula = ({data}) => {
 
             setData(result.clips)
         });
+    }
 
+    useEffect(() => {   
+        const resultado = traerGrabacion();
+        traerGrabaciones(resultado)
     }, [])
-
-
-
 
     const posicionImagen = {
         "shrek-2": 27,
@@ -103,9 +104,6 @@ const PruebasPelicula = ({data}) => {
                         : <div> 
                             <h2> Lo siento! </h2>
 
-                       
-                        <iframe src="https://drive.google.com/file/d/1CDIZoC9UqGzsNBZkdUOCKxkw9pIPNEdS/preview" width="450" height="60" controls></iframe>
-
                             <h2> Todavia no hay clips para esta pelicula </h2>
                             <h3> Si quiere agregar uno - 
                                 <button 
@@ -113,7 +111,8 @@ const PruebasPelicula = ({data}) => {
                                     className="btn-ir-agregar-clip"
                                     > 
                                     Ir a Agregar Clip 
-                                </button></h3>
+                                </button>
+                            </h3>
                           
                         </div>
                     }

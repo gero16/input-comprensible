@@ -16,6 +16,7 @@ import Recursos from './Components/Recursos/Recursos.jsx';
 import Recurso from "./Components/Recursos/Recurso.jsx"
 
 import ContenedorPruebasPelicula from './Pruebas/ContenedorPruebasPelicula.jsx';
+import ContenedorPruebasSerie from './Pruebas/ContenedorPruebasSerie.jsx';
 import Pruebas from './Pruebas/Pruebas.jsx';
 
 
@@ -62,8 +63,12 @@ const router = createBrowserRouter([
         element:  <Pruebas />,
       },
       {
-        path: "/pruebas/:pelicula/:usuario",
+        path: "/pruebas/peliculas/:pelicula/:usuario",
         element:  <ContenedorPruebasPelicula />,
+      },
+      {
+        path: "/pruebas/series/:serie/:temporada/:capitulo/:usuario",
+        element:  <ContenedorPruebasSerie />,
       },
       {
         path: "/recursos", 

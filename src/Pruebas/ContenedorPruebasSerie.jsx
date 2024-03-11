@@ -7,22 +7,19 @@ import { Context } from '../context/context';
 import BotonPagina from '../Components/BotonPagina/BotonPagina';
 import PruebasSerie from './PruebasSerie';
 
-
-
-
 const ContenedorPruebasSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
     const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo, 
             setearClipsPagina, cambiarPagina,  paginaActual, paginaClips, fetchClips,
-            data, totalPaginas 
+            data, totalPaginas, setData 
         } = useContext(Context)
     
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
      
 
-    const urlClips = `${ urlBackend_Produccion }/series/${serie}/${temporada}/${capitulo}`
-    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/temporada/${ temporada }/${ usuario }`
+    const urlClips = `${ urlBackend_Desarrollo }/series/${serie}/${temporada}/${capitulo}`
+    const urlGrabaciones = `${ urlBackend_Desarrollo }/grabaciones/series/${ serie }/${ temporada }/${ usuario }`
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
@@ -30,7 +27,7 @@ const ContenedorPruebasSerie = () => {
     }
 
     const traerGrabacion = async () => {
-        const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
+        const response = await fetch(urlGrabaciones,  
         {
                 method: 'GET',
                 headers: new Headers({

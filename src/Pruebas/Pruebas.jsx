@@ -2,8 +2,6 @@
 import { Link as Navigate, NavLink, Outlet as Page, useLocation, useParams } from "react-router-dom";
 import "../Components/Index/Index.css"
 
-
-
 const Pruebas = () => {
     let { usuario } = useParams();
     return (
@@ -14,7 +12,7 @@ const Pruebas = () => {
 
                 <section className="flex-center section-pruebas"> 
             
-                    <NavLink to={`/pruebas/house-of-the-dragon/temporada-1-capitulo-1`}> 
+                    <NavLink to={`/pruebas/series/house-of-the-dragon/temporada-1-/capitulo-1/geronicola`}> 
                         <h2> Pruebas Serie </h2> 
                         <img 
                             src="https://i0.wp.com/lopezdoriga.com/wp-content/uploads/2015/09/Serie.jpg?w=2048&ssl=1"  
@@ -27,7 +25,7 @@ const Pruebas = () => {
                    
                 </section>
                 <section className="flex-center section-pruebas"> 
-                    <NavLink to={`/pruebas/shrek-2/geronicola`} > 
+                    <NavLink to={`/pruebas/peliculas/shrek-2/geronicola`} > 
                         <h2> Pruebas Pelicula </h2>
                        
                         <img 
