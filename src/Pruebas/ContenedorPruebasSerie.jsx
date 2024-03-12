@@ -65,6 +65,8 @@ const ContenedorPruebasSerie = () => {
     }
 
 
+  
+
 
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
@@ -93,8 +95,7 @@ const ContenedorPruebasSerie = () => {
         traerGrabaciones()
     }, [paginaActual])
 
-
-    
+ 
     return (
         <>
             { usuario 

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams, useLocation  } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../context/context"
 import "../Components/Clip/Clip.css"
@@ -10,12 +10,8 @@ const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionID, numero_clip }) => {
 
-                    console.log(video)
-
-    //console.log(grabacionID)
-
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, grabacionLocalStorage, transformarMayuscula } = useContext(Context)
-    let {  usuario, temporada, } = useParams();
+    let {  usuario, temporada, serie } = useParams();
 
     const recorderControls = useAudioRecorder()
 
@@ -64,7 +60,6 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
 
    
     const guardarGrabacion = async (elemento, indice, id) => {
-        console.log(indice)
         const urlBlob = elemento.firstElementChild.src
         const response = await fetch(urlBlob);
         if (response.ok) {
@@ -82,13 +77,15 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
             formData.append("id_clip", id);
             formData.append("numero_clip", indice);
             
-            const urlGuardarGrabacion =  pelicula 
-                ? `${urlBackend_Desarrollo}/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
-                : `${urlBackend_Desarrollo}/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
-            const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
-            console.log(resultado)
+            const urlGuardarGrabacion =  serie 
+                ? `${urlBackend_Desarrollo}/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
+                : `${urlBackend_Desarrollo}/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
+            
+                console.log(urlGuardarGrabacion)
+            //const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
+            //console.log(resultado)
 
-            window.localStorage.clear();
+            // window.localStorage.clear();
         
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);

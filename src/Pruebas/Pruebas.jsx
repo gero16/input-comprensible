@@ -12,7 +12,7 @@ const Pruebas = () => {
 
                 <section className="flex-center section-pruebas"> 
             
-                    <NavLink to={`/pruebas/series/house-of-the-dragon/temporada-1-/capitulo-1/geronicola`}> 
+                    <NavLink to={`/pruebas/series/house-of-the-dragon/temporada-1/capitulo-1/geronicola`}> 
                         <h2> Pruebas Serie </h2> 
                         <img 
                             src="https://i0.wp.com/lopezdoriga.com/wp-content/uploads/2015/09/Serie.jpg?w=2048&ssl=1"  

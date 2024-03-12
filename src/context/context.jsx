@@ -112,7 +112,8 @@ export const CustomProvider = ({ children }) => {
                 })
             })
         if(response) {
-            const resp= await response.json();
+            const resp = await response.json();
+            console.log(resp)
             if(!resp) console.log("No hay data")
             const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
             if(respuesta) {
@@ -122,7 +123,6 @@ export const CustomProvider = ({ children }) => {
             
                 mostrarClipsPagina(respuesta, 0, 21)
                 setData(respuesta)
-                //console.log(respuesta)
                 return data;
             }
         }
