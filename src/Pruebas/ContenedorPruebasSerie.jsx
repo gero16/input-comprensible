@@ -49,7 +49,6 @@ const ContenedorPruebasSerie = () => {
 
         resultado.then((result) => {
             result.grabaciones.forEach((grabacion, index) => {
-
                 const encontarClip =  result.clips.find((clip) => clip.id === grabacion.id_clip);
                 encontarClip.grabacion_id =  grabacion.id_drive_grabacion
                 //console.log(encontarClip)
@@ -61,9 +60,6 @@ const ContenedorPruebasSerie = () => {
         });
 
     }
-
-
-  
 
 
     useEffect(() => {
