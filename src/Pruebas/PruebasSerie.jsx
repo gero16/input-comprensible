@@ -11,7 +11,7 @@ const PruebasSerie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const { transformarMayuscula, setData } = useContext(Context)
     let {  usuario } = useParams();
     const [width, setWidth] = useState(window.innerWidth);
-    console.log(data) 
+    //console.log(data) 
     let numTemporada = temporada.split("-")
 
     const transformarMinuscula = (texto) => {

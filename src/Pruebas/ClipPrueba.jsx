@@ -82,10 +82,10 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
                 : `${urlBackend_Desarrollo}/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
             
                 console.log(urlGuardarGrabacion)
-            //const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
-            //console.log(resultado)
+            const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
+            console.log(resultado)
 
-            // window.localStorage.clear();
+            window.localStorage.clear();
         
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);
@@ -98,7 +98,7 @@ const ClipPrueba = ({ id, imagen, categoria, subtitulo, video, index, frase, dif
             <article className={`article-video`} id={`id-BD-${id}`}>
             
             {
-              /*  <h3> Id {id} - Numero de clip {numero_clip}  </h3> */
+                <h3> Id {id} - Numero de clip {numero_clip}  </h3> 
             }
                 {imagen ?  <img src={imagen} alt="" /> : <> </>}
                
