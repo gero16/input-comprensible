@@ -41,10 +41,14 @@ const NavbarUser = () => {
         <>
         <nav className="nav flex-between">
 
-            <ul className="lista-navbar flex-center-column">
+            <ul className="lista-navbar navbar-principal flex-center-column">
+                <li className="li-nav" onClick={(e) => cerrarSesion() }>
+                    <span className="span-link "> Cerrar Sesión </span>
+                   
+                </li>
                 <li className="li-nav">
-                    <NavLink to={`/usuario/${usuario}`} className="flex-center-column"> 
-                        <span className="span-link "> Inicio </span>
+                    <NavLink to={`/pruebas`} className="flex-center-column"> 
+                        <span className="span-link "> Pruebas </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
@@ -53,14 +57,13 @@ const NavbarUser = () => {
                     </NavLink>
                 </li>
                 <li className="li-nav">
-                    <NavLink to={`/pruebas`} className="flex-center-column"> 
-                        <span className="span-link "> Pruebas </span>
+                    <NavLink to={`/usuario/${usuario}`} className="flex-center-column"> 
+                        <span className="span-link "> Inicio </span>
                     </NavLink>
                 </li>
-                <li className="li-nav" onClick={(e) => cerrarSesion() }>
-                    <span className="span-link "> Cerrar Sesión </span>
-                   
-                </li>
+            </ul>
+
+            <ul className="lista-navbar flex-center-column">
                 {
                     titulos 
                         ? 
