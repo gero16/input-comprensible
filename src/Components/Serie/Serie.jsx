@@ -36,6 +36,14 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         filter: 'brightness(0.7)'
     }
 
+    const style2 = {
+        /*
+        filter: 'brightness(1)',
+        backgroundColor : "#111111",
+        opacity: 0.8,
+        */
+        
+    }
 
     return (
         <>

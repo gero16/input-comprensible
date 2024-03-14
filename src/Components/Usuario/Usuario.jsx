@@ -1,5 +1,6 @@
 import { Outlet as Page, useLocation, useParams  } from "react-router-dom"
 import NavbarUser from "../Navbar/NavbarUser"
+import InputInfo from "../Index/InputInfo"
 
 const Usuario = () => {
     const location = useLocation()
@@ -10,8 +11,11 @@ const Usuario = () => {
 
             <NavbarUser> </NavbarUser>
             {
-                location.pathname === `/usuario/${usuario}` 
-                ?  <h1> Bienvenido </h1>
+                location.pathname === `/index/usuario/${usuario}` 
+                ? <> 
+             
+                    <InputInfo></InputInfo>
+                </>
                 : <> </>
             }
            
