@@ -6,51 +6,18 @@ import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula } = useParams();
-    const { transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, setData  } = useContext(Context)
+    const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
     const navigate = useNavigate();
     
-
-    const traerGrabacion = async () => {
-        const response = await fetch(`http://localhost:3000/grabaciones/peliculas/${pelicula}/${usuario}`,  
-        {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        if(response) {
-            const resp = await response.json();
-            if(!resp) console.log("No hay data")
-            
-            console.log(resp)
-            return resp;
-        }
-    }
-
-    const traerGrabaciones = (resultado) => {
-        resultado.then((result) => {
-            // result - no es un state como data
-            result.grabaciones.forEach((grabacion, index) => {
-                const encontarClip =  result.clips.find((clip) => clip.id === grabacion.id_clip);
-                encontarClip.grabacion_id =  grabacion.id_drive_grabacion
-                //console.log(encontarClip)
-                return encontarClip
-            });
-
-            setData(result.clips)
-        });
-    }
-
-
+    const urlGrabaciones = `${urlBackend_Desarrollo}/grabaciones/peliculas/${pelicula}/${usuario}`
 
     useEffect(() => {   
-        const resultado = traerGrabacion();
+        const resultado = traerGrabacion(urlGrabaciones);
         traerGrabaciones(resultado)
     }, [])
 
     useEffect(() => {   
-        const resultado = traerGrabacion();
+        const resultado = traerGrabacion(urlGrabaciones);
         traerGrabaciones(resultado)
     }, [pelicula])
 
@@ -63,6 +30,7 @@ const Pelicula = ({data}) => {
         "bastardos-sin-gloria": 15,
         "harry-potter-1": 32
     }
+
     const style = {
         backgroundImage:  usuario ? `url("/${pelicula}-portada.jpg")` : `url("../${pelicula}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
@@ -71,12 +39,10 @@ const Pelicula = ({data}) => {
         filter: 'brightness(0.7)'
     }
 
+
     return (
         <>
-          
             <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
-
-               
 
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                 </div>
@@ -84,8 +50,7 @@ const Pelicula = ({data}) => {
                 <section className='flex-center'>
                     
 
-                    {
-                        data.length > 0
+                    { data.length > 0
                         ? data.map((element, index) => {
                         return (
                             <Clip 

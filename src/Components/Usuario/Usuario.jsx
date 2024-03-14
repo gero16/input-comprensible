@@ -11,7 +11,7 @@ const Usuario = () => {
 
             <NavbarUser> </NavbarUser>
             {
-                location.pathname === `/index/usuario/${usuario}` 
+                location.pathname === `/usuario/${usuario}` 
                 ? <> 
              
                     <InputInfo></InputInfo>

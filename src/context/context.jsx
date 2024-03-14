@@ -128,13 +128,47 @@ export const CustomProvider = ({ children }) => {
         }
     }
 
+    const traerGrabacion = async (urlGrabaciones) => {
+        const response = await fetch(urlGrabaciones,  
+        {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        if(response) {
+            const resp = await response.json();
+            if(!resp) console.log("No hay data")
+            
+            console.log(resp)
+            return resp;
+        }
+    }
+
+    const traerGrabaciones = (resultado) => {
+        resultado.then((result) => {
+            // result - no es un state como data
+            result.grabaciones.forEach((grabacion, index) => {
+                const encontarClip =  result.clips.find((clip) => clip.id === grabacion.id_clip);
+                encontarClip.grabacion_id =  grabacion.id_drive_grabacion
+                //console.log(encontarClip)
+                return encontarClip
+            });
+
+            setData(result.clips)
+        });
+    }
+
+
     
 return (
     <Context.Provider 
         value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips,  
+            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
+            traerGrabacion,  traerGrabaciones
             }}> 
             
         { children } 
