@@ -11,7 +11,7 @@ import { urlBackend_Desarrollo } from '../../context/helpers';
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, fetchClips, data,  totalPaginas  
+            paginaActual, paginaClips, fetchClips, data,  totalPaginas, setData  
     } = useContext(Context)
     const urlGrabaciones = `${ urlBackend_Desarrollo }/grabaciones/peliculas/${pelicula}/${usuario}`
     const urlClips = `${ urlBackend_Desarrollo }/pelicula/${ pelicula }`
@@ -28,11 +28,11 @@ const ContenedorPelicula = () => {
         <>
             {
                 usuario 
-                ? <> <Pelicula data={data} /> </>
+                ? <> <Pelicula data={data} setData={setData}/> </>
                 : <> 
                     <Navbar/>
                     
-                    <Pelicula data={paginaClips}  />      
+                    <Pelicula data={paginaClips} setData={setData} />      
                 </>
             }
 

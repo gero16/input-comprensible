@@ -47,6 +47,7 @@ const PruebasPelicula = ({data}) => {
 
     useEffect(() => {   
         const resultado = traerGrabacion();
+        console.log(resultado)
         traerGrabaciones(resultado)
     }, [])
 
