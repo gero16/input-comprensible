@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import  "./navbar.css"
 import { Link as Navigate, NavLink,} from "react-router-dom";
 import { Context } from "../../context/context";
-import fondo from "../../assets/fondo.jpg"
 
 
 const Navbar = () => {
@@ -41,14 +40,15 @@ const Navbar = () => {
                         <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
                     </NavLink>
                 </li>
-                <li className="li-nav">
-                    <NavLink to={`/recursos`} > 
-                        <span className="span-link "> Recursos </span>
-                    </NavLink>
-                </li>
+              
                 <li className="li-nav">
                     <NavLink to={`/registro`} > 
                         <span className="span-link "> Registrarse </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/recursos`} > 
+                        <span className="span-link "> Recursos </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
