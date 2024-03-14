@@ -6,7 +6,7 @@ import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     const navigate = useNavigate();
-    const { transformarMayuscula } = useContext(Context)
+    const { transformarMayuscula, setData } = useContext(Context)
     let {  usuario } = useParams();
     const [width, setWidth] = useState(window.innerWidth);
     //console.log(data) 
@@ -29,21 +29,13 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     }
 
     const style = {
-        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("../../../${serie}-portada.jpg")`,
+        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("../${serie}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
         backgroundSize: width < 540 ? "contain" : "cover",
         filter: 'brightness(0.7)'
     }
 
-    const style2 = {
-        /*
-        filter: 'brightness(1)',
-        backgroundColor : "#111111",
-        opacity: 0.8,
-        */
-        
-    }
 
     return (
         <>
@@ -77,9 +69,10 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                   
                 <section className='flex-center'>
                     
-                    {
-                        data.length > 0 ?
-                            data.map((element, key) => {
+
+                    { data.length > 0 
+                        ? data.map((element, key) => {
+
                                 return (
                                     <Clip
                                         id={element.id} 
@@ -91,14 +84,14 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                         dificultad={element.dificultad}
                                         capitulo={element.capitulo}
                                         index={key}
-                                        grabacionBD={element.grabacion}
+                                        grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
                                         categoria={element.categoria}
                                         numero_clip={element["numero_clip"]}
                                     />
                                 )
                             })
-                            :
-                             <div> 
+
+                            : <div> 
                                  <h2> Lo siento! </h2>
                                  <h2> Todavia no hay clips en este capitulo </h2>
                                  <h3> Si quiere agregar uno -   
@@ -111,6 +104,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                
                              </div>
                         }
+                        
+                    
 
                                  
                 </section>
