@@ -33,9 +33,6 @@ const PruebasPelicula = ({data}) => {
 
     const traerGrabaciones = (resultado) => {
         resultado.then((result) => {
-
-            
-
             // result - no es un state como data
             result.grabaciones.forEach((grabacion, index) => {
                 const encontarClip =  result.clips.find((clip) => clip.id === grabacion.id_clip);

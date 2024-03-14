@@ -38,13 +38,11 @@ h1 {
 
 .lista-navbar li {
   cursor: pointer;
-  padding: 5px;
   padding: 10px;
 }
 
 .li-nav {
   transition: ease-out 0.6s;
-  
 }
 
 .li-nav:hover {
@@ -57,16 +55,6 @@ h1 {
   color: white !important;
 }
 
-@media (min-width: 800px) {
-  .lista-navbar {
-    font-size: medium;
-  }
-  .simbolo {
-    font-size: x-large;
-  }
- 
- }
- 
 
  .inactive {
   opacity: 0;
@@ -77,7 +65,6 @@ h1 {
 
 
 .lista-temporadas {
-
   top: 10;
   opacity: 1;
   transition: all 1s;
@@ -89,3 +76,14 @@ h1 {
   
   
 }
+
+@media (min-width: 800px) {
+  .lista-navbar {
+    font-size: medium;
+  }
+  .simbolo {
+    font-size: x-large;
+  }
+ 
+ }
+ 

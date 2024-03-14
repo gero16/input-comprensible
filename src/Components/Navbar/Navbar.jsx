@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import  "./navbar.css"
 import { Link as Navigate, NavLink,} from "react-router-dom";
 import { Context } from "../../context/context";
+import fondo from "../../assets/fondo.jpg"
 
 
 const Navbar = () => {
