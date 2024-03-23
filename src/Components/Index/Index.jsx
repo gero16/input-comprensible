@@ -14,7 +14,6 @@ function App() {
   
    useEffect(() => {
     const sesion = JSON.parse(localStorage.getItem("sesion"))
-    console.log(sesion.usuario)
     
     if(sesion) navigate(`/usuario/${sesion.usuario}`)
    
