@@ -5,7 +5,8 @@
     cursor: pointer;
 }
 form {
-    background-color: rgb(73, 72, 72);
+    background-color: #0f0f0fad;
+    border-radius: 10px;
     padding: 20px;
     margin: 30px;
     font-size: x-large;
@@ -14,7 +15,7 @@ form {
 .lista-registro li {
     width: 450px;
     display: flex;
-    background-color: rgb(51, 50, 50);
+    background-color: #413f3f9a;
     padding: 15px
 }
 

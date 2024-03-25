@@ -42,7 +42,7 @@ const Pelicula = ({data}) => {
 
     return (
         <>
-            <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <article className={`article-clip fondoarticle-audio ${data.subtitulo}`} name={data.subtitulo}>  
 
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                 </div>

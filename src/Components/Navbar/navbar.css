@@ -17,7 +17,8 @@ h1 {
 .nav {
     z-index: 10;
     padding: 10px 15px 10px 0px; 
-    background-color: #0c0c0cbe;
+    background-color: #0c0c0c9a;
+    border-radius: 10px;
     backdrop-filter: blur(5px);
     border-radius: 5px;
 }
