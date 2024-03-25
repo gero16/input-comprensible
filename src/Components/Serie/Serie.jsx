@@ -29,7 +29,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
     }
 
     const style = {
-        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("../${serie}-portada.jpg")`,
+        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("/${serie}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
         backgroundSize: width < 540 ? "contain" : "cover",

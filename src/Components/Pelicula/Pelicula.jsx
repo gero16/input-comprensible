@@ -32,7 +32,7 @@ const Pelicula = ({data}) => {
     }
 
     const style = {
-        backgroundImage:  usuario ? `url("/${pelicula}-portada.jpg")` : `url("../${pelicula}-portada.jpg")`,
+        backgroundImage:  usuario ? `url("/${pelicula}-portada.jpg")` : `url("/${pelicula}-portada.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[pelicula]}%`,
         backgroundSize: 'cover',
@@ -42,7 +42,7 @@ const Pelicula = ({data}) => {
 
     return (
         <>
-            <article className={`article-clip fondoarticle-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
 
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                 </div>
