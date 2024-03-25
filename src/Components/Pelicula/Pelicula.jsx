@@ -12,13 +12,21 @@ const Pelicula = ({data}) => {
     const urlGrabaciones = `${urlBackend_Desarrollo}/grabaciones/peliculas/${pelicula}/${usuario}`
 
     useEffect(() => {   
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
+   
     }, [])
 
     useEffect(() => {   
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+        
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
+      
     }, [pelicula])
 
     const posicionImagen = {

@@ -35,8 +35,11 @@ const ContenedorSerie = () => {
         traerCapitulos()
         setearClipsPagina(data)
 
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
+
     }, [serie])
 
     useEffect(() => {
@@ -44,16 +47,21 @@ const ContenedorSerie = () => {
         setSeason(temporada)
         setearClipsPagina(data)
 
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
+
     }, [temporada])
 
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
         setearClipsPagina(data)
 
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
     }, [capitulo])
 
    
@@ -61,8 +69,11 @@ const ContenedorSerie = () => {
         setearClipsPagina(data)
         console.log(paginaActual)
 
-        const resultado = traerGrabacion(urlGrabaciones);
-        traerGrabaciones(resultado)
+        if(usuario) {
+            const resultado = traerGrabacion(urlGrabaciones);
+            traerGrabaciones(resultado)
+        }
+        
     }, [paginaActual])
 
  
