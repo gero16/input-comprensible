@@ -20,8 +20,8 @@ const ContenedorSerie = () => {
     const [capitulos, setCapitulos] = useState([])
      
 
-    const urlClips = `${ urlBackend_Desarrollo }/series/${serie}/${temporada}/${capitulo}`
-    const urlGrabaciones = `${ urlBackend_Desarrollo }/grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
+    const urlClips = `${ urlBackend_Produccion }/series/${serie}/${temporada}/${capitulo}`
+    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
@@ -73,7 +73,7 @@ const ContenedorSerie = () => {
             const resultado = traerGrabacion(urlGrabaciones);
             traerGrabaciones(resultado)
         }
-        
+
     }, [paginaActual])
 
  

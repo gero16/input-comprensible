@@ -45,6 +45,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         
     }
 
+    const newCapitulo = transformarMayuscula(capitulo, 2)
+    console.log(newCapitulo)
     return (
         <>
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>
@@ -60,7 +62,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
 
                 <header className="header-serie">
 
-                    <h1 className="titulo-temporada"> Temporada {numTemporada[1]} - {  transformarMayuscula(capitulo) } </h1>
+                    <h1 className="titulo-temporada"> Temporada {numTemporada[1]} - {  transformarMayuscula(capitulo, 2) } </h1>
 
                     <ul className="ul-capitulos">
                             { capitulos.map((element, key) => {
