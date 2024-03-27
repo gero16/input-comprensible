@@ -34,6 +34,7 @@ export const fetchTitulos = async (titulos, setTitulos) => {
         
     } catch (error) {
         console.log(error)
+        setTitulos([])
     }
         
 }
