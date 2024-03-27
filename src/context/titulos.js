@@ -2,6 +2,7 @@ import { useState, createContext } from "react"
 import 'react-audio-voice-recorder';
 
 const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
+console.log(urlBackend_Produccion)
 const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 const urlOrigin = "https://input-comprensible.vercel.app/" 
 
