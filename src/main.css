@@ -67,6 +67,24 @@
   .button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
+
+
+  .arcoiris {
+    border: 3px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    margin: 20px auto;
+    animation: movimientoArcoiris 3s linear infinite; /* Reducimos la duración a 5 segundos */
+  }
+  
+  @keyframes movimientoArcoiris {
+    0%, 100% {
+      border-image-source: linear-gradient(to bottom right, #fd1892 0%, #b827fc 25%, #2c90fc 50%, #b8fd33 75%, #fec837 100%);
+    }
+    50% {
+      border-image-source: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    }
+  }
   
   @media (prefers-color-scheme: light) {
     :root {

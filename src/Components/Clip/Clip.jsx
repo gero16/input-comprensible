@@ -127,6 +127,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             loading="lazy"
+                            className="arcoiris"
                         />
                         
                         : <iframe 
@@ -136,6 +137,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             loading="lazy"
+                             className="arcoiris"
                         />
                       }
                         
