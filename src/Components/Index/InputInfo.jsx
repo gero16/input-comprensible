@@ -1,3 +1,7 @@
+import Fondo from "../../assets/fondo.jpg"
+import Fondo2 from "../../../public/harry-potter-1-portada.jpg" 
+
+
 const InputInfo = () => {
     return (
         <div className='fondo'>
@@ -6,47 +10,53 @@ const InputInfo = () => {
           </div>
 
         <main className="main" >
-          <ul className='ul-contenido'>
-            <li className='flex-center div-meme'  >
-              
-                <p> En esta página podrás encontrar un lugar donde practicar el input comprensible
+
+          <ul className='ul-contenido flex-column gap-50'>
+
+            <li className="flex wrap">
+              <div className="div-contenido-index flex-column-center gap-20">
+                <p className="p-index"> En esta página podrás encontrar un lugar donde practicar el input comprensible
                     mediante clips cortos de series y peliculas 
                 </p>
-            </li>
-           
-            <li className='flex-center div-meme'  >
-              <div>
-                <p>
+                <p className="p-index">
                   Con input comprensible nos referimos a un término relacionado con la adquision de un nueva lengua,
                   que se deriva de la teoría de la Adquisición del Lenguaje de Stephen Krashen. 
                 </p>
-                <p>
+                <p className="p-index">
                   Esta teoria se refiere a la idea de que para que una persona aprenda un idioma de manera efectiva, el material 
                   de entrada o input (como textos, conversaciones, videos, etc.) debe ser comprensible para el mismo.
                 </p>
               </div>
-      
-       
+              <img src={Fondo} alt="" className="foto-index" />
             </li>
-            <li className="flex-center div-meme">
-           
-                <div>
-                  <p> Es decir, se entiende por input comprensible todo aquella entrada de información que reprepresente un 
-                      nivel lingüístico ligeramente por encima del conocimiento actual del estudiante. </p>
-                  <p> En otras palabras, que debe ser lo suficientemente desafiante para que el estudiante tenga 
-                      que esforzarse para entenderlo, pero no tan difícil como para que resulte incomprensible 
-                      o abrumador.
+
+            <li className="flex wrap">
+
+              <img src={Fondo2} alt="" className="foto-index" />
+              <div className="div-contenido-index flex-column-center gap-10">
+                <p className="p-index">  Es decir, se entiende por input comprensible todo aquella entrada de información que reprepresente un 
+                    nivel lingüístico ligeramente por encima del conocimiento actual del estudiante.
                 </p>
-                </div>
-          
-            
-            </li>
-            <li className="flex-center div-meme" >
-              <div>
-                <p> La idea del concepto propone que cuando un estudiante se expone a una entrada de información
+                <p className="p-index">
+                En otras palabras, que debe ser lo suficientemente desafiante para que el estudiante tenga 
+                    que esforzarse para entenderlo, pero no tan difícil como para que resulte incomprensible 
+                    o abrumador.
+                </p>
+                <p className="p-index">
+                  La idea del concepto propone que cuando un estudiante se expone a una entrada de información
                     un poco más avanzada que su nivel actual de competencia, se encuentra en una "zona de 
                     desarrollo próximo". Zona en la que el aprendizaje es más efectivo, debido a que el estudiante está 
-                    en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya conoce. </p>
+                    en condiciones de adquirir nuevo conocimiento y construir sobre lo que ya conoce.
+                </p>
+              </div>
+              
+            </li>
+    
+       
+           
+            <li className="flex-center div-meme" >
+              <div>
+                <p>  </p>
                 <p> Por lo que su práctica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
                   y gradual a estructuras lingüísticas más complejas. </p>
               </div>
