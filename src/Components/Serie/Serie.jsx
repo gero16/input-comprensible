@@ -28,8 +28,15 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         "sex-education": 30
     }
 
+    const formatoImagen = ['.jpg', '.png'].find(formato => {
+        const imagen = new Image();
+        imagen.src = `/${serie}-portada${formato}`;
+        return imagen.complete; // Si la imagen se carga correctamente, significa que este formato es válido
+    });
+    
+
     const style = {
-        backgroundImage: usuario ? `url("/${serie}-portada.jpg")` : `url("/${serie}-portada.jpg")`,
+        backgroundImage: `url("/${ serie }-portada${ formatoImagen }")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[serie]}%`,
         backgroundSize: width < 540 ? "contain" : "cover",
@@ -51,11 +58,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         <>
             <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>
                 <div className={`portada portada-${serie} flex-center`} style={style}>
-                    {
-                          serie === "house-of-the-dragon" || serie === "bojack-horseman"  || "sex-education"
-                          ?    <img src={`../../../${serie}.png`} className={`imagen-${serie}`} style={style2} alt={`imagen portada sobre ${serie}`} />
-                          : <> </>
-                    }
+                
                  
                 </div>  
 

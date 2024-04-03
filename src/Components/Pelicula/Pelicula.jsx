@@ -41,12 +41,13 @@ const Pelicula = ({data}) => {
     }
 
     const formatoImagen = ['.jpg', '.png'].find(formato => {
-        return new Image().src = `/${pelicula}-portada${formato}`;
+        const imagen = new Image();
+        imagen.src = `/${pelicula}-portada${formato}`;
+        return imagen.complete; // Si la imagen se carga correctamente, significa que este formato es válido
     });
 
     const style = {
-        backgroundImage: `url("/${ pelicula }-portada.${ formatoImagen }")`,
-        backgroundImage:  `url("/${ pelicula }-portada.jpg")` ,
+        backgroundImage: `url("/${ pelicula }-portada${ formatoImagen }")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[pelicula] }%`,
         backgroundSize: 'cover',
