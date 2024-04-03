@@ -32,7 +32,7 @@ const ContenedorPelicula = () => {
                 : <> 
                     <Navbar/>
                     
-                    <Pelicula data={paginaClips} setData={setData} />      
+                    <Pelicula data={paginaClips} setData={setData} jpg={true} />      
                 </>
             }
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
 const AgregarClipSerie = () => {
-    let { serie, temporada, usuario, capitulo } = useParams();
+    let { serie, temporada, usuario, capitulo, jpg } = useParams();
     const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, 
         fetchCantidadClips  } = useContext(Context)
     

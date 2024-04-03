@@ -5,7 +5,7 @@ import { Context } from "../../context/context";
 
 
 const Pelicula = ({data}) => {
-    let {  usuario, pelicula } = useParams();
+    let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
     const navigate = useNavigate();
     
@@ -36,11 +36,12 @@ const Pelicula = ({data}) => {
         "the-room-2003": 60,
         "kill-bill": 35,
         "bastardos-sin-gloria": 15,
-        "harry-potter-1": 32
+        "harry-potter-1": 32,
+        "spiderman-into-the-spider-verse": 70
     }
 
     const style = {
-        backgroundImage:  usuario ? `url("/${pelicula}-portada.jpg")` : `url("/${pelicula}-portada.jpg")`,
+        backgroundImage:  jpg ? `url("/${pelicula}-portada.jpg")` : `url("/${pelicula}-portada.png")`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${posicionImagen[pelicula]}%`,
         backgroundSize: 'cover',
