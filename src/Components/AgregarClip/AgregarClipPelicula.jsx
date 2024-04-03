@@ -45,7 +45,7 @@ const AgregarClipPelicula = () => {
 
     const agregarClip = async (data) => {
         
-        let response = await fetch(`${ urlBackend_Desarrollo }/agregar-clip/pelicula`, {
+        let response = await fetch(`${ urlBackend_Produccion }/agregar-clip/pelicula`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
