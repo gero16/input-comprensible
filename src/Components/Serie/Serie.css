@@ -25,11 +25,12 @@
 
 .li-capitulos:hover {
     transition: 0.3s;
-    border: 1px solid #dedee2;
     filter: brightness(90%);
     -webkit-transform:scale(1.1);
     transform:scale(1.1);
+
 }
+
 
 
   .li-capitulos:focus,

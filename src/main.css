@@ -68,9 +68,17 @@
     outline: 4px auto -webkit-focus-ring-color;
   }
 
-
   .arcoiris {
     border: 3px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    margin: 20px auto;
+    animation: movimientoArcoiris 3s linear infinite; /* Reducimos la duración a 5 segundos */
+  }
+
+  .arcoiris-2 {
+    border: 3px solid transparent;
+    border-radius: 10px;
     border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
     border-image-slice: 1;
     margin: 20px auto;

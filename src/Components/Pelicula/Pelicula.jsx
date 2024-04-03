@@ -9,7 +9,7 @@ const Pelicula = ({data}) => {
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
     const navigate = useNavigate();
     
-    const urlGrabaciones = `${urlBackend_Desarrollo}/grabaciones/peliculas/${pelicula}/${usuario}`
+    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
 
     useEffect(() => {   
 
@@ -50,7 +50,7 @@ const Pelicula = ({data}) => {
 
     return (
         <>
-            <article className={`article-clip article-audio ${data.subtitulo} arcoiris`} name={data.subtitulo}>  
+            <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
 
                 <div className={`portada portada-${pelicula} flex-center`} style={style}>
                 </div>

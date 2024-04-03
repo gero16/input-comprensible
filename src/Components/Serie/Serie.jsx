@@ -69,7 +69,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                 return (
                                     <li className="li-capitulos" 
                                         onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
-                                        {separarCapitulo(element)}
+                                        { separarCapitulo(element)}
                                     </li>
                                 )
                             })}
