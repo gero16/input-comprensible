@@ -63,7 +63,7 @@ const AgregarClipPelicula = () => {
             setClip({
                 ...clip, 
                 nombre_clip : `${clip.subtitulo}-${ clip.numero_clip + 1  }`,
-                numero_clip : clip.numero_clip + 1
+                numero_clip : Number(clip.numero_clip) + 1
             })
           }
     }
