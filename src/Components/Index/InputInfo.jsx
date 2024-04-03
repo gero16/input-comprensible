@@ -1,7 +1,9 @@
 const InputInfo = () => {
     return (
         <div className='fondo'>
-        <h1 className='titulo-principal'> Input Comprensible </h1>
+          <div className="div-titulo">
+            <h1 className='titulo-principal'> Input Comprensible </h1>
+          </div>
 
         <main className="main" >
           <ul className='ul-contenido'>
