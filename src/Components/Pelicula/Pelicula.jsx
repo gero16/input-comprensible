@@ -45,7 +45,6 @@ const Pelicula = ({data}) => {
     });
 
     const style = {
-        
         backgroundImage: `url("/${ pelicula }-portada.${ formatoImagen }")`,
         backgroundImage:  `url("/${ pelicula }-portada.jpg")` ,
         backgroundRepeat: 'no-repeat',
