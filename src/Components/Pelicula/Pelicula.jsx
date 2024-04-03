@@ -40,10 +40,16 @@ const Pelicula = ({data}) => {
         "spiderman-into-the-spider-verse": 70
     }
 
+    const formatoImagen = ['.jpg', '.png'].find(formato => {
+        return new Image().src = `/${pelicula}-portada${formato}`;
+    });
+
     const style = {
-        backgroundImage:  jpg ? `url("/${pelicula}-portada.jpg")` : `url("/${pelicula}-portada.png")`,
+        
+        backgroundImage: `url("/${ pelicula }-portada.${ formatoImagen }")`,
+        backgroundImage:  `url("/${ pelicula }-portada.jpg")` ,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: `5% ${posicionImagen[pelicula]}%`,
+        backgroundPosition: `5% ${ posicionImagen[pelicula] }%`,
         backgroundSize: 'cover',
         filter: 'brightness(0.7)'
     }
