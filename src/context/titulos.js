@@ -4,7 +4,7 @@ import 'react-audio-voice-recorder';
 const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
 console.log(urlBackend_Produccion)
 const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
-const urlOrigin = "https://input-comprensible.vercel.app/" 
+const urlOrigin = "https://input-comprensible.vercel.app" 
 
 export const fetchTitulos = async (titulos, setTitulos) => {
     let arrayTitulos = []
@@ -19,13 +19,13 @@ export const fetchTitulos = async (titulos, setTitulos) => {
                 }),
             })
         const resp= await response.json();
-        //console.log(resp.data)
+        console.log(resp.data)
         if(!resp) console.log("No hay data")
 
         resp.data.forEach(element => {
             const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
             arrayTitulos.push(titulo)
-           //console.log(arrayTitulos)
+           console.log(arrayTitulos)
         });
         //console.log(resp.data)
         setTitulos(arrayTitulos)
@@ -34,7 +34,7 @@ export const fetchTitulos = async (titulos, setTitulos) => {
         
     } catch (error) {
         console.log(error)
-        setTitulos([])
+        
     }
         
 }
