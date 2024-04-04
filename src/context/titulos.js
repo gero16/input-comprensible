@@ -19,7 +19,7 @@ export const fetchTitulos = async (titulos, setTitulos) => {
                 }),
             })
         const resp= await response.json();
-        console.log(resp.data)
+        //console.log(resp.data)
         if(!resp) console.log("No hay data")
 
         resp.data.forEach(element => {
@@ -33,10 +33,11 @@ export const fetchTitulos = async (titulos, setTitulos) => {
         return titulos
         
     } catch (error) {
+
+    
         console.log(error)
         
     }
-        
-}
+}  
 
 
