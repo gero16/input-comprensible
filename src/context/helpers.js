@@ -59,12 +59,19 @@ export const fetchCapitulos = async (titulo) => {
                 'Access-Control-Allow-Origin': '*',
             })
         })
-    const resp= await response.json();
+
+    if(response.status === 200) {
+
+        if(!resp) console.log("No hay data")
+        const resp= await response.json();
+        return resp.data
+    }
+
+    if(response.status === 404) console.log("Ocurrio un error") 
+
     //console.log(resp.data)
     
-    if(!resp) console.log("No hay data")
   
-    return resp.data
 }
 
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
