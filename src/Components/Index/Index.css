@@ -19,13 +19,16 @@
 .titulo-principal  {
   font-size: 12vw;
   font-family: "spiderman";
-    padding: 20px 0px;
-
+    padding: 40px 20px 5px 20px;
+border-radius: 5px;
+  display: inline-block;
   color: white;
-
+  border: 2px solid white;
+  box-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #292736, 0 0 10px #292736;
   text-shadow: 0 0 0px #fff, 0 0 20px #fff, 0 0 26px #292736, 0 0 24px #292736;
-
 }
+
+
 
 .ul-contenido {
   background-color: #0c0c0cbe;
