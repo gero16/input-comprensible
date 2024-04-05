@@ -52,12 +52,11 @@ const InputInfo = () => {
               
             </li>
     
-       
-           
+      
             <li className="flex-center div-meme" >
               <div>
-                <p>  </p>
-                <p> Por lo que su práctica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
+            
+                <p className="p-index"> Por lo que su práctica fomentaria la adquisición natural del lenguaje a través de la exposición constante 
                   y gradual a estructuras lingüísticas más complejas. </p>
               </div>
   
@@ -67,10 +66,10 @@ const InputInfo = () => {
     
 
                 <div>
-                  <p> Para clasificar la dificultad de comprensión de los clips se tomaron en cuenta diferentes factores.
+                  <p className="p-index">   Para clasificar la dificultad de comprensión de los clips se tomaron en cuenta diferentes factores.
                       Entre ellos estan la complejidad de la situación que representan, la forma en la que los actores se expresan, sus modismos, etc. </p>
-                  <p> Para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan estar acorde a su nivel.  </p>
-                  <p> Asi como ya haber visto la pelicula o el capitulo de su interés. Para tener el contexto suficiente para la comprensión del mismo</p>
+                  <p className="p-index"> Para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan estar acorde a su nivel.  </p>
+                  <p className="p-index"> Asi como ya haber visto la pelicula o el capitulo de su interés. Para tener el contexto suficiente para la comprensión del mismo</p>
                   
                 </div>
       
@@ -78,11 +77,11 @@ const InputInfo = () => {
 
             <li className="flex-center div-meme">
             <div>
-              <p>
+              <p className="p-index">
                 En cada clip se presenta la posibilidad de evaluar su comprensión escribiendo en su campo correspondiente y seleccionado el boton 'Evaluar'. 
         
               </p>
-              <p> También se puede practicar el output correspondiente al clip grabando un audio, que puede guardar o actualizar. </p>
+              <p className="p-index"> También se puede practicar el output correspondiente al clip grabando un audio, que puede guardar o actualizar. </p>
             </div>
             
             </li>

@@ -13,8 +13,9 @@ function App() {
   const navigate = useNavigate()
   
    useEffect(() => {
-    const sesion = JSON.parse(localStorage.getItem("sesion"))
-    
+    let traerSesion = localStorage.getItem("sesion")
+    const sesion = traerSesion ? JSON.parse(traerSesion) : ""
+    console.log(sesion)
     if(sesion) navigate(`/usuario/${sesion.usuario}`)
    
    }, [])

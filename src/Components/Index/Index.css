@@ -17,7 +17,7 @@
 }
 
 .titulo-principal  {
-  font-size: 6vw;
+  font-size: 12vw;
   font-family: "spiderman";
     padding: 20px 0px;
 
@@ -286,17 +286,8 @@ ul {
   flex-wrap: wrap;
 }
 
-.foto-index {
-  width: 30vw;
-  margin: 20px;
-  border: 3px solid white;
-}
 
-.div-contenido-index {
-  width: 50%;
-  margin: 0 auto;
- 
-}
+
 
 .gap-10 {
   gap: 10px
@@ -309,6 +300,42 @@ ul {
   gap: 50px
 }
 
+
+.p-index {
+  font-size: small;
+}
+
+.foto-index {
+  width: 80%;
+  margin: 20px;
+
+}
+
+
+.div-contenido-index {
+  width: 80%;
+  margin: 0 auto;
+ 
+}
+@media (min-width: 800px) {
+  .titulo-principal {
+    font-size: 6vw;
+  }
+  
+  .p-index {
+    font-size: medium;
+  }
+  .foto-index {
+    width: 30vw;
+   
+  }
+
+.div-contenido-index {
+  width: 50%;
+ 
+ 
+}
+}
 @media (min-width: 1600px) {
   .portada {
     height: 560px;
