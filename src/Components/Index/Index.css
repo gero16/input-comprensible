@@ -4,6 +4,9 @@
   /* Puedes agregar más formatos de fuente aquí si tienes */
 }
 
+.p-30 {
+  padding : 30px
+}
 
 .flex {
   display: flex;
@@ -325,7 +328,73 @@ ul {
 .font-medium {
   font-size: medium;
 }
+
+
+.fondo-li {
+
+  position: relative;
+  overflow: hidden;
+}
+
+.fondo-li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/super-mario-bros-portada1.jpg");
+  background-size: 470%;
+  background-position: 20%;
+  filter: blur(2.2px);
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+}
+
+
+.fondo-li-2 {
+
+  position: relative;
+  overflow: hidden;
+}
+.fondo-li-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/super-mario-bros-portada1.jpg");
+  background-size: 470%;
+  background-position: 60%;
+  filter: blur(2.2px);
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+}
+
+
+.fondo-li-3 {
+  
+  position: relative;
+  overflow: hidden;
+}
+
+.fondo-li-3::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/super-mario-bros-portada1.jpg");
+  background-size: 470%;
+  background-position: 70%;
+  filter: blur(2.2px);
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+}
+
 @media (min-width: 800px) {
+  .foto-index {
+    display: block!important;
+  }
   .titulo-principal {
     font-size: 6vw;
     padding: 40px 20px 5px 20px;
@@ -341,11 +410,47 @@ ul {
   }
 
 .div-contenido-index {
+  margin: 20px 0px 10px 0px;
   width: 50%;
- 
- 
 }
+
+.fondo-li::before {
+  top: 20px;
+  background-size: 120%;
+  background-position: 40% 62%;
+  filter: blur(2.2px);
 }
+.fondo-li-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/kill-bill-portada.jpg");
+  background-size: 100%;
+  background-position: 90%;
+  filter: blur(0.3px);
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+}
+
+.fondo-li-3::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/scream-2022-portada.jpg");
+  background-size: 140%;
+  background-position: 40% 20%;
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+  filter: blur(0px);
+}
+
+
+}
+
 @media (min-width: 1600px) {
   .portada {
     height: 560px;
