@@ -19,7 +19,8 @@
 .titulo-principal  {
   font-size: 12vw;
   font-family: "spiderman";
-    padding: 40px 20px 5px 20px;
+  padding: 20px 0px 5px 0px;
+    width: 80%;
 border-radius: 5px;
   display: inline-block;
   color: white;
@@ -327,6 +328,8 @@ ul {
 @media (min-width: 800px) {
   .titulo-principal {
     font-size: 6vw;
+    padding: 40px 20px 5px 20px;
+    
   }
   
   .p-index {
