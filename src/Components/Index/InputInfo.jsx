@@ -13,7 +13,7 @@ const InputInfo = () => {
 
           <ul className='ul-contenido flex-column gap-50'>
 
-            <li className="flex wrap fondo-li p-30">
+            <li className="flex wrap li-index fondo-li p-30">
               
                 <p className="p-index"> En esta página podrás encontrar un lugar donde practicar el input comprensible
                     mediante clips cortos de series y peliculas 
@@ -33,7 +33,7 @@ const InputInfo = () => {
          
             </li>
 
-            <li className="flex wrap fondo-li-2 p-30">
+            <li className="flex wrap li-index fondo-li-2 p-30">
 
            
                 <p className="p-index">
@@ -54,7 +54,7 @@ const InputInfo = () => {
             </li>
     
       
-            <li className="flex wrap fondo-li-3 p-30" >
+            <li className="flex wrap li-index fondo-li-3 p-30" >
             
        
                   <p className="p-index">   Para clasificar la dificultad de comprensión de los clips se tomaron en cuenta diferentes factores.
