@@ -85,7 +85,7 @@ const NavbarUser = () => {
                                                 <li className="li-nav" key={key}> 
                                                     <NavLink 
                                                         to={`/usuario/${usuario}/series/${element[1]}/${transformarTitulo(elemento)}/capitulo-1`} 
-                                                        className={"temporada-serie"}
+                                                        className={"temporada-serie font-medium"}
                                                         > 
                                                         {elemento}
                                                         

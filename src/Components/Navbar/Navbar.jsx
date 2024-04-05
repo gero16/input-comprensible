@@ -81,7 +81,7 @@ const Navbar = () => {
                                             <li className="li-nav" key={key} > 
                                                 <NavLink 
                                                     to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} 
-                                                    className={"temporada-serie"}
+                                                    className={"temporada-serie font-medium"}
                                                     > 
                                                     { elemento }
                                                 </NavLink>

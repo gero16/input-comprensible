@@ -315,7 +315,11 @@ ul {
 .div-contenido-index {
   width: 80%;
   margin: 0 auto;
- 
+}
+
+
+.font-medium {
+  font-size: medium;
 }
 @media (min-width: 800px) {
   .titulo-principal {
