@@ -49,7 +49,7 @@ export const cantidadPaginasHtml = (data) => {
 
 export const fetchCapitulos = async (titulo) => {
     let arrayCapitulos = []
-    const url = `${ urlBackend_Desarrollo }/titulos/${titulo}`
+    const url = `${ urlBackend_Produccion }/titulos/${titulo}`
     const response = await fetch(url,  
         {
             method: 'GET',
