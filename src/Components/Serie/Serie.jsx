@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
+    console.log(capitulos)
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
     let {  usuario } = useParams();
@@ -68,14 +69,16 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                     <h1 className="titulo-temporada"> Temporada {numTemporada[1]} - {  transformarMayuscula(capitulo, 2) } </h1>
 
                     <ul className="ul-capitulos">
-                            { capitulos.map((element, key) => {
-                                return (
-                                    <li className="li-capitulos" 
-                                        onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
-                                        { separarCapitulo(element)}
-                                    </li>
-                                )
-                            })}
+                            { capitulos.length > 0 
+                                ? capitulos.map((element, key) => {
+                                    return (
+                                        <li className="li-capitulos" 
+                                            onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
+                                            { separarCapitulo(element)}
+                                        </li>
+                                    )})
+                                : <p> Cargando Capitulos... </p>
+                            }
                     
                     </ul>
                 </header>

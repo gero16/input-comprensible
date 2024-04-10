@@ -2,7 +2,6 @@ import { useState, createContext } from "react"
 import 'react-audio-voice-recorder';
 
 const urlBackend_Produccion = import.meta.env.VITE_URL_BACKEND_PRODUCCION
-console.log(urlBackend_Produccion)
 const urlBackend_Desarrollo = import.meta.env.VITE_URL_BACKEND_DESARROLLO
 const urlOrigin = "https://input-comprensible.vercel.app" 
 
@@ -21,10 +20,10 @@ export const fetchTitulos = async (titulos, setTitulos) => {
 
             if(response.status === 200) {
                 const resp = await response.json();
-                console.log(resp)
+                //console.log(resp)
                 if(!resp) console.log("No hay data")
                 
-                console.log(response)
+                //console.log(response)
                 resp.data.forEach(element => {
                     const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
                     arrayTitulos.push(titulo)

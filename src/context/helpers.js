@@ -49,7 +49,7 @@ export const cantidadPaginasHtml = (data) => {
 
 export const fetchCapitulos = async (titulo) => {
     let arrayCapitulos = []
-    const url = `${urlBackend_Produccion}/titulos/${titulo}`
+    const url = `${ urlBackend_Desarrollo }/titulos/${titulo}`
     const response = await fetch(url,  
         {
             method: 'GET',
@@ -58,21 +58,18 @@ export const fetchCapitulos = async (titulo) => {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             })
-        })
+    })
 
     if(response.status === 200) {
-
+        const resp = await response.json(); // Move this line up
         if(!resp) console.log("No hay data")
-        const resp= await response.json();
+        console.log(resp.data)
         return resp.data
     }
 
     if(response.status === 404) console.log("Ocurrio un error") 
-
-    //console.log(resp.data)
-    
-  
 }
+
 
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
     

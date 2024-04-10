@@ -113,7 +113,7 @@ export const CustomProvider = ({ children }) => {
             })
         if(response) {
             const resp = await response.json();
-            console.log(resp)
+            //console.log(resp)
             if(!resp) console.log("No hay data")
             const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
             if(respuesta) {
@@ -141,7 +141,7 @@ export const CustomProvider = ({ children }) => {
             const resp = await response.json();
             if(!resp) console.log("No hay data")
             
-            console.log(resp)
+            //console.log(resp)
             return resp;
         }
     }
