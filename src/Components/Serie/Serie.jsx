@@ -77,7 +77,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
                                             { separarCapitulo(element)}
                                         </li>
                                     )})
-                                : <p> Cargando Capitulos... </p>
+                                : <p> Cargando capitulos... </p>
                             }
                     
                     </ul>

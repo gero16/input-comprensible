@@ -61,7 +61,7 @@ export const fetchCapitulos = async (titulo) => {
     })
 
     if(response.status === 200) {
-        const resp = await response.json(); // Move this line up
+        const resp = await response.json(); 
         if(!resp) console.log("No hay data")
         console.log(resp.data)
         return resp.data
@@ -69,6 +69,7 @@ export const fetchCapitulos = async (titulo) => {
 
     if(response.status === 404) console.log("Ocurrio un error") 
 }
+
 
 
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
