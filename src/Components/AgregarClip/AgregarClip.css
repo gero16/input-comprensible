@@ -42,13 +42,14 @@ select {
     margin: 50px 0px;
     padding: 20px;
     background-color: rgb(31, 29, 29);
-   
+  
 }
 
 .lista-formulario-clip li {
     display: flex;
     gap: 60px;
     justify-content: space-around;
+    margin: 15px;
 }
 
 #li-agregar-clip {
