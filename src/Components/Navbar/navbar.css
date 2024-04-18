@@ -48,6 +48,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .li-nav:hover {
@@ -69,33 +70,47 @@ h1 {
 }
 
 
-.lista-temporadas {
-  top: 10;
-  opacity: 1;
-  transition: all 1s;
-  max-height: 9999999px;
-  z-index: 12;
-}
-
-.top {
-  
-  
-}
-
 
 .li-nav {
   width: 90px;
 }
 
+.li-nav-serie {
+  position: relative; 
+}
+
+.lista-temporadas {
+  position: absolute;
+  transform: translate(0%, -3%);
+  background-color: rgb(0, 0, 0);
+  z-index: 12;
+  
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s, max-height 0.5s;
+  
+  
+}
+
+
+.li-nav-serie:hover .lista-temporadas {
+  
+  opacity: 1;
+    max-height: 9999px; 
+    
+}
+
 
 @media (min-width: 800px) {
   .li-nav {
-    width: 110px;
+    width: 100px;
     max-width: 135px;
   
   }
   .span-link {
     font-size: small;
+
   }
   .lista-navbar {
     font-size: medium;

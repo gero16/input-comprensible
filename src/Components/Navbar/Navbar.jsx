@@ -8,18 +8,7 @@ const Navbar = () => {
     const [titulos, setTitulos] = useState([])
     const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
 
-    const seleccionarSerie = (e) => {
-       
-       if(e.target.classList.contains("link-serie")) {
-           e.target.nextSibling.classList.toggle("inactive")
-           e.target.nextSibling.classList.toggle("lista-temporadas")
-       }
-       if(e.target.classList.contains("temporada-serie")) {
-        console.log(e.target.parentNode.parentNode)
-        e.target.parentNode.parentNode.classList.toggle("inactive")
-        e.target.parentNode.parentNode.classList.toggle("lista-temporadas")
-        } 
-    }
+
 
     const transformarMinuscula = (texto) => {
         const nuevo = texto.toLocaleLowerCase().split(" ").join("-")
@@ -66,18 +55,37 @@ const Navbar = () => {
                 { titulos 
                     ? titulos.map((element, key) => {
                         return (
-                            <li key={key}  className="li-nav" onClick={(e)=> seleccionarSerie(e)} >
+                            <>
 
                                 { element[2] === "pelicula"
-                                    ? <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
+                                    ?    <li key={key}  className="li-nav" >
+                                    
+                                    <NavLink to={`/peliculas/${element[1]}`} className="flex-center-column"> 
                                         <span className="span-link"> {element[0]} </span>
                                     </NavLink>
-                            
-                                    : <span className="link-serie span-link"> {element[0]} </span> 
-                                       
-                                
+                                    </li>
+                                    : <li className="li-nav-serie" key={key} > 
+                                        <span className="link-serie span-link"> {element[0]} </span> 
+                                        
+                                        <ul className="lista-temporadas"> 
+                                            {
+                                                element[3].map((elemento, key) => 
+                                                <> 
+                                                    <NavLink 
+                                                        to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} 
+                                                        className={"temporada-serie font-medium"}
+
+                                                        > 
+                                                        <span className="link-serie span-link" key={key}>   { elemento } </span> 
+                                                    
+                                                    </NavLink>
+                                                </>
+                                                )
+                                            }
+                                        </ul>
+                                    </li>
                                 }
-                            </li>
+                            </>
                         )
                     }) 
 
