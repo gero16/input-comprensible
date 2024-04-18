@@ -114,3 +114,92 @@
   #btn-mostar-respuesta {
     margin: 0px;
   }
+
+  
+.p-30 {
+  padding : 30px
+}
+
+.flex {
+  display: flex;
+}
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+
+.ocultar {
+  visibility: hidden;
+}
+
+
+.white {
+  color: white;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.very-easy {
+  color: rgb(168, 255, 87);
+  }
+
+.easy {
+  color: green;
+}
+
+.medium {
+  color: rgb(241, 219, 14);
+}
+
+.hard {
+  color: rgb(255, 145, 0);
+}
+
+.very-hard {
+  color: red;
+}
+
+.god {
+  color: white;
+}
+
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+
+.gap-10 {
+  gap: 10px
+}
+
+.gap-20 {
+  gap: 20px
+}
+.gap-30 {
+ 
+}
+.gap-50 {
+  gap: 50px
+}
