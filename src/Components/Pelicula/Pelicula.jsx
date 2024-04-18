@@ -5,15 +5,12 @@ import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula, jpg } = useParams();
-    const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
+    const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones, traerImagenFomato, urlImagen  } = useContext(Context)
    
     
     const navigate = useNavigate();
     
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
-
-
-    let [urlImagen, setUrlImagen] = useState()
 
 
     useEffect(() => {   
@@ -23,29 +20,7 @@ const Pelicula = ({data}) => {
             traerGrabaciones(resultado)
         }
 
-        const formatosImagen = ['.jpg', '.png'];
-        let imagenCargada = null;
-    
-        for (const formato of formatosImagen) {
-            const urlImagen = `/${pelicula}-portada${formato}`;
-            
-            // Intenta cargar la imagen
-            fetch(urlImagen)
-                .then(response => {
-                    if (response.ok) {
-                        imagenCargada = urlImagen;
-                        setUrlImagen(`url("${urlImagen}")`);
-                    }
-                })
-                .catch(error => {
-                    console.error(`Error al cargar la imagen ${urlImagen}: ${error}`);
-                });
-    
-            if (imagenCargada) {
-                break; // Sale del bucle si se encontró una imagen cargada correctamente
-            }
-        }
-
+        traerImagenFomato(pelicula)
     }, [])
 
     useEffect(() => {   
@@ -55,28 +30,7 @@ const Pelicula = ({data}) => {
             traerGrabaciones(resultado)
         }
 
-        const formatosImagen = ['.jpg', '.png'];
-        let imagenCargada = null;
-    
-        for (const formato of formatosImagen) {
-            const urlImagen = `/${pelicula}-portada${formato}`;
-            
-            // Intenta cargar la imagen
-            fetch(urlImagen)
-                .then(response => {
-                    if (response.ok) {
-                        imagenCargada = urlImagen;
-                        setUrlImagen(`url("${urlImagen}")`);
-                    }
-                })
-                .catch(error => {
-                    console.error(`Error al cargar la imagen ${urlImagen}: ${error}`);
-                });
-    
-            if (imagenCargada) {
-                break; // Sale del bucle si se encontró una imagen cargada correctamente
-            }
-        }
+        traerImagenFomato(pelicula)
       
     }, [pelicula])
 

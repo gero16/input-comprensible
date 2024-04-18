@@ -144,7 +144,33 @@ export const CustomProvider = ({ children }) => {
         });
     }
 
+    let [urlImagen, setUrlImagen] = useState()
 
+
+    const traerImagenFomato = (nombre) => {
+        const formatosImagen = ['.jpg', '.png'];
+        let imagenCargada = null;
+    
+        for (const formato of formatosImagen) {
+            const imagen = `/${ nombre }-portada${ formato }`;
+            
+            // Intenta cargar la imagen
+            fetch(imagen)
+                .then(response => {
+                    if (response.ok) {
+                        imagenCargada = urlImagen;
+                        setUrlImagen(`url("${ imagen }")`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al cargar la imagen ${ imagen }: ${error}`);
+                });
+    
+            if (imagenCargada) {
+                break; // Sale del bucle si se encontró una imagen cargada correctamente
+            }
+        }
+    }
     
 return (
     <Context.Provider 
@@ -152,7 +178,7 @@ return (
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
             cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
-            traerGrabacion,  traerGrabaciones
+            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen
             }}> 
             
         { children } 
