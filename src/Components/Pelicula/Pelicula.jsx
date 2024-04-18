@@ -2,17 +2,19 @@ import { useContext, useEffect, useState } from "react"
 import Clip from "../Clip/Clip"
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
-import { Context2 } from "../../context/context2";
-
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
-    const { evaluar } = useContext(Context2)
+   
     
     const navigate = useNavigate();
     
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
+
+
+    let [urlImagen, setUrlImagen] = useState()
+
 
     useEffect(() => {   
 
@@ -20,7 +22,30 @@ const Pelicula = ({data}) => {
             const resultado = traerGrabacion(urlGrabaciones);
             traerGrabaciones(resultado)
         }
-   
+
+        const formatosImagen = ['.jpg', '.png'];
+        let imagenCargada = null;
+    
+        for (const formato of formatosImagen) {
+            const urlImagen = `/${pelicula}-portada${formato}`;
+            
+            // Intenta cargar la imagen
+            fetch(urlImagen)
+                .then(response => {
+                    if (response.ok) {
+                        imagenCargada = urlImagen;
+                        setUrlImagen(`url("${urlImagen}")`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al cargar la imagen ${urlImagen}: ${error}`);
+                });
+    
+            if (imagenCargada) {
+                break; // Sale del bucle si se encontró una imagen cargada correctamente
+            }
+        }
+
     }, [])
 
     useEffect(() => {   
@@ -29,8 +54,34 @@ const Pelicula = ({data}) => {
             const resultado = traerGrabacion(urlGrabaciones);
             traerGrabaciones(resultado)
         }
+
+        const formatosImagen = ['.jpg', '.png'];
+        let imagenCargada = null;
+    
+        for (const formato of formatosImagen) {
+            const urlImagen = `/${pelicula}-portada${formato}`;
+            
+            // Intenta cargar la imagen
+            fetch(urlImagen)
+                .then(response => {
+                    if (response.ok) {
+                        imagenCargada = urlImagen;
+                        setUrlImagen(`url("${urlImagen}")`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error al cargar la imagen ${urlImagen}: ${error}`);
+                });
+    
+            if (imagenCargada) {
+                break; // Sale del bucle si se encontró una imagen cargada correctamente
+            }
+        }
       
     }, [pelicula])
+
+
+
 
     const posicionImagen = {
         "shrek-2": 27,
@@ -43,19 +94,21 @@ const Pelicula = ({data}) => {
         "spiderman-into-the-spider-verse": 70
     }
 
-    const formatoImagen = ['.jpg', '.png'].find(formato => {
-        const imagen = new Image();
-        imagen.src = `/${pelicula}-portada${formato}`;
-        return imagen.complete; // Si la imagen se carga correctamente, significa que este formato es válido
-    });
-
     const style = {
-        backgroundImage: `url("/${ pelicula }-portada${ formatoImagen }")`,
+        backgroundImage: urlImagen,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[pelicula] }%`,
         backgroundSize: 'cover',
         filter: 'brightness(0.7)'
     }
+
+   
+
+
+ 
+
+
+   
 
 
     return (
