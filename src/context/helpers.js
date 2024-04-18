@@ -70,8 +70,6 @@ export const fetchCapitulos = async (titulo) => {
     if(response.status === 404) console.log("Ocurrio un error") 
 }
 
-
-
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
     
     const response = await fetch(urlGrabaciones,  
@@ -120,6 +118,6 @@ export const fetchCantidadClips = async (urlClips) => {
         
         return resp.Numero_Siguiente
     }
-    }
+}
 
     

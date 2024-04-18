@@ -23,16 +23,26 @@
   font-size: 12vw;
   font-family: "spiderman";
   padding: 20px 0px 5px 0px;
-    width: 80%;
-border-radius: 5px;
+  width: 80%;
+  border-radius: 5px;
   display: inline-block;
   color: white;
-  border: 2px solid white;
-  box-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #292736, 0 0 10px #292736;
-  text-shadow: 0 0 0px #fff, 0 0 20px #fff, 0 0 26px #292736, 0 0 24px #292736;
+
+  border: 2.5px solid white;
+  box-shadow: 0 0 35px #fff, 0 0 1px #fff, 0 0 5px #292736, 0 0 10px #292736;
+
+
+
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
+  animation: glow-1 .59s infinite alternate;
+
 }
 
-
+@keyframes glow-1 {
+  to {
+      text-shadow: 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #fff, 0 0 4px #fff, 0 0 20px #fff, 0 0 24px #fff, 0 0 28px #fff ;
+  }
+}
 
 .ul-contenido {
  
@@ -400,7 +410,8 @@ ul {
     display: block!important;
   }
   .titulo-principal {
-    font-size: 6vw;
+    /*         font-size: 6vw;       */
+    font-size: 10vw;
     padding: 40px 20px 5px 20px;
     
   }

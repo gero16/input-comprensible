@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from "react"
 import Clip from "../Clip/Clip"
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
+import { Context2 } from "../../context/context2";
 
 
 const Pelicula = ({data}) => {
     let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones  } = useContext(Context)
+    const { evaluar } = useContext(Context2)
+    
     const navigate = useNavigate();
     
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`

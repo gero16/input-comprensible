@@ -20,22 +20,6 @@ export const CustomProvider = ({ children }) => {
     const [totalPaginas, setTotalPaginas] = useState([]) 
     const [data, setData] = useState([]) 
 
-    const evaluar = (subtitulo, id) => {
-        const valorAudio = document.querySelector(`.${subtitulo}-${id}`)
-        const subtituloIncorrecto = document.querySelector(`.${subtitulo}-mostrar-${id}`)
-        const valueInput = document.querySelector(`.input-${subtitulo}-${id}`)
-        const respInput = document.querySelector(`.inputRespuesta-${subtitulo}-${id}`)
-   
-        if(valueInput.value == respInput.value) {
-            setEvaluarAudio(true)
-            valorAudio.classList.toggle("ocultar")
-            subtituloIncorrecto.classList.add("ocultar")
-        } else {
-            valorAudio.classList.add("ocultar")
-            subtituloIncorrecto.classList.toggle("ocultar")
-        }
-    }
-
     const clickGrabar = (e) => {
         const idGrabar = e.classList[1]
         const claseNombrePelicula = e.classList[2]
@@ -164,7 +148,7 @@ export const CustomProvider = ({ children }) => {
     
 return (
     <Context.Provider 
-        value={{ clickGrabar, evaluar, mostrarRespuesta, addAudioElement,
+        value={{ clickGrabar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
             cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
