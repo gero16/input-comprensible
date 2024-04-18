@@ -73,23 +73,9 @@ const Navbar = () => {
                                         <span className="span-link"> {element[0]} </span>
                                     </NavLink>
                             
-                                    : <> 
-                                        <span className="link-serie span-link"> {element[0]} </span> 
-                                        <ul className="inactive"> 
-                                        {
-                                            element[3].map((elemento, key) => 
-                                            <li className="li-nav" key={key} > 
-                                                <NavLink 
-                                                    to={`/series/${element[1]}/${transformarMinuscula(elemento)}/${transformarMinuscula(element[4][0])}`} 
-                                                    className={"temporada-serie font-medium"}
-                                                    > 
-                                                    { elemento }
-                                                </NavLink>
-                                            </li>
-                                            )
-                                        }
-                                        </ul>
-                                    </>
+                                    : <span className="link-serie span-link"> {element[0]} </span> 
+                                       
+                                
                                 }
                             </li>
                         )

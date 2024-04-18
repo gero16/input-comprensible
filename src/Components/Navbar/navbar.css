@@ -29,21 +29,25 @@ h1 {
   flex-direction: row-reverse;
   gap: 5px;
   font-size: smaller;
-  margin-right: 15px;
   list-style: none;
   width: 90vw;
   flex-wrap: wrap;
+  margin : 0 auto!important;
  
 }
 
 .lista-navbar li {
   cursor: pointer;
   padding: 10px;
+  margin: 5px;
 }
 
 .li-nav {
   transition: ease-out 0.6s;
-
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .li-nav:hover {
@@ -83,16 +87,15 @@ h1 {
   width: 90px;
 }
 
-.span-link {
-  font-size: small;
-}
 
 @media (min-width: 800px) {
   .li-nav {
-    width: 140px;
+    width: 110px;
+    max-width: 135px;
+  
   }
   .span-link {
-    font-size: medium;
+    font-size: small;
   }
   .lista-navbar {
     font-size: medium;
