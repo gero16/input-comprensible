@@ -203,3 +203,81 @@
 .gap-50 {
   gap: 50px
 }
+
+
+
+.imagen-titulo {
+  margin-top: 100px;
+  width: 30vw;
+}
+
+.imagen-harry {
+  width: 25vw;
+}
+
+.imagen-got {
+  width: 40vw;
+}
+
+.imagen-friends {
+  width: 25vw;
+}
+
+.imagen-shrek-2{
+  width: 40vw;
+}
+.imagen-peaky-blinders {
+  width: 55vw;
+}
+.imagen-scream-2022 {
+  width: 40vw;
+}
+
+.imagen-the-room-2003 {
+  width: 30vw;
+  filter: invert(1);
+}
+
+.imagen-sex-education {
+  width: 45vw;
+  position: absolute;
+  top: 13%;
+}
+
+.imagen-bojack-horseman {
+  width: 35vw;
+}
+
+
+.imagen-house-of-the-dragon {
+  width: 70vw;
+}
+
+.imagen-super-mario-bros {
+  width: 13vw;
+  position: absolute;
+  top: 10%;
+  right: 75px;
+}
+
+.imagen-kill-bill {
+  position: absolute;
+  width: 25vw;
+  filter: contrast(-0%) sepia(1) hue-rotate(-5deg) saturate(1000%);
+  top: 35%;
+  left: 20px;
+}
+
+.imagen-bastardos-sin-gloria {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 25vw;
+}
+
+.imagen-harry-potter-1 {
+  position: absolute;
+  width: 30vw;
+  top: 20px;
+  right: 0px;
+}
