@@ -6,21 +6,28 @@
 
 .div-titulo {
   margin-top: 14%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.534);
+  width: 100%;
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  padding: 60px 0px 25px 0px;
+  border: 2.8px solid white;
+  /*
+  box-shadow: 0 0 10px #ffffff, 0 0 19px #02ff2c, 0 0 6px #02ff2c, 0 0px 2px #02ff2c;
+  */
 }
 
 .titulo-principal  {
   font-size: 12vw;
   font-family: "spiderman";
-  padding: 20px 0px 5px 0px;
-  width: 80%;
+
   border-radius: 5px;
-  display: inline-block;
   color: white;
   /*
   box-shadow: 0 0 18px #fff, 0 0 11px #fff, 0 0 15px #292736, 0 0px #292736;
   */
-  background-color: rgba(0, 0, 0, 0.432);
-  backdrop-filter: blur(2px);
+
   text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
   animation: glow-1 .59s infinite alternate;
 
@@ -248,9 +255,7 @@ ul {
   }
   .titulo-principal {
     /*         font-size: 6vw;       */
-    font-size: 6vw;
-    width: 97%;
-    padding: 40px 20px 5px 20px;
+    font-size: 6.5vw;
     
   }
   
