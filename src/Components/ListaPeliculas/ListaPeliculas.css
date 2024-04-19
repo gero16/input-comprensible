@@ -35,7 +35,8 @@
     transform: translate(-50%, -50%);
     margin: 0px;
     padding: 5px;
-    font-size: medium;
+    font-size: 1.3vw;
+    font-family: Fantasy;
 
     opacity: 0;
     max-height: 0;
