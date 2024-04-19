@@ -30,7 +30,7 @@ const ListaSeries = () => {
                     return (
                         <NavLink to={`/series/${ element[1] }/temporada-1/capitulo-1 `} > 
                             <article key={key} className="article-pelicula"> 
-                                <img src={element[5]} alt="" className="img-peliculas" title={element[0]}/>
+                                <img src={element[5]} alt="" className="img-pelicula" title={element[0]}/>
                             </article>
                         </NavLink> 
                     )
