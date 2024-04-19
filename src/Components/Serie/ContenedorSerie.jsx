@@ -25,6 +25,7 @@ const ContenedorSerie = () => {
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
+        console.log(dataCapitulos)
         setCapitulos(dataCapitulos)
     }
 
