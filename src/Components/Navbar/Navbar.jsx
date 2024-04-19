@@ -3,7 +3,6 @@ import  "./navbar.css"
 import { Link as Navigate, NavLink,} from "react-router-dom";
 import { Context } from "../../context/context";
 
-
 const Navbar = () => {
     const [titulos, setTitulos] = useState([])
     const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
@@ -19,9 +18,10 @@ const Navbar = () => {
     
     return (
         <>
-        <nav className="nav flex-between">
+        <nav className="nav flex-between">  
 
             <ul className="lista-navbar navbar-principal flex-center-column">
+       
                 <li className="li-nav">
                     <NavLink to={`/iniciar-sesion`} > 
                         <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
@@ -58,6 +58,7 @@ const Navbar = () => {
                         <span className="span-link "> Inicio </span>
                     </NavLink>
                 </li>
+
             </ul>
             {
                 /******** 

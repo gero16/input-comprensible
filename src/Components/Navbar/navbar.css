@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
 
+.contenedor-agregar-clip {
+  margin-top: 50px;
+}
 ul {
   padding : 0px;
 }
@@ -16,15 +19,16 @@ h1 {
 
 .nav {
     z-index: 10;
-    padding: 15px;
-    background-color: #0c0c0c;
+    padding: 24px;
     border-radius: 10px;
-    backdrop-filter: blur(1px);
     border-radius: 5px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    background-image: url("../../../public/estrellado.jpg");
+    background-size: 100%;
+    background-position: 10% 10%;
 }
 
 
@@ -57,7 +61,11 @@ h1 {
 .li-nav:hover {
   transition: ease-out 0.3s;
   transform: scale(1.12);
-  filter: hue-rotate(30deg) brightness(500%);
+  filter: brightness(110%);
+}
+
+.li-nav:hover .span-link {
+  color: rgb(252, 206, 1);
 }
 
 .navbar-principal{
@@ -98,12 +106,13 @@ h1 {
 
 
 .li-nav-serie:hover .lista-temporadas {
-
   opacity: 1;
   max-height: 9999px; 
-    
 }
 
+.luna {
+  width: 5vw;
+}
 
 @media (min-width: 800px) {
   .li-nav {
