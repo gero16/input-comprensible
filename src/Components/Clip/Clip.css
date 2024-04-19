@@ -14,11 +14,6 @@
 
   .portada {
     height: 70vh;
-    /*
-    // Para que se vea hasta la 6ta temporada de las series - Corregir error
-    position: relative;
-      z-index: -1;
-      */
   }
   
   .audio {
