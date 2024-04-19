@@ -6,6 +6,10 @@ label {
  width: 300px;
 }
 
+.contenedor-agregar-clip {
+    margin-top: 18%;
+  }
+
 .lista-formulario-clip {
     font-size: large;
 }
@@ -34,9 +38,6 @@ select {
 }
 
 
-.div-agregar-video {
-    margin-top: 0px;
-}
 
 .lista-formulario-clip {
     margin: 50px 0px;

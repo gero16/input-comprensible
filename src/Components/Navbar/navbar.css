@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
 
-.contenedor-agregar-clip {
-  margin-top: 50px;
-}
+
 ul {
   padding : 0px;
 }
@@ -19,7 +17,7 @@ h1 {
 
 .nav {
     z-index: 10;
-    padding: 24px;
+    padding: 20px;
     border-radius: 10px;
     border-radius: 5px;
     position: fixed;
