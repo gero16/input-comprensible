@@ -1,6 +1,6 @@
 import { useState, createContext } from "react"
 import 'react-audio-voice-recorder';
-import { fetchTitulos } from "./titulos";
+import { fetchTitulos, fetchTitulosPelicula, fetchTitulosSeries } from "./titulos";
 import { cantidadPaginasHtml,  fetchCantidadClips,  fetchCapitulos,  fetchGrabaciones,  mostrarRespuesta,  
     separarTexto, transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, urlOrigin } from "./helpers";
 
@@ -178,7 +178,7 @@ return (
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
             cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
-            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen
+            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries
             }}> 
             
         { children } 

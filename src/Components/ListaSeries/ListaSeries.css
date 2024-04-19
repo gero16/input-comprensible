@@ -1,0 +1,18 @@
+
+.section-peliculas {
+    margin: 40px 0px ;
+}
+.article-pelicula {
+    cursor: pointer;
+
+
+}
+.img-peliculas {
+    width: 28vw;
+    transition: 0.3s ease-in-out;
+}
+.img-peliculas:hover {
+    filter: brightness(90%);
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}

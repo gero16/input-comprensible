@@ -47,3 +47,86 @@ export const fetchTitulos = async (titulos, setTitulos) => {
 }  
 
 
+export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
+    let arrayTitulos = []
+    const url = `${ urlBackend_Produccion }/titulos/peliculas`
+    try {
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': urlOrigin,
+                }),
+            })
+
+            if(response.status === 200) {
+                const resp = await response.json();
+                //console.log(resp)
+                if(!resp) console.log("No hay data")
+                
+                //console.log(response)
+                resp.data.forEach(element => {
+                    const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
+                    arrayTitulos.push(titulo)
+             
+                });
+               
+                setTitulos(arrayTitulos)
+                //console.log(arrayTitulos)
+                return titulos  
+
+            }
+            if(!response) console.log("Peticion a url equivocada")
+            if(response.status === 404) console.log("No hay data")
+        
+    } catch (error) {
+
+    
+        console.log(error)
+        
+    }
+}  
+
+
+export const fetchTitulosSeries = async (titulos, setTitulos,) => {
+    let arrayTitulos = []
+    const url = `${ urlBackend_Produccion }/titulos/series`
+    try {
+        const response = await fetch(url,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': urlOrigin,
+                }),
+            })
+
+            if(response.status === 200) {
+                const resp = await response.json();
+                //console.log(resp)
+                if(!resp) console.log("No hay data")
+                
+                //console.log(response)
+                resp.data.forEach(element => {
+                    const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
+                    arrayTitulos.push(titulo)
+             
+                });
+               
+                setTitulos(arrayTitulos)
+                //console.log(arrayTitulos)
+                return titulos  
+
+            }
+            if(!response) console.log("Peticion a url equivocada")
+            if(response.status === 404) console.log("No hay data")
+        
+    } catch (error) {
+
+    
+        console.log(error)
+        
+    }
+}  
+

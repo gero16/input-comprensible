@@ -19,6 +19,8 @@ import Recurso from "./Components/Recursos/Recurso.jsx"
 import ContenedorPruebasPelicula from './Pruebas/ContenedorPruebasPelicula.jsx';
 import ContenedorPruebasSerie from './Pruebas/ContenedorPruebasSerie.jsx';
 import Pruebas from './Pruebas/Pruebas.jsx';
+import ListaPeliculas from './Components/ListaPeliculas/ListaPeliculas.jsx';
+import ListaSeries from './Components/ListaSeries/ListaSeries.jsx';
 
 
 
@@ -28,8 +30,16 @@ const router = createBrowserRouter([
         element: <Index /> ,
       },
       {
+        path: "/series",
+        element:  <ListaSeries />,
+      },
+      {
         path: "/series/:serie/:temporada/:capitulo",
         element:  <ContenedorSerie />,
+      },
+      {
+        path: "/peliculas",
+        element:  <ListaPeliculas />,
       },
       {
         path: "/peliculas/:pelicula",

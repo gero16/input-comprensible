@@ -8,8 +8,6 @@ const Navbar = () => {
     const [titulos, setTitulos] = useState([])
     const { fetchTitulos, urlBackend_Produccion } = useContext(Context)
 
-
-
     const transformarMinuscula = (texto) => {
         const nuevo = texto.toLocaleLowerCase().split(" ").join("-")
         return nuevo
@@ -46,12 +44,25 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="li-nav">
+                    <NavLink to={`/peliculas`}> 
+                        <span className="span-link "> Peliculas </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/series`}> 
+                        <span className="span-link "> Series </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
                     <NavLink to={`/`}> 
                         <span className="span-link "> Inicio </span>
                     </NavLink>
                 </li>
             </ul>
-            <ul className="lista-navbar flex-center-column">
+            {
+                /******** 
+                 
+                <ul className="lista-navbar flex-center-column">
                 { titulos 
                     ? titulos.map((element, key) => {
                         return (
@@ -92,6 +103,10 @@ const Navbar = () => {
                     : <> No hay Titulos </>
                 }
             </ul>
+                 
+        ***********/
+            }
+            
         </nav>
         </>
     )

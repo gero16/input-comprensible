@@ -4,6 +4,9 @@
   /* Puedes agregar más formatos de fuente aquí si tienes */
 }
 
+.div-titulo {
+  margin-top: 110px;
+}
 
 .titulo-principal  {
   font-size: 12vw;
@@ -16,6 +19,8 @@
   /*
   box-shadow: 0 0 18px #fff, 0 0 11px #fff, 0 0 15px #292736, 0 0px #292736;
   */
+  background-color: rgba(0, 0, 0, 0.432);
+  backdrop-filter: blur(2px);
   text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
   animation: glow-1 .59s infinite alternate;
 
@@ -243,7 +248,8 @@ ul {
   }
   .titulo-principal {
     /*         font-size: 6vw;       */
-    font-size: 10vw;
+    font-size: 6vw;
+    width: 97%;
     padding: 40px 20px 5px 20px;
     
   }

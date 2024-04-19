@@ -1,0 +1,20 @@
+
+.section-peliculas {
+    margin: 120px 0px ;
+}
+.article-pelicula {
+    cursor: pointer;
+
+
+}
+.img-peliculas {
+    width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
+    height: 33vh; /* Establece una altura fija */
+    object-fit: cover; /* Escalar la imagen para que cubra todo el contenedor manteniendo la relación de aspecto */
+    transition: 0.3s ease-in-out;
+}
+.img-peliculas:hover {
+    filter: brightness(90%);
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}
