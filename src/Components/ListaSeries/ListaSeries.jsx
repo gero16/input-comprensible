@@ -28,9 +28,10 @@ const ListaSeries = () => {
                 titulos.map((element, key) => {
                     console.log(element)
                     return (
-                        <NavLink to={`/series/${ element[1] }/temporada-1/capitulo-1 `} > 
+                        <NavLink to={`/series/${ element[1] }/temporada-1/capitulo-1 `} className="link-pelicula" > 
                             <article key={key} className="article-pelicula"> 
                                 <img src={element[5]} alt="" className="img-pelicula" title={element[0]}/>
+                                <h2 className="h2-lista-pelicula"> { element[0] } </h2>
                             </article>
                         </NavLink> 
                     )
