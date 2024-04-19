@@ -7,14 +7,48 @@
 
 
 }
-.img-peliculas {
+.img-pelicula {
     width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
     height: 33vh; /* Establece una altura fija */
     object-fit: cover; /* Escalar la imagen para que cubra todo el contenedor manteniendo la relación de aspecto */
     transition: 0.3s ease-in-out;
 }
-.img-peliculas:hover {
+.img-pelicula:hover {
     filter: brightness(90%);
     transform: scale(1.02);
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;    
+}
+
+.link-pelicula {
+    position: relative;
+   
+}
+
+.h2-lista-pelicula {
+
+    background-color: rgba(0, 0, 0, 0.637);
+    width: 100%;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0px;
+    padding: 5px;
+    font-size: medium;
+
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s, max-height 0.5s;
+    
+}
+
+
+
+.img-pelicula:hover  .h2-lista-pelicula {
+    opacity: 1;
+    max-height: 10000px; /* O ajusta la altura máxima según tus necesidades */
+    transition: opacity 0.5s, max-height 0.5s;
+    z-index: 3;
 }

@@ -27,9 +27,10 @@ const ListaPeliculas = () => {
                 titulos.map((element, key) => {
                     console.log(element)
                     return (
-                        <NavLink to={`/peliculas/${ element[1]} `} > 
+                        <NavLink to={`/peliculas/${ element[1]} `} className="link-pelicula" > 
                             <article key={key} className="article-pelicula"> 
-                                <img src={element[5]} alt="" className="img-peliculas" title={element[0]}/>
+                                <img src={element[5]} alt="" className="img-pelicula" title={ element[0] }/>
+                                <h2 className="h2-lista-pelicula"> { element[0] } </h2>
                             </article>
                         </NavLink> 
                     )
