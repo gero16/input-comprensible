@@ -4,7 +4,7 @@ import "./Serie.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
-const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
+const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
     console.log(capitulos)
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
@@ -28,45 +28,27 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo }) => {
         "house-of-the-dragon": 30,
         "sex-education": 30
     }
-
-    const formatoImagen = ['.jpg', '.png'].find(formato => {
-        const imagen = new Image();
-        imagen.src = `/${serie}-portada${formato}`;
-        return imagen.complete; // Si la imagen se carga correctamente, significa que este formato es válido
-    });
-    
-
     const style = {
-        backgroundImage: `url("/${ serie }-portada${ formatoImagen }")`,
+        backgroundImage: urlImagen,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: `5% ${posicionImagen[serie]}%`,
+        backgroundPosition: `5% ${ posicionImagen[serie] }%`,
         backgroundSize: width < 540 ? "contain" : "cover",
         filter: 'brightness(0.7)'
     }
 
-    const style2 = {
-        /*
-        filter: 'brightness(1)',
-        backgroundColor : "#111111",
-        opacity: 0.8,
-        */
-        
-    }
+    
 
     const newCapitulo = transformarMayuscula(capitulo, 2)
     console.log(newCapitulo)
     return (
         <>
-            <article className={`article-clip ${data.subtitulo}`} name={data.subtitulo}>
-                <div className={`portada portada-${serie} flex-center`} style={style}>
-                
-                 
+            <article className={`article-clip ${ data.subtitulo }`} name={ data.subtitulo }>
+                <div className={`portada portada-${ serie } flex-center`} style={ style }>
                 </div>  
-
 
                 <header className="header-serie">
 
-                    <h1 className="titulo-temporada"> Temporada {numTemporada[1]} - {  transformarMayuscula(capitulo, 2) } </h1>
+                    <h1 className="titulo-temporada"> Temporada { numTemporada[1] } - { transformarMayuscula(capitulo, 2) } </h1>
 
                     <ul className="ul-capitulos">
                             { capitulos.length > 0 

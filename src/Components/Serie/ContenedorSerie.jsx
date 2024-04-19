@@ -13,14 +13,14 @@ const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
     const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo, 
             setearClipsPagina, cambiarPagina,  paginaActual, paginaClips, fetchClips,
-            data, totalPaginas, setData, traerGrabaciones, traerGrabacion
+            data, totalPaginas, setData, traerGrabaciones, traerGrabacion,  traerImagenFomato, urlImagen
         } = useContext(Context)
     
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
      
 
-    const urlClips = `${ urlBackend_Produccion }/series/${serie}/${temporada}/${capitulo}`
+    const urlClips = `${ urlBackend_Produccion }/series/${ serie }/${ temporada }/${ capitulo }`
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
  
     const traerCapitulos = async () => {
@@ -28,8 +28,6 @@ const ContenedorSerie = () => {
         console.log(dataCapitulos)
         setCapitulos(dataCapitulos)
     }
-
-   
 
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
@@ -41,6 +39,7 @@ const ContenedorSerie = () => {
             traerGrabaciones(resultado)
         }
 
+        traerImagenFomato(serie)
     }, [serie])
 
     useEffect(() => {
@@ -63,6 +62,8 @@ const ContenedorSerie = () => {
             const resultado = traerGrabacion(urlGrabaciones);
             traerGrabaciones(resultado)
         }
+
+  
     }, [capitulo])
 
    
@@ -75,8 +76,13 @@ const ContenedorSerie = () => {
             traerGrabaciones(resultado)
         }
 
+        traerImagenFomato(serie)
     }, [paginaActual])
 
+    useEffect(() => {
+
+        traerImagenFomato(serie)
+    }, [])
  
     return (
         <>
@@ -98,6 +104,7 @@ const ContenedorSerie = () => {
                         serie={serie} 
                         capitulos={capitulos} 
                         capitulo={capitulo}
+                        urlImagen={urlImagen}
                     />    
 
                     <footer className='footer'>

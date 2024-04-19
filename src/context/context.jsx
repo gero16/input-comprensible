@@ -148,7 +148,7 @@ export const CustomProvider = ({ children }) => {
 
 
     const traerImagenFomato = (nombre) => {
-        const formatosImagen = ['.jpg', '.png'];
+        const formatosImagen = ['.jpg', '.png', '.webp'];
         let imagenCargada = null;
     
         for (const formato of formatosImagen) {
@@ -157,7 +157,10 @@ export const CustomProvider = ({ children }) => {
             // Intenta cargar la imagen
             fetch(imagen)
                 .then(response => {
+                    console.log(response)
+             
                     if (response.ok) {
+                        console.log(response.ok)
                         imagenCargada = urlImagen;
                         setUrlImagen(`url("${ imagen }")`);
                     }
