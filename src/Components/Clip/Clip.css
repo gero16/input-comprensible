@@ -1,11 +1,10 @@
 .section-video {
     margin: 15px 10px;
     height:660px;
-  
   }
 
   .article-clip {
-    margin: 100px 0px 0px 0px ;
+    margin-top : 12%;
     padding: 20px;
     background-color: #1a1919f6;
     border-radius: 5px;
