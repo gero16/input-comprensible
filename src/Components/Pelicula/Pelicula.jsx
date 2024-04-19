@@ -45,7 +45,7 @@ const Pelicula = ({data}) => {
         "kill-bill": 35,
         "bastardos-sin-gloria": 15,
         "harry-potter-1": 32,
-        "spiderman-into-the-spider-verse": 70
+        "spiderman-into-the-spider-verse": 70,
     }
 
     const style = {

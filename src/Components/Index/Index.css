@@ -103,14 +103,7 @@ ul {
   font-size: xx-large;
 }
 
-.portada {
-  height: 400px;
-  /*
-  // Para que se vea hasta la 6ta temporada de las series - Corregir error
-  position: relative;
-    z-index: -1;
-    */
-}
+
 
 .btn-ir-agregar-clip {
   border-radius: 5px;

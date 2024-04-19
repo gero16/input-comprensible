@@ -24,9 +24,10 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
 
     const posicionImagen = {
         "peaky-blinders": 39,
-        "bojack-horseman": 47,
+        "bojack-horseman": 30,
         "house-of-the-dragon": 30,
-        "sex-education": 30
+        "sex-education": 30,
+        "x-men-97": 10
     }
     const style = {
         backgroundImage: urlImagen,
