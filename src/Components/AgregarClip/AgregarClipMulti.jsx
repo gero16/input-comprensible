@@ -290,7 +290,7 @@ const AgregarClipMulti = () => {
                             />
                     </li>
                     <li id="li-agregar-clip">
-                        <button onClick={() => agregarClip(clip) }> Agregar Clip </button>
+                        <button onClick={() => agregarClip(clip) } className="btn-agregar-clip"> Agregar Clip </button>
                     </li>
                 </ul>
             </div>
