@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
-import NavbarUser from '../Navbar/NavbarUser';
+import NavbarUser from '../Navbar/Navbar';
 import { Context } from '../../context/context';
 import BotonPagina from '../BotonPagina/BotonPagina';
 import { urlBackend_Desarrollo } from '../../context/helpers';

@@ -5,7 +5,7 @@ import { Context } from "../../context/context";
 const AgregarClipSerie = () => {
     let { serie, temporada, usuario, capitulo, jpg } = useParams();
     const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, 
-        fetchCantidadClips  } = useContext(Context)
+        fetchCantidadClips, evaluarSesion  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -54,6 +54,7 @@ const AgregarClipSerie = () => {
             console.log(cantidadClip)
         })
         console.log(clip)
+        evaluarSesion()
     }, [])
 
     const agregarClip = async (data) => {

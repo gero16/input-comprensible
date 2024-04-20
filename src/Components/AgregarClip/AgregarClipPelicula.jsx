@@ -6,7 +6,7 @@ const AgregarClipPelicula = () => {
     
     let { pelicula, temporada, usuario, capitulo } = useParams();
     const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, 
-        fetchCantidadClips  } = useContext(Context)
+        fetchCantidadClips, evaluarSesion  } = useContext(Context)
 
     const [titulos, setTitulos] = useState([])
 
@@ -40,6 +40,8 @@ const AgregarClipPelicula = () => {
                 numero_clip : cantidadClip
             })
         })
+
+        evaluarSesion()
      
     }, [])
 

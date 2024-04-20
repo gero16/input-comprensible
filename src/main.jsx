@@ -96,12 +96,20 @@ const router = createBrowserRouter([
         element:  <Usuario />,
         children: [
           {
-            path: "series/:serie/:temporada/:capitulo",
+            path: "/usuario/:usuario/series/:serie/:temporada/:capitulo",
             element:  <ContenedorSerie />,
           },
           {
-            path: "peliculas/:pelicula",
+            path: "/usuario/:usuario/peliculas/:pelicula",
             element:  <ContenedorPelicula />,
+          },
+          {
+            path: "/usuario/:usuario/series",
+            element:  <ListaSeries />,
+          },
+          {
+            path: "/usuario/:usuario/peliculas",
+            element:  <ListaPeliculas />,
           },
         ]
       },

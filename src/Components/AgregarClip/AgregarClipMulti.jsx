@@ -4,7 +4,7 @@ import { Context } from "../../context/context"
 import { useEffect } from "react"
 
 const AgregarClipMulti = () => {
-    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, fetchCantidadClips  } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, fetchCantidadClips,evaluarSesion  } = useContext(Context)
     
     const [titulos, setTitulos] = useState([])
     const [infoSerie, setInfoSerie] = useState({
@@ -34,6 +34,8 @@ const AgregarClipMulti = () => {
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
         console.log(titulos)   
+        evaluarSesion()
+        
     }, [])
 
 

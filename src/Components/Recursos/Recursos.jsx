@@ -5,10 +5,19 @@ import ImageConversations from "../../assets/conversation.jpg"
 import ImageSpeaking from "../../assets/speaking.png"
 import ImageListening from "../../assets/listening.jpg"
 import ImagePodcast from "../../assets/podcast.png"
-import ImageVolver from "../../../public/volver-flecha.png"
 import Navbar from "../Navbar/Navbar";
+import { useContext, useEffect } from 'react';
+import { Context } from '../../context/context';
 const Recursos = () => {
     const location = useLocation()
+    const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, fetchCantidadClips,evaluarSesion  } = useContext(Context)
+
+
+    useEffect(() => {
+        evaluarSesion()
+    },[])
+
+
   
     return (
         
@@ -17,7 +26,8 @@ const Recursos = () => {
         {
             location.pathname === `/recursos` 
                 ? <> 
-                    <Navbar> </Navbar>
+                
+                <Navbar> </Navbar>
            
                 <main className='main-recursos'>
                     <section className='grid-2'>

@@ -175,13 +175,23 @@ export const CustomProvider = ({ children }) => {
         }
     }
     
+    const [usuarioSesion, setUsuarioSesion] = useState(false)
+    const [nombreUsuario, setNombreUsuario] = useState("")
+    
+    const evaluarSesion = () => {
+        const sesion = JSON.parse(localStorage.getItem("sesion"))
+        setUsuarioSesion(true)
+        setNombreUsuario(sesion.usuario)
+        return sesion
+    }
 return (
     <Context.Provider 
         value={{ clickGrabar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
             cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
-            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries
+            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
+             usuarioSesion, setUsuarioSesion,nombreUsuario
             }}> 
             
         { children } 

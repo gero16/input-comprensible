@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
 import Serie from './Serie';
-import NavbarUser from '../Navbar/NavbarUser';
+import NavbarUser from '../Navbar/Navbar';
 import { Context } from '../../context/context';
 import BotonPagina from '../BotonPagina/BotonPagina';
 //import fetch from 'node-fetch'

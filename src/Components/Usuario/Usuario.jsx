@@ -1,5 +1,5 @@
 import { Outlet as Page, useLocation, useParams  } from "react-router-dom"
-import NavbarUser from "../Navbar/NavbarUser"
+import NavbarUser from "../Navbar/Navbar"
 import Index from "../Index/Index"
 
 const Usuario = () => {
