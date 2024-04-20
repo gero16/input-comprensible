@@ -2,21 +2,30 @@
     position: absolute;
     top: 0;
     right: 40px;
-    cursor: pointer;
+    color: rgb(243, 227, 1);
 }
 form {
-    background-color: #0f0f0fad;
+    background-image: url("../../../public/estrellado.jpg");
+    background-size: cover;
     border-radius: 10px;
     padding: 20px;
     margin: 30px;
     font-size: x-large;
+    border: 2.2px solid white;
+}
+
+.h1-sesion {
+
 }
 
 .lista-registro li {
     width: 450px;
     display: flex;
-    background-color: #413f3f9a;
-    padding: 15px
+    background-color: rgba(0, 0, 0, 0.445);
+    padding: 15px;
+
+    margin-top: 20px;
+
 }
 
 .lista-registro input {
@@ -27,7 +36,7 @@ form {
 .lista-registro button {
     margin-top: 20px;
 
-    background-color: rgb(51, 50, 50);
+    background-color: rgba(20, 20, 20, 0.678);
     border: 1px solid rgb(167, 164, 164);
     font-size: x-large;
 }
@@ -41,4 +50,8 @@ form {
 
 button {
     cursor: pointer;
+}
+
+.btn-volver {
+    width: 1.6vw;
 }

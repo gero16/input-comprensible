@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Context } from "../../context/context"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import ImageVolver from "../../../public/volver-flecha.png"
 import "./Usuario.css"
 
 const IniciarSesion = () => {
@@ -50,9 +51,9 @@ const IniciarSesion = () => {
             
             error === false 
              ? <> 
-              <h1> Iniciar Sesion </h1>
+              <h1 className="h1-sesion"> Iniciar Sesion </h1>
                 <NavLink to={`/`}> 
-                    <h3 className="subtitulo-volver"> Volver a la página principal </h3>
+                    <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
                 </NavLink>
                 <form>
                 <ul className="lista-registro">
@@ -90,6 +91,7 @@ const IniciarSesion = () => {
               <h1> Error al iniciar Sesion </h1>
                 <NavLink to={`/`}> 
                     <h3> Volver a la página principal </h3>
+        
                 </NavLink>
              <p className="mensaje-error"> Su contraseña es incorrecta! </p>
            

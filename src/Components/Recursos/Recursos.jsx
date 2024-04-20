@@ -5,7 +5,7 @@ import ImageConversations from "../../assets/conversation.jpg"
 import ImageSpeaking from "../../assets/speaking.png"
 import ImageListening from "../../assets/listening.jpg"
 import ImagePodcast from "../../assets/podcast.png"
-import ImageVolver from "../../assets/volver.png"
+import ImageVolver from "../../../public/volver-flecha.png"
 
 const Recursos = () => {
     const location = useLocation()
@@ -38,7 +38,7 @@ const Recursos = () => {
             location.pathname === `/recursos` 
                 ? <> 
                     <NavLink to={`/`}> 
-                        <img src={ImageVolver} className='imagen-volver' title="Volver a Inicio" alt='icono para volver a inicio' />
+                        <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
                     </NavLink>
            
            

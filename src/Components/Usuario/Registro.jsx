@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./Usuario.css"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import ImageVolver from "../../../public/volver-flecha.png"
 
 const Registro = () => {
 
@@ -45,7 +46,7 @@ const Registro = () => {
  
                 <h1> Registrarse </h1>
                 <NavLink to={`/`}> 
-                    <h3 className="subtitulo-volver"> Volver a la página principal </h3>
+                    <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
                 </NavLink>
  
                 
