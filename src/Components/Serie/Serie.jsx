@@ -34,7 +34,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[serie] }%`,
         backgroundSize: width < 540 ? "contain" : "cover",
-        filter: 'brightness(0.7)'
+        filter: 'brightness(0.8)'
     }
 
     

@@ -46,6 +46,7 @@ const Pelicula = ({data}) => {
         "bastardos-sin-gloria": 15,
         "harry-potter-1": 32,
         "spiderman-into-the-spider-verse": 70,
+        "fight-club": 40
     }
 
     const style = {
@@ -53,7 +54,7 @@ const Pelicula = ({data}) => {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[pelicula] }%`,
         backgroundSize: 'cover',
-        filter: 'brightness(0.7)'
+        filter: 'brightness(0.8)'
     }
 
    
