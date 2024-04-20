@@ -6,30 +6,10 @@ import ImageSpeaking from "../../assets/speaking.png"
 import ImageListening from "../../assets/listening.jpg"
 import ImagePodcast from "../../assets/podcast.png"
 import ImageVolver from "../../../public/volver-flecha.png"
-
+import Navbar from "../Navbar/Navbar";
 const Recursos = () => {
     const location = useLocation()
-    const opts = {
-        height: '400',
-        width: '800',
-        playerVars: {
-          // https://developers.google.com/youtube/player_parameters
-          autoplay: 1,
-        },
-      };
-
-      const opts2 = {
-        height: '400',
-        width: '800',
-        playerVars: {
-          // https://developers.google.com/youtube/player_parameters
-          autoplay: 1,
-          start: 5,
-          end: 10
-        },
-    }
-
-
+  
     return (
         
         <>
@@ -37,22 +17,19 @@ const Recursos = () => {
         {
             location.pathname === `/recursos` 
                 ? <> 
-                    <NavLink to={`/`}> 
-                        <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
-                    </NavLink>
+                    <Navbar> </Navbar>
            
-           
-                <main>
+                <main className='main-recursos'>
                     <section className='grid-2'>
                         <article>
-                            <h2> Práctica </h2>
+                            <h2 className='h2-recursos'> Práctica </h2>
                             <NavLink to={`/recursos/practica`}> 
                                 <img src={ImageSpeaking}   className='image-listenings' alt="" />
                             </NavLink>
                         </article>
                     
                         <article>
-                            <h2> Conversaciones Reales </h2>
+                            <h2 className='h2-recursos'> Conversaciones Reales </h2>
                             <NavLink to={`/recursos/conversations`}> 
                                 <img src={ImageConversations}  className='image-conversations' alt="" />
                             </NavLink>
@@ -63,13 +40,13 @@ const Recursos = () => {
 
                     <section className='grid-2'>
                         <article className=''>
-                                <h2> Mejorar </h2>
+                                <h2 className='h2-recursos'> Mejorar </h2>
                                 <NavLink to={`/recursos/mejorar`}> 
                                     <img src={ImageListening} className='image-speaking' alt="" />
                                 </NavLink>
                             </article>
                         <article>
-                            <h2> Podcasts & AudioLibros </h2>
+                            <h2 className='h2-recursos'> Podcasts & AudioLibros </h2>
                             <NavLink to={`/recursos/podcasts`}> 
                                 <img src={ImagePodcast}  className='image-podcast' alt="" />
                             </NavLink>

@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./Usuario.css"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import ImageVolver from "../../../public/volver-flecha.png"
+import Navbar from "../Navbar/Navbar";
 
 const Registro = () => {
 
@@ -42,16 +43,13 @@ const Registro = () => {
 
         {
             usuarioConfirmado === false
-             ? <> 
- 
-                <h1> Registrarse </h1>
-                <NavLink to={`/`}> 
-                    <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
-                </NavLink>
- 
+             ? <section className="div-sesion"> 
+                <Navbar> </Navbar>
+         
+                <form className="formulario-usuario">
+                    <h1 className="h1-sesion"> Registrarse </h1>
+                    <ul className="lista-registro gap-10">
                 
-                <form>
-                    <ul className="lista-registro">
                         <li>
                             <label>Usuario</label>
                             <input type="text"  onChange={(e) => setUsuario({ ...usuario,  usuario : e.target.value }) } />
@@ -70,7 +68,7 @@ const Registro = () => {
                         <button type="button" onClick={ () => fetchRegistrarse(usuario) }> Confirmar </button>
                     </ul>
                 </form>
-             </>
+             </section>
              : <> 
                 <h1> Usuario Confirmado !</h1>
                 <h2> Volver a la Página Principal </h2>

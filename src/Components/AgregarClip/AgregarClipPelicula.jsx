@@ -71,7 +71,7 @@ const AgregarClipPelicula = () => {
     return (
         <> 
             <div className="div-agregar-video">
-                <h1> Agregar Clip - Pelicula </h1>
+                <h1 className="h1-agregar-clip"> Agregar Clip - Pelicula </h1>
                 <ul className="lista-formulario-clip">
                     <li>
                         <label htmlFor=""> Nombre de la Pelicula  </label>

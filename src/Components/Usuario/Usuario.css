@@ -1,35 +1,31 @@
-.subtitulo-volver{
-    position: absolute;
-    top: 0;
-    right: 40px;
-    color: rgb(243, 227, 1);
+.div-sesion {
+    margin-top: 40%;
 }
+
 form {
     background-image: url("../../../public/estrellado.jpg");
     background-size: cover;
     border-radius: 10px;
-    padding: 20px;
-    margin: 30px;
-    font-size: x-large;
+    padding: 5px;
+    margin-top: 30px;
+    font-size: large;
     border: 2.2px solid white;
 }
 
 .h1-sesion {
-
+    font-size: xx-large;
+    margin-top: 20px;
 }
 
 .lista-registro li {
-    width: 450px;
+    width: 350px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.445);
     padding: 15px;
-
-    margin-top: 20px;
-
 }
 
 .lista-registro input {
-    width: 220px;
+    width: 100%;
 
 }
 
@@ -38,7 +34,8 @@ form {
 
     background-color: rgba(20, 20, 20, 0.678);
     border: 1px solid rgb(167, 164, 164);
-    font-size: x-large;
+    border-radius: 10px;
+    font-size: large;
 }
 
 .mensaje-error {
@@ -55,3 +52,10 @@ button {
 .btn-volver {
     width: 1.6vw;
 }
+
+
+@media (min-width: 1550px) {
+    .grid-2 img {
+     width: 350px;
+ }
+   }

@@ -3,6 +3,7 @@ import { Context } from "../../context/context"
 import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import ImageVolver from "../../../public/volver-flecha.png"
 import "./Usuario.css"
+import Navbar from "../Navbar/Navbar";
 
 const IniciarSesion = () => {
     const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
@@ -50,41 +51,37 @@ const IniciarSesion = () => {
         {
             
             error === false 
-             ? <> 
-              <h1 className="h1-sesion"> Iniciar Sesion </h1>
-                <NavLink to={`/`}> 
-                    <h3 className="subtitulo-volver">  Volver  <img src={ImageVolver} alt="" className="btn-volver"/> </h3>
-                </NavLink>
+             ? <section className="div-sesion"> 
+                <Navbar> </Navbar>
                 <form>
-                <ul className="lista-registro">
-                    <li>
-                        <label htmlFor=""> Correo </label>
-                        <input 
-                            type="text" 
-                            onChange={(e) => setSesion({ 
-                                ...sesion,
-                                correo : e.target.value,
-                            })} 
-                        />
-                    </li>
-                    
-                    <li>
-                        <label htmlFor=""> Contraseña </label>
-                        <input 
-                            type="text" 
-                            onChange={(e) => setSesion({ 
-                                ...sesion,
-                                password : e.target.value,
-                            })} 
-                        />
-    
-                    </li>
-                    <button type="button" onClick={() => fetchIniciarSesion(sesion)}> Iniciar Sesion </button>
-                </ul>
- 
- 
+                <h1 className="h1-sesion"> Iniciar Sesion </h1>
+                    <ul className="lista-registro">
+                        <li>
+                            <label htmlFor=""> Correo </label>
+                            <input 
+                                type="text" 
+                                onChange={(e) => setSesion({ 
+                                    ...sesion,
+                                    correo : e.target.value,
+                                })} 
+                            />
+                        </li>
+                        
+                        <li>
+                            <label htmlFor=""> Contraseña </label>
+                            <input 
+                                type="text" 
+                                onChange={(e) => setSesion({ 
+                                    ...sesion,
+                                    password : e.target.value,
+                                })} 
+                            />
+        
+                        </li>
+                        <button type="button" onClick={() => fetchIniciarSesion(sesion)}> Iniciar Sesion </button>
+                    </ul>
                 </form>
-             </>
+             </section>
              
             
              : <> 

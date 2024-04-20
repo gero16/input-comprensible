@@ -1,12 +1,12 @@
-
-.section-peliculas {
-    margin: 40px 0px ;
+.section-series {
+    margin: 12% auto 5% auto!important;
 }
+
+
 .article-pelicula {
     cursor: pointer;
-
-
 }
+
 .img-peliculas {
     width: 28vw;
     transition: 0.3s ease-in-out;

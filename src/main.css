@@ -4,9 +4,6 @@
     font-weight: 400;
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-
-    /* background-color: #242424; */
-  
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -14,7 +11,8 @@
     -webkit-text-size-adjust: 100%;
 
     background-image: url("/fondo-negro-2.jpg");
-    background-size: contain;
+
+    background-size: 100%;
   }
   
   #root {
@@ -36,7 +34,10 @@
     display: flex;
     place-items: center;
     min-width: 320px;
-    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
   p {
     padding: 5px;

@@ -1,20 +1,22 @@
-.section-video {
-    margin: 15px 10px;
-    height:660px;
-  }
+
 
   .article-clip {
-    margin-top : 12%;
-    padding: 20px;
     background-color: #1a1919f6;
     border-radius: 5px;
-
     width: 90vw;    
+    padding: 20px;
+    margin-top: 12%;
   }
 
   .portada {
     height: 70vh;
   }
+
+  .section-video {
+    margin: 15px 10px;
+    height:660px;
+  }
+
   
   .audio {
     margin: 10px 0px;

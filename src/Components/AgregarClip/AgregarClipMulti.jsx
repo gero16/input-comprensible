@@ -136,10 +136,10 @@ const AgregarClipMulti = () => {
     return (
         <>
             <div className="div-agregar-video">
-                <h1> Agregar Clip </h1>
+                <h1 className="h1-agregar-clip"> Agregar Clip  </h1>
                 <ul className="lista-formulario-clip">
                     <li>
-                        <label htmlFor=""> Nombre de la Serie/Pelicula  </label>
+                        <label htmlFor=""> Nombre Serie/Pelicula  </label>
                         <select name="select"
                             onChange={(e) => setClip({ 
                                 ...clip,

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import  "../ListaPeliculas/ListaPeliculas.css"
+import  "./ListaSeries.css"
 import { Link as Navigate, NavLink,} from "react-router-dom";
 import { Context } from "../../context/context";
 import Navbar from "../Navbar/Navbar";
@@ -22,7 +22,7 @@ const ListaSeries = () => {
 
         <>
             <Navbar> </Navbar>
-            <section className="flex-center gap-30 section-peliculas"> 
+            <section className="flex-center gap-30 section-series"> 
             
             { titulos ?
                 titulos.map((element, key) => {

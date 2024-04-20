@@ -4,10 +4,11 @@ import Fondo3 from "../../../public/bastardos-sin-gloria-portada.jpg"
 
 const InputInfo = () => {
     return (
-        <div className='fondo'>
-          <div className="div-titulo">
-            <h1 className='titulo-principal'> Input Comprensible </h1>
-          </div>
+        <>
+      
+        <div className="div-titulo">
+          <h1 className='titulo-principal'> Input Comprensible </h1>
+        </div>
 
         <main className="main" >
 
@@ -81,7 +82,7 @@ const InputInfo = () => {
 
         </main>
 
-      </div>
+      </>
     )
 }
 
