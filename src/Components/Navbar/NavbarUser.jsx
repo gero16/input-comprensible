@@ -39,73 +39,50 @@ const NavbarUser = () => {
     
     return (
         <>
-        <nav className="nav flex-between">
+        
+        <nav className="nav flex-between">  
 
             <ul className="lista-navbar navbar-principal flex-center-column">
-                <li className="li-nav" onClick={(e) => cerrarSesion() }>
-                    <span className="span-link "> Cerrar Sesión </span>
-                   
-                </li>
+
                 <li className="li-nav">
-                    <NavLink to={`/pruebas`} className="flex-center-column"> 
-                        <span className="span-link "> Pruebas </span>
+                    <NavLink to={`/iniciar-sesion`} > 
+                        <span className="span-link "> Iniciar Sesión <noscript></noscript> </span>
+                    </NavLink>
+                </li>
+            
+                <li className="li-nav">
+                    <NavLink to={`/registro`} > 
+                        <span className="span-link "> Registrarse </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
-                    <NavLink to={`/agregar-clip`} className="flex-center-column"> 
+                    <NavLink to={`/recursos`} > 
+                        <span className="span-link "> Recursos </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/agregar-clip`} > 
                         <span className="span-link "> Agregar Clip </span>
                     </NavLink>
                 </li>
                 <li className="li-nav">
-                    <NavLink to={`/usuario/${usuario}`} className="flex-center-column"> 
+                    <NavLink to={`/peliculas`}> 
+                        <span className="span-link "> Peliculas </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/series`}> 
+                        <span className="span-link "> Series </span>
+                    </NavLink>
+                </li>
+                <li className="li-nav">
+                    <NavLink to={`/`}> 
                         <span className="span-link "> Inicio </span>
                     </NavLink>
                 </li>
-            </ul>
 
-            <ul className="lista-navbar flex-center-column">
-                {
-                    titulos 
-                        ? 
-                        titulos.map((element, key) => {
-                            return (
-                            <li key={key}  onClick={(e)=> seleccionarSerie(e)} >
-                              
-                                    {
-                                        element[2] === "pelicula"
-                                        ? <NavLink to={`/usuario/${usuario}/peliculas/${element[1]}`} className="flex-center-column"> 
-                                            <span className="span-link"> {element[0]} </span>
-                                        </NavLink>
-                                
-                                        : <> 
-                                            <span className="link-serie span-link"> {element[0]} </span> 
-                                            <ul className="inactive"> 
-                                            {
-                                               element[3].map((elemento, key) => 
-                                                <li className="li-nav" key={key}> 
-                                                    <NavLink 
-                                                        to={`/usuario/${usuario}/series/${element[1]}/${transformarTitulo(elemento)}/capitulo-1`} 
-                                                        className={"temporada-serie font-medium"}
-                                                        > 
-                                                        {elemento}
-                                                        
-                                                    </NavLink>
-                                                </li>
-                                                )
-                                            }
-                                            </ul>
-                                        </>
-                                    }               
-                            </li>
-
-                            )
-                        }) 
-                        : 
-                        <> No hay Titulos </>
-                }
-                
             </ul>
-        </nav>
+            </nav>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { Outlet as Page, useLocation, useParams  } from "react-router-dom"
 import NavbarUser from "../Navbar/NavbarUser"
-import InputInfo from "../Index/InputInfo"
+import Index from "../Index/Index"
 
 const Usuario = () => {
     const location = useLocation()
@@ -14,7 +14,7 @@ const Usuario = () => {
                 location.pathname === `/usuario/${usuario}` 
                 ? <> 
              
-                    <InputInfo></InputInfo>
+                   <Index> </Index>
                 </>
                 : <> </>
             }
