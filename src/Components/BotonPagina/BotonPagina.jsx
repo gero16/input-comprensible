@@ -1,3 +1,5 @@
+import "./BotonPagina.css"
+
 const BotonPagina = ({paginaActual, cambiarPagina, numeroPagina}) => {
     return (
         <button 

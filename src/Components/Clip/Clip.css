@@ -55,6 +55,12 @@ audio {
   margin-top : 10px;
 }
 
+.section-audio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section-video2 {
   display: flex;
 }

@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'spiderman';
   src: url('../../fuentes/spiderman.ttf') format('truetype');
-  /* Puedes agregar más formatos de fuente aquí si tienes */
 }
 
 .div-titulo {
@@ -13,21 +12,13 @@
   border-radius: 10px;
   padding: 60px 0px 25px 0px;
   border: 2.8px solid white;
-  /*
-  box-shadow: 0 0 10px #ffffff, 0 0 19px #02ff2c, 0 0 6px #02ff2c, 0 0px 2px #02ff2c;
-  */
 }
 
 .titulo-principal  {
   font-size: 12vw;
   font-family: "spiderman";
-
   border-radius: 5px;
   color: white;
-  /*
-  box-shadow: 0 0 18px #fff, 0 0 11px #fff, 0 0 15px #292736, 0 0px #292736;
-  */
-
   text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
   animation: glow-1 .59s infinite alternate;
 
@@ -39,38 +30,8 @@
   }
 }
 
-
-.section-audio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .button {
   margin: 10px;
-}
-
-
-
-
-.lista-input {
-  background-color: #1a1919e3;
-  border-radius: 5px;
-  padding: 50px;
-}
-
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-ul {
-  list-style: none;
 }
 
 .footer {
@@ -79,59 +40,11 @@ ul {
   gap: 15px;
   margin: 10px 0px;
 }
-.button-pagina {
-  font-size: large;
-  border-radius: 5px;
-  padding: 8px 12px;
-  border: none;
-  cursor: pointer;
-  transition: ease-out 0.6s;
-  background-color: #363636;
-}
 
-
-.button-pagina:hover {
-  transition: ease-out 0.3s;
-  transform: scale(1.15);
-  filter: hue-rotate(30deg) brightness(65%);
-}
-
-.button-selected {
-  background-color: #1a1a1a;
-}
 .titulo-temporada {
   font-size: xx-large;
 }
 
-.btn-ir-agregar-clip {
-  border-radius: 5px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.png-inicio {
-  width: 120px;
-}
-
-.gato {
-  transform: scaleX(-1);
-  width: 140px;
-}
-
-.strong-cheems {
-  width: 210px !important;
-}
-
-.rana2 {
-  width: 190px !important;
-}
-
-
-.div-meme {
-  flex-wrap: nowrap;
-  padding: 10px;
-  border-radius : 10px;
-}
 
 .img-meme {
   width: 170px;
@@ -142,17 +55,11 @@ ul {
   width: 75vw;
 }
 
-.section-pruebas {
-  margin-left: 40px;
-}
 
 .fondo {
- /* background-image: url("../../assets/fondo.jpg");
-  */
   padding-bottom: 50px;
   margin: 30px 0px;
 }
-
 
 .p-index {
   font-size: small;
@@ -170,10 +77,6 @@ ul {
   margin: 0 auto;
 }
 
-
-.font-medium {
-  font-size: medium;
-}
 
 .li-index {
   margin-top : 30px;
@@ -201,10 +104,10 @@ ul {
 
 
 .fondo-li-2 {
-
   position: relative;
   overflow: hidden;
 }
+
 .fondo-li-2::before {
   content: '';
   position: absolute;
@@ -221,7 +124,6 @@ ul {
 
 
 .fondo-li-3 {
-  
   position: relative;
   overflow: hidden;
 }
@@ -240,22 +142,19 @@ ul {
   z-index: -1; /* Para que el fondo esté detrás del contenido */
 }
 
+
 @media (min-width: 800px) {
   .foto-index {
     display: block!important;
   }
   .titulo-principal {
-    /*         font-size: 6vw;       */
     font-size: 6.5vw;
-    
   }
-  
   .p-index {
     font-size: medium;
   }
   .foto-index {
     width: 30vw;
-   
   }
 
 .div-contenido-index {
@@ -268,8 +167,8 @@ ul {
   background-size: 120%;
   background-position: 40% 62%;
   filter: brightness(60%)
-
 }
+
 .fondo-li-2::before {
   content: '';
   position: absolute;
@@ -296,10 +195,7 @@ ul {
   background-position: 40% 20%;
   z-index: -1; /* Para que el fondo esté detrás del contenido */
   filter: blur(0px);
-}
-
-
-}
+}}
 
 @media (min-width: 1100px) {
   .div-titulo {
