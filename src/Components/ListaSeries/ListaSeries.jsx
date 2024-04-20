@@ -9,7 +9,7 @@ const ListaSeries = () => {
     const { usuario } = useParams()
     const [titulos, setTitulos] = useState([])
 
-    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion, usuarioSesion } = useContext(Context)
+    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion } = useContext(Context)
 
     
     useEffect(() => {
