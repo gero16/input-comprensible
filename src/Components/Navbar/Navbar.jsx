@@ -11,7 +11,6 @@ const Navbar = () => {
     
     let { usuario } = useParams();
 
-    const [esAdmin, setEsAdmin] = useState(false)
 
     const transformarTitulo = (titulo) => {
         const nuevo = titulo.toLocaleLowerCase().split(" ").join("-")

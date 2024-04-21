@@ -180,9 +180,12 @@ export const CustomProvider = ({ children }) => {
     
     const evaluarSesion = () => {
         const sesion = JSON.parse(localStorage.getItem("sesion"))
-        setUsuarioSesion(true)
-        setNombreUsuario(sesion.usuario)
-        return sesion
+        if(sesion) {
+            
+            setUsuarioSesion(true)
+            setNombreUsuario(sesion.usuario)
+            return sesion
+        }
     }
 return (
     <Context.Provider 
