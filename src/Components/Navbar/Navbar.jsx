@@ -63,12 +63,12 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li className="li-nav">
-                                <NavLink to={`/usuario/peliculas`}> 
+                                <NavLink to={`/peliculas`}> 
                                     <span className="span-link "> Peliculas </span>
                                 </NavLink>
                             </li>
                             <li className="li-nav">
-                                <NavLink to={`/usuario/series`}> 
+                                <NavLink to={`/series`}> 
                                     <span className="span-link "> Series </span>
                                 </NavLink>
                             </li>
