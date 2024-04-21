@@ -92,7 +92,7 @@
   background-image: url("../../../public/super-mario-bros-portada1.jpg");
   background-size: 470%;
   background-position: 50%;
-  filter: blur(2.2px);
+  filter: blur(2px) brightness(70%)!important;
   z-index: -1; /* Para que el fondo esté detrás del contenido */
 }
 
@@ -112,7 +112,7 @@
   background-image: url("../../../public/super-mario-bros-portada1.jpg");
   background-size: 470%;
   background-position: 60%;
-  filter: blur(2.2px);
+  filter: blur(0px) brightness(90%)!important;
   z-index: -1; /* Para que el fondo esté detrás del contenido */
 }
 
