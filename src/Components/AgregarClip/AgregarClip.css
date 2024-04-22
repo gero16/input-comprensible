@@ -1,9 +1,9 @@
 .contenedor-agregar-clip {
     background-image: url("../../../public/estrellado.jpg");
-    background-position: 0 6%;
-    background-size: 200%;
+    background-position: 0 10%;
+    background-size: 180%;
     padding: 15px;
-    margin: 18% 0px 5% 0px;
+    border-radius:10px;
 }
 
 label {

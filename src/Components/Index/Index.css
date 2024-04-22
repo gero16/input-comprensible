@@ -136,6 +136,25 @@
   z-index: -1; /* Para que el fondo esté detrás del contenido */
 }
 
+.fondo-li-4 {
+  position: relative;
+  overflow: hidden;
+}
+.fondo-li-4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/fight-club-portada.png");
+  filter: blur(1.5px) brightness(100%)!important;
+  background-size: 100%;
+  background-position: 20% 45%;
+  z-index: -1; /* Para que el fondo esté detrás del contenido */
+}
+
+
 
 @media (min-width: 800px) {
   .foto-index {

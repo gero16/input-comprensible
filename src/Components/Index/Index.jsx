@@ -33,9 +33,11 @@ function App() {
 
             <li className="flex wrap li-index fondo-li p-30 flex-column-center">
               
-                <p className="p-index"> En esta página podrás encontrar un lugar donde practicar el input comprensible
-                    mediante clips cortos de series y peliculas 
+                <p className="p-index"> En esta página podrás encontrar un lugar donde practicar el Input Comprensible
+                    mediante clips cortos de series y peliculas. Actualmente solo se encuentran clips de peliculas y 
+                    series en inglés. Tanto inglesas como estado unidenses
                 </p>
+                <h2> ¿ Que es el Input Comprensible ?</h2>
                 <p className="p-index">
                   Con input comprensible nos referimos a un término relacionado con la adquision de un nueva lengua,
                   que se deriva de la teoría de la Adquisición del Lenguaje de Stephen Krashen. 
@@ -44,15 +46,15 @@ function App() {
                   Esta teoria se refiere a la idea de que para que una persona aprenda un idioma de manera efectiva, el material 
                   de entrada o input (como textos, conversaciones, videos, etc.) debe ser comprensible para el mismo.
                 </p>
-              
-                <p className="p-index">  Es decir, se entiende por input comprensible todo aquella entrada de información que reprepresente un 
-                    nivel lingüístico ligeramente por encima del conocimiento actual del estudiante.
-                </p>
+             
          
             </li>
 
             <li className="flex wrap li-index fondo-li-2 p-30 flex-column-center">
-
+ 
+                <p className="p-index">  Es decir, se entiende por input comprensible todo aquella entrada de información que reprepresente un 
+                    nivel lingüístico ligeramente por encima del conocimiento actual del estudiante.
+                </p>
                 <p className="p-index">
                     En otras palabras, que debe ser lo suficientemente desafiante para que el estudiante tenga 
                     que esforzarse para entenderlo, pero no tan difícil como para que resulte incomprensible 
@@ -74,22 +76,27 @@ function App() {
       
             <li className="flex wrap li-index fondo-li-3 p-30 flex-column-center" >
             
-              <p className="p-index">   Para clasificar la dificultad de comprensión de los clips trare de basarme en mi propia comprension 
-                de los modismos pero teniendo también en cuenta en cuenta diferentes factores. Entre ellos estan la complejidad de la 
-                situación que  representan, la forma en la que los actores se expresan, sus modismos, etc. 
+              <p className="p-index">   Para clasificar la dificultad de los clips traté de guiarme por mi propia comprensión de los mismos, pero teniendo en cuenta también otros factores importantes.
+               Entre ellos: La complejidad de la situación en la cual los dialogos se desarrollan; La complejidad del vocabulario utilizado; El grado de dependencia que puedan llegar de datos externos o previos;
+              La forma en la que los personajes se expresan, su claridad, acento, modismos, etc. 
               </p>
               <p className="p-index"> Para que la actividad resulte efectiva se recomienda buscar clips de series/peliculas que puedan 
-                estar acorde a su nivel. Asi como haber visto la pelicula o el capitulo de su interés con anterioridad. De forma de tener
-                  un mejor contexto ayude en su omprensión 
+                estar acorde a su nivel. Así como también haber visto la pelicula o el capitulo de interés con anterioridad. Tener un contexto de la situacion en la que el clip se desarrolla 
+                aporta informacion valiosa al momento de comprender diálogos que quizas aisladamente puedan resultar muy complicados o imposibles.
               </p>
 
+            </li>
+
+            
+            <li className="flex wrap li-index fondo-li-4 p-30 flex-column-center" >
+            
               <p className="p-index">
-               Para cada clip se recomienda escucharlo y en base a lo entendido grabar un audio para compararse con el original. Tambien 
-               puede evaluarsu comprension escribiendo en el campo de texto correspondiente y tocar el boton "Evaluar" para verificarlo.
+               Para cada clip se recomienda escucharlo varias veces y luego tratar de replicar lo entendido grabandolo en audio. Tambien 
+               se puede evaluar su comprension escribiendo en el campo de texto correspondiente y tocar el boton "Evaluar" para verificarlo.
               </p>
 
-              <p className="p-index"> La opcion "Mostrar Respuesta" siempre esta disponible. Y las grabacaciones pueden quedar guardadas 
-                tanto como actualizarse o borrarse. 
+              <p className="p-index"> La opcion "Mostrar Respuesta" siempre esta disponible; Para realizar grabaciones, debera registrase. Una vez tenga un usuario 
+               las grabacaciones podran guardarse, tanto como actualizarse o borrarse. 
               </p>
           
             </li>
