@@ -99,6 +99,11 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li className="li-nav">
+                                <NavLink to={`/usuario/${ nombreUsuario }/clips/dificultad/easy`}> 
+                                    <span className="span-link "> Dificultad </span>
+                                </NavLink>
+                            </li>
+                            <li className="li-nav">
                                 <NavLink to={`/usuario/${ nombreUsuario }/peliculas`}> 
                                     <span className="span-link "> Peliculas </span>
                                 </NavLink>

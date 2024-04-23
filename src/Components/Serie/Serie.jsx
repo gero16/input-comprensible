@@ -8,7 +8,6 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
     console.log(capitulos)
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
-    let {  usuario } = useParams();
     const [width, setWidth] = useState(window.innerWidth);
     //console.log(data) 
     let numTemporada = temporada.split("-")

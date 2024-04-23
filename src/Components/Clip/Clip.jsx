@@ -125,7 +125,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         ? <iframe 
                             width={"300"} 
                             height={"160"} 
-                            src={`${video}?end=1`}
+                            src={`${video}`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             loading="lazy"
@@ -135,7 +135,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         : <iframe 
                             width={ width <= 1511 ? "410" : "450"} 
                             height={ width <= 1511 ? "210" : "260"} 
-                            src={`${video}?end=1`}
+                            src={`${video}`}
                             title="YouTube video player"  
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             loading="lazy"

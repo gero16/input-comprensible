@@ -66,6 +66,8 @@ export const CustomProvider = ({ children }) => {
         if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
         if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
         if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
+        if(paginaActual === 6) mostrarClipsPagina(data, 106, 126)
+        
     }
     
     const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
@@ -100,7 +102,7 @@ export const CustomProvider = ({ children }) => {
             //console.log(resp)
             if(!resp) console.log("No hay data")
             const respuesta = await fetchGrabaciones(resp.data, urlGrabaciones)
-            if(respuesta) {
+            if(respuesta && resp) {
                 // console.log(respuesta)
                 const arrayPaginas = cantidadPaginasHtml(resp.data)
                 setTotalPaginas(arrayPaginas)
