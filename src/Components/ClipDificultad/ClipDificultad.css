@@ -1,0 +1,25 @@
+.ul-dificultad {
+    cursor: pointer;
+    background-color: rgba(37, 37, 37, 0.781);
+
+    border-radius:  5px;;
+}
+.ul-dificultad li {
+    transition: 0.5s ease-in-out;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+    .ul-dificultad li:hover {
+        transition: 0.3s ease-in-out;
+        transform: scale(1.1);
+        background-color: black;
+    }
+
+
+.portada-dificultad {
+    background-image: url("https://res.cloudinary.com/geronicola/image/upload/v1713985331/input-comprensible/hjtdqx8sft0yfrlmeys8.jpg");
+    background-size: 100%;
+    background-position: 50% 60%;
+}

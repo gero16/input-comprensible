@@ -4,6 +4,7 @@ import "./main.css"
 import { createBrowserRouter, RouterProvider, useParams  } from "react-router-dom";
 
 import { CustomProvider } from './context/context';
+import { PaginasProvider } from './context/contextPaginas';
 
 import Index from './Components/Index/Index'
 import ContenedorSerie from './Components/Serie/ContenedorSerie.jsx'
@@ -124,9 +125,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode> </React.StrictMode>
+  <PaginasProvider> 
+
       <CustomProvider>
           <RouterProvider router={ router } />
       </CustomProvider>
+
+  </PaginasProvider>
  
 
     

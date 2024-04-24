@@ -35,17 +35,6 @@ export const transformarMayuscula = (texto, palabras) => {
         }
 }
 
-export const cantidadPaginasHtml = (data) => { 
-    let arrayPaginas = []
-    if(data.length <= 21) arrayPaginas = [1]
-    if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
-    if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
-    if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
-    if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
-    if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
-
-    return arrayPaginas
-}
 
 export const fetchCapitulos = async (titulo) => {
     let arrayCapitulos = []

@@ -6,27 +6,19 @@ import { Context } from "../../context/context"
 import {  urlBackend_Desarrollo, urlOrigin } from "../../context/helpers"
 import ClipDificultad from "./ClipDificultad"
 import BotonPagina from "../BotonPagina/BotonPagina"
+import { PaginasContext } from "../../context/contextPaginas"
+import "./ClipDificultad.css"
 
 const ContenedorClipDificultad = () => {
 
     const { dificultad } = useParams()
     const navigate = useNavigate();
     const {  urlGrabaciones,  traerGrabacion, traerGrabaciones } = useContext(Context)
+    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina, setTotalPaginas, setPaginaClips  } = useContext(PaginasContext)
+
     const [data, setData] = useState([])
     let {  usuario } = useParams();
 
-    const [paginaClips, setPaginaClips] = useState([])
-    const [paginaActual, setPaginaActual] = useState([1])
-    const [totalPaginas, setTotalPaginas] = useState([]) 
-
-    const setearClipsPagina = (data) => {
-        if(paginaActual === 1) mostrarClipsPagina(data, 0, 41)
-        if(paginaActual === 2) mostrarClipsPagina(data, 42, 82)
-        if(paginaActual === 3) mostrarClipsPagina(data, 83, 123)
-        if(paginaActual === 4) mostrarClipsPagina(data, 124, 164)
-        if(paginaActual === 5) mostrarClipsPagina(data, 165, 205)
-        if(paginaActual === 6) mostrarClipsPagina(data, 206, 246)
-    }
 
     const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
         let paginas = []
@@ -40,26 +32,23 @@ const ContenedorClipDificultad = () => {
         return paginaClips
     }
     
- const cantidadPaginasHtml = (data) => { 
-    let arrayPaginas = []
-    if(data.length <= 41) arrayPaginas = [1]
-    if(data.length > 41 && data.length < 81) arrayPaginas = [1,2]
-    if(data.length > 84 && data.length < 124) arrayPaginas = [1,2,3]
-    if(data.length > 125 && data.length < 164) arrayPaginas = [1,2,3,4]
-    if(data.length > 165 && data.length < 205) arrayPaginas = [1,2,3,4,5]
-    if(data.length > 206 && data.length < 246) arrayPaginas = [1,2,3,4,5,6]
-    
-    return arrayPaginas
-}
+    const cantidadPaginasHtml = (data) => { 
+        let arrayPaginas = []
+        if(data.length <= 41) arrayPaginas = [1]
+        if(data.length > 41 && data.length < 81) arrayPaginas = [1,2]
+        if(data.length > 84 && data.length < 124) arrayPaginas = [1,2,3]
+        if(data.length > 125 && data.length < 164) arrayPaginas = [1,2,3,4]
+        if(data.length > 165 && data.length < 205) arrayPaginas = [1,2,3,4,5]
+        if(data.length > 206 && data.length < 246) arrayPaginas = [1,2,3,4,5,6]
+        
+        return arrayPaginas
+    }
 
-const cambiarPagina = (numero) => {
-    setPaginaActual(numero)
-    return paginaActual
-}
-    const urlClips = `${urlBackend_Desarrollo}/clips/dificultad/${dificultad}`
+
+    const urlClips = `${urlBackend_Desarrollo}/clips/dificultad/${ dificultad }`
 
     const fetchClips = async (urlClips) => {
-        const response = await fetch(urlClips,  
+        const respuestaClips = await fetch(urlClips,  
             {
                 method: 'GET',
                 headers: new Headers({
@@ -68,21 +57,17 @@ const cambiarPagina = (numero) => {
                     'Access-Control-Allow-Origin': '*',
                 })
             })
-        
-        if(response) {
-            const resp = await response.json();
-            console.log(resp.data)
-            if(!resp) console.log("No hay data")
-            if(resp) {
-                // console.log(respuesta)
-                const arrayPaginas = cantidadPaginasHtml(resp.data)
-                console.log(arrayPaginas)
-                setTotalPaginas(arrayPaginas)
+        if(respuestaClips) {
+            const respClips = await respuestaClips.json();
+            //console.log(resp)
+            if(!respClips) console.log("No hay data")
+            if(respClips) {
+                // console.log(respGrabacionesClips)
+                const arrayPaginas = cantidadPaginasHtml(respClips.data)
 
-        
-                mostrarClipsPagina(resp.data, 0, 51)
-                setData(resp.data)
-                return data;
+                setTotalPaginas(arrayPaginas)
+                mostrarClipsPagina(respClips.data, 0, 21)
+                setData(respClips.data)
             }
         }
     }
@@ -90,28 +75,32 @@ const cambiarPagina = (numero) => {
 
     useEffect(() => {
         fetchClips(urlClips)
-        setearClipsPagina(data)
+
+        setearClipsPagina(data, paginaActual)
 
         if(usuario) {
-            
             
         }
 
     }, [])
 
     useEffect(() => {
-        fetchClips(urlClips)
-        setearClipsPagina(data)
+        setearClipsPagina(data, paginaActual)
 
         if(usuario) {
             
         }
-
     }, [dificultad])
+
+    useEffect(() => {
+        
+        setearClipsPagina(data, paginaActual)
+    }, [paginaActual])
+
     return (
         <>
             <article className={`article-clip`} name={ data.id }>
-                <div className={`portada  flex-center`} >
+                <div className={`portada portada-dificultad  flex-center`} >
                 </div>  
 
                 <header className="flex-center">
@@ -126,12 +115,14 @@ const cambiarPagina = (numero) => {
                   
 
                 </header>
+
+                <h2> Todavia no se pueden guardar grabaciones! </h2>
                   
                 <section className='flex-center'>
                     
 
-                    { data.length > 0 
-                        ? data.map((element, key) => {
+                    { paginaClips.length > 0 
+                        ? paginaClips.map((element, key) => {
                             
                                 return (
                                 

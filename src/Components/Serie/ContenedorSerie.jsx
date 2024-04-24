@@ -6,15 +6,16 @@ import Serie from './Serie';
 import NavbarUser from '../Navbar/Navbar';
 import { Context } from '../../context/context';
 import BotonPagina from '../BotonPagina/BotonPagina';
+import { PaginasContext } from '../../context/contextPaginas';
 //import fetch from 'node-fetch'
 
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo, 
-            setearClipsPagina, cambiarPagina,  paginaActual, paginaClips, fetchClips,
-            data, totalPaginas, setData, traerGrabaciones, traerGrabacion,  traerImagenFomato, urlImagen
+    const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo,  fetchClips, data, traerGrabaciones, traerGrabacion,  traerImagenFomato, urlImagen
         } = useContext(Context)
+
+    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina } = useContext(PaginasContext)
     
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
@@ -32,7 +33,7 @@ const ContenedorSerie = () => {
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
         traerCapitulos()
-        setearClipsPagina(data)
+        setearClipsPagina(data, paginaActual)
 
         if(usuario) {
             const resultado = traerGrabacion(urlGrabaciones);
@@ -45,7 +46,7 @@ const ContenedorSerie = () => {
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
         setSeason(temporada)
-        setearClipsPagina(data)
+        setearClipsPagina(data, paginaActual)
 
         if(usuario) {
             const resultado = traerGrabacion(urlGrabaciones);
@@ -56,7 +57,7 @@ const ContenedorSerie = () => {
 
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
-        setearClipsPagina(data)
+        setearClipsPagina(data, paginaActual)
 
         if(usuario) {
             const resultado = traerGrabacion(urlGrabaciones);
@@ -68,7 +69,7 @@ const ContenedorSerie = () => {
 
    
     useEffect(() => {
-        setearClipsPagina(data)
+        setearClipsPagina(data, paginaActual)
         console.log(paginaActual)
 
         if(usuario) {

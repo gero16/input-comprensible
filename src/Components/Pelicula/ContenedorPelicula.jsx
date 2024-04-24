@@ -3,15 +3,15 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
-import NavbarUser from '../Navbar/Navbar';
 import { Context } from '../../context/context';
+import { PaginasContext } from '../../context/contextPaginas';
 import BotonPagina from '../BotonPagina/BotonPagina';
 import { urlBackend_Desarrollo } from '../../context/helpers';
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
-    const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, paginaActual, paginaClips, fetchClips, data, totalPaginas, setData  
-    } = useContext(Context)
+    const { urlBackend_Produccion, fetchClips, data, setData } = useContext(Context)
+    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina } = useContext(PaginasContext)
 
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
     const urlClips = `${ urlBackend_Produccion }/pelicula/${ pelicula }`
@@ -20,8 +20,9 @@ const ContenedorPelicula = () => {
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones)
 
-        console.log(paginaActual)
+        console.log(totalPaginas)
         setearClipsPagina(data, paginaActual)
+    
     
     }, [pelicula])
     
@@ -29,8 +30,10 @@ const ContenedorPelicula = () => {
         
         setearClipsPagina(data, paginaActual)
     }, [paginaActual])
+
     return (
         <>
+       
             {
                 usuario 
                 ? <> <Pelicula data={paginaClips} setData={setData}/> </>

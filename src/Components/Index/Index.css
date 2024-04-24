@@ -140,6 +140,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .fondo-li-4::before {
   content: '';
   position: absolute;

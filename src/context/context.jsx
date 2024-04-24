@@ -1,23 +1,29 @@
-import { useState, createContext } from "react"
+import { useState, createContext, useContext } from "react"
 import 'react-audio-voice-recorder';
+
 import { fetchTitulos, fetchTitulosPelicula, fetchTitulosSeries } from "./titulos";
-import { cantidadPaginasHtml,  fetchCantidadClips,  fetchCapitulos,  fetchGrabaciones,  mostrarRespuesta,  
+import {  fetchCantidadClips,  fetchCapitulos,  fetchGrabaciones,  mostrarRespuesta,  
     separarTexto, transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion, urlOrigin } from "./helpers";
+
+import { PaginasContext } from "./contextPaginas"
 
 export const Context = createContext()
 
 export const CustomProvider = ({ children }) => {
+    const { setTotalPaginas, mostrarClipsPagina, cantidadPaginasHtml  } = useContext(PaginasContext)
+
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const [idGrabar, setIdGrabar] = useState()
-    const [paginaActual, setPaginaActual] = useState(1)
-    const [paginaClips, setPaginaClips] = useState([])
-    const [totalClips, setTotalClips] = useState(0) 
+    let [urlImagen, setUrlImagen] = useState()
+    const [usuarioSesion, setUsuarioSesion] = useState(false)
+    const [nombreUsuario, setNombreUsuario] = useState("")
+   
     const [grabacionLocalStorage, setGrabacionLocalStorage] =  useState({
         grabacion: '',
         storage: false,
       });
 
-    const [totalPaginas, setTotalPaginas] = useState([]) 
+   
     const [data, setData] = useState([]) 
 
     const clickGrabar = (e) => {
@@ -60,35 +66,6 @@ export const CustomProvider = ({ children }) => {
     }
     }
 
-    const setearClipsPagina = (data, paginaActual) => {
-        console.log(paginaActual)
-        if(paginaActual === 1)  mostrarClipsPagina(data, 0, 21)
-        if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
-        if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
-        if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
-        if(paginaActual === 5) mostrarClipsPagina(data, 85, 105)
-        if(paginaActual === 6) mostrarClipsPagina(data, 106, 126)
-        
-    }
-    
-    const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
-        let paginas = []
-    
-        for (let index = primerValor; index < ultimoValor; index++) {
-            if(datos[index] === undefined) break
-            paginas.push(datos[index])
-        }      
-
-        console.log(paginas)
-        setPaginaClips(paginas)
-    
-        return paginaClips
-    }
-    
-    const cambiarPagina = (numero) => {
-        setPaginaActual(numero)
-        return paginaActual
-    }
 
     const fetchClips = async (urlClips, urlGrabaciones) => {
         const respuestaClips = await fetch(urlClips,  
@@ -148,9 +125,6 @@ export const CustomProvider = ({ children }) => {
         });
     }
 
-    let [urlImagen, setUrlImagen] = useState()
-
-
     const traerImagenFomato = (nombre) => {
         const formatosImagen = ['.jpg', '.png', '.webp'];
         let imagenCargada = null;
@@ -177,9 +151,6 @@ export const CustomProvider = ({ children }) => {
         }
     }
     
-    const [usuarioSesion, setUsuarioSesion] = useState(false)
-    const [nombreUsuario, setNombreUsuario] = useState("")
-    
     const evaluarSesion = () => {
         const sesion = JSON.parse(localStorage.getItem("sesion"))
         if(sesion) {
@@ -189,12 +160,13 @@ export const CustomProvider = ({ children }) => {
             return sesion
         }
     }
+
 return (
     <Context.Provider 
         value={{ clickGrabar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
-            grabacionLocalStorage,setGrabacionLocalStorage,  setearClipsPagina, cambiarPagina, paginaActual, paginaClips, mostrarClipsPagina, 
-            cantidadPaginasHtml, fetchClips, data, setData, totalPaginas, setTotalPaginas, separarTexto, fetchCantidadClips, 
+            grabacionLocalStorage, setGrabacionLocalStorage, 
+            cantidadPaginasHtml, fetchClips, data, setData, separarTexto, fetchCantidadClips, 
             traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
              usuarioSesion, setUsuarioSesion,nombreUsuario
             }}> 
