@@ -71,7 +71,6 @@ export const fetchCapitulos = async (titulo) => {
 }
 
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
-    console.log(clips)
     const response = await fetch(urlGrabaciones,  
         {
             method: 'GET',

@@ -9,7 +9,7 @@ export const Context = createContext()
 export const CustomProvider = ({ children }) => {
     const [evaluarAudio, setEvaluarAudio] = useState([false])
     const [idGrabar, setIdGrabar] = useState()
-    const [paginaActual, setPaginaActual] = useState([1])
+    const [paginaActual, setPaginaActual] = useState(1)
     const [paginaClips, setPaginaClips] = useState([])
     const [totalClips, setTotalClips] = useState(0) 
     const [grabacionLocalStorage, setGrabacionLocalStorage] =  useState({
@@ -60,8 +60,9 @@ export const CustomProvider = ({ children }) => {
     }
     }
 
-    const setearClipsPagina = (data) => {
-        if(paginaActual === 1) mostrarClipsPagina(data, 0, 21)
+    const setearClipsPagina = (data, paginaActual) => {
+        console.log(paginaActual)
+        if(paginaActual === 1)  mostrarClipsPagina(data, 0, 21)
         if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
         if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
         if(paginaActual === 4) mostrarClipsPagina(data, 64, 84)
@@ -77,7 +78,9 @@ export const CustomProvider = ({ children }) => {
             if(datos[index] === undefined) break
             paginas.push(datos[index])
         }      
-        setPaginaClips(paginas, primerValor, ultimoValor)
+
+        console.log(paginas)
+        setPaginaClips(paginas)
     
         return paginaClips
     }
@@ -102,14 +105,14 @@ export const CustomProvider = ({ children }) => {
             //console.log(resp)
             if(!respClips) console.log("No hay data")
             const respGrabacionesClips = await fetchGrabaciones(respClips.data, urlGrabaciones)
-            if(respGrabacionesClips && resp) {
+            if(respGrabacionesClips && respClips) {
                 // console.log(respGrabacionesClips)
-                const arrayPaginas = cantidadPaginasHtml(resp.data)
+                const arrayPaginas = cantidadPaginasHtml(respClips.data)
+
                 setTotalPaginas(arrayPaginas)
-            
                 mostrarClipsPagina(respGrabacionesClips, 0, 21)
                 setData(respGrabacionesClips)
-                return data;
+                return respClips.data;
             }
         }
     }
@@ -158,9 +161,7 @@ export const CustomProvider = ({ children }) => {
             
             // Intenta cargar la imagen
             fetch(imagen)
-                .then(response => {
-                    console.log(response)
-             
+                .then(response => {             
                     if (response.ok) {
                         console.log(response.ok)
                         imagenCargada = urlImagen;
