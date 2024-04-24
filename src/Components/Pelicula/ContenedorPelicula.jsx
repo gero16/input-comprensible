@@ -19,10 +19,16 @@ const ContenedorPelicula = () => {
     useEffect(() => {
         fetchClips(urlClips, urlGrabaciones);
         setearClipsPagina(data)
+        console.log(totalPaginas)
+    }, [])
+    
+    useEffect(() => {
+        fetchClips(urlClips, urlGrabaciones);
+        setearClipsPagina(data)
     }, [pelicula])
     
     useEffect(() => {
-        
+        fetchClips(urlClips, urlGrabaciones);
         setearClipsPagina(data)
     }, [paginaActual])
     return (
@@ -38,17 +44,22 @@ const ContenedorPelicula = () => {
             }
 
             <footer className='footer'>
-                { totalPaginas.map((element, key) => {
-                        return (
+                { totalPaginas ? 
+                
+                    totalPaginas.map((element, key) => {
+                            return (
+                                
+                                <BotonPagina 
+                                    paginaActual={paginaActual}
+                                    cambiarPagina={cambiarPagina} 
+                                    numeroPagina={element}
+                                    key={key}
+                                /> 
                             
-                            <BotonPagina 
-                                paginaActual={paginaActual}
-                                cambiarPagina={cambiarPagina} 
-                                numeroPagina={element}
-                            /> 
-                        
-                        )
-                    })}
+                            )
+                        })
+                        : <> </>
+                }
   
             </footer>
         </>

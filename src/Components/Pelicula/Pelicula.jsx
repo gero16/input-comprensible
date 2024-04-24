@@ -58,20 +58,13 @@ const Pelicula = ({data}) => {
         filter: 'brightness(0.8)'
     }
 
-   
-
-
- 
-
-
-   
 
 
     return (
         <>
-            <article className={`article-clip article-audio ${data.subtitulo}`} name={data.subtitulo}>  
+            <article className={`article-clip article-audio ${ pelicula }`} name={ pelicula }>  
 
-                <div className={`portada portada-${pelicula} flex-center`} style={style}>
+                <div className={`portada portada-${ pelicula } flex-center`} style={style}>
                 </div>
               
                 <section className='flex-center'>
@@ -89,6 +82,7 @@ const Pelicula = ({data}) => {
                                 grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
                                 numero_clip={element["numero_clip"]}
                                 imagen={element.imagen}
+                                key={index}
                             />
                         )
                         })

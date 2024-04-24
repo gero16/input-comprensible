@@ -71,28 +71,24 @@ export const CustomProvider = ({ children }) => {
     }
     
     const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
-        console.log(datos)
         let paginas = []
     
         for (let index = primerValor; index < ultimoValor; index++) {
             if(datos[index] === undefined) break
             paginas.push(datos[index])
         }      
-
-        console.log(paginas)
-        setPaginaClips(paginas)
-        
-        return paginas
+        setPaginaClips(paginas, primerValor, ultimoValor)
+    
+        return paginaClips
     }
     
     const cambiarPagina = (numero) => {
-        console.log(numero)
         setPaginaActual(numero)
         return paginaActual
     }
 
     const fetchClips = async (urlClips, urlGrabaciones) => {
-        const responseClips = await fetch(urlClips,  
+        const respuestaClips = await fetch(urlClips,  
             {
                 method: 'GET',
                 headers: new Headers({
@@ -101,20 +97,19 @@ export const CustomProvider = ({ children }) => {
                     'Access-Control-Allow-Origin': '*',
                 })
             })
-        if(responseClips) {
-            const respClips = await responseClips.json();
+        if(respuestaClips) {
+            const respClips = await respuestaClips.json();
+            //console.log(resp)
             if(!respClips) console.log("No hay data")
-            const responseGrabaciones = await fetchGrabaciones(respClips.data, urlGrabaciones)
-            if(respClips && responseGrabaciones) {
-                console.log(responseGrabaciones)
-                const arrayPaginas = cantidadPaginasHtml(respClips.data)
-                console.log(arrayPaginas)
+            const respGrabacionesClips = await fetchGrabaciones(respClips.data, urlGrabaciones)
+            if(respGrabacionesClips && resp) {
+                // console.log(respGrabacionesClips)
+                const arrayPaginas = cantidadPaginasHtml(resp.data)
                 setTotalPaginas(arrayPaginas)
             
-                const clipsPorPagina = mostrarClipsPagina(respClips.data, 0, 21)
-                console.log(clipsPorPagina)
-                setData(clipsPorPagina)
-                return clipsPorPagina;
+                mostrarClipsPagina(respGrabacionesClips, 0, 21)
+                setData(respGrabacionesClips)
+                return data;
             }
         }
     }
