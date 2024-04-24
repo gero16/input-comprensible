@@ -112,7 +112,6 @@ export const CustomProvider = ({ children }) => {
                 setTotalPaginas(arrayPaginas)
                 mostrarClipsPagina(respGrabacionesClips, 0, 21)
                 setData(respGrabacionesClips)
-                return respClips.data;
             }
         }
     }

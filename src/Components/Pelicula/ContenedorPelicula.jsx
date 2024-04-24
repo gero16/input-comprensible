@@ -18,12 +18,15 @@ const ContenedorPelicula = () => {
 
     
     useEffect(() => {
-        fetchClips(urlClips, urlGrabaciones);
+        fetchClips(urlClips, urlGrabaciones)
+
+        console.log(paginaActual)
         setearClipsPagina(data, paginaActual)
+    
     }, [pelicula])
     
     useEffect(() => {
-        fetchClips(urlClips, urlGrabaciones);
+        
         setearClipsPagina(data, paginaActual)
     }, [paginaActual])
     return (
