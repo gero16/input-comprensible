@@ -103,7 +103,9 @@ const ContenedorClipDificultad = () => {
                 <div className={`portada portada-dificultad  flex-center`} >
                 </div>  
 
-                <header className="flex-center">
+                <header className="flex-column-center gap-10">
+
+                <h1 className="mt-15 h1-dificultad"> Clips clasificados por Dificultad </h1>
 
                 <ul className="flex gap-20 ul-dificultad"> 
                     <li className="very-easy"> Muy facil</li>
