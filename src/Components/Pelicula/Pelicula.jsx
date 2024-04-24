@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
+
     let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones, traerImagenFomato, urlImagen  } = useContext(Context)
    
@@ -74,8 +75,6 @@ const Pelicula = ({data}) => {
                 </div>
               
                 <section className='flex-center'>
-                    
-
                     { data.length > 0
                         ? data.map((element, index) => {
                         return (

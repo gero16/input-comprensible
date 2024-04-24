@@ -71,7 +71,7 @@ export const fetchCapitulos = async (titulo) => {
 }
 
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
-    
+    console.log(clips)
     const response = await fetch(urlGrabaciones,  
         {
             method: 'GET',
@@ -87,16 +87,19 @@ export const fetchGrabaciones = async (clips, urlGrabaciones) => {
             
             if(!resp) console.log("No hay data")
         
-            let arrayClips = clips
-            //console.log(resp.grabaciones)
-            arrayClips.forEach(clip => {
-                resp.grabaciones.forEach((grabacion) => {
-                    if(clip.id ===  grabacion.id_clip) {
-                        clip.grabacion = grabacion.grabacion 
-                    }
-                })
-            });
-        return arrayClips
+            if(clips) {
+
+                let arrayClips = clips
+                //console.log(resp.grabaciones)
+                arrayClips.forEach(clip => {
+                    resp.grabaciones.forEach((grabacion) => {
+                        if(clip.id ===  grabacion.id_clip) {
+                            clip.grabacion = grabacion.grabacion 
+                        }
+                    })
+                });
+            return arrayClips
+            }
         }
 }
 

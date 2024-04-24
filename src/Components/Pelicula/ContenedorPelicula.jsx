@@ -11,7 +11,7 @@ import { urlBackend_Desarrollo } from '../../context/helpers';
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
     const { urlBackend_Produccion, setearClipsPagina, cambiarPagina, 
-            paginaActual, paginaClips, fetchClips, data,  totalPaginas, setData  
+            paginaActual, paginaClips, fetchClips, data, totalPaginas, setData  
     } = useContext(Context)
     const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
     const urlClips = `${ urlBackend_Produccion }/pelicula/${ pelicula }`
@@ -22,6 +22,7 @@ const ContenedorPelicula = () => {
     }, [pelicula])
     
     useEffect(() => {
+        
         setearClipsPagina(data)
     }, [paginaActual])
     return (
@@ -38,7 +39,6 @@ const ContenedorPelicula = () => {
 
             <footer className='footer'>
                 { totalPaginas.map((element, key) => {
-                    console.log(element)
                         return (
                             
                             <BotonPagina 
