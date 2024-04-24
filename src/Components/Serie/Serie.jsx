@@ -82,7 +82,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
                                         dificultad={element.dificultad}
                                         capitulo={element.capitulo}
                                         index={key}
-                                        grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
+                                        grabacionID={ element.drive_grabacion ? element.drive_grabacion  : ""}
                                         categoria={element.categoria}
                                         numero_clip={element["numero_clip"]}
                                     />

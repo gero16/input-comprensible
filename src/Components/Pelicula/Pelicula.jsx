@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
 const Pelicula = ({data}) => {
-
+    console.log(data)
     let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones, traerImagenFomato, urlImagen  } = useContext(Context)
    
@@ -79,7 +79,7 @@ const Pelicula = ({data}) => {
                                 index={index}
                                 frase={element.frase}
                                 dificultad={element.dificultad}
-                                grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
+                                grabacionID={ element.drive_grabacion ? element.drive_grabacion  : ""}
                                 numero_clip={element["numero_clip"]}
                                 imagen={element.imagen}
                                 key={index}
