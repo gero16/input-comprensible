@@ -13,7 +13,7 @@ export const PaginasProvider = ({ children }) => {
     const [totalPaginas, setTotalPaginas] = useState([]) 
 
     const setearClipsPagina = (data, paginaActual) => {
-        console.log(paginaActual)
+
         if(paginaActual === 1)  mostrarClipsPagina(data, 0, 21)
         if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
         if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)
@@ -31,7 +31,7 @@ export const PaginasProvider = ({ children }) => {
             paginas.push(datos[index])
         }      
 
-        console.log(paginas)
+
         setPaginaClips(paginas)
     
         return paginaClips
@@ -45,14 +45,14 @@ export const PaginasProvider = ({ children }) => {
     
 const cantidadPaginasHtml = (data) => { 
     let arrayPaginas = []
-    console.log(data)
+
     if(data.length <= 21) arrayPaginas = [1]
     if(data.length > 21 && data.length < 43) arrayPaginas = [1,2]
     if(data.length > 44 && data.length < 65) arrayPaginas = [1,2,3]
     if(data.length > 65 && data.length < 76) arrayPaginas = [1,2,3,4]
     if(data.length > 77 && data.length < 99) arrayPaginas = [1,2,3,4,5]
     if(data.length > 100 && data.length < 121) arrayPaginas = [1,2,3,4,5,6]
-    console.log(arrayPaginas)
+
     return arrayPaginas
 }
     

@@ -11,6 +11,7 @@ const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionID, numero_clip }) => {
 
+     console.log(grabacionID)
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada, serie } = useParams();
     const recorderControls = useAudioRecorder()
@@ -37,12 +38,15 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             formData.append("numero_clip", indice);
             
             const urlGuardarGrabacion =  serie 
-                ? `${ urlBackend_Produccion }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
-                : `${ urlBackend_Produccion }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
+                ? `${ urlBackend_Desarrollo }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
+                : `${ urlBackend_Desarrollo }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`
             
-                console.log(urlGuardarGrabacion)
+            console.log(urlGuardarGrabacion)
             const resultado = fetch(urlGuardarGrabacion, { method: "POST", body: formData });
-            console.log(resultado)
+            resultado.then(() => {
+
+                console.log(resultado)
+            })
 
             //window.localStorage.clear();
         
@@ -161,16 +165,20 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                            
                         { grabacion 
-                                ?  <iframe 
-                                    src={`https://drive.google.com/file/d/${ grabacion }/preview`} 
-                                    width="410" 
-                                    height="60" 
-                                    allow="autoplay"
-                                    className={`iframe-${subtitulo}-${index}`}>
-                                    </iframe>
+                                ?  
+                                <> 
+                                
+                                    <iframe 
+                                        src={`https://drive.google.com/file/d/${ grabacion }/preview`} 
+                                        width="410" 
+                                        height="60" 
+                                        allow="autoplay"
+                                        className={`iframe-${subtitulo}-${index}`}>
+                                        </iframe>
+                                </>
                                     
                                 : 
-                                <> </>
+                                <> Todavia no hay ninguna Grabación </>
                         }
 
   

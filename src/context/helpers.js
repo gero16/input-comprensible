@@ -58,7 +58,7 @@ export const fetchCapitulos = async (titulo) => {
 
     if(response.status === 404) console.log("Ocurrio un error") 
 }
-
+// Eliminarrrrr
 export const fetchGrabaciones = async (clips, urlGrabaciones) => {
     const response = await fetch(urlGrabaciones,  
         {
@@ -72,20 +72,30 @@ export const fetchGrabaciones = async (clips, urlGrabaciones) => {
 
         if(response) {
             const resp= await response.json();
+            console.log(resp)
             
             if(!resp) console.log("No hay data")
         
-            if(clips) {
+            if(clips && resp) {
 
                 let arrayClips = clips
                 //console.log(resp.grabaciones)
+                for (let index = 0; index < arrayClips.length; index++) {
+                    const element = array[index];
+                    cons
+                    
+                }
+                
                 arrayClips.forEach(clip => {
+                    console.log(clip)
                     resp.grabaciones.forEach((grabacion) => {
                         if(clip.id ===  grabacion.id_clip) {
                             clip.grabacion = grabacion.grabacion 
                         }
                     })
                 });
+      
+                console.log(arrayClips)
             return arrayClips
             }
         }

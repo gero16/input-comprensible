@@ -81,14 +81,13 @@ export const CustomProvider = ({ children }) => {
             const respClips = await respuestaClips.json();
             //console.log(resp)
             if(!respClips) console.log("No hay data")
-            const respGrabacionesClips = await fetchGrabaciones(respClips.data, urlGrabaciones)
-            if(respGrabacionesClips && respClips) {
-                // console.log(respGrabacionesClips)
-                const arrayPaginas = cantidadPaginasHtml(respClips.data)
+            if(respClips) {
+                console.log(respClips)
+                const arrayPaginas = cantidadPaginasHtml(respClips.clips)
 
                 setTotalPaginas(arrayPaginas)
-                mostrarClipsPagina(respGrabacionesClips, 0, 21)
-                setData(respGrabacionesClips)
+                mostrarClipsPagina(respClips.clips, 0, 21)
+                setData(respClips.clips)
             }
         }
     }
@@ -160,6 +159,7 @@ export const CustomProvider = ({ children }) => {
             return sesion
         }
     }
+
 
 return (
     <Context.Provider 

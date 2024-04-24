@@ -20,62 +20,38 @@ const ContenedorSerie = () => {
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
      
-
-    const urlClips = `${ urlBackend_Produccion }/series/${ serie }/${ temporada }/${ capitulo }`
-    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
+    const urlClipsGrabaciones = `${ urlBackend_Desarrollo }/clips-grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
-        console.log(dataCapitulos)
         setCapitulos(dataCapitulos)
     }
 
     useEffect(() => {
-        fetchClips(urlClips, urlGrabaciones)
+        fetchClips(urlClipsGrabaciones)
         traerCapitulos()
         setearClipsPagina(data, paginaActual)
 
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
-
+        console.log(paginaClips)
         traerImagenFomato(serie)
     }, [serie])
 
     useEffect(() => {
-        fetchClips(urlClips, urlGrabaciones)
+        fetchClips(urlClipsGrabaciones)
         setSeason(temporada)
         setearClipsPagina(data, paginaActual)
-
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
 
     }, [temporada])
 
     useEffect(() => {
-        fetchClips(urlClips, urlGrabaciones)
+        fetchClips(urlClipsGrabaciones)
         setearClipsPagina(data, paginaActual)
 
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
-
-  
     }, [capitulo])
 
    
     useEffect(() => {
         setearClipsPagina(data, paginaActual)
-        console.log(paginaActual)
-
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
 
         traerImagenFomato(serie)
     }, [paginaActual])
@@ -90,7 +66,7 @@ const ContenedorSerie = () => {
             { usuario 
                 ? <> 
                     <Serie 
-                        data={data} 
+                        data={paginaClips} 
                         cambiarPagina={cambiarPagina} 
                         temporada={temporada} 
                         serie={serie} 
@@ -117,6 +93,7 @@ const ContenedorSerie = () => {
                                         paginaActual={paginaActual}
                                         cambiarPagina={cambiarPagina} 
                                         numeroPagina={element}
+                                        key={key}
                                     /> 
                                 
                                 )

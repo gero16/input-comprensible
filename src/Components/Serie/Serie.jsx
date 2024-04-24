@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
-    console.log(capitulos)
+
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
     const [width, setWidth] = useState(window.innerWidth);
@@ -39,7 +39,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
     
 
     const newCapitulo = transformarMayuscula(capitulo, 2)
-    console.log(newCapitulo)
+ 
     return (
         <>
             <article className={`article-clip ${ data.subtitulo }`} name={ data.subtitulo }>
@@ -54,7 +54,7 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
                             { capitulos.length > 0 
                                 ? capitulos.map((element, key) => {
                                     return (
-                                        <li className="li-capitulos" 
+                                        <li className="li-capitulos" key={key} 
                                             onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
                                             { separarCapitulo(element)}
                                         </li>
