@@ -13,7 +13,7 @@ const ContenedorPelicula = () => {
     const { urlBackend_Produccion, fetchClips, data, setData } = useContext(Context)
     const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina } = useContext(PaginasContext)
 
-    const urlClips = `${ urlBackend_Desarrollo }/clips-grabaciones/peliculas/${pelicula}/${usuario}`
+    const urlClips = `${ urlBackend_Produccion }/clips-grabaciones/peliculas/${pelicula}/${usuario}`
 
 
     useEffect(() => {
