@@ -133,7 +133,7 @@ export const CustomProvider = ({ children }) => {
 
     const [imagenPortada, setImagenPortada] = useState("")
     const traerImagenPortada = async (titulo) => {
-        const response = await fetch(`http://localhost:3000/titulos/individual/${titulo}`,  
+        const response = await fetch(`${ urlBackend_Produccion }/titulos/individual/${titulo}`,  
             {
                 method: 'GET',
                 headers: new Headers({

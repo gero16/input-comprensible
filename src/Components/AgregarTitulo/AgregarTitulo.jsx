@@ -45,6 +45,11 @@ const AgregarTitulo = () => {
           });
           
           console.log(response)
+
+          if(!response) {
+            console.log(response)
+            console.log("dvsds")
+          }
     }
 
     const handleImageChange = (event) => {
