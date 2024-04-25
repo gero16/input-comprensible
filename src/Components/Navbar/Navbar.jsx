@@ -51,7 +51,11 @@ const Navbar = () => {
                                     <span className="span-link "> Registrarse </span>
                                 </NavLink>
                             </li>
-                            
+                            <li className="li-nav">
+                                <NavLink to={`/agregar-titulo`} > 
+                                    <span className="span-link "> Agregar Titulo </span>
+                                </NavLink>
+                            </li>
                             <li className="li-nav">
                                 <NavLink to={`/recursos`} > 
                                     <span className="span-link "> Recursos </span>
@@ -101,6 +105,11 @@ const Navbar = () => {
                             <li className="li-nav">
                                 <NavLink to={`/usuario/${ nombreUsuario }/clips/dificultad/easy`}> 
                                     <span className="span-link "> Dificultad </span>
+                                </NavLink>
+                            </li>
+                            <li className="li-nav">
+                                <NavLink to={`/agregar-titulo`} > 
+                                    <span className="span-link "> Agregar Titulo </span>
                                 </NavLink>
                             </li>
                             <li className="li-nav">
