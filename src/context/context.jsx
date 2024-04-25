@@ -82,7 +82,7 @@ export const CustomProvider = ({ children }) => {
             //console.log(resp)
             if(!respClips) console.log("No hay data")
             if(respClips) {
-                console.log(respClips.clips)
+                //console.log(respClips.clips)
                 const arrayPaginas = cantidadPaginasHtml(respClips.clips)
 
                 setTotalPaginas(arrayPaginas)
@@ -92,37 +92,7 @@ export const CustomProvider = ({ children }) => {
         }
     }
 
-    const traerGrabacion = async (urlGrabaciones) => {
-        const response = await fetch(urlGrabaciones,  
-        {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        if(response) {
-            const resp = await response.json();
-            if(!resp) console.log("No hay data")
-            
-            //console.log(resp)
-            return resp;
-        }
-    }
-
-    const traerGrabaciones = (resultado) => {
-        resultado.then((result) => {
-            // result - no es un state como data
-            result.grabaciones.forEach((grabacion, index) => {
-                const encontarClip =  result.clips.find((clip) => clip.id === grabacion.id_clip);
-                encontarClip.grabacion_id =  grabacion.id_drive_grabacion
-                //console.log(encontarClip)
-                return encontarClip
-            });
-
-            setData(result.clips)
-        });
-    }
+  
 
     const traerImagenFomato = (nombre) => {
         const formatosImagen = ['.jpg', '.png', '.webp'];
@@ -135,7 +105,7 @@ export const CustomProvider = ({ children }) => {
             fetch(imagen)
                 .then(response => {             
                     if (response.ok) {
-                        console.log(response.ok)
+                        //console.log(response.ok)
                         imagenCargada = urlImagen;
                         setUrlImagen(`url("${ imagen }")`);
                     }
@@ -161,14 +131,42 @@ export const CustomProvider = ({ children }) => {
     }
 
 
+    const [imagenPortada, setImagenPortada] = useState("")
+    const traerImagenPortada = async (titulo) => {
+        const response = await fetch(`http://localhost:3000/titulos/individual/${titulo}`,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': urlOrigin,
+                }),
+            })
+            
+            if(!response) console.log("Peticion a url equivocada")
+    
+            if(response.status === 200) {
+                const resp = await response.json();
+                //console.log(resp)
+                if(!resp) console.log("No hay data")
+                
+                
+                console.log(resp.data)
+    
+               setImagenPortada(resp.data.imagen)
+            }
+         
+        
+    }
+    
+
 return (
     <Context.Provider 
         value={{ clickGrabar, mostrarRespuesta, addAudioElement,
             urlBackend_Produccion, urlBackend_Desarrollo, fetchTitulos,fetchCapitulos, transformarMayuscula,
             grabacionLocalStorage, setGrabacionLocalStorage, 
             cantidadPaginasHtml, fetchClips, data, setData, separarTexto, fetchCantidadClips, 
-            traerGrabacion,  traerGrabaciones, traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
-             usuarioSesion, setUsuarioSesion,nombreUsuario
+            traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
+             usuarioSesion, setUsuarioSesion,nombreUsuario, traerImagenPortada, imagenPortada
             }}> 
             
         { children } 

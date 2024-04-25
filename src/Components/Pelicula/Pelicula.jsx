@@ -3,40 +3,14 @@ import Clip from "../Clip/Clip"
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
-const Pelicula = ({data}) => {
-    console.log(data)
+const Pelicula = ({data, imagenPortada }) => {
+
+    console.log(imagenPortada)
     let {  usuario, pelicula, jpg } = useParams();
     const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones, traerImagenFomato, urlImagen  } = useContext(Context)
-   
-    
+
     const navigate = useNavigate();
     
-    const urlGrabaciones = `${ urlBackend_Produccion }/grabaciones/peliculas/${pelicula}/${usuario}`
-
-
-    useEffect(() => {   
-
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
-
-        traerImagenFomato(pelicula)
-    }, [])
-
-    useEffect(() => {   
-        
-        if(usuario) {
-            const resultado = traerGrabacion(urlGrabaciones);
-            traerGrabaciones(resultado)
-        }
-
-        traerImagenFomato(pelicula)
-      
-    }, [pelicula])
-
-
-
 
     const posicionImagen = {
         "shrek-2": 27,
@@ -51,10 +25,10 @@ const Pelicula = ({data}) => {
     }
 
     const style = {
-        backgroundImage: urlImagen,
+        backgroundImage: `url('${ imagenPortada }') `,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[pelicula] }%`,
-        backgroundSize: 'cover',
+        backgroundSize: 'cover', //
         filter: 'brightness(0.8)'
     }
 

@@ -12,7 +12,7 @@ import { PaginasContext } from '../../context/contextPaginas';
 
 const ContenedorSerie = () => {
     let { serie, temporada, usuario, capitulo } = useParams();
-    const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo,  fetchClips, data, traerGrabaciones, traerGrabacion,  traerImagenFomato, urlImagen
+    const { fetchCapitulos, urlBackend_Produccion, urlBackend_Desarrollo, fetchClips, data,  traerImagenPortada, imagenPortada, urlImagen
         } = useContext(Context)
 
     const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina } = useContext(PaginasContext)
@@ -27,13 +27,15 @@ const ContenedorSerie = () => {
         setCapitulos(dataCapitulos)
     }
 
+    
+
     useEffect(() => {
         fetchClips(urlClipsGrabaciones)
         traerCapitulos()
         setearClipsPagina(data, paginaActual)
 
         console.log(paginaClips)
-        traerImagenFomato(serie)
+        traerImagenPortada(serie)
     }, [serie])
 
     useEffect(() => {
@@ -53,13 +55,8 @@ const ContenedorSerie = () => {
     useEffect(() => {
         setearClipsPagina(data, paginaActual)
 
-        traerImagenFomato(serie)
     }, [paginaActual])
 
-    useEffect(() => {
-
-        traerImagenFomato(serie)
-    }, [])
  
     return (
         <>
@@ -71,7 +68,10 @@ const ContenedorSerie = () => {
                         temporada={temporada} 
                         serie={serie} 
                         capitulos={capitulos} 
-                        capitulo={capitulo} />      
+                        capitulo={capitulo} 
+                        imagenPortada={imagenPortada}
+                        />      
+                        
                 </>
                 :  <> 
                     <Navbar/>
@@ -81,7 +81,7 @@ const ContenedorSerie = () => {
                         serie={serie} 
                         capitulos={capitulos} 
                         capitulo={capitulo}
-                        urlImagen={urlImagen}
+                        imagenPortada={imagenPortada}
                     />    
 
                     <footer className='footer'>

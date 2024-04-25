@@ -11,7 +11,6 @@ const opts = { height: '400', width: '800', playerVars: { autoplay: 1,}, };
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, 
                 capitulo, grabacionID, numero_clip }) => {
 
-     console.log(grabacionID)
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula } = useContext(Context)
     let {  usuario, temporada, serie } = useParams();
     const recorderControls = useAudioRecorder()

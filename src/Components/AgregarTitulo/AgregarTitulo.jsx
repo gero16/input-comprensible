@@ -21,9 +21,7 @@ const AgregarTitulo = () => {
 
    
     const agregarTitulo = async (data) => {
-        // Asi la ruta es ma corta
-        const archivos = document.querySelector("#imagen-post").files
-        const rutaImagen = archivos[0];
+
 
         const formData = new FormData();
         formData.append('titulo', JSON.stringify(titulo.titulo));
@@ -36,7 +34,7 @@ const AgregarTitulo = () => {
             formData.append('capitulos', JSON.stringify(titulo.capitulos));
         } 
 
-        let response = await fetch(`${ urlBackend_Desarrollo }/titulos/agregar-titulo`, {
+        let response = await fetch(`${ urlBackend_Produccion }/titulos/agregar-titulo`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'

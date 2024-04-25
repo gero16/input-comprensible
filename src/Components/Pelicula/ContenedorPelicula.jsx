@@ -10,11 +10,10 @@ import { urlBackend_Desarrollo } from '../../context/helpers';
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
-    const { urlBackend_Produccion, fetchClips, data, setData } = useContext(Context)
-    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina } = useContext(PaginasContext)
+    const { urlBackend_Produccion, fetchClips, data, setData, traerImagenPortada, imagenPortada  } = useContext(Context)
+    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina, } = useContext(PaginasContext)
 
     const urlClips = `${ urlBackend_Produccion }/clips-grabaciones/peliculas/${pelicula}/${usuario}`
-
 
     useEffect(() => {
         fetchClips(urlClips)
@@ -22,12 +21,14 @@ const ContenedorPelicula = () => {
         console.log(totalPaginas)
         setearClipsPagina(data, paginaActual)
     
-        console.log(paginaClips)
+       traerImagenPortada(pelicula)
+
     }, [pelicula])
     
     useEffect(() => {
         
         setearClipsPagina(data, paginaActual)
+      
     }, [paginaActual])
 
     return (
@@ -35,11 +36,11 @@ const ContenedorPelicula = () => {
        
             {
                 usuario 
-                ? <> <Pelicula data={paginaClips} setData={setData}/> </>
+                ? <> <Pelicula data={paginaClips} setData={setData} imagenPortada={imagenPortada} /> </>
                 : <> 
                     <Navbar/>
                     
-                    <Pelicula data={paginaClips} setData={setData} jpg={true} />      
+                    <Pelicula data={paginaClips} setData={setData} jpg={true} imagenPortada={imagenPortada} />      
                 </>
             }
 
@@ -54,6 +55,7 @@ const ContenedorPelicula = () => {
                                     cambiarPagina={cambiarPagina} 
                                     numeroPagina={element}
                                     key={key}
+                                    
                                 /> 
                             
                             )

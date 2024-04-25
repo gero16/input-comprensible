@@ -4,7 +4,7 @@ import "./Serie.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
-const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
+const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) => {
 
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
@@ -26,10 +26,11 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, urlImagen }) => {
         "bojack-horseman": 30,
         "house-of-the-dragon": 30,
         "sex-education": 30,
-        "x-men-97": 10
+        "x-men-97": 10,
+        "breaking-bad": 60
     }
     const style = {
-        backgroundImage: urlImagen,
+        backgroundImage: `url('${ imagenPortada }') `,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `5% ${ posicionImagen[serie] }%`,
         backgroundSize: width < 540 ? "contain" : "cover",
