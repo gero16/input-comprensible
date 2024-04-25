@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../context/context";
+import Navbar from "../Navbar/Navbar";
+import "./AgregarTitulo.css"
 
 const AgregarTitulo = () => {
     
@@ -59,7 +61,8 @@ const AgregarTitulo = () => {
     console.log(titulo)
     return (
         <> 
-            <div className="div-agregar-video">
+            <Navbar> </Navbar>
+            <div className="div-agregar-titulo">
                 <h1 className="h1-agregar-clip"> Agregar Clip - Pelicula </h1>
                 <ul className="lista-formulario-clip">
                     <li>
@@ -74,7 +77,7 @@ const AgregarTitulo = () => {
                                 onChange={handleImageChange}
                             />
                             <label htmlFor="imagen-post" className="label-imagen">Seleccionar Archivo</label>
-                            <span className="span-foto">Ningun archivo Seleccionado.</span>
+                       
                         </div>
                     </li>
                     <li>

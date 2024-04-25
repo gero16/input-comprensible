@@ -1,0 +1,13 @@
+.div-agregar-titulo {
+    margin-top: 11%;
+    background-image: url("../../../public/estrellado.jpg");
+    background-position: 0 10%;
+    background-size: 180%;
+    padding: 15px;
+    border-radius:10px;
+}
+
+
+.label-imagen {
+    cursor: pointer;
+}
