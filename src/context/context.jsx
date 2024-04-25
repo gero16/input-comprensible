@@ -67,7 +67,7 @@ export const CustomProvider = ({ children }) => {
     }
 
 
-    const fetchClips = async (urlClips, urlGrabaciones) => {
+    const fetchClips = async (urlClips) => {
         const respuestaClips = await fetch(urlClips,  
             {
                 method: 'GET',
@@ -82,7 +82,7 @@ export const CustomProvider = ({ children }) => {
             //console.log(resp)
             if(!respClips) console.log("No hay data")
             if(respClips) {
-                console.log(respClips)
+                console.log(respClips.clips)
                 const arrayPaginas = cantidadPaginasHtml(respClips.clips)
 
                 setTotalPaginas(arrayPaginas)

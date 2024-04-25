@@ -3,7 +3,7 @@ import Clip from "../Clip/Clip"
 import "../Serie/Serie.css"
 import { useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
-import {  urlBackend_Desarrollo, urlOrigin } from "../../context/helpers"
+import {  urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers"
 import ClipDificultad from "./ClipDificultad"
 import BotonPagina from "../BotonPagina/BotonPagina"
 import { PaginasContext } from "../../context/contextPaginas"
@@ -11,85 +11,18 @@ import "./ClipDificultad.css"
 
 const ContenedorClipDificultad = () => {
 
-    const { dificultad } = useParams()
-    const navigate = useNavigate();
-    const {  urlGrabaciones,  traerGrabacion, traerGrabaciones } = useContext(Context)
+    const { dificultad, usuario } = useParams()
+    const {  fetchClips } = useContext(Context)
     const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina, setTotalPaginas, setPaginaClips  } = useContext(PaginasContext)
 
     const [data, setData] = useState([])
-    let {  usuario } = useParams();
 
-
-    const mostrarClipsPagina = (datos, primerValor, ultimoValor) => {
-        let paginas = []
-    
-        for (let index = primerValor; index < ultimoValor; index++) {
-            if(datos[index] === undefined) break
-            paginas.push(datos[index])
-        }      
-        setPaginaClips(paginas, primerValor, ultimoValor)
-    
-        return paginaClips
-    }
-    
-    const cantidadPaginasHtml = (data) => { 
-        let arrayPaginas = []
-        if(data.length <= 41) arrayPaginas = [1]
-        if(data.length > 41 && data.length < 81) arrayPaginas = [1,2]
-        if(data.length > 84 && data.length < 124) arrayPaginas = [1,2,3]
-        if(data.length > 125 && data.length < 164) arrayPaginas = [1,2,3,4]
-        if(data.length > 165 && data.length < 205) arrayPaginas = [1,2,3,4,5]
-        if(data.length > 206 && data.length < 246) arrayPaginas = [1,2,3,4,5,6]
-        
-        return arrayPaginas
-    }
-
-
-    const urlClips = `${urlBackend_Desarrollo}/clips/dificultad/${ dificultad }`
-
-    const fetchClips = async (urlClips) => {
-        const respuestaClips = await fetch(urlClips,  
-            {
-                method: 'GET',
-                headers: new Headers({
-                    "Origin": urlOrigin,
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                })
-            })
-        if(respuestaClips) {
-            const respClips = await respuestaClips.json();
-            //console.log(resp)
-            if(!respClips) console.log("No hay data")
-            if(respClips) {
-                // console.log(respGrabacionesClips)
-                const arrayPaginas = cantidadPaginasHtml(respClips.data)
-
-                setTotalPaginas(arrayPaginas)
-                mostrarClipsPagina(respClips.data, 0, 21)
-                setData(respClips.data)
-            }
-        }
-    }
-
+    const urlClips = `${ urlBackend_Produccion }/clips-grabaciones/dificultad/${ dificultad }/${ usuario }`
 
     useEffect(() => {
         fetchClips(urlClips)
-
         setearClipsPagina(data, paginaActual)
 
-        if(usuario) {
-            
-        }
-
-    }, [])
-
-    useEffect(() => {
-        setearClipsPagina(data, paginaActual)
-
-        if(usuario) {
-            
-        }
     }, [dificultad])
 
     useEffect(() => {
@@ -138,7 +71,7 @@ const ContenedorClipDificultad = () => {
                                         dificultad={element.dificultad}
                                         capitulo={element.capitulo}
                                         index={key}
-                                        grabacionID={ element.grabacion_id ? element.grabacion_id : ""}
+                                        grabacionID={ element.drive_grabacion ? element.drive_grabacion  : ""}
                                         categoria={element.categoria}
                                         numero_clip={element["numero_clip"]}
                                     />

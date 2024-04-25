@@ -23,6 +23,7 @@ import Pruebas from './Pruebas/Pruebas.jsx';
 import ListaPeliculas from './Components/ListaPeliculas/ListaPeliculas.jsx';
 import ListaSeries from './Components/ListaSeries/ListaSeries.jsx';
 import ContenedorClipDificultad from './Components/ClipDificultad/ContenedorClipDificultad.jsx';
+import AgregarTitulo from './Components/AgregarTitulo/AgregarTitulo.jsx';
 
 
 
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/pruebas/series/:serie/:temporada/:capitulo/:usuario",
         element:  <ContenedorPruebasSerie />,
+      },
+      {
+        path: "/agregar-titulo",
+        element:  <AgregarTitulo />,
       },
       {
         path: "/recursos", 
