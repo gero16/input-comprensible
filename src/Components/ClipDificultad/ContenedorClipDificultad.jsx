@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import Clip from "../Clip/Clip"
 import "../Serie/Serie.css"
-import { useNavigate, useParams } from "react-router-dom"
+import { NavLink, useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 import {  urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers"
 import ClipDificultad from "./ClipDificultad"
@@ -41,11 +41,11 @@ const ContenedorClipDificultad = () => {
                 <h1 className="mt-15 h1-dificultad"> Clips clasificados por Dificultad </h1>
 
                 <ul className="flex gap-20 ul-dificultad"> 
-                    <li className="very-easy"> Muy facil</li>
-                    <li className="easy"> Facil</li>
-                    <li className="medium"> Intermedio </li>
-                    <li className="hard"> Dificil </li>
-                    <li className="very-hard"> Muy Dificil </li>
+                    <li className="very-easy"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`} className={"very-easy"}>  Muy facil </NavLink> </li>
+                    <li className="easy"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`}  className={"easy"}>  Facil </NavLink> </li>
+                    <li className="medium">  <NavLink to={`/usuario/${usuario}/clips/dificultyad/medium`} className={"medium"}> Intermedio </NavLink> </li>
+                    <li className="hard"> <NavLink to={`/usuario/${usuario}/clips/dificultyad/hard`} className={"hard"}>  Dificil </NavLink> </li>
+                    <li className="very-hard"> <NavLink to={`/usuario/${usuario}/clips/dificultyad/very-hard`} className={"very-hard"}> Muy Dificil </NavLink>  </li>
                 </ul>
                   
 

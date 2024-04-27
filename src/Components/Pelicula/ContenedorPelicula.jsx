@@ -1,12 +1,12 @@
 
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Pelicula from './Pelicula';
 import { Context } from '../../context/context';
 import { PaginasContext } from '../../context/contextPaginas';
 import BotonPagina from '../BotonPagina/BotonPagina';
 import { urlBackend_Desarrollo } from '../../context/helpers';
+import { Link as Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 
 const ContenedorPelicula = () => {
     let { pelicula, usuario } = useParams();
