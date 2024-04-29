@@ -22,8 +22,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) 
     }
 
     const posicionImagen = {
-        "peaky-blinders": 39,
-        "bojack-horseman": 30,
+        "peaky-blinders": 20,
+        "bojack-horseman": 95,
         "house-of-the-dragon": 30,
         "sex-education": 30,
         "x-men-97": 10,
@@ -36,8 +36,6 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) 
         backgroundSize: width < 540 ? "contain" : "cover",
         filter: 'brightness(0.8)'
     }
-
-    
 
     const newCapitulo = transformarMayuscula(capitulo, 2)
  
@@ -68,7 +66,6 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) 
                   
                 <section className='flex-center'>
                     
-
                     { data.length > 0 
                         ? data.map((element, key) => {
 
