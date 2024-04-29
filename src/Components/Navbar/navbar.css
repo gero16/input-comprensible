@@ -27,7 +27,9 @@ h1 {
     background-image: url("../../../public/estrellado.jpg");
     background-size: 100%;
     background-position: 10% 26%;
+    width: 100%;
 }
+
 
 
 .lista-navbar {
@@ -81,7 +83,7 @@ h1 {
 
 
 .li-nav {
-  width: 90px;
+  width: 40px;
 }
 
 .li-nav-serie {
@@ -113,10 +115,11 @@ h1 {
 }
 
 @media (min-width: 800px) {
+  .nav {
+    background-position: 10% 38%;
+  }
   .li-nav {
-    width: 100px;
-    max-width: 135px;
-  
+    width: 70px;
   }
   .span-link {
     font-size: small;
@@ -124,7 +127,6 @@ h1 {
   }
   .lista-navbar {
     font-size: medium;
-    font-size: 25px;
   }
   .simbolo {
     font-size: x-large;

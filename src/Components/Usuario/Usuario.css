@@ -54,6 +54,12 @@ button {
 }
 
 
+@media (min-width: 800px) {
+ form {
+    background-size: 215%;
+    background-position: 50% 40%;
+ } 
+}
 @media (min-width: 1550px) {
     .grid-2 img {
      width: 350px;

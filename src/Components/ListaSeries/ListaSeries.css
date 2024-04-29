@@ -1,7 +1,7 @@
 .section-series {
-    margin: 12% auto 5% auto!important;
+    margin: 60% auto 5% auto!important;
+    
 }
-
 
 .article-pelicula {
     cursor: pointer;
@@ -15,4 +15,11 @@
     filter: brightness(90%);
     transform: scale(1.02);
     transition: 0.3s ease-in-out;
+
+}
+
+@media (min-width: 800px) {
+    .section-series {
+        margin: 12% auto 5% auto!important;
+    }
 }

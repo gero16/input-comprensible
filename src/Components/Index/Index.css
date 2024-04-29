@@ -4,7 +4,7 @@
 }
 
 .div-titulo {
-  margin-top: 16%;
+  margin-top: 75%;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.534);
   width: 100%;
@@ -158,6 +158,9 @@
 
 
 @media (min-width: 800px) {
+  .div-titulo {
+    margin-top: 25%;
+  }
   .foto-index {
     display: block!important;
   }
