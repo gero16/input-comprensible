@@ -34,14 +34,14 @@ const Recursos = () => {
                         <article>
                             <h2 className='h2-recursos'> Práctica </h2>
                             <NavLink to={`/recursos/practica`}> 
-                                <img src={ImageSpeaking}   className='image-listenings' alt="" />
+                                <img src={ImageSpeaking}   className='image-listenings' alt="imagen del recurso practica" />
                             </NavLink>
                         </article>
                     
                         <article>
                             <h2 className='h2-recursos'> Conversaciones Reales </h2>
                             <NavLink to={`/recursos/conversations`}> 
-                                <img src={ImageConversations}  className='image-conversations' alt="" />
+                                <img src={ImageConversations}  className='image-conversations' alt="imagen del recurso conversaciones" />
                             </NavLink>
                         </article>
         
@@ -52,13 +52,13 @@ const Recursos = () => {
                         <article className=''>
                                 <h2 className='h2-recursos'> Mejorar </h2>
                                 <NavLink to={`/recursos/mejorar`}> 
-                                    <img src={ImageListening} className='image-speaking' alt="" />
+                                    <img src={ImageListening} className='image-speaking' alt="imagen del recurso mejorar" />
                                 </NavLink>
                             </article>
                         <article>
                             <h2 className='h2-recursos'> Podcasts & AudioLibros </h2>
                             <NavLink to={`/recursos/podcasts`}> 
-                                <img src={ImagePodcast}  className='image-podcast' alt="" />
+                                <img src={ImagePodcast}  className='image-podcast' alt="imagen del recurso podcast y audiolibros" />
                             </NavLink>
                         </article>
         

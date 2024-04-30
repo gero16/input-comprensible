@@ -37,7 +37,7 @@ const ListaSeries = () => {
                     return (
                         <NavLink to={ linkDinamico(element[1]) } className="link-pelicula" > 
                             <article key={key} className="article-pelicula"> 
-                                <img src={element[5]} alt="" className="img-pelicula" title={element[0]}/>
+                                <img src={element[5]} alt={`imagen portada de la serie ${ element[0] }`} className="img-pelicula" title={element[0]}/>
                                 <h2 className="h2-lista-pelicula"> { element[0] } </h2>
                             </article>
                         </NavLink> 
