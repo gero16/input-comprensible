@@ -6,6 +6,7 @@
     width: 90vw;    
     padding: 20px;
     margin-top: 12%;
+
   }
 
   .portada {
@@ -15,6 +16,8 @@
   .section-video {
     margin: 15px 10px;
     height:660px;
+    padding: 10px;
+    border-bottom : 1px solid white;
   }
 
   
@@ -97,3 +100,14 @@ iframe {
 .iframe-grabacion {
   margin: 14px 0px;
 }
+
+
+
+@media (min-width: 800px) {
+
+.section-video {
+  
+}
+}
+
+

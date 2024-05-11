@@ -139,17 +139,18 @@
 .fondo-li-4 {
   position: relative;
   overflow: hidden;
+ 
 }
 
 .fondo-li-4::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: 10%;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: url("../../../public/fight-club-portada.png");
-  filter: blur(0px) brightness(80%)!important;
+  filter: blur(0px) brightness(80%);
   background-size: 300%;
 
   z-index: -1; /* Para que el fondo esté detrás del contenido */
@@ -187,31 +188,24 @@
 }
 
 .fondo-li-2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("../../../public/kill-bill-portada.jpg");
   background-size: 100%;
   background-position: 90%;
-  z-index: -1; /* Para que el fondo esté detrás del contenido */
 }
 
 .fondo-li-3::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("../../../public/scream-2022-portada.jpg");
   background-size: 140%;
   background-position: 40% 20%;
-  z-index: -1; /* Para que el fondo esté detrás del contenido */
-  filter: blur(0px);
 }}
+
+
+.fondo-li-4::before {
+  background-image: url("../../../public/fight-club-portada.png");
+  background-size: 160%;
+  background-position: 40% 36%;
+  left: 0;
+}
 
 
 
