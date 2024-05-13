@@ -188,20 +188,17 @@
 }
 
 .fondo-li-2::before {
-  background-image: url("../../../public/kill-bill-portada.jpg");
   background-size: 100%;
   background-position: 90%;
 }
 
 .fondo-li-3::before {
-  background-image: url("../../../public/scream-2022-portada.jpg");
   background-size: 140%;
   background-position: 40% 20%;
 }}
 
 
 .fondo-li-4::before {
-  background-image: url("../../../public/fight-club-portada.png");
   background-size: 160%;
   background-position: 40% 36%;
   left: 0;
