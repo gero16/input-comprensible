@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { Context } from '../../context/context'
 import { inject } from '@vercel/analytics';
 
+import imgSpiderman100 from "../../../public/spiderman-100.png"
+import imgSpiderman30 from "../../../public/spiderman-30.png"
+import imgSpiderman55 from "../../../public/spiderman-55.png"
+
 function App() {
   inject();
   const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
@@ -31,8 +35,8 @@ function App() {
 
           <ul className='ul-contenido flex-column gap-50'>
 
-            <li className="flex wrap li-index fondo-li p-30 flex-column-center">
-              
+          <li className="flex wrap li-index fondo-li p-30 flex-column-center">
+ 
                 <p className="p-index"> En esta página podrás encontrar un lugar donde practicar el Input Comprensible
                     mediante clips cortos de series y peliculas. Actualmente solo se encuentran clips de peliculas y 
                     series en inglés. Tanto inglesas como estado unidenses
@@ -48,7 +52,8 @@ function App() {
                 </p>
              
          
-            </li>
+                </li>
+ 
 
             <li className="flex wrap li-index fondo-li-2 p-30 flex-column-center">
  
