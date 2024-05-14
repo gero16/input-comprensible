@@ -5,9 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { Context } from '../../context/context'
 import { inject } from '@vercel/analytics';
 
-import imgSpiderman100 from "../../../public/spiderman-100.png"
-import imgSpiderman30 from "../../../public/spiderman-30.png"
-import imgSpiderman55 from "../../../public/spiderman-55.png"
 
 function App() {
   inject();
