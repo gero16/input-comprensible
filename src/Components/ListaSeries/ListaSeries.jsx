@@ -20,7 +20,7 @@ const ListaSeries = () => {
 
     let url;
     const linkDinamico = (serie) => {
-        if(usuario) url = `/usuario/${usuario}/series/${ serie}/temporada-1/capitulo-1 `
+        if(usuario) url = `/usuario/${ usuario }/series/${ serie }/temporada-1/capitulo-1 `
         if(!usuario) url = `/series/${ serie }/temporada-1/capitulo-1 `
         return url
     }

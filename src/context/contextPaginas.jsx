@@ -13,7 +13,7 @@ export const PaginasProvider = ({ children }) => {
     const [totalPaginas, setTotalPaginas] = useState([]) 
 
     const setearClipsPagina = (data, paginaActual) => {
-
+        console.log(data)
         if(paginaActual === 1)  mostrarClipsPagina(data, 0, 21)
         if(paginaActual === 2) mostrarClipsPagina(data, 22, 42)
         if(paginaActual === 3) mostrarClipsPagina(data, 43, 63)

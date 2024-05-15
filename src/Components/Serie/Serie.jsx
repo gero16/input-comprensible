@@ -6,9 +6,11 @@ import { Context } from "../../context/context"
 
 const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) => {
 
+    const { usuario } = useParams()
     const navigate = useNavigate();
     const { transformarMayuscula, setData } = useContext(Context)
     const [width, setWidth] = useState(window.innerWidth);
+
     //console.log(data) 
     let numTemporada = temporada.split("-")
 
@@ -37,7 +39,14 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) 
         filter: 'brightness(0.8)'
     }
 
-    const newCapitulo = transformarMayuscula(capitulo, 2)
+    let url;
+    const linkDinamico = (capitulo) => {
+        console.log(capitulo)
+        capitulo = transformarMinuscula(capitulo)
+        if(usuario) url = `/usuario/${ usuario }/series/${ serie }/${ temporada }/${ capitulo }`
+        if(!usuario) url = `/series/${ serie }/${ temporada }/${ capitulo }`
+        return url
+    }
  
     return (
         <>
@@ -54,8 +63,8 @@ const Serie = ({data, serie, temporada ,capitulos, capitulo, imagenPortada,  }) 
                                 ? capitulos.map((element, key) => {
                                     return (
                                         <li className="li-capitulos" key={key} 
-                                            onClick={() => navigate(`/series/${serie}/${temporada}/${transformarMinuscula(element)}`)}>
-                                            { separarCapitulo(element)}
+                                            onClick={() => navigate( linkDinamico(element) ) }>
+                                                { separarCapitulo(element)}
                                         </li>
                                     )})
                                 : <p> Cargando capitulos... </p>

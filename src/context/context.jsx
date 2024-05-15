@@ -68,6 +68,7 @@ export const CustomProvider = ({ children }) => {
 
 
     const fetchClips = async (urlClips) => {
+        console.log(urlClips)
         const respuestaClips = await fetch(urlClips,  
             {
                 method: 'GET',
@@ -87,6 +88,7 @@ export const CustomProvider = ({ children }) => {
 
                 setTotalPaginas(arrayPaginas)
                 mostrarClipsPagina(respClips.clips, 0, 21)
+                console.log(respClips.clips)
                 setData(respClips.clips)
             }
         }

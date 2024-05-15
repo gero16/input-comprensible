@@ -20,7 +20,7 @@ const ContenedorSerie = () => {
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
      
-    const urlClipsGrabaciones = `${ urlBackend_Produccion }/clips-grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
+    const urlClipsGrabaciones = `${ urlBackend_Desarrollo }/clips-grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
