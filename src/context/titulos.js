@@ -49,7 +49,7 @@ export const fetchTitulos = async (titulos, setTitulos) => {
 
 export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
     let arrayTitulos = []
-    const url = `${ urlBackend_Desarrollo }/titulos/peliculas`
+    const url = `${ urlBackend_Produccion }/titulos/peliculas`
     try {
         const response = await fetch(url,  
             {
