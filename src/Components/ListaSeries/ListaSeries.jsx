@@ -33,17 +33,25 @@ const ListaSeries = () => {
             
             { titulos ?
                 titulos.map((element, key) => {
-
+                    console.log(titulos)
                     return (
-                        <NavLink to={ linkDinamico(element[1]) } className="link-pelicula" > 
-                            <article key={key} className="article-pelicula"> 
-                                <img src={element[5]} alt={`imagen portada de la serie ${ element[0] }`} className="img-pelicula" title={element[0]}/>
-                                <h2 className="h2-lista-pelicula"> { element[0] } </h2>
+                        <article className="container-pelicula" key={key}>
+                            <NavLink to={linkDinamico(element[1])} className="link-pelicula">
+                                <picture>
+                                    <source srcSet={element[5]} media="(min-width: 1550px)" width="500" height="300"/>
+                                    <source srcSet={element[7]} media="(min-width: 800px)" width="380" height="210"/>
+                                    <img 
+                                        src={element[6]} alt={`imagen portada de la pelicula ${element[1]}`} 
+                                        className="img-pelicula" title={element[0]}
+                                        width="300" height="180" loading="lazy" decoding="async" 
+                                    />
+                                    </picture>
+                                </NavLink>
+                                <h2 className="h2-lista-pelicula">{element[0]}</h2>
                             </article>
-                        </NavLink> 
-                    )
-                }) 
-                : <> </>
+                        )
+                    }) 
+                    : <> </>
             }
             </section>
         </>

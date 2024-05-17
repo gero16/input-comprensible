@@ -1,61 +1,56 @@
-
 .section-peliculas {
     margin: 55% auto 5% auto;
 }
 
-.article-pelicula {
-    cursor: pointer;
+.container-pelicula {
+    position: relative; /* Contenedor relativo */
+    display: inline-block; /* Asegura que los contenedores estén alineados correctamente */
+    margin-bottom: 10px; /* Espacio entre elementos */
 }
 
 .img-pelicula {
-    width: 90vw;
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.img-pelicula:hover {
+.link-pelicula:hover .img-pelicula {
     filter: brightness(90%);
-    transform: scale(1.02);
-    transition: 0.3s ease-in-out;    
-}
-
-.link-pelicula {
-    position: relative;
+    transform: scale(1.02); /* Escala la imagen sin afectar el flujo del documento */
 }
 
 .h2-lista-pelicula {
     background-color: rgba(0, 0, 0, 0.637);
     width: 100%;
-    position: absolute;
+    position: absolute; /* Posiciona el subtítulo absolutamente */
     color: rgb(255, 217, 0);
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%); /* Centra horizontalmente */
     margin: 0px;
     padding: 5px;
     font-size: 1.4vw;
     font-family: Fantasy;
-
+    transition: opacity 0.7s, max-height 0.7s;
+    z-index: 13;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: opacity 0.5s, max-height 0.5s;    
 }
 
-.img-pelicula:hover + .h2-lista-pelicula {
+.link-pelicula:hover + .h2-lista-pelicula {
     opacity: 1;
     max-height: 1000px;
     transition: opacity 0.5s, max-height 0.5s;
     z-index: 3;
 }
 
-
 @media (min-width: 800px) {
     .section-peliculas {
         margin: 12% auto 5% auto;
     }
-    .img-pelicula {
-        width: auto; /* Ajusta el ancho automáticamente para mantener la proporción */
-        height: 35vh; /* Establece una altura fija */
-    }
 }
 
-
+@media (min-width: 1550px) {
+    .section-peliculas {
+        margin: 12% auto 5% auto;
+    }
+}

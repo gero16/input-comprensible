@@ -49,7 +49,7 @@ export const fetchTitulos = async (titulos, setTitulos) => {
 
 export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
     let arrayTitulos = []
-    const url = `${ urlBackend_Produccion }/titulos/peliculas`
+    const url = `${ urlBackend_Desarrollo }/titulos/peliculas`
     try {
         const response = await fetch(url,  
             {
@@ -64,12 +64,15 @@ export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
                 const resp = await response.json();
                 //console.log(resp)
                 if(!resp) console.log("No hay data")
-                
-                //console.log(response)
-                resp.data.forEach(element => {
-                    const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
+            
+                resp.data.forEach(element => {    
+                    const titulo = 
+                    [
+                        element.titulo, element.subtitulo, element.categoria, 
+                        element.temporada, element.capitulo, element.imagen, 
+                        element.imagen_mini, element.imagen_med 
+                    ]
                     arrayTitulos.push(titulo)
-             
                 });
                
                 setTitulos(arrayTitulos)
@@ -109,7 +112,11 @@ export const fetchTitulosSeries = async (titulos, setTitulos,) => {
                 
                 //console.log(response)
                 resp.data.forEach(element => {
-                    const titulo = [element.titulo, element.subtitulo, element.categoria, element.temporada, element.capitulo, element.imagen]
+                    const titulo = [
+                        element.titulo, element.subtitulo, element.categoria, 
+                        element.temporada, element.capitulo, element.imagen,
+                        element.imagen_mini, element.imagen_med 
+                    ]
                     arrayTitulos.push(titulo)
              
                 });
