@@ -34,8 +34,8 @@ function App() {
 
           <li className="flex wrap li-index fondo-li p-30 flex-column-center">
  
-                <h3 className="p-index"> En esta página podrás encontrar un lugar donde practicar el Input Comprensible
-                    mediante clips cortos de series y peliculas. Actualmente solo se encuentran clips de peliculas y 
+                <h3 className="p-index"> En esta página podrás encontrar un lugar donde practicar tanto input comprensible como el 
+                   shadowing mediante clips cortos de series y peliculas. Actualmente solo se encuentran clips de peliculas y 
                     series en inglés. Tanto inglesas como estado unidenses
                 </h3>
                 <h2> ¿ Que es el Input Comprensible ?</h2>
@@ -78,13 +78,14 @@ function App() {
 
             <li className="flex wrap li-index fondo-li-3 p-30 flex-column-center" >
               <h2> Shadowing </h2>
-              <h3> El shadowing es una técnica de aprendizaje de idiomas en la que que se busca repetir un audio justo después de escucharlo. La idea es tratar de actuar como un "eco" o una "sombra" (de ahí el nombre "shadowing). 
+              <h3 className='p-index' > El shadowing es una técnica de aprendizaje de idiomas en la que que se busca repetir un audio justo después de escucharlo. La idea es tratar de actuar como un "eco" o una "sombra" (de ahí el nombre "shadowing). 
                 Se escucha, en base a ello se trata de repeir las palabras en voz alta. 
               </h3>
               <h2> ¿Cómo ayuda el shadowing? </h2>
-              <h3> 
+              <h3 className='p-index'> 
               El objetivo principal de la técnica del shadowing es el de familiarizarse con el idioma extranjero. A la larga se busca acostumbrarse eficazmente al sonido del idioma extranjero cuando se lo repita. 
-              Esto te ayudará especialmente a entrenar tu comprensión auditiva. El shadowing también ayuda a mejorar la pronunciación. Cuando haces shadowing, entrenas los movimientos de la lengua y boca típicos de tu idioma extranjero. Si aprendes los patrones de tu lengua extranjera, podrás utilizarlos mejor y d
+              Esto te ayudará especialmente a entrenar tu comprensión auditiva. El shadowing también ayuda a mejorar la pronunciación. Cuando haces shadowing, entrenas los movimientos de la lengua y boca típicos de tu idioma extranjero.
+
               </h3>
 
           
