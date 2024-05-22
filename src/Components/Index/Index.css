@@ -94,6 +94,7 @@
   background-position: 50%;
   filter: blur(0px) brightness(60%);
   z-index: -1; /* Para que el fondo esté detrás del contenido */
+  will-change: transform, filter; /* Informar al navegador sobre los cambios esperados */
 }
 
 
