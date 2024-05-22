@@ -32,7 +32,7 @@ function App() {
 
           <ul className='ul-contenido flex-column gap-50'>
 
-          <li className="flex wrap li-index fondo-li p-30 flex-column-center">
+            <li className="flex wrap li-index fondo-li p-30 flex-column-center">
  
                 <h3 className="p-index"> En esta página podrás encontrar un lugar donde practicar tanto input comprensible como el 
                    shadowing mediante clips cortos de series y peliculas. Actualmente solo se encuentran clips de peliculas y 
@@ -49,7 +49,7 @@ function App() {
                 </h4>
              
          
-                </li>
+              </li>
  
 
             <li className="flex wrap li-index fondo-li-2 p-30 flex-column-center">
