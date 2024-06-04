@@ -43,6 +43,21 @@
     z-index: 3;
 }
 
+.h3-modo-editar {
+
+    position: relative;
+    top: 15%;
+    color: yellow;
+    cursor: pointer;
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+}
+
+.h3-modo-editar:hover {
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
 @media (min-width: 800px) {
     .section-peliculas {
         margin: 12% auto 5% auto;

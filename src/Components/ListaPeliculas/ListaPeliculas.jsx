@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 
 const ListaPeliculas = () => {
     const [titulos, setTitulos] = useState([])
+    const [esAdmin, setEsAdmin] = useState(false)
+    const [modoEditar, setModoEditar] = useState(false)
     const { fetchTitulosPelicula,fetchTitulos, urlBackend_Produccion, traerImagenFomato, evaluarSesion, nombreUsuario } = useContext(Context)
     const { usuario } = useParams()
     
@@ -13,25 +15,39 @@ const ListaPeliculas = () => {
         fetchTitulosPelicula(titulos, setTitulos)
    
         console.log(titulos)
-        evaluarSesion()
+        const resultado = evaluarSesion()
+        console.log(resultado)
+        if(resultado.rol === "ADMIN") {
+            setEsAdmin(true)
+            setModoEditar(true)
+        }
+        if(resultado.rol !== "USER"  || !resultado.rol) setEsAdmin(false)
     }, [])
 
     let url;
     const linkDinamico = (pelicula) => {
         if(usuario) url = `/usuario/${ usuario }/peliculas/${ pelicula } `
         if(!usuario) url = `/peliculas/${ pelicula }/ `
+        if(modoEditar) url = `/usuario/${ usuario }/peliculas/${ pelicula }/editar `
         return url
     }
 
     return (
         <>
             <Navbar> </Navbar>
+
+            { esAdmin 
+                ? <h3> </h3>
+                : <h3 className="h3-modo-editar" onClick={ ((e)=> setModoEditar(!modoEditar)) } > { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
+            }
             <section className="flex-center gap-30 section-peliculas"> 
-            {titulos ? 
-                titulos.map((element, key) => {
-                    console.log(element)
+          
+    
+            { titulos 
+                ? titulos.map((element, key) => {
                     return (
                         <article className="container-pelicula" key={key}>
+                            
                             <NavLink to={linkDinamico(element[1])} className="link-pelicula">
                                 <picture>
                                     <source srcSet={element[5]} media="(min-width: 1550px)" width="500" height="300"/>
@@ -47,7 +63,7 @@ const ListaPeliculas = () => {
                             </article>
                         )
                     }) 
-                    : <> </>
+                    : <> </> 
                 }
 
 

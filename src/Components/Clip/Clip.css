@@ -101,7 +101,12 @@ iframe {
   margin: 14px 0px;
 }
 
-
+.span-editar-clip {
+  position: relative;
+  right: 50%;
+  z-index: 3;
+  cursor: pointer;
+}
 
 @media (min-width: 800px) {
 

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams, NavLink } from 'react-router-dom';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
 
-const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip }) => {
+const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
 
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula } = useContext(Context);
     const { usuario, temporada, serie } = useParams();
@@ -84,9 +84,14 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
+                {
+                    /*    <span> {id} </span>  */ 
+                }
+             
                 { imagen ?  <img src={imagen} alt="imagen portada" /> : <> </> }
                 <section className="section-video">
                     <section className="section-audio">
+                        <NavLink to={`${id}`}  className="span-editar-clip"> Editar </NavLink>
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
                         <span className={`bold ${dificultad} `}> {newDificultad} </span>

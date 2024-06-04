@@ -24,6 +24,8 @@ import ListaPeliculas from './Components/ListaPeliculas/ListaPeliculas.jsx';
 import ListaSeries from './Components/ListaSeries/ListaSeries.jsx';
 import ContenedorClipDificultad from './Components/ClipDificultad/ContenedorClipDificultad.jsx';
 import AgregarTitulo from './Components/AgregarTitulo/AgregarTitulo.jsx';
+import ContenedorPeliculaEditar from './Components/PeliculaEditar/ContenedorPeliculaEditar.jsx';
+import EditarClipPelicula from './Components/EditarClip/EditarClipPelicula.jsx';
 
 
 
@@ -122,6 +124,15 @@ const router = createBrowserRouter([
             path: "/usuario/:usuario/clips/dificultad/:dificultad",
             element:  <ContenedorClipDificultad />,
           },
+          {
+            path: "/usuario/:usuario/peliculas/:pelicula/editar",
+            element:  <ContenedorPeliculaEditar />,
+          },
+           {
+            path: "/usuario/:usuario/peliculas/:pelicula/editar/:idclip",
+            element:  <EditarClipPelicula />,
+          },
+
         ]
       },
     
