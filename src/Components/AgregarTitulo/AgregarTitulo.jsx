@@ -67,9 +67,9 @@ const AgregarTitulo = () => {
     return (
         <> 
             <Navbar> </Navbar>
-            <div className="div-agregar-titulo">
+            <div>
                 <h1 className="h1-agregar-clip"> Agregar Clip - Pelicula </h1>
-                <ul className="lista-formulario-clip">
+                <ul className="lista-formulario-clip div-agregar-titulo">
                     <li>
                         <label htmlFor="" className="label-crear"> Imagen </label>
                         <div className="grid-input-img">
