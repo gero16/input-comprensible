@@ -106,9 +106,30 @@ const EditarClipPelicula = () => {
                 <ul className="lista-formulario-clip">
                     <li>
                         <label htmlFor=""> Nombre de la Pelicula  </label>
-                        <select name="select">
-                           <option value={pelicula}> {clip.titulo}</option>
-                        </select>
+                     
+                           <input 
+                            value={clip.titulo} 
+                            onChange={(e) => setClip({ 
+                                ...clip,
+                                titulo : e.target.value
+                            })} 
+                           
+                           /> 
+                
+                    </li>
+                    
+                    <li>
+                        <label htmlFor=""> Subtitulo de la Pelicula  </label>
+                     
+                           <input 
+                            value={clip.subtitulo} 
+                            onChange={(e) => setClip({ 
+                                ...clip,
+                                titulo : e.target.value
+                            })} 
+                           
+                           /> 
+                
                     </li>
                     
                     <li>
