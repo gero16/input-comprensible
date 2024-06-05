@@ -43,9 +43,9 @@ const ContenedorClipDificultad = () => {
                 <ul className="flex gap-20 ul-dificultad"> 
                     <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`} className={"very-easy"}>  Muy facil </NavLink> </li>
                     <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`}  className={"easy"}>  Facil </NavLink> </li>
-                    <li className="link-dificultad">  <NavLink to={`/usuario/${usuario}/clips/dificultyad/medium`} className={"medium"}> Intermedio </NavLink> </li>
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultyad/hard`} className={"hard"}>  Dificil </NavLink> </li>
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultyad/very-hard`} className={"very-hard"}> Muy Dificil </NavLink>  </li>
+                    <li className="link-dificultad">  <NavLink to={`/usuario/${usuario}/clips/dificultad/medium`} className={"medium"}> Intermedio </NavLink> </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/hard`} className={"hard"}>  Dificil </NavLink> </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-hard`} className={"very-hard"}> Muy Dificil </NavLink>  </li>
                 </ul>
                   
 
