@@ -8,7 +8,8 @@ import Navbar from "../Navbar/Navbar";
 const ListaSeries = () => {
     const { usuario } = useParams()
     const [titulos, setTitulos] = useState([])
-
+    const [esAdmin, setEsAdmin] = useState(false)
+    const [modoEditar, setModoEditar] = useState(false)
     const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion } = useContext(Context)
 
     
@@ -20,8 +21,9 @@ const ListaSeries = () => {
 
     let url;
     const linkDinamico = (serie) => {
-        if(usuario) url = `/usuario/${ usuario }/series/${ serie }/temporada-1/capitulo-1 `
-        if(!usuario) url = `/series/${ serie }/temporada-1/capitulo-1 `
+        if(usuario) url = `/usuario/${ usuario }/series/${ serie }/temporada-1/capitulo-1`
+        if(!usuario) url = `/series/${ serie }/temporada-1/capitulo-1`
+        if(modoEditar) url = `/usuario/${ usuario }/series/${ serie }/temporada-1/capitulo-1/editar `
         return url
     }
 
@@ -29,6 +31,12 @@ const ListaSeries = () => {
 
         <>
             <Navbar> </Navbar>
+
+            { esAdmin 
+                ? <h3> </h3>
+                : <h3 className="h3-modo-editar" onClick={ ((e)=> setModoEditar(!modoEditar)) } > { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
+            }
+
             <section className="flex-center gap-30 section-series"> 
             
             { titulos ?

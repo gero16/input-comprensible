@@ -73,9 +73,9 @@ const EditarClipPelicula = () => {
      
     }, [])
 
-    const agregarClip = async (data) => {
-        
-        let response = await fetch(`${ urlBackend_Produccion }/agregar-clip/pelicula`, {
+    const actualizarClip = async (data, idClip) => {
+        console.log(data)
+        let response = await fetch(`${ urlBackend_Produccion }/editar/clip/${ idClip }`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
@@ -87,14 +87,10 @@ const EditarClipPelicula = () => {
 
           if(response.status === 200) {
             let result = await response.json();
-            console.log(result.Clip)
-            setMensaje(result.Clip)
-            
-            setClip({
-                ...clip, 
-                nombre_clip : `${clip.subtitulo}-${ clip.numero_clip + 1  }`,
-                numero_clip : Number(clip.numero_clip) + 1
-            })
+            console.log(result)
+            console.log(result.Mensaje)
+            setMensaje(result.Mensaje)
+        
           }
     }
 
@@ -125,7 +121,7 @@ const EditarClipPelicula = () => {
                             value={clip.subtitulo} 
                             onChange={(e) => setClip({ 
                                 ...clip,
-                                titulo : e.target.value
+                                subtitulo : e.target.value
                             })} 
                            
                            /> 
@@ -211,7 +207,7 @@ const EditarClipPelicula = () => {
                             />
                     </li>
                     <li id="li-agregar-clip">
-                        <button onClick={() => agregarClip(clip) }> Agregar Clip </button>
+                        <button onClick={() => actualizarClip(clip, idclip) }> Actualizar Info del Clip </button>
                     </li>
 
                     <li>

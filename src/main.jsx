@@ -26,6 +26,8 @@ import ContenedorClipDificultad from './Components/ClipDificultad/ContenedorClip
 import AgregarTitulo from './Components/AgregarTitulo/AgregarTitulo.jsx';
 import ContenedorPeliculaEditar from './Components/PeliculaEditar/ContenedorPeliculaEditar.jsx';
 import EditarClipPelicula from './Components/EditarClip/EditarClipPelicula.jsx';
+import EditarClipSerie from './Components/EditarClip/EditarClipSerie.jsx';
+import ContenedorSerieEditar from './Components/SerieEditar/ContenedorSerieEditar.jsx';
 
 
 
@@ -128,11 +130,18 @@ const router = createBrowserRouter([
             path: "/usuario/:usuario/peliculas/:pelicula/editar",
             element:  <ContenedorPeliculaEditar />,
           },
+          {
+            path: "/usuario/:usuario/series/:serie/:temporada/:capitulo/editar",
+            element:  <ContenedorSerieEditar />,
+          },
            {
             path: "/usuario/:usuario/peliculas/:pelicula/editar/:idclip",
             element:  <EditarClipPelicula />,
           },
-
+          {
+            path: "/usuario/:usuario/series/:serie/:temporada/:capitulo/editar/:idclip",
+            element:  <EditarClipSerie />,
+          },
         ]
       },
     
