@@ -1,14 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../context/context";
+import { urlOrigin } from "../../context/helpers";
+
+import "./EditarClip.css"
 
 const EditarClipPelicula = () => {
     
-    let { pelicula, temporada, usuario, capitulo } = useParams();
+    let { pelicula, temporada, usuario, capitulo, idclip } = useParams();
     const { fetchTitulos, urlBackend_Produccion, urlBackend_Desarrollo, separarTexto, transformarMayuscula, 
         fetchCantidadClips, evaluarSesion  } = useContext(Context)
-
+     
     const [titulos, setTitulos] = useState([])
+    const [infoClip, setInfoClip] = useState([])
 
     const [mensaje, setMensaje] = useState("")
 
@@ -26,21 +30,45 @@ const EditarClipPelicula = () => {
     })
 
    
+    const fetchClip = async (urlClips) => {
+        console.log(urlClips)
+        const respuestaClip = await fetch(urlClips,  
+            {
+                method: 'GET',
+                headers: new Headers({
+                    "Origin": urlOrigin,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                })
+            })
+        if(respuestaClip) {
+            const respClip = await respuestaClip.json();
+            //console.log(resp)
+            if(!respClip) console.log("No hay data")
+            if(respClip) {
+                console.log(respClip.data)
+                setClip({
+                    titulo : respClip.data.titulo,
+                    subtitulo: respClip.data.subtitulo,
+                    categoria: "pelicula",
+                    url: respClip.data.url,
+                    frase: respClip.data.frase,
+                    dificultad: respClip.data.dificultad,
+                    nombre_clip: respClip.data.nombre_clip,
+                    numero_clip: respClip.data.numero_clip
+                })
+            }
+        }
+    }
+
 
     useEffect(() => {
         fetchTitulos(titulos, setTitulos)  
        
-        const urlCantidadPelicula = `${ urlBackend_Produccion }/peliculas/${clip.subtitulo}/cantidad`
-        let resultado = fetchCantidadClips(urlCantidadPelicula)
-        resultado.then((cantidadClip) => {
-             console.log(cantidadClip)
-             setClip({
-                ...clip, 
-                nombre_clip : `${clip.subtitulo}-${ cantidadClip }`,
-                numero_clip : cantidadClip
-            })
-        })
-
+        const urlClipPelicula = `${ urlBackend_Produccion }/info-clip/peliculas/${idclip}`
+        console.log(idclip)
+        fetchClip(urlClipPelicula)
+       
         evaluarSesion()
      
     }, [])
@@ -72,7 +100,7 @@ const EditarClipPelicula = () => {
 
     return (
         <> 
-            <div className="div-agregar-video">
+            <div className="div-editar-clip">
                 <h1 className="h1-agregar-clip"> Editar Clip - Pelicula </h1>
 
                 <ul className="lista-formulario-clip">
@@ -124,6 +152,7 @@ const EditarClipPelicula = () => {
                                 frase : e.target.value
                             })} 
                             placeholder="It’s so good to be home!"
+                            value={clip.frase}
                         />
                     </li>
                     <li>
@@ -133,10 +162,10 @@ const EditarClipPelicula = () => {
                                 ...clip,
                                 dificultad: e.target.value
                             })} 
-                        
+                            value={clip.dificultad}
                         >
                             <option value="very-easy" >  very easy </option>
-                            <option value="easy" defaultValue> easy </option>
+                            <option value="easy"> easy </option>
                             <option value="medium"> medium  </option>
                             <option value="hard"> hard  </option>
                             <option value="very-hard"> very hard  </option>

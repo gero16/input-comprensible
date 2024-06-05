@@ -1,0 +1,11 @@
+.lista-formulario-clip {
+    margin-top: 10%;
+}
+
+.div-editar-clip {
+    background-image: url("/public/estrellado.avif");
+    background-position: 0 20%;
+    background-size: 100%;
+    padding: 15px;
+    border-radius: 10px;
+}
