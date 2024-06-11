@@ -7,8 +7,9 @@ import { Context } from "../../context/context";
 const Navbar = () => {
     const [titulos, setTitulos] = useState([])
     const navigate = useNavigate()
-    const { fetchTitulos, urlBackend_Produccion, evaluarSesion, usuarioSesion, nombreUsuario } = useContext(Context)
+    const { fetchTitulos, urlBackend_Produccion, evaluarSesion, usuarioSesion,setUsuarioSesion, nombreUsuario } = useContext(Context)
     
+  
     let { usuario } = useParams();
 
 
@@ -19,6 +20,7 @@ const Navbar = () => {
 
     const cerrarSesion = () => {
         localStorage.removeItem("sesion");
+        setUsuarioSesion(false)
         navigate("/")
     }
 
