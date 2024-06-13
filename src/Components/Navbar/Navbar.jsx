@@ -105,7 +105,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li className="li-nav">
-                                <NavLink to={`/usuario/${ nombreUsuario }/clips/dificultad/easy`}> 
+                                <NavLink to={`/usuario/${ nombreUsuario }/clips/dificultad/principiante`}> 
                                     <span className="span-link "> Dificultad </span>
                                 </NavLink>
                             </li>

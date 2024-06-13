@@ -157,10 +157,36 @@ export const CustomProvider = ({ children }) => {
                setImagenPortada(resp.data.imagen)
             }
          
-        
     }
-    
 
+    const dificultadIdioma = {
+        "very-easy" : "Principiante",
+        "easy"      : "Novato",
+        "medium"    : "Intermedio",
+        "hard"      : "Avanzado",
+        "very-hard" : "Experto"
+     }
+    
+    
+     const dificultadEsp = (dificultad, valor) => {
+        if(valor) {
+            console.log(dificultad)
+            const nuevo = dificultadIdioma[`${dificultad}`]
+            console.log(nuevo)
+            return nuevo
+        }
+        if(!valor) {
+            const encontrarClave = dificultad;
+
+            const entry = Object.entries(dificultadIdioma).find(([key, value]) => value === encontrarClave);
+            const nuevo = entry ? entry[0] : null;
+            console.log(nuevo)
+            return nuevo
+            
+        }
+      return nuevo
+         
+    }
 return (
     <Context.Provider 
         value={{ clickGrabar, mostrarRespuesta, addAudioElement,
@@ -168,7 +194,8 @@ return (
             grabacionLocalStorage, setGrabacionLocalStorage, 
             cantidadPaginasHtml, fetchClips, data, setData, separarTexto, fetchCantidadClips, 
             traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
-             usuarioSesion, setUsuarioSesion,nombreUsuario, traerImagenPortada, imagenPortada
+             usuarioSesion, setUsuarioSesion,nombreUsuario, traerImagenPortada, imagenPortada,
+             dificultadIdioma,dificultadEsp
             }}> 
             
         { children } 

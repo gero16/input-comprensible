@@ -7,7 +7,8 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/help
 
 const ClipDificultad = ({ id, subtitulo, frase, index, video, numero_clip }) => {
 
-    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula } = useContext(Context)
+    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula, 
+        dificultadIdioma, dificultadEsp } = useContext(Context)
     let {  usuario, dificultad } = useParams();
     const recorderControls = useAudioRecorder()
 
@@ -17,7 +18,7 @@ const ClipDificultad = ({ id, subtitulo, frase, index, video, numero_clip }) => 
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1)
     const segundaPalabra = dificultad.includes("-") ? separarDificultad[1].charAt(0).toUpperCase() + separarDificultad[1].slice(1) : " "
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra
-    
+
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -36,7 +37,7 @@ const ClipDificultad = ({ id, subtitulo, frase, index, video, numero_clip }) => 
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
 
-                        <span className={`bold ${dificultad} `}> { newDificultad } </span>
+                        <span className={`bold ${dificultad} `}> { transformarMayuscula(dificultad, 1) } </span>
                         <input type="text" className={`input-${ subtitulo }-${ index } input-frase`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
 

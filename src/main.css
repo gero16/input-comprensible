@@ -181,23 +181,23 @@
   font-weight: bold;
 }
 
-.very-easy {
+.very-easy, .principiante {
   color: rgb(168, 255, 87);
   }
 
-.easy {
+.easy, .novato {
   color: green;
 }
 
-.medium {
+.medium, .intermedio {
   color: rgb(241, 219, 14);
 }
 
-.hard {
+.hard, .avanzado{
   color: rgb(255, 145, 0);
 }
 
-.very-hard {
+.very-hard, .experto {
   color: red;
 }
 

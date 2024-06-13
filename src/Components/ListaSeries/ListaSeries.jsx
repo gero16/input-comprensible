@@ -10,12 +10,23 @@ const ListaSeries = () => {
     const [titulos, setTitulos] = useState([])
     const [esAdmin, setEsAdmin] = useState(false)
     const [modoEditar, setModoEditar] = useState(false)
-    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion } = useContext(Context)
+    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion, setUsuarioSesion, usuarioSesion  } = useContext(Context)
 
     
     useEffect(() => {
         fetchTitulosSeries(titulos, setTitulos)
-        evaluarSesion()
+
+        const resultado = evaluarSesion()
+        console.log(resultado)
+        if(!resultado) setUsuarioSesion(false)
+        if(resultado) {
+            setUsuarioSesion(true)
+            if(resultado.rol === "ADMIN") {
+                setEsAdmin(true)
+                setModoEditar(true)
+            }
+            if(resultado.rol !== "USER"  || !resultado.rol) setEsAdmin(false)
+        }
     }, [])
 
 
@@ -32,9 +43,9 @@ const ListaSeries = () => {
         <>
             <Navbar> </Navbar>
 
-            { esAdmin 
-                ? <h3> </h3>
-                : <h3 className="h3-modo-editar" onClick={ ((e)=> setModoEditar(!modoEditar)) } > { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
+            { usuarioSesion && esAdmin 
+                ? <h3 className="h3-modo-editar" onClick={ ((e)=> setModoEditar(!modoEditar)) } > { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
+                : <h3> </h3>
             }
 
             <section className="flex-center gap-30 section-series"> 

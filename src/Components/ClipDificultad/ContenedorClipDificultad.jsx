@@ -3,7 +3,7 @@ import Clip from "../Clip/Clip"
 import "../Serie/Serie.css"
 import { NavLink, useNavigate, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
-import {  urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers"
+import {  transformarMayuscula, urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers"
 import ClipDificultad from "./ClipDificultad"
 import BotonPagina from "../BotonPagina/BotonPagina"
 import { PaginasContext } from "../../context/contextPaginas"
@@ -12,12 +12,17 @@ import "./ClipDificultad.css"
 const ContenedorClipDificultad = () => {
 
     const { dificultad, usuario } = useParams()
-    const {  fetchClips } = useContext(Context)
-    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina, setTotalPaginas, setPaginaClips  } = useContext(PaginasContext)
-
+    const {  fetchClips, dificultadEsp } = useContext(Context)
+    const { cambiarPagina, paginaActual, paginaClips,  totalPaginas, setearClipsPagina, 
+        setTotalPaginas, setPaginaClips,  } = useContext(PaginasContext)
     const [data, setData] = useState([])
 
-    const urlClips = `${ urlBackend_Produccion }/clips-grabaciones/dificultad/${ dificultad }/${ usuario }`
+    
+    const dificultadMayuscula = transformarMayuscula(dificultad, 1)
+    console.log(dificultadMayuscula)
+    const nombreDificultad = dificultadEsp(dificultadMayuscula, false) 
+    console.log(nombreDificultad)
+    const urlClips = `${ urlBackend_Produccion }/clips-grabaciones/dificultad/${nombreDificultad }/${ usuario }`
 
     useEffect(() => {
         fetchClips(urlClips)
@@ -41,11 +46,11 @@ const ContenedorClipDificultad = () => {
                 <h1 className="mt-15 h1-dificultad"> Clips clasificados por Dificultad </h1>
 
                 <ul className="flex gap-20 ul-dificultad"> 
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`} className={"very-easy"}>  Muy facil </NavLink> </li>
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-easy`}  className={"easy"}>  Facil </NavLink> </li>
-                    <li className="link-dificultad">  <NavLink to={`/usuario/${usuario}/clips/dificultad/medium`} className={"medium"}> Intermedio </NavLink> </li>
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/hard`} className={"hard"}>  Dificil </NavLink> </li>
-                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/very-hard`} className={"very-hard"}> Muy Dificil </NavLink>  </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/principiante`} className={"very-easy"}>  Principiante </NavLink> </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/novato`}  className={"easy"}>  Novato  </NavLink> </li>
+                    <li className="link-dificultad">  <NavLink to={`/usuario/${usuario}/clips/dificultad/intermedio`} className={"medium"}> Intermedio </NavLink> </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/avanzado`} className={"hard"}>  Avanzado </NavLink> </li>
+                    <li className="link-dificultad"> <NavLink to={`/usuario/${usuario}/clips/dificultad/experto`} className={"very-hard"}> Experto </NavLink>  </li>
                 </ul>
                   
 

@@ -6,7 +6,7 @@ import "./Usuario.css"
 import Navbar from "../Navbar/Navbar";
 
 const IniciarSesion = () => {
-    const { urlBackend_Produccion, urlBackend_Desarrollo } = useContext(Context)
+    const { urlBackend_Produccion, urlBackend_Desarrollo, setUsuarioSesion, usuarioSesion  } = useContext(Context)
     const navigate = useNavigate()
     console.log(urlBackend_Produccion)
     
@@ -37,6 +37,7 @@ const IniciarSesion = () => {
             console.log(resp)
             const objeto = {usuario : resp.usuario, rol : resp.rol}
             localStorage.setItem("sesion", JSON.stringify(objeto));
+            setUsuarioSesion(true)
             navigate(`/usuario/${resp.usuario}`)
         }
         if(response.status === 401) {

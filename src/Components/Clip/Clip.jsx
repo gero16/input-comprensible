@@ -7,7 +7,8 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/help
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
 
-    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula } = useContext(Context);
+    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula, 
+        dificultadIdioma, dificultadEsp } = useContext(Context);
     const { usuario, temporada, serie } = useParams();
     const recorderControls = useAudioRecorder();
     const [width, setWidth] = useState(window.innerWidth);
@@ -68,18 +69,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         if(!resp) console.log("No hay data")
     };
 
-    const onPlayerStateChange = (event) => {
-        console.log(event)
-        /*
-        if (event.data === window.YT.PlayerState.PLAYING) {
-            const duration = event.target.getDuration();
-            console.log(duration)
-            setTimeout(() => {
-                event.target.pauseVideo();
-            }, (duration - 3) * 1000);
-        }
-        */
-    };
+
 
     return (
         <>
@@ -91,10 +81,13 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                 { imagen ?  <img src={imagen} alt="imagen portada" /> : <> </> }
                 <section className="section-video">
                     <section className="section-audio">
-                        <NavLink to={`${id}`}  className="span-editar-clip"> Editar </NavLink>
+                        {
+                            editar ? <NavLink to={`${id}`}  className="span-editar-clip"> Editar </NavLink> : <> </>
+                        }
+                        
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
-                        <span className={`bold ${dificultad} `}> {newDificultad} </span>
+                        <span className={`bold ${dificultad} `}> { dificultadEsp(dificultad, true) } </span>
                         <input type="text" className={`input-${ subtitulo }-${ index } input-frase`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
                         <section className="flex-between">
