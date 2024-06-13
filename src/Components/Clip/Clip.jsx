@@ -35,8 +35,8 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             formData.append("id_clip", id);
             formData.append("numero_clip", indice);
             const urlGuardarGrabacion =  serie 
-                ? `${ urlBackend_Desarrollo }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
-                : `${ urlBackend_Desarrollo }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
+                ? `${ urlBackend_Produccion }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
+                : `${ urlBackend_Produccion }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
             const resultado = await fetch(urlGuardarGrabacion, { method: "POST", body: formData });
             const result = await resultado.json()
             console.log(result)
