@@ -18,6 +18,9 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
     const [grabacion, setGrabacion] = useState("");
 
+    const [error, setError] = useState(false)
+    const [mensaje, setMensaje] = useState("Todavia no hay ninguna Grabación")
+
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidth(window.innerWidth);
@@ -37,11 +40,36 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             const urlGuardarGrabacion =  serie 
                 ? `${ urlBackend_Produccion }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
                 : `${ urlBackend_Produccion }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
-            const resultado = await fetch(urlGuardarGrabacion, { method: "POST", body: formData });
-            const result = await resultado.json()
-            console.log(result)
+
+                try {
+                    const resultado = await fetch(urlGuardarGrabacion, { method: "POST", body: formData });
+                    console.log(resultado.status)
+                    if(!resultado) {
+                        setMensaje("Ocurrio un error al guardar la grabacion")
+                    }
+                    if(resultado) {
+                        console.log(resultado)
+                        const result = await resultado.json()
+                        console.log(result)
+                        setMensaje("Grabacion agregada correctamente")
+                        setTimeout(() => {
+                            setMensaje("")
+                        }, 4000);
+                    }
+                    
+                } catch (error) {
+                    console.log(error)
+                    setMensaje("Ocurrio un error de CORS al guardar la grabacion!")
+                    setTimeout(() => {
+                        setMensaje("Todavia no hay ninguna Grabación")
+                    }, 4000);
+                }
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);
+            setMensaje("Ocurrio un error al guardar la grabacion!")
+            setTimeout(() => {
+                setMensaje("Todavia no hay ninguna Grabación")
+            }, 4000);
         }
     };
 
@@ -149,7 +177,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                     </iframe>
                                 </>
                                 : 
-                                <> Todavia no hay ninguna Grabación </>
+                                <> {mensaje}</>
                             }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
@@ -165,7 +193,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                         ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
                                             Guardar Grabación
                                         </button>
-                                        : <button className="button"> No hay grabacion! </button>
+                                        : <span className="button"> No hay grabacion! </span>
                             }
                         </div>
                     </section>
