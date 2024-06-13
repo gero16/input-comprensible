@@ -5,28 +5,59 @@ import { Context } from "../../context/context";
 import Navbar from "../Navbar/Navbar";
 
 const ListaPeliculas = () => {
+    const { usuario } = useParams();
+    const { fetchTitulosPelicula, evaluarSesion, setUsuarioSesion, usuarioSesion } = useContext(Context);
+
     const [titulos, setTitulos] = useState([]);
     const [esAdmin, setEsAdmin] = useState(false);
     const [modoEditar, setModoEditar] = useState(false);
-    const { fetchTitulosPelicula, evaluarSesion, setUsuarioSesion, usuarioSesion } = useContext(Context);
-    const { usuario } = useParams();
+    const [mensaje, setMensaje] = useState("dsgdgsdgsdgsdg")
+    const [error, setError] = useState(false)
+
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetchTitulosPelicula(titulos, setTitulos);
 
-            const resultado = evaluarSesion();
-            console.log(resultado);
-            if (!resultado) setUsuarioSesion(false);
-            if(resultado) {
-                setUsuarioSesion(true);
-                if (resultado.rol === "ADMIN") setEsAdmin(true)
-                else setEsAdmin(false);
+            try {
+                const resultadoTitulos = await fetchTitulosPelicula(titulos, setTitulos);
+                console.log(resultadoTitulos.message)
+                if(!resultadoTitulos || resultadoTitulos.message.includes('Failed to fetch')) {
+                    setMensaje("Error CORS al traer los titulos de las peliculas")
+                    setError(true)
+                }
+                if(error === false){
+                    const resultadoSesion = evaluarSesion();
+                    
+                    console.log(resultadoSesion);
+                    if (!resultadoSesion) {
+                        setUsuarioSesion(false);
+                        setMensaje("Ocurrio un error")
+                    }
+                    if(resultadoSesion) {
+                        setUsuarioSesion(true);
+                        setMensaje("")
+     
+                        if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
+                        else setEsAdmin(false);
+                    }
+                }
+    
+            } catch (error) {
+        
+                    console.log(error)
+                if (error.message.includes('Failed to fetch')) {
+                    console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
+                    setMensaje('Error de CORS: No se puede acceder al recurso.');
+                } else {
+                    setMensaje('Ocurrió un error de red.');
+                }
+ 
             }
         };
 
         fetchData();
-    }, [fetchTitulosPelicula, evaluarSesion, setUsuarioSesion, usuarioSesion]);
+
+    }, [fetchTitulosPelicula, evaluarSesion, setUsuarioSesion, usuarioSesion, mensaje]);
 
     const linkDinamico = (pelicula) => {
         let url;
@@ -42,8 +73,9 @@ const ListaPeliculas = () => {
 
     return (
         <>
-            <Navbar />
 
+            { !usuarioSesion ? <Navbar> </Navbar> : <> </> }
+      
             { usuarioSesion && esAdmin 
                 ? <h3 className="h3-modo-editar" onClick={cambiarModoEditar } > 
                     { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
@@ -51,6 +83,9 @@ const ListaPeliculas = () => {
             }
 
             <section className="flex-center gap-30 section-peliculas">
+
+                <h3 className="h3-mensaje"> { mensaje }</h3>
+
                 {titulos
                     ? titulos.map((element, key) => (
                           <article className="container-pelicula" key={key}>

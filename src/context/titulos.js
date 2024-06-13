@@ -84,9 +84,8 @@ export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
             if(response.status === 404) console.log("No hay data")
         
     } catch (error) {
-
-    
         console.log(error)
+        return error
         
     }
 }  
