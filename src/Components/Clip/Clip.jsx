@@ -35,7 +35,13 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
     console.log(grabacionPorGuardar)
 
-
+    const informarMensaje = (mensaje, posMensaje, tiempo) => {
+        setMensaje(mensaje);
+        setTimeout(() => {
+            setMensaje(posMensaje);
+        },
+         tiempo);
+    };
     const guardarGrabacion = async (elemento, indice) => {
         const urlBlob = elemento.firstElementChild.src;
         const response = await fetch(urlBlob);
@@ -62,25 +68,16 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         console.log(resultado)
                         const result = await resultado.json()
                         console.log(result)
-                        setMensaje("Grabacion agregada correctamente")
-                        setTimeout(() => {
-                            setMensaje("")
-                        }, 4000);
+                        informarMensaje("Grabación agregada correctamente", "", 5000);
                     }
                     
                 } catch (error) {
                     console.log(error)
-                    setMensaje("Ocurrio un error de CORS al guardar la grabacion!")
-                    setTimeout(() => {
-                        setMensaje("Todavia no hay ninguna Grabación")
-                    }, 4000);
+                    informarMensaje("Ocurrió un error de CORS al guardar la grabación!", "", 5000);
                 }
         } else {
             console.error('Error al obtener el archivo de audio:', response.statusText);
-            setMensaje("Ocurrio un error al guardar la grabacion!")
-            setTimeout(() => {
-                setMensaje("Todavia no hay ninguna Grabación")
-            }, 4000);
+            informarMensaje("Ocurrió un error al guardar la grabación!", "", 5000);
         }
     };
 
