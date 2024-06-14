@@ -8,24 +8,33 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/help
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
 
     const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula, 
-        dificultadIdioma, dificultadEsp } = useContext(Context);
+        dificultadIdioma, dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar } = useContext(Context);
+
     const { usuario, temporada, serie } = useParams();
     const recorderControls = useAudioRecorder();
+
     const [width, setWidth] = useState(window.innerWidth);
+    // const [hayGrabacionPorGuardar, setHayGrabacionPorGuardar] = useState(false);
+    const [error, setError] = useState(false)
+    const [mensaje, setMensaje] = useState("Todavia no hay ninguna Grabación")
+
     const separarDificultad = dificultad.split("-");
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
     const segundaPalabra = dificultad.includes("-") ? separarDificultad[1].charAt(0).toUpperCase() + separarDificultad[1].slice(1) : " ";
-    const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
-    const [grabacion, setGrabacion] = useState("");
 
-    const [error, setError] = useState(false)
-    const [mensaje, setMensaje] = useState("Todavia no hay ninguna Grabación")
+    const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
+  
+
+    
 
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidth(window.innerWidth);
         });
     }, []);
+
+    console.log(grabacionPorGuardar)
+
 
     const guardarGrabacion = async (elemento, indice) => {
         const urlBlob = elemento.firstElementChild.src;
@@ -104,7 +113,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
                 {
-                    /*    <span> {id} </span>  */ 
+                      <span> id : {id} || numero_clip : {numero_clip} || index : {index} </span> 
                 }
              
                 { imagen ?  <img src={imagen} alt="imagen portada" /> : <> </> }
@@ -166,11 +175,11 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                             />
                         </div>
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
-                            { grabacion 
+                            { grabacionID 
                                 ?  
                                 <> 
                                     <iframe 
-                                        src={`https://drive.google.com/file/d/${ grabacion }/preview`} 
+                                        src={`https://drive.google.com/file/d/${ grabacionID }/preview`} 
                                         width="410" 
                                         height="60" 
                                         allow="autoplay"
@@ -178,19 +187,19 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                     </iframe>
                                 </>
                                 : 
-                                <> {mensaje}</>
+                                <>  { mensaje } </>
                             }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
                             </div>
                             {
-                                document.querySelector(`.iframe-${subtitulo}-${index}`)
+                                grabacionID
                                     ? <>
                                       <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
                                         Actualizar Grabación 
                                       </button>
                                     </>
-                                    : document.querySelector(`.grabacion-${subtitulo}-${index}`) 
+                                    : grabacionPorGuardar && index === grabacionPorGuardar.id_clip
                                         ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
                                             Guardar Grabación
                                         </button>

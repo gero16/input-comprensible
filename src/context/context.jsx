@@ -46,24 +46,28 @@ export const CustomProvider = ({ children }) => {
         }
     }
 
+    const [grabacionPorGuardar, setGrabacionPorGuardar] = useState("");
+
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
-    const addAudioElement = (blob, subtitulo, id) => {
-      if(`audio-mic-${id}` === idGrabar ){ 
+    const addAudioElement = (blob, subtitulo, index) => {
+        let grabacion;
+      if(`audio-mic-${index}` === idGrabar ){ 
         const url = URL.createObjectURL(blob);
-        const audio = document.querySelector(`.grabacion-${subtitulo}-${id}`) 
+        const audio = document.querySelector(`.grabacion-${subtitulo}-${index}`) 
         audio.src = url;
         audio.controls = true;       
 
-        const grabacion = {
+        grabacion = {
             grabacion : url,
             usuario: "anonimus",
             id_usuario: "1GagaF",
-            id_clip: id,
-
+            id_clip: index,
         }
-        localStorage.setItem(`${ subtitulo }-${ id } `,  JSON.stringify(grabacion));
-        setGrabacionLocalStorage({ grabacion : `grabacion-${subtitulo}-${id}`, storage : true })
-    }
+        
+        setGrabacionPorGuardar(grabacion)
+        return grabacion
+        }
+
     }
 
 
@@ -194,7 +198,7 @@ return (
             cantidadPaginasHtml, fetchClips, data, setData, separarTexto, fetchCantidadClips, 
             traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
              usuarioSesion, setUsuarioSesion,nombreUsuario, traerImagenPortada, imagenPortada,
-             dificultadIdioma,dificultadEsp
+             dificultadIdioma,dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar
             }}> 
             
         { children } 
