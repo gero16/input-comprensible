@@ -11,7 +11,7 @@ const ListaPeliculas = () => {
     const [titulos, setTitulos] = useState([]);
     const [esAdmin, setEsAdmin] = useState(false);
     const [modoEditar, setModoEditar] = useState(false);
-    const [mensaje, setMensaje] = useState("dsgdgsdgsdgsdg")
+    const [mensaje, setMensaje] = useState("")
     const [error, setError] = useState(false)
 
 
@@ -36,6 +36,7 @@ const ListaPeliculas = () => {
                     if(resultadoSesion) {
                         setUsuarioSesion(true);
                         setMensaje("")
+                        
      
                         if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
                         else setEsAdmin(false);
@@ -48,8 +49,6 @@ const ListaPeliculas = () => {
                 if (error.message.includes('Failed to fetch')) {
                     console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
                     setMensaje('Error de CORS: No se puede acceder al recurso.');
-                } else {
-                    setMensaje('Ocurrió un error de red.');
                 }
  
             }
@@ -86,7 +85,7 @@ const ListaPeliculas = () => {
 
                 <h3 className="h3-mensaje"> { mensaje }</h3>
 
-                {titulos
+                {titulos && error === false
                     ? titulos.map((element, key) => (
                           <article className="container-pelicula" key={key}>
                               <NavLink to={linkDinamico(element[1])} className="link-pelicula">
@@ -108,7 +107,8 @@ const ListaPeliculas = () => {
                               <h2 className="h2-lista-pelicula">{element[0]}</h2>
                           </article>
                       ))
-                    : null}
+                    : <h3 className="h3-mensaje"> { mensaje } </h3>
+                    }
             </section>
         </>
     );

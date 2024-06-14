@@ -38,16 +38,18 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             formData.append("id_clip", id);
             formData.append("numero_clip", indice);
             const urlGuardarGrabacion =  serie 
-                ? `${ urlBackend_Produccion }/agregar-grabacion/series/${subtitulo}/${temporada}/${capitulo}/${usuario}`
-                : `${ urlBackend_Produccion }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
+                ? `${ urlBackend_Produccion }/agregar-grabacion/series/${ subtitulo }/${ temporada }/${ capitulo }/${ usuario }`
+                : `${ urlBackend_Desarrollo }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
 
                 try {
                     const resultado = await fetch(urlGuardarGrabacion, { method: "POST", body: formData });
-                    console.log(resultado.status)
-                    if(!resultado) {
-                        setMensaje("Ocurrio un error al guardar la grabacion")
+                    console.log(resultado)
+                    if(!resultado.ok) {
+                        const result = await resultado.json()
+                        if(result) setMensaje(result.mensaje)
+                        if(!result) setMensaje("Error - Ocurrio un error al guardar la grabacion")
                     }
-                    if(resultado) {
+                    if(resultado.ok) {
                         console.log(resultado)
                         const result = await resultado.json()
                         console.log(result)
@@ -96,7 +98,6 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         const resp= await response.json();
         if(!resp) console.log("No hay data")
     };
-
 
 
     return (

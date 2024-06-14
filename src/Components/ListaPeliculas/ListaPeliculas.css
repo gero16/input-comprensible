@@ -60,8 +60,9 @@
 
 
 .h3-mensaje {
-    margin-top: 62%;
     color: yellow;
+    position: absolute;
+    top: 30%;
 }
 
 @media (min-width: 800px) {

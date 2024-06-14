@@ -170,9 +170,7 @@ export const CustomProvider = ({ children }) => {
     
      const dificultadEsp = (dificultad, valor) => {
         if(valor) {
-            console.log(dificultad)
             const nuevo = dificultadIdioma[`${dificultad}`]
-            console.log(nuevo)
             return nuevo
         }
         if(!valor) {
@@ -180,7 +178,6 @@ export const CustomProvider = ({ children }) => {
 
             const entry = Object.entries(dificultadIdioma).find(([key, value]) => value === encontrarClave);
             const nuevo = entry ? entry[0] : null;
-            console.log(nuevo)
             return nuevo
             
         }
