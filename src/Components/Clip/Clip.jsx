@@ -20,6 +20,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const [modoActualizar, setModoActualizar] = useState(false)
     const [idGrabar, setIdGrabar] = useState()
     const [grabacionPorGuardar, setGrabacionPorGuardar] = useState("");
+    const [hayGrabacion, setHayGrabacion] = useState(false);
 
     const separarDificultad = dificultad.split("-");
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
@@ -27,8 +28,6 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
   
-
-    
 
     useEffect(() => {
         window.addEventListener("resize", () => {
@@ -59,7 +58,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
             formData.append("numero_clip", indice);
             const urlGuardarGrabacion =  serie 
                 ? `${ urlBackend_Produccion }/agregar-grabacion/series/${ subtitulo }/${ temporada }/${ capitulo }/${ usuario }`
-                : `${ urlBackend_Desarrollo }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
+                : `${ urlBackend_Produccion }/agregar-grabacion/peliculas/${ subtitulo }/${ usuario }`;
 
                 try {
                     const resultado = await fetch(urlGuardarGrabacion, { method: "POST", body: formData });
@@ -114,10 +113,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         let grabacion;
       if(`audio-mic-${index}` === idGrabar ){ 
         const url = URL.createObjectURL(blob);
-        const audio = document.querySelector(`.grabacion-${subtitulo}-${index}`) 
-        audio.src = url;
-        audio.controls = true;       
-
+ 
         grabacion = {
             grabacion : url,
             usuario: "anonimus",
@@ -126,6 +122,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         }
         
         setGrabacionPorGuardar(grabacion)
+        setHayGrabacion(true)
         return grabacion
         }
 
@@ -231,7 +228,10 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 <>  { mensaje } </>
                             }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
-                                <audio src={""} className={`audio-clip grabacion-${subtitulo}-${index}`}  />
+                                { hayGrabacion 
+                                    ? <audio src={ grabacionPorGuardar.grabacion } className={`audio-clip grabacion-${subtitulo}-${index}`}  controls /> 
+                                    : <audio> </audio> 
+                                }  
                             </div>
                             { grabacionID 
                                     ? <> </>
