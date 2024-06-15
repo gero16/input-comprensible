@@ -7,8 +7,8 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/help
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
 
-    const { clickGrabar, evaluar, mostrarRespuesta, transformarMayuscula, 
-        dificultadIdioma, dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar } = useContext(Context);
+    const {  evaluar, mostrarRespuesta, transformarMayuscula, 
+        dificultadIdioma, dificultadEsp, } = useContext(Context);
 
     const { usuario, temporada, serie } = useParams();
     const recorderControls = useAudioRecorder();
@@ -18,6 +18,8 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const [error, setError] = useState(false)
     const [mensaje, setMensaje] = useState("")
     const [modoActualizar, setModoActualizar] = useState(false)
+    const [idGrabar, setIdGrabar] = useState()
+    const [grabacionPorGuardar, setGrabacionPorGuardar] = useState("");
 
     const separarDificultad = dificultad.split("-");
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
@@ -25,7 +27,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
   
-    
+
     
 
     useEffect(() => {
@@ -34,11 +36,9 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         });
     }, []);
 
-    useEffect(() => {
-       
-    }, []);
+  
 
-
+    console.log(grabacionPorGuardar)
 
     const informarMensaje = (mensaje, posMensaje, tiempo) => {
         setMensaje(mensaje);
@@ -110,7 +110,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         if(!resp) console.log("No hay data")
     };
 
-    const addAudioElement = (blob, subtitulo, index) => {
+    const addAudioElement = (blob, subtitulo, index, actualizar) => {
         let grabacion;
       if(`audio-mic-${index}` === idGrabar ){ 
         const url = URL.createObjectURL(blob);
@@ -130,7 +130,25 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         }
 
     }
+    const clickGrabar = (e) => {
+        const idGrabar = e.classList[1]
+        const claseNombrePelicula = e.classList[2]
+        // Tengo un error si toco el btn pausar 
+        if(claseNombrePelicula) {
+            const separar = claseNombrePelicula.split("-")
+            const nombrePelicula = separar[2]
+            const arrayRecorders = document.querySelectorAll(`.audio-recorder-${nombrePelicula}`)
+            const separar2 = idGrabar.split("-")
+            const idSolo = separar2[2]
 
+            const nodelistToArray = Array.apply(null, arrayRecorders);
+            nodelistToArray.forEach(element => {
+                if(!element.classList.contains(`audio-recorder-${idSolo}`))  element.style.display = "none"
+                if(element.children[0].title === "Save recording") element.style.display = "flex"
+            });
+            setIdGrabar(e.classList[1])
+        }
+    }
 
     return (
         <>
