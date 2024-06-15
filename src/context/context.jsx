@@ -49,7 +49,7 @@ export const CustomProvider = ({ children }) => {
     const [grabacionPorGuardar, setGrabacionPorGuardar] = useState("");
 
     // AudioRecorder me pasa la grabacion como un blob, con FileReader transformo el blob para insertarse como un embed
-    const addAudioElement = (blob, subtitulo, index) => {
+    const addAudioElement = (blob, subtitulo, index, actualizar) => {
         let grabacion;
       if(`audio-mic-${index}` === idGrabar ){ 
         const url = URL.createObjectURL(blob);

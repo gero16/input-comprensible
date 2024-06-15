@@ -7,7 +7,7 @@ import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/help
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
 
-    const { clickGrabar, evaluar, mostrarRespuesta, addAudioElement, transformarMayuscula, 
+    const { clickGrabar, evaluar, mostrarRespuesta, transformarMayuscula, 
         dificultadIdioma, dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar } = useContext(Context);
 
     const { usuario, temporada, serie } = useParams();
@@ -16,7 +16,8 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const [width, setWidth] = useState(window.innerWidth);
     // const [hayGrabacionPorGuardar, setHayGrabacionPorGuardar] = useState(false);
     const [error, setError] = useState(false)
-    const [mensaje, setMensaje] = useState("Todavia no hay ninguna Grabación")
+    const [mensaje, setMensaje] = useState("")
+    const [modoActualizar, setModoActualizar] = useState(false)
 
     const separarDificultad = dificultad.split("-");
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
@@ -24,7 +25,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
   
-
+    
     
 
     useEffect(() => {
@@ -33,7 +34,11 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         });
     }, []);
 
-    console.log(grabacionPorGuardar)
+    useEffect(() => {
+       
+    }, []);
+
+
 
     const informarMensaje = (mensaje, posMensaje, tiempo) => {
         setMensaje(mensaje);
@@ -105,12 +110,33 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         if(!resp) console.log("No hay data")
     };
 
+    const addAudioElement = (blob, subtitulo, index) => {
+        let grabacion;
+      if(`audio-mic-${index}` === idGrabar ){ 
+        const url = URL.createObjectURL(blob);
+        const audio = document.querySelector(`.grabacion-${subtitulo}-${index}`) 
+        audio.src = url;
+        audio.controls = true;       
+
+        grabacion = {
+            grabacion : url,
+            usuario: "anonimus",
+            id_usuario: "1GagaF",
+            id_clip: index,
+        }
+        
+        setGrabacionPorGuardar(grabacion)
+        return grabacion
+        }
+
+    }
+
 
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
                 {
-                      <span> id : {id} || numero_clip : {numero_clip} || index : {index} </span> 
+                     /* <span> id : {id} || numero_clip : {numero_clip} || index : {index} </span> */
                 }
              
                 { imagen ?  <img src={imagen} alt="imagen portada" /> : <> </> }
@@ -153,7 +179,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 onReady={(event) => onPlayerStateChange(event)}
                             />
                         }
-                        <div className={ width > 1300 ? "flex-center" : ""}>
+                        <div className={ width > 1300 ? "flex-center mb-10" : "mb-10"}>
                             <span className="grabar-audio"> { width > 1300 ? "Grabar Audio" : "Grabar Audio -"} </span>
                             <AudioRecorder 
                                 onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
@@ -187,20 +213,21 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 <>  { mensaje } </>
                             }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
-                                <audio src={""} className={`grabacion-${subtitulo}-${index}`}  />
+                                <audio src={""} className={`audio-clip grabacion-${subtitulo}-${index}`}  />
                             </div>
-                            {
-                                grabacionID
-                                    ? <>
-                                      <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
-                                        Actualizar Grabación 
-                                      </button>
-                                    </>
-                                    : grabacionPorGuardar && index === grabacionPorGuardar.id_clip
-                                        ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
-                                            Guardar Grabación
+                            { grabacionID 
+                                    ? <> </>
+                                    : modoActualizar
+                                        ? <>
+                                        <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
+                                            Actualizar Grabación 
                                         </button>
-                                        : <span className="button"> No hay grabacion! </span>
+                                        </>
+                                        : grabacionPorGuardar && index === grabacionPorGuardar.id_clip
+                                            ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
+                                                Guardar Grabación
+                                            </button>
+                                            : <span className="button"> No hay grabacion! </span>
                             }
                         </div>
                     </section>

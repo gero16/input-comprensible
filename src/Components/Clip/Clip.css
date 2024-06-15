@@ -23,6 +23,7 @@
   
   .audio {
     margin: 10px 0px;
+    margin-top: 0px;
   }
   
   input {
@@ -52,10 +53,6 @@
     flex-direction: column;
     height: 20px;
     align-items: center;
-}
-
-audio {
-  margin-top : 10px;
 }
 
 .section-audio {
@@ -107,7 +104,9 @@ iframe {
   z-index: 3;
   cursor: pointer;
 }
-
+.audio-clip {
+  height: 60px;
+}
 @media (min-width: 800px) {
 
 .section-video {
