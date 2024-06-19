@@ -71,8 +71,8 @@ const AgregarTitulo = () => {
                 <h1 className="h1-agregar-clip"> Agregar Clip - Pelicula </h1>
                 <ul className="lista-formulario-clip div-agregar-titulo">
                     <li>
-                        <label htmlFor="" className="label-crear"> Imagen </label>
-                        <div className="grid-input-img">
+                        <label htmlFor="" className="label-crear" > Imagen </label>
+                        <div className="grid-input-img input-imagen">
                             <input 
                                 type="file" 
                                 name="imagen" 
@@ -108,7 +108,7 @@ const AgregarTitulo = () => {
                                     name="categoria" 
                                     value="serie" 
                                     id="radio"  
-                                    checked='pelicula'
+                                    checked={titulo.categoria === 'serie'}
                                     onChange={(e) => setTitulo({ ...titulo, categoria: e.target.value })} 
                                 />
                     
@@ -119,6 +119,7 @@ const AgregarTitulo = () => {
                                     name="categoria" 
                                     value="pelicula"
                                     id="radio"
+                                    checked={titulo.categoria === 'pelicula'}
                                     onChange={(e) => setTitulo({ ...titulo, categoria: e.target.value })} 
                                 />
                     

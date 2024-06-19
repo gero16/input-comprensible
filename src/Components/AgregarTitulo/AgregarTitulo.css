@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.input-imagen {
+    width: 480px;
+}
+
 @media (min-width: 800px) {
     .div-agregar-titulo {
         margin-top: 20%;
