@@ -7,27 +7,54 @@ import Navbar from "../Navbar/Navbar";
 
 const ListaSeries = () => {
     const { usuario } = useParams()
+    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion, setUsuarioSesion, usuarioSesion  } = useContext(Context)
+
     const [titulos, setTitulos] = useState([])
     const [esAdmin, setEsAdmin] = useState(false)
     const [modoEditar, setModoEditar] = useState(false)
-    const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion, setUsuarioSesion, usuarioSesion  } = useContext(Context)
+    const [mensaje, setMensaje] = useState("")
+    const [error, setError] = useState(false)
 
     
     useEffect(() => {
-        fetchTitulosSeries(titulos, setTitulos)
 
-        const resultado = evaluarSesion()
-        console.log(resultado)
-        if(!resultado) setUsuarioSesion(false)
-        if(resultado) {
-            setUsuarioSesion(true)
-            if(resultado.rol === "ADMIN") {
-                setEsAdmin(true)
-                setModoEditar(true)
+        const fetchData = async () => {
+            try {
+                
+                const resultadoTitulos =  fetchTitulosSeries(titulos, setTitulos)
+                if(!resultadoTitulos || resultadoTitulos.message.includes('Failed to fetch')) {
+                    setMensaje("Error CORS al traer los titulos de las peliculas")
+                    setError(true)
+                }
+        
+                if(error === false){ 
+                    const resultadoSesion = evaluarSesion()
+                    console.log(resultadoSesion)
+                    
+                    if (!resultadoSesion) {
+                        setUsuarioSesion(false);
+                        setMensaje("Ocurrio un error")
+                    }
+        
+                    if(resultadoSesion) {
+                        setUsuarioSesion(true);
+                        setMensaje("")
+                        if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
+                        else setEsAdmin(false);
+                    }
+        
+                }
+
+            fetchData();
+            } catch (error) {
+                console.log(error)
+                if (error.message.includes('Failed to fetch')) {
+                    console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
+                    setMensaje('Error de CORS: No se puede acceder al recurso.');
+                }
             }
-            if(resultado.rol !== "USER"  || !resultado.rol) setEsAdmin(false)
         }
-    }, [])
+    }, [fetchTitulosSeries, evaluarSesion, setUsuarioSesion, usuarioSesion, mensaje])
 
 
     let url;
@@ -70,7 +97,7 @@ const ListaSeries = () => {
                             </article>
                         )
                     }) 
-                    : <> </>
+                    : <h3 className="h3-mensaje"> { mensaje } </h3>
             }
             </section>
         </>
