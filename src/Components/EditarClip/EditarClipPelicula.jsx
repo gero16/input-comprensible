@@ -75,8 +75,8 @@ const EditarClipPelicula = () => {
 
     const actualizarClip = async (data, idClip) => {
         console.log(data)
-        let response = await fetch(`${ urlBackend_Produccion }/editar/clip/${ idClip }`, {
-            method: 'POST',
+        let response = await fetch(`${ urlBackend_Produccion }/editar/peliculas/clip/${ idClip }`, {
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
             },
