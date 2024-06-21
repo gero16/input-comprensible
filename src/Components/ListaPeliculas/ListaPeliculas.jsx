@@ -20,11 +20,12 @@ const ListaPeliculas = () => {
 
             try {
                 const resultadoTitulos = await fetchTitulosPelicula(titulos, setTitulos);
-                console.log(resultadoTitulos.message)
+                console.log(resultadoTitulos)
                 if(!resultadoTitulos || resultadoTitulos.message.includes('Failed to fetch')) {
                     setMensaje("Error CORS al traer los titulos de las peliculas")
                     setError(true)
                 }
+
                 if(error === false){
                     const resultadoSesion = evaluarSesion();
                     
@@ -34,10 +35,10 @@ const ListaPeliculas = () => {
                         setMensaje("Ocurrio un error")
                     }
                     if(resultadoSesion) {
+                        console.log(resultadoSesion)
                         setUsuarioSesion(true);
                         setMensaje("")
                         
-     
                         if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
                         else setEsAdmin(false);
                     }
@@ -45,12 +46,14 @@ const ListaPeliculas = () => {
     
             } catch (error) {
         
-                    console.log(error)
-                if (error.message.includes('Failed to fetch')) {
-                    console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
-                    setMensaje('Error de CORS: No se puede acceder al recurso.');
+                if(error.message) {
+
+                    if (error.message.includes('Failed to fetch')) {
+                        console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
+                        setMensaje('Error de CORS: No se puede acceder al recurso.');
+                    }
+     
                 }
- 
             }
         };
 
