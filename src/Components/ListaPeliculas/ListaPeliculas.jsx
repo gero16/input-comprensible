@@ -14,6 +14,19 @@ const ListaPeliculas = () => {
     const [mensaje, setMensaje] = useState("")
     const [error, setError] = useState(false)
 
+    console.log(usuarioSesion)
+
+    const linkDinamico = (pelicula) => {
+        let url;
+        if (usuario) url = `/usuario/${usuario}/peliculas/${pelicula}`;
+        if (!usuario) url = `/peliculas/${pelicula}/`;
+        if (modoEditar) url = `/usuario/${usuario}/peliculas/${pelicula}/editar`;
+        return url;
+    };
+
+    const cambiarModoEditar = () => {
+        setModoEditar((prevModoEditar) => !prevModoEditar);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,24 +39,9 @@ const ListaPeliculas = () => {
                     setError(true)
                 }
 
-                if(error === false){
-                    const resultadoSesion = evaluarSesion();
-                    
-                    console.log(resultadoSesion);
-                    if (!resultadoSesion) {
-                        setUsuarioSesion(false);
-                        setMensaje("Ocurrio un error")
-                    }
-                    if(resultadoSesion) {
-                        console.log(resultadoSesion)
-                        setUsuarioSesion(true);
-                        setMensaje("")
-                        
-                        if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
-                        else setEsAdmin(false);
-                    }
-                }
-    
+                if(resultadoTitulos) setError(false)
+                
+
             } catch (error) {
         
                 if(error.message) {
@@ -59,34 +57,52 @@ const ListaPeliculas = () => {
 
         fetchData();
 
-    }, [fetchTitulosPelicula, evaluarSesion, setUsuarioSesion, usuarioSesion, mensaje]);
+    }, [fetchTitulosPelicula, mensaje]);
 
-    const linkDinamico = (pelicula) => {
-        let url;
-        if (usuario) url = `/usuario/${usuario}/peliculas/${pelicula}`;
-        if (!usuario) url = `/peliculas/${pelicula}/`;
-        if (modoEditar) url = `/usuario/${usuario}/peliculas/${pelicula}/editar`;
-        return url;
-    };
+    useEffect(() => {
 
-    const cambiarModoEditar = () => {
-        setModoEditar((prevModoEditar) => !prevModoEditar);
-    };
+        if(error === false){
+            const resultadoSesion = evaluarSesion();
+            
+            console.log(resultadoSesion);
+            if (!resultadoSesion) {
+                setUsuarioSesion(false);
+                setMensaje("Ocurrio un error")
+            }
+            if(resultadoSesion) {
+                console.log(resultadoSesion)
+                setUsuarioSesion(true);
+                setMensaje("")
+                
+                if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
+                else setEsAdmin(false);
+            }
+        }
+
+    }, []);
 
     return (
         <>
 
             { !usuarioSesion ? <Navbar> </Navbar> : <> </> }
       
-            { usuarioSesion && esAdmin 
-                ? <h3 className="h3-modo-editar" onClick={cambiarModoEditar } > 
-                    { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  </h3>  
-                : <h3> </h3>
-            }
-
+       
             <section className="flex-center gap-30 section-peliculas">
 
                 <h3 className="h3-mensaje"> { mensaje }</h3>
+
+             
+                    { usuarioSesion && esAdmin 
+                        ?   <section className="section-edicion flex-center-center mb-10">
+                                <h3 className="h3-modo-editar m-10 link-pelicula" onClick={ cambiarModoEditar } > 
+                                    { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  
+                                    
+                                    </h3>  
+        
+                                    </section>
+                        : <h3> </h3>
+                    }
+     
 
                 {titulos && error === false
                     ? titulos.map((element, key) => (

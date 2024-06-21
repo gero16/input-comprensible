@@ -136,7 +136,9 @@
 .p-30 {
   padding : 30px
 }
-
+.m-10 {
+  margin: 20px;
+}
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -170,6 +172,11 @@
   gap: 10px;
 }
 
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .ocultar {
