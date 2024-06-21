@@ -65,6 +65,15 @@ const ListaSeries = () => {
                                         width="300" height="180" loading="lazy" decoding="async" 
                                     />
                                     </picture>
+
+                                    <img 
+                                    src={element[8]} 
+                                    className="img-nacionalidad" 
+                                    alt="" 
+                                     width="24"
+                                    height="24"
+                                />
+                                
                                 </NavLink>
                                 <h2 className="h2-lista-pelicula">{element[0]}</h2>
                             </article>

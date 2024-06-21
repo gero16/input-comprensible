@@ -106,6 +106,7 @@ const ListaPeliculas = () => {
 
                 {titulos && error === false
                     ? titulos.map((element, key) => (
+
                           <article className="container-pelicula" key={key}>
                               <NavLink to={linkDinamico(element[1])} className="link-pelicula">
                                   <picture>
@@ -122,6 +123,15 @@ const ListaPeliculas = () => {
                                           decoding="async"
                                       />
                                   </picture>
+
+                                  <img 
+                                    src={element[8]} 
+                                    className="img-nacionalidad" 
+                                    alt="" 
+                                     width="24"
+                                    height="24"
+                                />
+                                
                               </NavLink>
                               <h2 className="h2-lista-pelicula">{element[0]}</h2>
                           </article>

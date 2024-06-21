@@ -70,7 +70,7 @@ export const fetchTitulosPelicula = async (titulos, setTitulos,) => {
                     [
                         element.titulo, element.subtitulo, element.categoria, 
                         element.temporada, element.capitulo, element.imagen, 
-                        element.imagen_mini, element.imagen_med 
+                        element.imagen_mini, element.imagen_med, element.nacionalidad  
                     ]
                     arrayTitulos.push(titulo)
                 });
@@ -114,7 +114,7 @@ export const fetchTitulosSeries = async (titulos, setTitulos,) => {
                     const titulo = [
                         element.titulo, element.subtitulo, element.categoria, 
                         element.temporada, element.capitulo, element.imagen,
-                        element.imagen_mini, element.imagen_med 
+                        element.imagen_mini, element.imagen_med, element.nacionalidad 
                     ]
                     arrayTitulos.push(titulo)
              

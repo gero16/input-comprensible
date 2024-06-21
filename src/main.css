@@ -322,3 +322,10 @@ ul{
   top: 20px;
   right: 0px;
 }
+
+.img-nacionalidad {
+  position: absolute;
+  z-index: 3;
+  top:  10%;
+  right: 5%;
+}
