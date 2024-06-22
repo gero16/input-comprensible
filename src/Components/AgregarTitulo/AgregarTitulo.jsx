@@ -45,6 +45,9 @@ const AgregarTitulo = () => {
           });
           
           console.log(response)
+          let resp = await response.json()
+          if(resp) setMensaje(resp.mensaje)
+          console.log(resp)
 
           if(!response) {
             console.log(response)
