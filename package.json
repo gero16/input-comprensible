@@ -14,16 +14,11 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.11",
     "@vercel/analytics": "^1.1.1",
-    "aws-sdk": "^2.1563.0",
-    "mic-recorder-to-mp3": "^2.2.2",
-    "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.2.0",
-    "react-player": "^2.14.1",
     "react-router-dom": "^6.14.2",
     "react-scroll": "^1.8.9",
-    "react-youtube": "^10.1.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
