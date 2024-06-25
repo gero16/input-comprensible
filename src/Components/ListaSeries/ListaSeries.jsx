@@ -11,24 +11,59 @@ const ListaSeries = () => {
     const [esAdmin, setEsAdmin] = useState(false)
     const [modoEditar, setModoEditar] = useState(false)
     const { fetchTitulosSeries ,fetchTitulos, urlBackend_Produccion,  evaluarSesion, setUsuarioSesion, usuarioSesion  } = useContext(Context)
+    const [mensaje, setMensaje] = useState("")
+    const [error, setError] = useState(false)
 
     
     useEffect(() => {
-        fetchTitulosSeries(titulos, setTitulos)
+        const fetchData = async () => {
 
-        const resultado = evaluarSesion()
-        console.log(resultado)
-        if(!resultado) setUsuarioSesion(false)
-        if(resultado) {
-            setUsuarioSesion(true)
-            if(resultado.rol === "ADMIN") {
-                setEsAdmin(true)
-                setModoEditar(true)
+        try {
+            const resultadoTitulos = await fetchTitulosSeries(titulos, setTitulos)
+            console.log(resultadoTitulos)
+
+            if(!resultadoTitulos || resultadoTitulos.message.includes('Failed to fetch')) {
+                setMensaje("Error CORS al traer los titulos de las peliculas")
+                setError(true)
             }
-            if(resultado.rol !== "USER"  || !resultado.rol) setEsAdmin(false)
-        }
-    }, [])
 
+            if(resultadoTitulos) setError(false)
+            
+        } catch (error) {
+            if(error.message) {
+
+                if (error.message.includes('Failed to fetch')) {
+                    console.log("safsaffsaasfsafsaffsasafsafsafsafsaf")
+                    setMensaje('Error de CORS: No se puede acceder al recurso.');
+                }
+            }
+        }
+    }
+
+    fetchData()
+    }, [fetchTitulosSeries, mensaje])
+
+    useEffect(() => {
+
+        if(error === false){
+            const resultadoSesion = evaluarSesion();
+            
+            console.log(resultadoSesion);
+            if (!resultadoSesion) {
+                setUsuarioSesion(false);
+                setMensaje("Ocurrio un error")
+            }
+            if(resultadoSesion) {
+                console.log(resultadoSesion)
+                setUsuarioSesion(true);
+                setMensaje("")
+                
+                if (resultadoSesion.rol === "ADMIN") setEsAdmin(true)
+                else setEsAdmin(false);
+            }
+        }
+
+    }, []);
 
     let url;
     const linkDinamico = (serie) => {
