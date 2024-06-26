@@ -95,7 +95,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/buscador/frase",
+        path: "/buscador/frases",
         element:  <Buscador />,
       },
       {

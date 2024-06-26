@@ -47,7 +47,12 @@ const Navbar = () => {
                                 <span className="span-link "> Iniciar Sesión </span>
                             </NavLink>
                             </li>
-                            
+                              
+                            <li className="li-nav">
+                                <NavLink to={`/buscador/frases`} > 
+                                    <span className="span-link "> Buscador </span>
+                                </NavLink>
+                            </li>
                             <li className="li-nav">
                                 <NavLink to={`/registro`} > 
                                     <span className="span-link "> Registrarse </span>
@@ -97,6 +102,11 @@ const Navbar = () => {
                             <li className="li-nav">
                                 <NavLink to={`/recursos`} > 
                                     <span className="span-link "> Recursos </span>
+                                </NavLink>
+                            </li>
+                            <li className="li-nav">
+                                <NavLink to={`/buscador/frases`} > 
+                                    <span className="span-link "> Buscador </span>
                                 </NavLink>
                             </li>
                             <li className="li-nav">

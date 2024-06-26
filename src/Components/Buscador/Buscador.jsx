@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { urlOrigin } from "../../context/helpers"
+import { urlBackend_Produccion, urlOrigin } from "../../context/helpers"
 import Clip from "../Clip/Clip"
 import ClipMini from "../Clip/ClipMini"
 import Navbar from "../Navbar/Navbar"
@@ -10,9 +10,9 @@ const Buscador = () => {
     const [ frase, setFrase ] = useState("") 
     const [ clipBusqueda, setClipBusqueda ] = useState([]) 
 
-    const urlBuscador = "http://localhost:3000/buscador/frases"
-    const fetchFrase =  async () => {
+    const urlBuscador = `${urlBackend_Produccion}/buscador/frases`
 
+    const fetchFrase =  async () => {
         try {
             const respuestaClips = await fetch(urlBuscador,  
                 {
@@ -48,13 +48,13 @@ const Buscador = () => {
         }
     }
 
-
     useEffect(() => {
         console.log(frase)
         //fetchFrase()
 
         
     }, [frase])
+
 
     return (
         <> 
@@ -94,7 +94,7 @@ const Buscador = () => {
                             )
                             
                         })
-                        : <h3 className="h3-mensaje"> No hay clips </h3>
+                        : <h3 className="h3-mensaje-buscar"> No hay clips </h3>
                     }
                     </section>
         </>

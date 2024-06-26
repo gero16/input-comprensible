@@ -12,13 +12,7 @@ const ClipMini = ({ id, imagen, categoria, subtitulo, video, index, frase, dific
 
     const [width, setWidth] = useState(window.innerWidth);
     // const [hayGrabacionPorGuardar, setHayGrabacionPorGuardar] = useState(false);
-
-
-    const separarDificultad = dificultad.split("-");
-    const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
-    const segundaPalabra = dificultad.includes("-") ? separarDificultad[1].charAt(0).toUpperCase() + separarDificultad[1].slice(1) : " ";
-  
-
+ 
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidth(window.innerWidth);

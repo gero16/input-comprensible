@@ -21,7 +21,8 @@ const Pelicula = ({data, imagenPortada }) => {
         "bastardos-sin-gloria": 15,
         "harry-potter-1": 32,
         "spiderman-into-the-spider-verse": 70,
-        "fight-club": 40
+        "fight-club": 40,
+        "harry-potter-1" : 30
     }
 
     const style = {
