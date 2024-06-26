@@ -28,6 +28,7 @@ import ContenedorPeliculaEditar from './Components/PeliculaEditar/ContenedorPeli
 import EditarClipPelicula from './Components/EditarClip/EditarClipPelicula.jsx';
 import EditarClipSerie from './Components/EditarClip/EditarClipSerie.jsx';
 import ContenedorSerieEditar from './Components/SerieEditar/ContenedorSerieEditar.jsx';
+import Buscador from './Components/Buscador/Buscador.jsx';
 
 
 
@@ -91,6 +92,11 @@ const router = createBrowserRouter([
       {
         path: "/agregar-titulo",
         element:  <AgregarTitulo />,
+      },
+
+      {
+        path: "/buscador/frase",
+        element:  <Buscador />,
       },
       {
         path: "/recursos", 
