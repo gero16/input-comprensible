@@ -7,7 +7,7 @@ const Pelicula = ({data, imagenPortada }) => {
 
     console.log(imagenPortada)
     let {  usuario, pelicula, jpg } = useParams();
-    const { urlBackend_Desarrollo, urlBackend_Produccion, setData, traerGrabacion, traerGrabaciones, traerImagenFomato, urlImagen  } = useContext(Context)
+    const { urlBackend_Desarrollo, urlBackend_Produccion, urlImagen, mostrarDificultad, ocultarDificultad  } = useContext(Context)
 
     const navigate = useNavigate();
     
@@ -37,10 +37,16 @@ const Pelicula = ({data, imagenPortada }) => {
 
     return (
         <>
-            <article className={`article-clip article-audio ${ pelicula }`} name={ pelicula }>  
+            <article className={`article-clip article-audio ${ pelicula }`} name={ pelicula }> 
 
                 <div className={`portada portada-${ pelicula } flex-center`} style={style}>
                 </div>
+
+                <section 
+                    className="ocultar-dificultad"
+                    onClick={() => ocultarDificultad()}> { mostrarDificultad ? "Ocultar " : "Mostrar "} 
+                    Dificultad 
+                </section> 
               
                 <section className='flex-center'>
                     { data.length > 0
@@ -58,6 +64,7 @@ const Pelicula = ({data, imagenPortada }) => {
                                 numero_clip={element["numero_clip"]}
                                 imagen={element.imagen}
                                 key={index}
+                                mostrarDificultad={mostrarDificultad}
                             />
                         )
                         })

@@ -93,8 +93,7 @@ const Navbar = () => {
                         
 
                         : <>
-                          
-                      
+                
                             <li>
                                 <span className="span-link" onClick={() => cerrarSesion() }> Cerrar Sesion </span>
                             </li>

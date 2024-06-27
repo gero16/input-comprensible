@@ -5,7 +5,7 @@ import { Context } from "../../context/context"
 import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
 
-const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar }) => {
+const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar, mostrarDificultad }) => {
 
     const {  evaluar, mostrarRespuesta, transformarMayuscula, 
         dificultadIdioma, dificultadEsp, } = useContext(Context);
@@ -21,6 +21,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
     const [idGrabar, setIdGrabar] = useState()
     const [grabacionPorGuardar, setGrabacionPorGuardar] = useState("");
     const [hayGrabacion, setHayGrabacion] = useState(false);
+    
 
     const separarDificultad = dificultad.split("-");
     const primeraPalabra = separarDificultad[0].charAt(0).toUpperCase() + separarDificultad[0].slice(1);
@@ -35,9 +36,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         });
     }, []);
 
-  
-
-    console.log(grabacionPorGuardar)
+ 
 
     const informarMensaje = (mensaje, posMensaje, tiempo) => {
         setMensaje(mensaje);
@@ -46,6 +45,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         },
          tiempo);
     };
+
     const guardarGrabacion = async (elemento, indice) => {
         const urlBlob = elemento.firstElementChild.src;
         const response = await fetch(urlBlob);
@@ -147,6 +147,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
         }
     }
 
+
     return (
         <>
             <article className={`article-video`} id={`id-BD-${id}`}>
@@ -163,9 +164,14 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
-                        <span className={`bold ${dificultad} `}> { dificultadEsp(dificultad, true) } </span>
+                        <>
+                            <span className={`bold ${dificultad} `}> { mostrarDificultad ? dificultadEsp(dificultad, true) : "" } </span>
+                        </>
+                        
+
                         <input type="text" className={`input-${ subtitulo }-${ index } input-frase`} />
                         <input type="text" className={`ocultar inputRespuesta-${ subtitulo }-${ index } `} defaultValue={ frase} />
+
                         <section className="flex-between">
                             <button className="button" onClick={(e) => evaluar(subtitulo, index)} id="btn-evaluar">Evaluar</button>
                             <button className="button" onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>

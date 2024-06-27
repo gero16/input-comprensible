@@ -25,6 +25,7 @@ export const CustomProvider = ({ children }) => {
 
    
     const [data, setData] = useState([]) 
+    const [mostrarDificultad, setMostrarDificultad] = useState(true)
 
     const clickGrabar = (e) => {
         const idGrabar = e.classList[1]
@@ -189,6 +190,9 @@ export const CustomProvider = ({ children }) => {
     }
 
 
+    const ocultarDificultad = () => {
+        setMostrarDificultad(!mostrarDificultad)
+    }
 
 return (
     <Context.Provider 
@@ -198,7 +202,7 @@ return (
             cantidadPaginasHtml, fetchClips, data, setData, separarTexto, fetchCantidadClips, 
             traerImagenFomato, urlImagen, fetchTitulosPelicula, fetchTitulosSeries, evaluarSesion,
              usuarioSesion, setUsuarioSesion,nombreUsuario, traerImagenPortada, imagenPortada,
-             dificultadIdioma,dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar
+             dificultadIdioma,dificultadEsp, grabacionPorGuardar, setGrabacionPorGuardar, ocultarDificultad, mostrarDificultad
             }}> 
             
         { children } 
