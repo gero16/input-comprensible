@@ -4,6 +4,7 @@ import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 import { Context } from "../../context/context"
 import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
+import IframeGrabacion from "../Iframes/Iframe";
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar, mostrarDificultad }) => {
 
@@ -177,6 +178,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                             <button className="button" onClick={(e) => mostrarRespuesta(subtitulo, index)} id="btn-mostar-respuesta"> Mostrar Respuesta </button>
                         </section>
                     </section>
+
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
                         { width < 540 
                             ? <iframe 
@@ -202,8 +204,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         }
                         <div className={ width > 1300 ? "flex-center mb-10" : "mb-10"}>
                             <span className="grabar-audio"> { width > 1300 ? "Grabar Audio" : "Grabar Audio -"} </span>
-                            <AudioRecorder 
-                                onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
+                            <AudioRecorder onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}
                                 recorderControls={recorderControls}
                                 audioTrackConstraints={{
                                     noiseSuppression: true,
@@ -215,23 +216,13 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 classes={{
                                     AudioRecorderClass: `audio-recorder-${index} audio-recorder-${subtitulo} audio-recorder`,
                                     AudioRecorderStartSaveClass : `audio-mic-${index} audio-mic-${subtitulo}`,
-                                }} 
-                            />
+                            }} />
                         </div>
+                        
                         <div className={`div-grabaciones-${subtitulo} div-grabaciones`}>
                             { grabacionID 
-                                ?  
-                                <> 
-                                    <iframe 
-                                        src={`https://drive.google.com/file/d/${ grabacionID }/preview`} 
-                                        width="410" 
-                                        height="60" 
-                                        allow="autoplay"
-                                        className={`iframe-${subtitulo}-${index}`}>
-                                    </iframe>
-                                </>
-                                : 
-                                <>  { mensaje } </>
+                                ?  <IframeGrabacion grabacionID={grabacionID} subtitulo={subtitulo}index={index} width={"410"} height={"60"} />                            
+                                :  <>  { mensaje } </>
                             }
                             <div className={`div-grabacion-${subtitulo}-${index}`}>
                                 { hayGrabacion 
@@ -239,19 +230,19 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                     : <audio> </audio> 
                                 }  
                             </div>
+
                             { grabacionID 
-                                    ? <> </>
-                                    : modoActualizar
-                                        ? <>
-                                        <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
-                                            Actualizar Grabación 
+                                ? <> </>
+                                : modoActualizar
+                                    ? <button className="button" onClick={(e) => actualizarGrabacion(e.target.previousElementSibling) } > 
+                                        Actualizar Grabación 
+                                    </button>
+                                
+                                    : grabacionPorGuardar && index === grabacionPorGuardar.id_clip
+                                        ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
+                                            Guardar Grabación
                                         </button>
-                                        </>
-                                        : grabacionPorGuardar && index === grabacionPorGuardar.id_clip
-                                            ? <button className="button" onClick={(e) => guardarGrabacion(e.target.previousElementSibling, index, id) } > 
-                                                Guardar Grabación
-                                            </button>
-                                            : <span className="button"> No hay grabacion! </span>
+                                        : <span className="button"> No hay grabacion! </span>
                             }
                         </div>
                     </section>
