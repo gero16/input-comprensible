@@ -3,6 +3,8 @@ import Clip from "../Clip/Clip"
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../context/context";
 
+import Cuadrados from "../../../public/cuadrados.png";
+import Listado from "../../../public/listado.png";
 const Pelicula = ({data, imagenPortada }) => {
 
     console.log(imagenPortada)
@@ -33,7 +35,7 @@ const Pelicula = ({data, imagenPortada }) => {
         filter: 'brightness(0.8)'
     }
 
-
+    const [multiplesVideos, setMultiplesVideos] = useState(true);    
 
     return (
         <>
@@ -47,6 +49,11 @@ const Pelicula = ({data, imagenPortada }) => {
                     onClick={() => ocultarDificultad()}> { mostrarDificultad ? "Ocultar " : "Mostrar "} 
                     Dificultad 
                 </section> 
+
+                <section className="flex-center m-10 gap-20"> 
+                    <img src={Cuadrados} onClick={() => setMultiplesVideos(true)}  className="img-video img-cuadrados" width={30} height={30}/> 
+                    <img src={Listado}  onClick={() => setMultiplesVideos(false)}  className="img-video img-listado" width={36} height={36} />
+                </section>
               
                 <section className='flex-center'>
                     { data.length > 0
@@ -65,6 +72,7 @@ const Pelicula = ({data, imagenPortada }) => {
                                 imagen={element.imagen}
                                 key={index}
                                 mostrarDificultad={mostrarDificultad}
+                                multiplesVideos={multiplesVideos}
                             />
                         )
                         })

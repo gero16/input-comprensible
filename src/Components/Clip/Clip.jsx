@@ -6,7 +6,9 @@ import "./Clip.css"
 import { urlBackend_Desarrollo, urlBackend_Produccion } from "../../context/helpers";
 import IframeGrabacion from "../Iframes/Iframe";
 
-const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, grabacionID, numero_clip, editar, mostrarDificultad }) => {
+
+const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, 
+    grabacionID, numero_clip, editar, mostrarDificultad, multiplesVideos }) => {
 
     const {  evaluar, mostrarRespuesta, transformarMayuscula, 
         dificultadIdioma, dificultadEsp, } = useContext(Context);
@@ -30,12 +32,15 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
 
     const newDificultad = dificultad.includes("-") ? `${primeraPalabra} ${segundaPalabra}` : primeraPalabra;
   
+    
 
     useEffect(() => {
         window.addEventListener("resize", () => {
             setWidth(window.innerWidth);
         });
     }, []);
+
+   
 
  
 
@@ -167,6 +172,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
                         <>
                             <span className={`bold ${dificultad} `}> { mostrarDificultad ? dificultadEsp(dificultad, true) : "" } </span>
+                            
                         </>
                         
 
@@ -180,7 +186,20 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                     </section>
 
                     <section id={`grabar-${ subtitulo }-${ index } section-video`} onClick={(e) => clickGrabar(e.target)}>
-                        { width < 540 
+                        
+                        { !multiplesVideos 
+                            ? <iframe 
+                                width={"800"} 
+                                height={"400"} 
+                                src={`${video}`}
+                                title="YouTube video player"  
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                loading="lazy"
+                                autoplay="1"
+                                className="arcoiris"
+                                onReady={(event) => onPlayerStateChange(event)}
+                            />
+                        : width < 540 
                             ? <iframe 
                                 width={"300"} 
                                 height={"160"} 
@@ -188,6 +207,7 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 title="YouTube video player"  
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 loading="lazy"
+                                autoplay="1"
                                 className="arcoiris"
                                 onReady={(event) => onPlayerStateChange(event)}
                             />
@@ -196,12 +216,15 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                                 height={ width <= 1511 ? "210" : "260"} 
                                 src={`${video}`}
                                 title="YouTube video player"  
+                                autoplay="1"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 loading="lazy"
                                 className="arcoiris"
                                 onReady={(event) => onPlayerStateChange(event)}
                             />
                         }
+                        
+                        
                         <div className={ width > 1300 ? "flex-center mb-10" : "mb-10"}>
                             <span className="grabar-audio"> { width > 1300 ? "Grabar Audio" : "Grabar Audio -"} </span>
                             <AudioRecorder onRecordingComplete={(blob) => addAudioElement(blob, subtitulo, index)}

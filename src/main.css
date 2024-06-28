@@ -334,3 +334,15 @@ ul{
   top:  10%;
   right: 5%;
 }
+
+.img-video {
+  cursor : pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.img-listado:hover, .img-cuadrados:hover {
+  transform: scale(1.3);
+  filter: brightness(1.2);
+  transition: 0.5s ease-in-out;
+}
+
