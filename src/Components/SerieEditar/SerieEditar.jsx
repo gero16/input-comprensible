@@ -92,6 +92,7 @@ const SerieEditar = ({data, serie, temporada ,capitulos, capitulo, imagenPortada
                                         grabacionID={ element.drive_grabacion ? element.drive_grabacion  : ""}
                                         categoria={element.categoria}
                                         numero_clip={element["numero_clip"]}
+                                        editar={true}
                                     />
                                 )
                             })

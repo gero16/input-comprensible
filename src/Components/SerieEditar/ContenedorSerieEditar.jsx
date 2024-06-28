@@ -7,6 +7,7 @@ import NavbarUser from '../Navbar/Navbar';
 import { Context } from '../../context/context';
 import BotonPagina from '../BotonPagina/BotonPagina';
 import { PaginasContext } from '../../context/contextPaginas';
+import SerieEditar from './SerieEditar';
 //import fetch from 'node-fetch'
 
 
@@ -20,7 +21,7 @@ const ContenedorSerieEditar = () => {
     const [season, setSeason] = useState([])
     const [capitulos, setCapitulos] = useState([])
      
-    const urlClipsGrabaciones = `${ urlBackend_Desarrollo }/clips-grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
+    const urlClipsGrabaciones = `${ urlBackend_Produccion }/clips-grabaciones/series/${ serie }/${ temporada }/${capitulo}/${ usuario }`
  
     const traerCapitulos = async () => {
         const dataCapitulos = await fetchCapitulos(serie)
@@ -62,7 +63,7 @@ const ContenedorSerieEditar = () => {
         <>
             { usuario 
                 ? <> 
-                    <Serie 
+                    <SerieEditar 
                         data={paginaClips} 
                         cambiarPagina={cambiarPagina} 
                         temporada={temporada} 
@@ -75,7 +76,7 @@ const ContenedorSerieEditar = () => {
                 </>
                 :  <> 
                     <Navbar/>
-                    <Serie 
+                    <SerieEditar
                         data={paginaClips} 
                         temporada={temporada} 
                         serie={serie} 

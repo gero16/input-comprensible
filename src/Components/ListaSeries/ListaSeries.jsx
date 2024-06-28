@@ -73,6 +73,10 @@ const ListaSeries = () => {
         return url
     }
 
+    const cambiarModoEditar = () => {
+        setModoEditar((prevModoEditar) => !prevModoEditar);
+    };
+    
     return (
 
         <>
@@ -84,6 +88,21 @@ const ListaSeries = () => {
             }
 
             <section className="flex-center gap-30 section-series"> 
+
+            <h3 className="h3-mensaje"> { mensaje }</h3>
+
+             
+            { usuarioSesion && esAdmin 
+                ?   <section className="section-edicion flex-center-center mb-10">
+                        <h3 className="h3-modo-editar m-10 link-pelicula" onClick={ cambiarModoEditar } > 
+                            { modoEditar ?  "Desactivar Modo Edición" : "Activar Modo Edicion"}  
+                            
+                            </h3>  
+
+                            </section>
+                : <h3> </h3>
+            }
+
             
             { titulos ?
                 titulos.map((element, key) => {
@@ -102,11 +121,11 @@ const ListaSeries = () => {
                                     </picture>
 
                                     <img 
-                                    src={element[8]} 
-                                    className="img-nacionalidad" 
-                                    alt="" 
-                                     width="24"
-                                    height="24"
+                                        src={element[8]} 
+                                        className="img-nacionalidad" 
+                                        alt="" 
+                                        width="24"
+                                        height="24"
                                 />
                                 
                                 </NavLink>
