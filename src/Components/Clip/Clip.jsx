@@ -8,7 +8,7 @@ import IframeGrabacion from "../Iframes/Iframe";
 
 
 const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificultad, capitulo, 
-    grabacionID, numero_clip, editar, mostrarDificultad, multiplesVideos }) => {
+    grabacionID, numero_clip, editar, mostrarDificultad, multiplesVideos, borrar }) => {
 
     const {  evaluar, mostrarRespuesta, transformarMayuscula, 
         dificultadIdioma, dificultadEsp, } = useContext(Context);
@@ -168,6 +168,11 @@ const Clip = ({ id, imagen, categoria, subtitulo, video, index, frase, dificulta
                             editar ? <NavLink to={`${id}`}  className="span-editar-clip"> Editar </NavLink> : <> </>
                         }
                         
+                        {
+                            borrar ? <NavLink to={`/borrar/${id}`}  className="span-editar-clip"> Borrar </NavLink> : <> </>
+                        }
+                        
+
                         <span className={`ocultar ${ subtitulo }-${ index } frase`} > { frase } </span>
                         <span className={`ocultar ${subtitulo}-mostrar-${index}` }> Incorrecto! </span>
                         <>

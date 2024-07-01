@@ -58,6 +58,7 @@ const PeliculaEditar = ({data, imagenPortada }) => {
                                 imagen={element.imagen}
                                 key={index}
                                 editar={true}
+                                borrar={true}
                             />
                         )
                         })

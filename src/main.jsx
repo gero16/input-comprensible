@@ -29,6 +29,7 @@ import EditarClipPelicula from './Components/EditarClip/EditarClipPelicula.jsx';
 import EditarClipSerie from './Components/EditarClip/EditarClipSerie.jsx';
 import ContenedorSerieEditar from './Components/SerieEditar/ContenedorSerieEditar.jsx';
 import Buscador from './Components/Buscador/Buscador.jsx';
+import BorrarClip from './Components/EditarClip/BorrarClip';
 
 
 
@@ -147,6 +148,10 @@ const router = createBrowserRouter([
           {
             path: "/usuario/:usuario/series/:serie/:temporada/:capitulo/editar/:idclip",
             element:  <EditarClipSerie />,
+          },
+          {
+            path: "/usuario/:usuario/peliculas/:pelicula/borrar/:idclip",
+            element:  <BorrarClip />,
           },
         ]
       },
